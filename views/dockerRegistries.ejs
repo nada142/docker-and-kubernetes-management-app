@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Docker Registries</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <link
+      rel="icon"
+      href="../assets/img/dockube3.png"
+      type="image/x-icon"
+    />
+    <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.min.css">
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/dockerregistries.css">
+
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["../assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+			<a href="/" class="logo" style="display: flex; align-items: center;">
+                <img
+                  src="assets/img/dockube3.png"
+                  alt="navbar brand"
+                  class="navbar-brand"
+                  height="40"
+                />
+                <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+              </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <li class="nav-item">
+                <a href="/" aria-expanded="false">
+                  <i class="fas fa-tachometer-alt"></i> <!-- Dashboard icon -->
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a href="/dockerRegistries">
+                  <i class="fas fa-warehouse"></i> <!-- Registry icon -->
+                  <p>Docker Registries</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockerfile_list">
+                  <i class="fas fa-file-code"></i> <!-- Code file icon for Dockerfile -->
+                  <p>Dockerfile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockerimg">
+                  <i class="fas fa-images"></i> <!-- Images icon -->
+                  <p>Docker Images</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockercontainers">
+                  <i class="fas fa-box"></i> <!-- Box icon for containers -->
+                  <p>Docker Containers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/volumes">
+                  <i class="fas fa-database"></i> <!-- Database icon for Volumes -->
+                  <p>Volumes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/compose">
+                  <i class="fas fa-cubes"></i> <!-- Stacked cubes for Compose -->
+                  <p>Docker Compose</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="swarm_list">
+                    <i class="fas fa-project-diagram"></i> <!-- Stacked cubes for Compose -->
+                  <p>Docker Swarm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#kubernetesMenu" aria-expanded="false">
+                    <i class="fas fa-dharmachakra"></i>
+                    <p>Kubernetes</p>
+                    <span class="caret"></span>
+                </a>
+                <div class="collapse" id="kubernetesMenu">
+                    <ul class="nav nav-collapse">
+                        <li>
+                            <a href="/kubernetes/cluster">
+                                <span class="sub-item">Cluster Setup</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/nodes">
+                                <span class="sub-item">Nodes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/deployments">
+                                <span class="sub-item">Deployments</span>
+                            </a>
+                        </li>
+                        <li>
+                          <a href="/kubernetes/statefulsets">
+                              <span class="sub-item">StatefulSets</span>
+                          </a>
+                      </li>
+                        <li>
+                            <a href="/kubernetes/services">
+                                <span class="sub-item">Services</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/pods">
+                                <span class="sub-item">Pods</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/pvcs">
+                                <span class="sub-item">Storage</span>
+                            </a>
+                        </li>
+                        <li>
+                          <a href="/kubernetes/configs">
+                              <span class="sub-item">ConfigMaps && Secrets</span>
+                          </a>
+                      </li>
+                        <li>
+                            <a href="/kubernetes/namespaces">
+                                <span class="sub-item">Namespaces</span>
+                            </a>
+                        </li>
+                         <li>
+                <a href="/kubernetes/ingresses">
+                    <span class="sub-item">Ingresses</span>
+                </a>
+            </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+              <a href="/cicd_integration">
+                <i class="fas fa-sync-alt"></i>
+                <p>CI CD</p>
+              </a>
+            </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#" onclick="logout()">
+                  <i class="fas fa-sign-out-alt"></i> <!-- Logout icon -->
+                  <p>Logout</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+      <!-- End Sidebar -->
+
+      <div class="main-panel">
+        <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+              <a href="/" class="logo" style="display: flex; align-items: center;">
+                <img
+                  src="assets/img/dockube3.png"
+                  alt="navbar brand"
+                  class="navbar-brand"
+                  height="20"
+                />
+                <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+              </a>
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav
+          class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+        >
+          <div class="container-fluid">
+            <nav
+              class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
+            >
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <button type="submit" onclick="recherche()" class="btn btn-search pe-1">
+
+                    <i class="fa fa-search search-icon"></i>
+                  </button>
+                </div>
+                <input type="text" name="table_search" id="myInput" onkeyup="recherche()" class="form-control" placeholder="Search">
+
+                
+              
+              </div>
+            </nav>
+
+            <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+              <li class="nav-item topbar-user dropdown hidden-caret">
+                <a
+                  class="dropdown-toggle profile-pic"
+                  data-bs-toggle="dropdown"
+                  href="/profile"
+                  aria-expanded="false"
+                >
+                
+                  
+                  <span class="profile-username">
+                    <span class="op-7">Hi,</span>
+                    <span class="fw-bold">Hizrian</span>
+                  </span>
+                </a>
+                <ul class="dropdown-menu dropdown-user animated fadeIn">
+                  <div class="dropdown-user-scroll scrollbar-outer">
+                    <li>
+                      <div class="user-box">
+                        <div class="avatar-lg">
+                          <img
+                            src="assets/img/profile.jpg"
+                            alt="image profile"
+                            class="avatar-img rounded"
+                          />
+                        </div>
+                        <div class="u-text">
+                          <h4>Hizrian</h4>
+                          <p class="text-muted">hello@example.com</p>
+                          <a
+                            href="/profile"
+                            class="action-btn btn-blue1 btn-sm"
+                            >Update Profile</a
+                          >
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                     
+                      <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                    </li>
+                  </div>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+          <script>
+            document.addEventListener("DOMContentLoaded", function() {
+  var user = JSON.parse(localStorage.getItem("user"));
+  if (user) {
+      document.querySelector(".profile-username .fw-bold").textContent = user.username;
+      document.querySelector(".u-text h4").textContent = user.username;
+      document.querySelector(".u-text .text-muted").textContent = user.email;
+  }
+});
+          </script>
+          <!-- End Navbar -->
+        </div>
+          <div class="container">
+              <div class="page-inner">
+                  <div class="page-header">
+                      <h2 class="text-center">Docker Registries</h2>
+                  </div>
+                  <div class="input-group mb-3">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search Registries..." onkeyup="filterCards()">                  </div>
+                  <div class="add-button">
+                    <button id="add-registry-btn" class="action-btn btn-pastel-docker-blue">+ Add Docker Registry</button>
+        <div id="registries-list" class="mt-3"></div>
+   
+                </div>
+               
+              </div>
+          </div>
+      </div>
+ 
+       
+     <div class="modal fade" id="addRegistryModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Docker Registry</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="add-registry-form">
+                        <div class="form-group">
+                            <label for="registry-name">Name</label>
+                            <input type="text" class="form-control" id="registry-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registry-url">URL</label>
+                            <input type="text" class="form-control" id="registry-url" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registry-username">Username</label>
+                            <input type="text" class="form-control" id="registry-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registry-password">Password</label>
+                            <input type="password" class="form-control" id="registry-password" required>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="action-btn btn-pastel-red" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="action-btn btn-pastel-docker-blue">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+    <!-- Update Registry Modal -->
+<div class="modal fade" id="updateRegistryModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Update Docker Registry</h5>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+              <form id="update-registry-form">
+                  <input type="hidden" id="update-registry-id">
+                  <div class="form-group">
+                      <label for="update-registry-name">Name</label>
+                      <input type="text" class="form-control" id="update-registry-name" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="update-registry-url">URL</label>
+                      <input type="text" class="form-control" id="update-registry-url" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="update-registry-username">Username</label>
+                      <input type="text" class="form-control" id="update-registry-username" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="update-registry-password">Password</label>
+                      <input type="password" class="form-control" id="update-registry-password" required>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="action-btn btn-pastel-red" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="action-btn btn-primary">Update</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+      
+      <div id="chatbot-container">
+        <!-- Chatbot Toggle Button (Circle with Logo) -->
+        <div id="chatbot-toggle">
+            <img src="../assets/img/dockube3.png" alt="Chatbot Logo" width="50" height="50">
+        </div>
+      
+        <!-- Chatbot Interface (Hidden by Default) -->
+       
+      <div id="chatbot-interface" style="display: none;">
+        <!-- Chat Header -->
+        <div id="chat-header">
+            <strong>
+                <img src="../assets/img/dockube3.png" alt="Logo">
+                Docker & Kubernetes Assistant
+            </strong>
+            <button id="chat-close">×</button>
+        </div>
+      
+        <!-- Chat Body -->
+        <div id="chat-body">
+            <div id="chat-messages">
+                <!-- Welcome Message -->
+                <div class="welcome-message" onclick="toggleWelcomeMessage()">
+                    👋 Welcome! I'm your Docker & Kubernetes Assistant.
+                    Ask me anything about Docker, Kubernetes, and best practices.
+                    <div class="hidden-content">
+                        Hi! I'm your Docker & Kubernetes Assistant.  
+                        Ask me anything about Dockerfiles, Kubernetes configurations, and best practices.
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <!-- Chat Input -->
+        <div id="chat-input">
+            <input type="text" id="chat-message" placeholder="Type your question...">
+            <button id="chat-send">Send</button>
+        </div>
+      </div>
+      </div>
+
+
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <script>
+         $(document).ready(function () {
+    // Load registries
+    function loadRegistries() {
+        fetch('/docker-registries')
+            .then(response => response.json())
+            .then(data => {
+                const registriesList = document.getElementById('registries-list');
+                registriesList.innerHTML = ''; 
+
+                data.registries.forEach(registry => {
+                    const registryDiv = document.createElement('div');
+                    registryDiv.className = 'card mb-3';
+
+                    const cardBody = document.createElement('div');
+                    cardBody.className = 'card-body d-flex justify-content-between align-items-center';
+
+                    const infoDiv = document.createElement('div');
+                    infoDiv.className = 'registry-info';
+
+                    const title = document.createElement('h5');
+                    title.className = 'card-title mb-1';
+                    title.textContent = registry.name;
+
+                    const url = document.createElement('p');
+                    url.className = 'card-text text-muted mb-0';
+                    url.textContent = registry.url;
+
+                    infoDiv.appendChild(title);
+                    infoDiv.appendChild(url);
+
+                    const actionsDiv = document.createElement('div');
+                    actionsDiv.className = 'registry-actions action-buttons';
+
+                    const updateButton = document.createElement('button');
+                    updateButton.className = 'action-btn btn-blue2';
+                    updateButton.innerHTML = '<i class="fas fa-edit"></i> Update';
+                    updateButton.onclick = () => openUpdateModal(registry._id, registry.name, registry.url, registry.username, registry.password);
+
+                    const deleteButton = document.createElement('button');
+                    deleteButton.className = 'action-btn btn-pastel-red';
+                    deleteButton.innerHTML = '<i class="fas fa-trash"></i> Delete';
+                    deleteButton.onclick = () => deleteRegistry(registry._id);
+
+                    actionsDiv.appendChild(updateButton);
+                    actionsDiv.appendChild(deleteButton);
+
+                    cardBody.appendChild(infoDiv);
+                    cardBody.appendChild(actionsDiv);
+                    registryDiv.appendChild(cardBody);
+                    registriesList.appendChild(registryDiv);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading Docker registries:', error);
+                alert('Failed to load Docker registries. Please try again later.');
+            });
+    }
+              // Show add registry modal
+              $('#add-registry-btn').click(function () {
+                  $('#addRegistryModal').modal('show');
+              });
+  
+              // Add registry
+              $('#add-registry-form').submit(function (event) {
+                  event.preventDefault();
+                  const name = $('#registry-name').val();
+                  const url = $('#registry-url').val();
+                  const username = $('#registry-username').val();
+                  const password = $('#registry-password').val();
+  
+                  $.post('/docker-registries', { name, url, username, password }, function (data) {
+                      if (data.success) {
+                          $('#addRegistryModal').modal('hide');
+                          loadRegistries();
+                      }
+                  });
+              });
+  
+              loadRegistries();
+
+
+              function openUpdateModal(registryId, name, url, username, password) {
+    document.getElementById('update-registry-id').value = registryId;
+    document.getElementById('update-registry-name').value = name;
+    document.getElementById('update-registry-url').value = url;
+    document.getElementById('update-registry-username').value = username;
+    document.getElementById('update-registry-password').value = password;
+    $('#updateRegistryModal').modal('show');
+}
+
+document.getElementById('update-registry-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const registryId = document.getElementById('update-registry-id').value;
+    const name = document.getElementById('update-registry-name').value;
+    const url = document.getElementById('update-registry-url').value;
+    const username = document.getElementById('update-registry-username').value;
+    const password = document.getElementById('update-registry-password').value;
+
+    fetch(`/docker-registries/${registryId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, url, username, password }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                $('#updateRegistryModal').modal('hide');
+                loadRegistries();
+            }
+        })
+        .catch(error => {
+            console.error('Error updating Docker registry:', error);
+            alert('Failed to update Docker registry. Please try again later.');
+        });
+});
+
+function deleteRegistry(registryId) {
+    if (confirm('Are you sure you want to delete this registry?')) {
+        fetch(`/docker-registries/${registryId}`, {
+            method: 'DELETE',
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    loadRegistries();
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting Docker registry:', error);
+                alert('Failed to delete Docker registry. Please try again later.');
+            });
+    }
+}
+          });
+      </script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotInterface = document.getElementById('chatbot-interface');
+            const chatClose = document.getElementById('chat-close');
+            const chatBody = document.getElementById('chat-body');
+            const chatMessages = document.getElementById('chat-messages');
+            const chatMessageInput = document.getElementById('chat-message');
+            const chatSendButton = document.getElementById('chat-send');
+      
+            // Toggle Chat Interface
+            chatbotToggle.addEventListener('click', () => {
+                chatbotInterface.style.display = 'block';
+            });
+      
+            // Close Chat Interface
+            chatClose.addEventListener('click', () => {
+                chatbotInterface.style.display = 'none';
+            });
+      
+            // Send Message to Chatbot
+            chatSendButton.addEventListener('click', async () => {
+                const message = chatMessageInput.value.trim();
+                if (message) {
+                    // Add User Message to Chat
+                    chatMessages.innerHTML += `<div class="message"><strong>You:</strong> ${message}</div>`;
+                    chatMessageInput.value = '';
+      
+                    // Show Loading Spinner
+                    chatMessages.innerHTML += `<div id="loading-spinner">Loading...</div>`;
+      
+                    // Call Backend API
+                    try {
+                        const response = await fetch('/api/chat', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ message })
+                        });
+                        const data = await response.json();
+      
+                        // Remove Loading Spinner and Add Bot Response
+                        document.getElementById('loading-spinner').remove();
+                        chatMessages.innerHTML += `<div class="message"><strong>Assistant:</strong> ${data.response}</div>`;
+                    } catch (error) {
+                        console.error('Error:', error);
+                        chatMessages.innerHTML += `<div class="message"><strong>Error:</strong> Failed to get response.</div>`;
+                    }
+      
+                    // Scroll to Bottom of Chat
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }
+            });
+      
+            // Allow Pressing "Enter" to Send a Message
+            chatMessageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    chatSendButton.click();
+                }
+            });
+        });
+      </script>
+        
+
+          
+          
+         <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css">
+         <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
+
+      <!-- End Custom template -->
+    </div>
+ 
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <!-- Moment JS -->
+    <script src="../assets/js/plugin/moment/moment.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="../assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="../assets/js/kaiadmin.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="../assets/js/setting-demo2.js"></script>
+    <script>
+      function logout() {
+            Swal.fire({
+                title: 'Logout Confirmation',
+                text: 'Are you sure you want to log out?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#326ce5',
+                cancelButtonColor: '#ff6666',
+                confirmButtonText: 'Yes, log out'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.clear();
+                    window.location.replace("/login");
+                }
+            });
+        }
+    </script>
+    <script>
+      function recherche() {
+        var input, filter, cards, card, title, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        cards = document.getElementsByClassName("card");
+        
+        for (i = 0; i < cards.length; i++) {
+            card = cards[i];
+            title = card.getElementsByClassName("card-title")[0]; 
+            if (title) {
+                txtValue = title.textContent || title.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    card.style.display = ""; 
+                } else {
+                    card.style.display = "none";
+                }
+            }       
+        }
+    }
+    
+    </script>
+
+
+<div class="modal fade" id="createContainerModal" tabindex="-1" aria-labelledby="createContainerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createContainerModalLabel">Create a New Container</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="createContainerForm">
+          <div class="form-group">
+            <label for="imageName">Select Image:</label>
+            <select id="imageName" class="form-control" required></select>
+          </div>
+          <div class="form-group">
+            <label for="containerName">Container Name:</label>
+            <input type="text" id="containerName" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Mount Volumes:</label>
+            <div id="volumeContainer" class="scrollable-checkbox-list">
+              <!-- Checkboxes will be dynamically added here -->
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="port">Port (optional):</label>
+            <input type="number" id="port" class="form-control">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-pastel-red" data-bs-dismiss="modal">Close</button>
+        <button type="submit" form="createContainerForm" class="btn btn-blue2">Run Container</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </body>
+  <!-- <footer class="footer">
+    <div class="container-fluid d-flex justify-content-between">
+      <div class="copyright">
+        2024, made by
+        <h6>Nada Bouaziz</h6>
+      </div>
+      <div>
+        
+        <a target="_blank">Dockube Pilot</a>.
+      </div>
+    </div>
+  </footer> -->
+</html>

@@ -1,0 +1,2109 @@
+[2025-03-02 21:18:07] [31merror[39m: Unexpected error creating container: sendErrorResponse is not defined
+[2025-03-24 12:07:27] [31merror[39m: Error saving Dockerfile: Cannot read properties of undefined (reading '_id')
+[2025-03-24 13:00:10] [31merror[39m: Error saving Dockerfile: Cannot read properties of undefined (reading '_id')
+2025-05-07T14:36:24.458Z [[31merror[39m]: GitLab connection failed: getaddrinfo ENOTFOUND gitlab.co;
+2025-05-07T14:36:52.605Z [[31merror[39m]: GitLab connection failed: Invalid key length
+2025-05-07T17:13:09.209Z [[31merror[39m]: GitLab connection failed: Invalid URL
+[2025-05-21 14:29:38] [31merror[39m: Command failed: docker run -d -p 84:84  -v test_stats-mysql:/var/lib/mysql --name test_stats nodeapp
+Unable to find image 'nodeapp:latest' locally
+docker: Error response from daemon: pull access denied for nodeapp, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
+
+Run 'docker run --help' for more information
+
+[2025-05-21 14:30:24] [31merror[39m: Command failed: docker run -d -p 84:84  -v test_stats-mysql:/var/lib/mysql --name test_stats node3:latest
+Unable to find image 'node3:latest' locally
+docker: Error response from daemon: pull access denied for node3, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
+
+Run 'docker run --help' for more information
+
+[2025-05-21 14:30:40] [31merror[39m: Command failed: docker run -d -p 91:91  -v test_stats-mysql:/var/lib/mysql --name test_stats node3:latest
+Unable to find image 'node3:latest' locally
+docker: Error response from daemon: pull access denied for node3, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
+
+Run 'docker run --help' for more information
+
+[2025-05-21 14:31:06] [31merror[39m: Command failed: docker run -d -p 78:78  -v test_con_sdf-mysql:/var/lib/mysql --name test_con_sdf nodeapp
+Unable to find image 'nodeapp:latest' locally
+docker: Error response from daemon: pull access denied for nodeapp, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
+
+Run 'docker run --help' for more information
+
+[2025-05-21 14:36:23] [31merror[39m: Command failed: docker run -d -p 93:93  -v con3p-mysql:/var/lib/mysql --name con3p nodeapp
+Unable to find image 'nodeapp:latest' locally
+docker: Error response from daemon: pull access denied for nodeapp, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
+
+Run 'docker run --help' for more information
+
+[2025-05-21 17:14:17] [31merror[39m: Command failed: docker run -d -p 98:98  -v test1-mysql:/var/lib/mysql --name test1 test8
+Unable to find image 'test8:latest' locally
+docker: Error response from daemon: pull access denied for test8, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
+
+Run 'docker run --help' for more information
+
+[2025-05-21 17:14:30] [31merror[39m: Command failed: docker run -d -p 98:98  -v test1-mysql:/var/lib/mysql --name test1 fdg:latest
+Unable to find image 'fdg:latest' locally
+docker: Error response from daemon: pull access denied for fdg, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
+
+Run 'docker run --help' for more information
+
+2025-05-22T16:28:10.959Z [[31merror[39m]: DevLake data collection failed: connect ECONNREFUSED 127.0.0.1:8080
+2025-06-10T14:53:48.382Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:53:48.382Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:53:48.382Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:54:48.387Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:54:48.387Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:54:48.387Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:55:48.384Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:55:48.385Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:55:48.385Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:56:48.398Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:56:48.398Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:56:48.398Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:58:24.530Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:58:24.531Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:58:24.531Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:59:24.611Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:59:24.611Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T14:59:24.611Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:00:48.751Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl get nodes -o json
+error: Get "https://192.168.136.128:6443/api/v1/nodes?limit=500": dial tcp 192.168.136.128:6443: connect: connection refused - error from a previous attempt: unexpected EOF
+
+2025-06-10T15:00:48.752Z [[31merror[39m]: Prediction failed: Command failed: kubectl get nodes -o json
+error: Get "https://192.168.136.128:6443/api/v1/nodes?limit=500": dial tcp 192.168.136.128:6443: connect: connection refused - error from a previous attempt: unexpected EOF
+
+2025-06-10T15:00:48.752Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl get nodes -o json
+error: Get "https://192.168.136.128:6443/api/v1/nodes?limit=500": dial tcp 192.168.136.128:6443: connect: connection refused - error from a previous attempt: unexpected EOF
+
+2025-06-10T15:01:24.689Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:01:24.689Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:01:24.689Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:02:24.842Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:02:24.843Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:02:24.843Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:03:24.867Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:03:24.868Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:03:24.868Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:04:24.600Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:04:24.600Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:04:24.600Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:05:24.606Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:05:24.606Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:05:24.607Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:06:24.603Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:06:24.604Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:06:24.604Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:07:24.634Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:07:24.634Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:07:24.634Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:08:24.627Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:08:24.627Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:08:24.627Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:09:16.432Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:09:16.432Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:09:16.432Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:09:24.608Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:09:24.609Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:09:24.609Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:10:16.443Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:10:16.443Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:10:16.443Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:10:24.648Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:10:24.648Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:10:24.648Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:11:16.442Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:11:16.442Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:11:16.442Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:11:24.618Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:11:24.618Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:11:24.618Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:12:16.443Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:12:16.443Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:12:16.443Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:12:24.619Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:12:24.619Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:12:24.619Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:13:16.440Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:13:16.440Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:13:16.440Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:13:24.632Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:13:24.632Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:13:24.632Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:14:16.457Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:14:16.457Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:14:16.458Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:14:24.650Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:14:24.651Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:14:24.651Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:15:16.445Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:15:16.445Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:15:16.445Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:15:24.644Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:15:24.644Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:15:24.644Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:16:16.448Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:16:16.449Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:16:16.449Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:16:24.662Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:16:24.662Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:16:24.662Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:17:16.475Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:17:16.475Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:17:16.475Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:17:24.672Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:17:24.672Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:17:24.672Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:18:16.470Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:18:16.470Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:18:16.470Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:18:24.670Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:18:24.670Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:18:24.670Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:19:16.480Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:19:16.480Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:19:16.480Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:19:24.676Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:19:24.676Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:19:24.676Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:20:16.457Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:20:16.457Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:20:16.457Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:20:24.685Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:20:24.685Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:20:24.685Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:21:16.482Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:21:16.482Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:21:16.482Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:21:24.684Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:21:24.685Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:21:24.685Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:22:16.470Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:22:16.470Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:22:16.470Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:22:24.691Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:22:24.691Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:22:24.692Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:23:16.479Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:23:16.479Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:23:16.479Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:23:24.694Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:23:24.694Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:23:24.694Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:24:16.492Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:24:16.492Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:24:16.492Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:24:24.713Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:24:24.714Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:24:24.714Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:25:16.496Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:25:16.496Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:25:16.496Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:25:24.713Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:25:24.713Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:25:24.713Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:26:16.512Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:26:16.513Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:26:16.513Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:26:24.724Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:26:24.724Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:26:24.724Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:27:16.523Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:27:16.523Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:27:16.523Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:27:24.731Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:27:24.731Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:27:24.731Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:28:16.514Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:28:16.515Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:28:16.515Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:28:24.741Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:28:24.741Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:28:24.741Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:29:16.531Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:29:16.531Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:29:16.531Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:29:24.744Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:29:24.744Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:29:24.744Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:30:16.525Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:30:16.525Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:30:16.525Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:30:24.739Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:30:24.739Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:30:24.739Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:31:16.542Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:31:16.542Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:31:16.542Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:31:24.770Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:31:24.770Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:31:24.770Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:32:16.552Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:32:16.552Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:32:16.552Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:32:24.770Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:32:24.771Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:32:24.771Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:33:16.558Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:33:16.558Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:33:16.558Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:33:24.777Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:33:24.777Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:33:24.777Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:34:16.568Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:34:16.569Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:34:16.569Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:34:24.805Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:34:24.805Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:34:24.805Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:35:16.570Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:35:16.570Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:35:16.570Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:35:24.795Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:35:24.795Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:35:24.796Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:36:16.589Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:36:16.589Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:36:16.590Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:36:24.815Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:36:24.816Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:36:24.816Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:37:16.604Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:37:16.604Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:37:16.604Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:37:24.808Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:37:24.808Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:37:24.808Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:38:16.604Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:38:16.605Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:38:16.605Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:38:24.806Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:38:24.806Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:38:24.806Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:39:16.624Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:39:16.624Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:39:16.624Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:39:24.825Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:39:24.825Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:39:24.825Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:40:16.645Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:40:16.645Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:40:16.645Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:40:24.853Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:40:24.853Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:40:24.853Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:41:16.624Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:41:16.624Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:41:16.624Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:41:24.847Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:41:24.847Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:41:24.847Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:42:16.639Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:42:16.640Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:42:16.640Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:42:24.880Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:42:24.880Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:42:24.881Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:43:16.661Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:43:16.661Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:43:16.661Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:43:24.871Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:43:24.871Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:43:24.871Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:44:16.673Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:44:16.673Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:44:16.673Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:44:24.908Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:44:24.909Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:44:24.909Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:45:16.722Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:45:16.722Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:45:16.722Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:45:24.898Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:45:24.898Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:45:24.898Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:46:16.758Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:46:16.759Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:46:16.759Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:46:24.864Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:46:24.865Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:46:24.865Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:47:16.676Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:47:16.676Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:47:16.676Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:47:24.906Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:47:24.906Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:47:24.906Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:48:16.687Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:48:16.687Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:48:16.687Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:48:24.910Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:48:24.911Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:48:24.911Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:49:16.688Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:49:16.688Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:49:16.688Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:49:24.901Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:49:24.901Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:49:24.901Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:50:16.743Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:50:16.744Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:50:16.744Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:50:24.904Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:50:24.904Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:50:24.904Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:51:16.746Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:51:16.746Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:51:16.746Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:51:24.907Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:51:24.908Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:51:24.908Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:52:16.757Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:52:16.758Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:52:16.758Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:52:24.914Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:52:24.914Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:52:24.914Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:53:16.726Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:53:16.727Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:53:16.727Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:53:24.907Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:53:24.908Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:53:24.908Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:54:16.748Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:54:16.748Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:54:16.748Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:54:24.933Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:54:24.934Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:54:24.934Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:55:16.726Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:55:16.726Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:55:16.726Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:55:24.939Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:55:24.939Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-10T15:55:24.939Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:36:31.703Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl get nodes -o json
+The connection to the server 192.168.136.128:6443 was refused - did you specify the right host or port?
+
+2025-06-11T08:36:31.704Z [[31merror[39m]: Prediction failed: Command failed: kubectl get nodes -o json
+The connection to the server 192.168.136.128:6443 was refused - did you specify the right host or port?
+
+2025-06-11T08:36:31.704Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl get nodes -o json
+The connection to the server 192.168.136.128:6443 was refused - did you specify the right host or port?
+
+2025-06-11T08:36:32.035Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl get nodes -o json
+error: Get "https://192.168.136.128:6443/api/v1/nodes?limit=500": dial tcp 192.168.136.128:6443: connect: connection refused - error from a previous attempt: unexpected EOF
+
+2025-06-11T08:36:32.035Z [[31merror[39m]: Prediction failed: Command failed: kubectl get nodes -o json
+error: Get "https://192.168.136.128:6443/api/v1/nodes?limit=500": dial tcp 192.168.136.128:6443: connect: connection refused - error from a previous attempt: unexpected EOF
+
+2025-06-11T08:36:32.035Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl get nodes -o json
+error: Get "https://192.168.136.128:6443/api/v1/nodes?limit=500": dial tcp 192.168.136.128:6443: connect: connection refused - error from a previous attempt: unexpected EOF
+
+2025-06-11T08:37:23.134Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:37:23.134Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:37:23.134Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:37:31.762Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:37:31.762Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:37:31.762Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:38:23.411Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:38:23.412Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:38:23.412Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:38:31.779Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:38:31.779Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:38:31.780Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:39:23.170Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:39:23.171Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:39:23.171Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:39:31.786Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:39:31.786Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:39:31.786Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:40:23.170Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:40:23.170Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:40:23.170Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:40:31.778Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:40:31.780Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:40:31.780Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:41:23.176Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:41:23.176Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:41:23.177Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:41:31.784Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:41:31.784Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:41:31.784Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:42:23.190Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:42:23.190Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:42:23.190Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:42:31.795Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:42:31.795Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:42:31.795Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:43:23.200Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:43:23.201Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:43:23.201Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:43:31.801Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:43:31.801Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:43:31.801Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:44:23.209Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:44:23.209Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:44:23.209Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:44:31.804Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:44:31.804Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:44:31.805Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:45:23.205Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:45:23.205Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:45:23.205Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:45:31.817Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:45:31.817Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:45:31.817Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:46:23.204Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:46:23.205Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:46:23.205Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:46:31.812Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:46:31.813Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:46:31.813Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:47:07.040Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:47:07.040Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:47:07.040Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:47:23.220Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:47:23.220Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:47:23.220Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:47:31.829Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:47:31.830Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:47:31.830Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T08:50:23.327Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T08:50:23.327Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T08:50:31.895Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T08:50:31.895Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T08:51:07.118Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T08:51:07.118Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T08:51:23.338Z [[31merror[39m]: Prediction failed: read ECONNRESET
+2025-06-11T08:51:23.338Z [[31merror[39m]: Monitoring cycle failed: read ECONNRESET
+2025-06-11T09:38:31.273Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (ServiceUnavailable): the server is currently unable to handle the request (get pods.metrics.k8s.io)
+
+2025-06-11T09:38:31.286Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (ServiceUnavailable): the server is currently unable to handle the request (get pods.metrics.k8s.io)
+
+2025-06-11T09:38:31.286Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (ServiceUnavailable): the server is currently unable to handle the request (get pods.metrics.k8s.io)
+
+2025-06-11T09:39:36.140Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics not available for pod default/stress-test-6f97b5b677-2l6dm, age: 8m38.047487693s
+
+2025-06-11T09:39:36.140Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics not available for pod default/stress-test-6f97b5b677-2l6dm, age: 8m38.047487693s
+
+2025-06-11T09:39:36.141Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics not available for pod default/stress-test-6f97b5b677-2l6dm, age: 8m38.047487693s
+
+2025-06-11T09:40:28.197Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics not available for pod default/stress-test-6f97b5b677-2l6dm, age: 9m30.176416124s
+
+2025-06-11T09:40:28.198Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics not available for pod default/stress-test-6f97b5b677-2l6dm, age: 9m30.176416124s
+
+2025-06-11T09:40:28.198Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics not available for pod default/stress-test-6f97b5b677-2l6dm, age: 9m30.176416124s
+
+2025-06-11T09:41:23.991Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T09:41:23.994Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T09:41:23.995Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-11T11:27:08.015Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:27:08.017Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:27:20.870Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:27:20.871Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:28:06.798Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:28:06.799Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:28:21.840Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:28:21.840Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:29:07.798Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:29:07.798Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:29:20.867Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:29:20.867Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:30:06.798Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:30:06.798Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:30:20.841Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:30:20.841Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:31:06.818Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:31:06.818Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:31:21.860Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-11T11:31:21.860Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-12T13:46:45.921Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-12T13:46:46.012Z [[31merror[39m]: Prediction failed: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-12T13:46:46.012Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-12T13:47:14.131Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl get nodes -o json
+error: stream error when reading response body, may be caused by closed connection. Please retry. Original error: stream error: stream ID 1; INTERNAL_ERROR; received from peer
+
+2025-06-12T13:47:14.497Z [[31merror[39m]: Prediction failed: Command failed: kubectl get nodes -o json
+error: stream error when reading response body, may be caused by closed connection. Please retry. Original error: stream error: stream ID 1; INTERNAL_ERROR; received from peer
+
+2025-06-12T13:47:14.556Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl get nodes -o json
+error: stream error when reading response body, may be caused by closed connection. Please retry. Original error: stream error: stream ID 1; INTERNAL_ERROR; received from peer
+
+2025-06-12T13:47:14.590Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-12T13:47:14.590Z [[31merror[39m]: Prediction failed: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-12T13:47:14.590Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-12T13:47:26.955Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-12T13:47:26.989Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-12T13:47:26.989Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-12T13:47:38.660Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top nodes --no-headers
+error: metrics not available yet
+
+2025-06-12T13:47:38.663Z [[31merror[39m]: Prediction failed: Command failed: kubectl top nodes --no-headers
+error: metrics not available yet
+
+2025-06-12T13:47:38.664Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top nodes --no-headers
+error: metrics not available yet
+
+2025-06-12T13:47:54.117Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (ServiceUnavailable): the server is currently unable to handle the request (get pods.metrics.k8s.io)
+
+2025-06-12T13:47:54.130Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (ServiceUnavailable): the server is currently unable to handle the request (get pods.metrics.k8s.io)
+
+2025-06-12T13:47:54.131Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (ServiceUnavailable): the server is currently unable to handle the request (get pods.metrics.k8s.io)
+
+2025-06-12T13:48:17.645Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-12T13:48:17.659Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-12T13:48:17.659Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-16T15:18:40.290Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-16T15:18:40.290Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-16T15:19:40.199Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-16T15:19:40.200Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-16T15:20:40.317Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-16T15:20:40.317Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-16T15:21:40.441Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-16T15:21:40.443Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-16T15:22:41.351Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-16T15:22:41.351Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-16T15:23:40.802Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-16T15:23:40.803Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-16T15:24:40.499Z [[31merror[39m]: Prediction failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-16T15:24:40.500Z [[31merror[39m]: Monitoring cycle failed: connect ECONNREFUSED 127.0.0.1:8000
+2025-06-16T15:24:53.761Z [[31merror[39m]: Prediction failed: read ECONNRESET
+2025-06-16T15:24:53.762Z [[31merror[39m]: Monitoring cycle failed: read ECONNRESET
+2025-06-16T16:07:16.850Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top nodes --no-headers
+error: metrics not available yet
+
+2025-06-16T16:07:16.875Z [[31merror[39m]: Prediction failed: Command failed: kubectl top nodes --no-headers
+error: metrics not available yet
+
+2025-06-16T16:07:16.875Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top nodes --no-headers
+error: metrics not available yet
+
+2025-06-16T16:12:09.606Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-16T16:12:09.844Z [[31merror[39m]: Prediction failed: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-16T16:12:09.844Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-16T16:12:14.422Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (ServiceUnavailable): the server is currently unable to handle the request (get pods.metrics.k8s.io)
+
+2025-06-16T16:12:14.426Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (ServiceUnavailable): the server is currently unable to handle the request (get pods.metrics.k8s.io)
+
+2025-06-16T16:12:14.426Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (ServiceUnavailable): the server is currently unable to handle the request (get pods.metrics.k8s.io)
+
+2025-06-16T16:57:14.867Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (Timeout): the server was unable to return a response in the time allotted, but may still be processing the request (get pods.metrics.k8s.io)
+
+2025-06-16T16:57:14.867Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (Timeout): the server was unable to return a response in the time allotted, but may still be processing the request (get pods.metrics.k8s.io)
+
+2025-06-16T16:57:14.869Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (Timeout): the server was unable to return a response in the time allotted, but may still be processing the request (get pods.metrics.k8s.io)
+
+2025-06-16T16:57:15.287Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-16T16:57:15.288Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-16T16:57:15.289Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-16T20:49:38.979Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-16T20:49:38.979Z [[31merror[39m]: Prediction failed: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-16T20:49:38.980Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-16T20:49:40.079Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-16T20:49:40.089Z [[31merror[39m]: Prediction failed: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-16T20:49:40.097Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-16T20:55:28.604Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-16T20:55:28.605Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-16T20:55:28.605Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-16T20:55:28.942Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-16T20:55:28.944Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-16T20:55:28.944Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-16T21:11:06.499Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-16T21:11:06.593Z [[31merror[39m]: Prediction failed: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-16T21:11:06.841Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-16T21:11:06.919Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-16T21:11:06.964Z [[31merror[39m]: Prediction failed: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-16T21:11:06.964Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl get nodes -o json
+Unable to connect to the server: net/http: TLS handshake timeout
+
+2025-06-17T07:14:38.495Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (ServiceUnavailable): the server is currently unable to handle the request (get pods.metrics.k8s.io)
+
+2025-06-17T07:14:38.496Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (ServiceUnavailable): the server is currently unable to handle the request (get pods.metrics.k8s.io)
+
+2025-06-17T07:14:38.497Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+Error from server (ServiceUnavailable): the server is currently unable to handle the request (get pods.metrics.k8s.io)
+
+2025-06-17T11:45:03.388Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics not available for pod default/flask-dep-56b9d9fc94-87j2l, age: 4h21m2.151355448s
+
+2025-06-17T11:45:03.486Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics not available for pod default/flask-dep-56b9d9fc94-87j2l, age: 4h21m2.151355448s
+
+2025-06-17T11:45:03.581Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics not available for pod default/flask-dep-56b9d9fc94-87j2l, age: 4h21m2.151355448s
+
+2025-06-27T14:45:42.946Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:45:42.946Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:45:42.947Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:46:42.936Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:46:42.936Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:46:42.936Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:47:42.939Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:47:42.940Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:47:42.940Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:48:42.962Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:48:42.963Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:48:42.963Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:49:42.974Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:49:42.975Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:49:42.975Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:50:42.988Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:50:42.988Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:50:42.988Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:51:42.985Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:51:42.985Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:51:42.986Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:52:42.989Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:52:42.989Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:52:42.990Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:53:43.005Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:53:43.005Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:53:43.005Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:54:43.031Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:54:43.032Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:54:43.032Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:55:43.005Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:55:43.005Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:55:43.005Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:56:43.028Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:56:43.028Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:56:43.029Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:57:43.016Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:57:43.016Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:57:43.016Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:58:43.046Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:58:43.046Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:58:43.046Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:59:43.077Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:59:43.077Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T14:59:43.077Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:00:43.080Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:00:43.081Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:00:43.081Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:01:43.076Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:01:43.077Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:01:43.077Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:02:43.066Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:02:43.067Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:02:43.067Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:03:43.088Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:03:43.088Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:03:43.088Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:04:43.082Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:04:43.082Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:04:43.083Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:05:43.105Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:05:43.105Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:05:43.105Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:06:43.099Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:06:43.099Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:06:43.099Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:06:49.904Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:06:49.904Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:06:49.905Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:07:43.118Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:07:43.119Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:07:43.119Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:07:49.905Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:07:49.905Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:07:49.905Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:08:24.678Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:08:24.679Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:08:24.679Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:08:43.131Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:08:43.131Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:08:43.131Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:08:49.923Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:08:49.923Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:08:49.923Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:09:24.684Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:09:24.685Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:09:24.685Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:09:43.112Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:09:43.112Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:09:43.112Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:09:49.929Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:09:49.929Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:09:49.929Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:10:43.149Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:10:43.150Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:10:43.150Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:10:49.943Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:10:49.943Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:10:49.943Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:11:05.680Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:11:05.680Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:11:05.680Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:11:43.134Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:11:43.134Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:11:43.135Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:11:49.947Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:11:49.948Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:11:49.948Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:12:05.708Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:12:05.708Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:12:05.709Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:12:43.139Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:12:43.140Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:12:43.140Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:12:49.961Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:12:49.962Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:12:49.962Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:13:05.694Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:13:05.694Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:13:05.694Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:13:43.146Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:13:43.147Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:13:43.147Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:13:49.947Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:13:49.948Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:13:49.949Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:14:05.694Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:14:05.695Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:14:05.695Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:14:43.148Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:14:43.148Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:14:43.149Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:14:49.964Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:14:49.964Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:14:49.965Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:15:05.709Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:15:05.709Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:15:05.710Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:15:43.147Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:15:43.148Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:15:43.148Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:15:49.956Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:15:49.957Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:15:49.957Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:16:05.741Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:16:05.741Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:16:05.741Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:16:43.180Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:16:43.180Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:16:43.181Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:16:49.971Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:16:49.971Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:16:49.971Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:17:05.768Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:17:05.769Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:17:05.769Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:17:43.163Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:17:43.163Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:17:43.164Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:17:49.963Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:17:49.963Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:17:49.963Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:18:05.742Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:18:05.742Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:18:05.743Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:18:43.183Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:18:43.183Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:18:43.184Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:18:49.971Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:18:49.972Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:18:49.972Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:19:05.745Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:19:05.745Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:19:05.745Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:19:43.168Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:19:43.168Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:19:43.168Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:19:49.997Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:19:49.997Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:19:49.997Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:20:05.770Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:20:05.770Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:20:05.770Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:20:43.198Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:20:43.198Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:20:43.198Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:20:50.018Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:20:50.018Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:20:50.018Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:21:05.770Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:21:05.770Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:21:05.770Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:21:26.490Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:21:26.491Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:21:26.491Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:21:43.205Z [[31merror[39m]: Failed to get cluster metrics: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:21:43.206Z [[31merror[39m]: Prediction failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+
+2025-06-27T15:21:43.206Z [[31merror[39m]: Monitoring cycle failed: Command failed: kubectl top pods --all-namespaces --no-headers
+error: Metrics API not available
+

@@ -1,0 +1,59 @@
+{
+  "sequence": [
+    {
+      "CPU_Usage": 45.5,
+      "Memory_Usage": 65.0,
+      "Disk_Usage": 50.0,
+      "Network_Traffic": 1200.0,
+      "Pod_Restarts": 0,
+      "Response_Time": 95.0,
+      "Timestamp": "2025-06-07T16:40:00+00:00",
+      "Node": "node-1",
+      "Pod": "pod-1"
+    },
+    {
+      "CPU_Usage": 47.0,
+      "Memory_Usage": 67.0,
+      "Disk_Usage": 51.0,
+      "Network_Traffic": 1250.0,
+      "Pod_Restarts": 0,
+      "Response_Time": 97.0,
+      "Timestamp": "2025-06-07T16:41:00+00:00",
+      "Node": "node-1",
+      "Pod": "pod-1"
+    },
+    {
+      "CPU_Usage": 50.0,
+      "Memory_Usage": 70.0,
+      "Disk_Usage": 52.0,
+      "Network_Traffic": 1300.0,
+      "Pod_Restarts": 0,
+      "Response_Time": 100.0,
+      "Timestamp": "2025-06-07T16:42:00+00:00",
+      "Node": "node-1",
+      "Pod": "pod-1"
+    },
+    {
+      "CPU_Usage": 55.0,
+      "Memory_Usage": 75.0,
+      "Disk_Usage": 53.0,
+      "Network_Traffic": 1400.0,
+      "Pod_Restarts": 1,
+      "Response_Time": 105.0,
+      "Timestamp": "2025-06-07T16:43:00+00:00",
+      "Node": "node-1",
+      "Pod": "pod-1"
+    },
+    {
+      "CPU_Usage": 60.0,
+      "Memory_Usage": 80.0,
+      "Disk_Usage": 550,
+      "Network_Traffic": 1500.0,
+      "Pod_Restarts": 1,
+      "Response_Time": 110.0,
+      "Timestamp": "2025-06-07T16:44:00+00:00",
+      "Node": "node-1",
+      "Pod": "pod-1"
+    }
+  ]
+}

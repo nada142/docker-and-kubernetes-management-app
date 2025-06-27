@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>service</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <link rel="icon" href="../assets/img/dockube3.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.min.css">
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Load jQuery first -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- Load Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+
+<!-- jQuery Scrollbar -->
+<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+<!-- Chart JS -->
+<script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+<!-- jQuery Sparkline -->
+<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+<!-- Chart Circle -->
+<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+<!-- Datatables -->
+<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+<!-- Bootstrap Notify -->
+<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+<!-- jQuery Vector Maps -->
+<script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+<script src="../assets/js/plugin/jsvectormap/world.js"></script>
+
+<!-- Google Maps Plugin -->
+<script src="../assets/js/plugin/gmaps/gmaps.js"></script>
+
+<!-- Sweet Alert -->
+<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+<!-- Kaiadmin JS -->
+<script src="../assets/js/kaiadmin.min.js"></script>
+
+<!-- Kaiadmin DEMO methods, don't include it in your project! -->
+<script src="../assets/js/setting-demo2.js"></script>
+<script src="/assets/js/script.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+<!-- Bootstrap CSS -->
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollbar/0.2.11/jquery.scrollbar.min.js"></script>
+<link rel="stylesheet" href="../assets/css/service.css">
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["../assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <a href="/" class="logo" style="display: flex; align-items: center;">
+              <img src="assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" height="40" />
+              <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <li class="nav-item">
+                <a href="/" aria-expanded="false">
+                  <i class="fas fa-tachometer-alt"></i> <!-- Dashboard icon -->
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockerRegistries">
+                  <i class="fas fa-warehouse"></i> <!-- Registry icon -->
+                  <p>Docker Registries</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockerfile_list">
+                  <i class="fas fa-file-code"></i> <!-- Code file icon for Dockerfile -->
+                  <p>Dockerfile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockerimg">
+                  <i class="fas fa-images"></i> <!-- Images icon -->
+                  <p>Docker Images</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockercontainers">
+                  <i class="fas fa-box"></i> <!-- Box icon for containers -->
+                  <p>Docker Containers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/volumes">
+                  <i class="fas fa-database"></i> <!-- Database icon for Volumes -->
+                  <p>Volumes</p>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a href="/compose">
+                  <i class="fas fa-cubes"></i> <!-- Stacked cubes for Compose -->
+                  <p>Docker Compose</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="swarm_list">
+                    <i class="fas fa-project-diagram"></i> <!-- Stacked cubes for Compose -->
+                  <p>Docker Swarm</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#kubernetesMenu" aria-expanded="false">
+                    <i class="fas fa-dharmachakra"></i>
+                    <p>Kubernetes</p>
+                    <span class="caret"></span>
+                </a>
+                <div class="collapse" id="kubernetesMenu">
+                    <ul class="nav nav-collapse">
+                        <li>
+                            <a href="/kubernetes/cluster">
+                                <span class="sub-item">Cluster Setup</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/nodes">
+                                <span class="sub-item">Nodes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/deployments">
+                                <span class="sub-item">Deployments</span>
+                            </a>
+                        </li>
+                        <li>
+                          <a href="/kubernetes/statefulsets">
+                              <span class="sub-item">StatefulSets</span>
+                          </a>
+                      </li>
+                        <li>
+                            <a href="/kubernetes/services">
+                                <span class="sub-item">Services</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/pods">
+                                <span class="sub-item">Pods</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/pvcs">
+                                <span class="sub-item">Storage</span>
+                            </a>
+                        </li>
+                        <li>
+                          <a href="/kubernetes/configs">
+                              <span class="sub-item">ConfigMaps && Secrets</span>
+                          </a>
+                      </li>
+                        <li>
+                            <a href="/kubernetes/namespaces">
+                                <span class="sub-item">Namespaces</span>
+                            </a>
+                        </li>
+                         <li>
+                <a href="/kubernetes/ingresses">
+                    <span class="sub-item">Ingresses</span>
+                </a>
+            </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+              <a href="/cicd_integration">
+                <i class="fas fa-sync-alt"></i>
+                <p>CI CD</p>
+              </a>
+            </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#" onclick="logout()">
+                  <i class="fas fa-sign-out-alt"></i> <!-- Logout icon -->
+                  <p>Logout</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+      <div class="main-panel">
+        <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+              <a href="../index.html" class="logo">
+                <img src="../assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" />
+              </a>
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+            <div class="container-fluid">
+              <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button type="submit" class="btn btn-search pe-1">
+                      <i class="fa fa-search search-icon"></i>
+                    </button>
+                  </div>
+                  <input type="text" placeholder="Search ..." class="form-control" />
+                </div>
+              </nav>
+              <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                <li class="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" aria-haspopup="true">
+                    <i class="fa fa-search"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-search animated fadeIn">
+                    <form class="navbar-left navbar-form nav-search">
+                      <div class="input-group">
+                        <input type="text" placeholder="Search ..." class="form-control" />
+                      </div>
+                    </form>
+                  </ul>
+                </li>
+                <li class="nav-item topbar-user dropdown hidden-caret">
+                  <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="/profile" aria-expanded="false">
+                    <span class="profile-username">
+                      <span class="op-7">Hi,</span>
+                      <span class="fw-bold">Hizrian</span>
+                    </span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-user animated fadeIn">
+                    <div class="dropdown-user-scroll scrollbar-outer">
+                      <li>
+                        <div class="user-box">
+                          <div class="avatar-lg">
+                            <img src="assets/img/profile.jpg" alt="image profile" class="avatar-img rounded" />
+                          </div>
+                          <div class="u-text">
+                            <h4>Hizrian</h4>
+                            <p class="text-muted">hello@example.com</p>
+                            <a href="/profile" class="action-btn btn-blue1 btn-sm">Update Profile</a>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                      </li>
+                    </div>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              var user = JSON.parse(localStorage.getItem("user"));
+              if (user) {
+                document.querySelector(".profile-username .fw-bold").textContent = user.username;
+                document.querySelector(".u-text h4").textContent = user.username;
+                document.querySelector(".u-text .text-muted").textContent = user.email;
+              }
+            });
+          </script>
+          <!-- End Navbar -->
+        </div>
+        <div class="container">
+            <div class="page-inner">
+                <div class="page-header">
+                    <h3 class="text-center">Generate Docker Compose YAML</h3>
+                    
+                </div>
+        
+                <div class="card p-4 mt-3">
+                    <h5 class="fw-semibold">Upload Docker Compose YAML</h5>
+                    <form id="upload-compose-form" class="d-flex align-items-center gap-3" enctype="multipart/form-data">
+                        <input type="file" id="compose-input" class="form-control" accept=".yml,.yaml" />
+                        <button type="button" class="action-btn btn-blue1" onclick="uploadCompose()">
+                            <i class="fas fa-upload fa-fw"></i> Upload
+                        </button>
+                    </form>
+                </div>
+        
+                <!-- Select Docker Compose Template -->
+                <div class="card p-4 mt-3">
+                    <h5 class="fw-semibold">Select Docker Compose Template</h5>
+                    <select class="form-control" id="compose-template-dropdown" onchange="loadComposeTemplate()">
+                        <option value="">Select a Template</option>
+                        <option value="node-mongo">Node.js + MongoDB</option>
+                        <option value="wordpress-mysql">WordPress + MySQL</option>
+                        <option value="nginx">Nginx</option>
+                        <option value="postgres">PostgreSQL</option>
+                        <option value="redis">Redis</option>
+                    </select>
+                </div>
+        
+                <!-- Generate Docker Compose from Description -->
+                <div class="card p-4 mt-3">
+                    <h5 class="fw-semibold">Generate Docker Compose from Description</h5>
+                    <div class="input-group mb-3">
+                        <input type="text" id="compose-description" class="form-control" placeholder="Describe your setup (e.g., 'Node.js app with MongoDB')">
+                        <button id="generate-compose-ia" class="action-btn btn-blue1">
+                            <i class="fas fa-file-code fa-fw"></i> Generate YAML
+                        </button>
+                    </div>
+                </div>
+
+<!-- Simple Docker Compose Generator Form -->
+<div class="card p-4 mt-3">
+    <h5 class="fw-semibold">Simple Docker Compose Generator</h5>
+    
+    <!-- Image Selection Section -->
+    <div class="card mb-3" id="image-selection-section">
+        <div class="card-header">
+            <h6 class="mb-0">Step 1: Select Images</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="image-search" placeholder="Search images...">
+                        <button class="btn btn-outline-secondary" type="button" id="refresh-images">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                    <div id="image-list-container" style="max-height: 200px; overflow-y: auto;">
+                        <div class="list-group">
+                            <div class="list-group-item text-muted">Loading images...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h6>Selected Images</h6>
+                    <div id="selected-images" class="list-group mb-3" style="max-height: 200px; overflow-y: auto;">
+                        <div class="list-group-item text-muted">No images selected</div>
+                    </div>
+                    <button id="proceed-to-config" class="action-btn btn-blue1 float-end" disabled>
+                        <i class="fas fa-arrow-right"></i> Configure Services
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="services-config-section" style="display: none;">
+        <div class="card mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h6 class="mb-0">Step 2: Configure Services</h6>
+                <button id="back-to-images" class="btn btn-sm btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Images
+                </button>
+            </div>
+            <div class="card-body">
+                <form id="services-config-form">
+                    <div id="services-container">
+                    </div>
+                    
+                    <!-- Volume Selection Section -->
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <h6 class="mb-0">Volumes Configuration</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="volume-search" placeholder="Search volumes...">
+                                        <button class="btn btn-outline-secondary" type="button" id="refresh-volumes">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </button>
+                                    </div>
+                                    <div id="volume-list-container" style="max-height: 200px; overflow-y: auto;">
+                                        <div class="list-group">
+                                            <div class="list-group-item text-muted">Loading volumes...</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Selected Volumes</h6>
+                                    <div id="selected-volumes" class="list-group mb-3" style="max-height: 200px; overflow-y: auto;">
+                                        <div class="list-group-item text-muted">No volumes selected</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-end mt-3">
+                        <button type="submit" class="action-btn btn-blue1">
+                            <i class="fas fa-file-code"></i> Generate Compose File
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+        
+                <!-- Docker Compose Editor -->
+                <div class="card p-4 mt-3">
+                    <h5 class="fw-semibold">Docker Compose Editor</h5>
+                    <div class="row">
+                        <!-- Tutorial Panel -->
+                        <div class="col-md-4">
+                          <div id="compose-tutorial-panel" class="card">
+                              <div class="card-body">
+                                  <h6 class="card-title">Docker Compose Tutorial</h6>
+                                  <div id="compose-tutorial-step-description" class="mb-3"></div>
+                                  <div class="progress mb-3">
+                                      <div id="compose-tutorial-progress" class="progress-bar" role="progressbar" style="width: 0%;"></div>
+                                  </div>
+                                  <div class="d-flex justify-content-between">
+                                      <button id="compose-prev-step" class="action-btn btn-pastel-red" disabled>
+                                          <i class="fas fa-arrow-left fa-fw"></i> Previous
+                                      </button>
+                                      <button id="compose-next-step" class="action-btn btn-blue2">
+                                          <i class="fas fa-arrow-right fa-fw"></i> Next
+                                      </button>
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <!-- Compact Image Selection Panel -->
+                          <div class="card mt-3">
+                              <div class="card-header gradient-card-header py-2">
+                                  <div class="d-flex justify-content-between align-items-center">
+                                      <h6 class="mb-0">My Images</h6>
+                                      <button class="btn btn-sm btn-outline-light py-0 px-2" id="refreshImages" title="Refresh images">
+                                          <i class="fas fa-sync-alt fa-sm"></i>
+                                      </button>
+                                  </div>
+                              </div>
+                              <div class="card-body p-2">
+                                  <div class="input-group input-group-sm mb-2">
+                                      <input type="text" class="form-control form-control-sm" id="imageSearch" placeholder="Search...">
+                                      <button class="btn btn-outline-secondary btn-sm" type="button">
+                                          <i class="fas fa-search fa-sm"></i>
+                                      </button>
+                                  </div>
+                                  <div id="imageListContainer" style="max-height: 150px; overflow-y: auto;">
+                                      <div class="list-group list-group-flush list-group-sm">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                        <!-- Editor -->
+                        <div class="col-md-8">
+                            <div id="editor" class="border rounded p-3 bg-white" style="height: 300px;"></div>
+                            <input type="text" id="compose-name" class="form-control mt-3" placeholder="Enter Docker Compose Name" required>
+                        </div>
+                        <div id="validation-feedback" class="mt-2">
+                          <span id="yaml-status" class="d-none"></span>
+                          <span id="yaml-error" class="text-danger small"></span>
+                      </div>
+
+                    </div>
+            
+                </div>
+        
+                <!-- Action Buttons -->
+                <div class="mt-3 d-flex gap-3 justify-content-center">
+                    <button id="analyze-compose" type="button" class="action-btn btn-blue1 d-flex align-items-center gap-2 py-2 px-3">
+                        <i class="fas fa-robot fa-fw"></i> <span>Analyze with AI</span>
+                    </button>
+                    <button id="generate-compose" class="action-btn btn-blue1 d-flex align-items-center gap-2 py-2 px-3">
+                        <i class="fas fa-save fa-fw"></i> <span>Save YAML</span>
+                    </button>
+                    <button id="download-compose" class="action-btn btn-blue1 d-flex align-items-center gap-2 py-2 px-3">
+                        <i class="fas fa-download fa-fw"></i> <span>Download YAML</span>
+                    </button>
+                </div>
+        
+                <!-- Loading Spinner -->
+                <div id="loading-spinner" class="text-center mt-3" style="display: none;">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <p>Analyzing Docker Compose. Please wait...</p>
+                </div>
+        
+                <!-- Modal for AI Suggestions -->
+                <div id="ai-suggestions-modal" class="modal fade" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">AI Suggestions</h5>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p id="ai-suggestions-text"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="action-btn btn-pastel-red" data-dismiss="modal">Close</button>
+                                <button type="button" id="apply-suggestions" class="action-btn btn-blue2">Apply Suggestions</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+      </div>
+    <!-- Modal for Generated service -->
+<div id="generated-service-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Generated service</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <pre id="generated-service-content"></pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="action-btn btn-pastel-red" data-dismiss="modal">Close</button>
+                <button type="button" id="apply-generated-service" class="action-btn btn-blue2">Apply to Editor</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Chatbot Interface -->
+<!-- Chatbot Container -->
+<div id="chatbot-container">
+  <!-- Chatbot Toggle Button (Circle with Logo) -->
+  <div id="chatbot-toggle">
+      <img src="../assets/img/dockube3.png" alt="Chatbot Logo" width="50" height="50">
+  </div>
+
+  <!-- Chatbot Interface (Hidden by Default) -->
+ 
+<div id="chatbot-interface" style="display: none;">
+  <!-- Chat Header -->
+  <div id="chat-header">
+      <strong>
+          <img src="../assets/img/dockube3.png" alt="Logo">
+          Docker & Kubernetes Assistant
+      </strong>
+      <button id="chat-close">×</button>
+  </div>
+
+  <!-- Chat Body -->
+  <div id="chat-body">
+      <div id="chat-messages">
+          <!-- Welcome Message -->
+          <div class="welcome-message" onclick="toggleWelcomeMessage()">
+              👋 Welcome! I'm your Docker & Kubernetes Assistant.
+              Ask me anything about Docker, Kubernetes, and best practices.
+              <div class="hidden-content">
+                  Hi! I'm your Docker & Kubernetes Assistant.  
+                  Ask me anything about services, Kubernetes configurations, and best practices.
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Chat Input -->
+  <div id="chat-input">
+      <input type="text" id="chat-message" placeholder="Type your question...">
+      <button id="chat-send">Send</button>
+  </div>
+</div>
+</div>
+</div>
+<!-- Tutorial Modal -->
+ <div id="tutorial-modal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">service Tutorial</h5>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+              <p id="tutorial-step-description"></p>
+              <div class="progress mt-3">
+                  <div id="tutorial-progress" class="progress-bar" role="progressbar" style="width: 0%;"></div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button id="prev-step" class="action-btn btn-pastel-red" disabled>Previous</button>
+              <button id="next-step" class="action-btn btn-blue2">Next</button>
+          </div>
+      </div>
+  </div>
+</div> 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs/loader.js"></script>
+    <!-- Include SweetAlert2 in your HTML -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    function debounce(func, wait) {
+  let timeout;
+  return function() {
+    const context = this, args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), wait);
+  };
+}
+async function loadUserImages() {
+    try {
+        const response = await fetch('/images');
+        if (!response.ok) throw new Error('Failed to fetch images');
+        
+        const images = await response.json();
+        const container = document.querySelector('#imageListContainer .list-group');
+        container.innerHTML = '';
+        
+        if (images.length === 0) {
+            container.innerHTML = '<div class="list-group-item text-muted">No images found</div>';
+            return;
+        }
+        
+        images.forEach(image => {
+            const item = document.createElement('div');
+            item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
+            item.draggable = true;
+            item.dataset.imageName = image.name;
+            item.innerHTML = `
+                <span class="text-truncate" style="max-width: 70%">${image.name}</span>
+                <button class="btn btn-sm btn-outline-primary insert-image" title="Insert at cursor">
+                    <i class="fas fa-plus"></i>
+                </button>
+            `;
+            
+            // Drag and drop functionality
+            item.addEventListener('dragstart', function(e) {
+                e.dataTransfer.setData('text/plain', image.name);
+            });
+            
+            // Click to insert at cursor
+            item.querySelector('.insert-image').addEventListener('click', function() {
+                insertImageAtCursor(image.name);
+            });
+            
+            container.appendChild(item);
+        });
+        
+        // Search functionality
+        document.getElementById('imageSearch').addEventListener('input', function() {
+            const term = this.value.toLowerCase();
+            container.querySelectorAll('.list-group-item').forEach(item => {
+                const imageName = item.dataset.imageName.toLowerCase();
+                item.style.display = imageName.includes(term) ? '' : 'none';
+            });
+        });
+    } catch (error) {
+        console.error('Error loading images:', error);
+        const container = document.querySelector('#imageListContainer .list-group');
+        container.innerHTML = `<div class="list-group-item text-danger">Error: ${error.message}</div>`;
+    }
+}
+
+function insertImageAtCursor(imageName) {
+    if (!composeEditor) return;
+    
+    const selection = composeEditor.getSelection();
+    const lineContent = composeEditor.getModel().getLineContent(selection.startLineNumber);
+    const indent = lineContent.match(/^\s*/)[0]; 
+    
+    const isInServices = lineContent.includes('services:') || 
+                         lineContent.match(/^\s*\w+:/)?.length > 0;
+    
+    let insertText;
+    if (isInServices) {
+        insertText = `${indent}image: ${imageName}`;
+    } else {
+        insertText = `image: ${imageName}`;
+    }
+    
+    composeEditor.executeEdits('', [
+        {
+            range: new monaco.Range(
+                selection.startLineNumber,
+                selection.startColumn,
+                selection.endLineNumber,
+                selection.endColumn
+            ),
+            text: insertText,
+            forceMoveMarkers: true
+        }
+    ]);
+}
+
+// Handle refresh button
+document.getElementById('refreshImages').addEventListener('click', loadUserImages);
+
+// Handle drag and drop into editor
+document.getElementById('editor').addEventListener('dragover', function(e) {
+    e.preventDefault();
+    this.style.border = '2px dashed #007bff';
+});
+
+document.getElementById('editor').addEventListener('dragleave', function() {
+    this.style.border = '';
+});
+
+document.getElementById('editor').addEventListener('drop', function(e) {
+    e.preventDefault();
+    this.style.border = '';
+    const imageName = e.dataTransfer.getData('text/plain');
+    if (imageName) {
+        insertImageAtCursor(imageName);
+    }
+});
+document.addEventListener('DOMContentLoaded', function () {
+    let composeEditor;
+    let isEditorInitialized = false;
+    let selectedImages = [];
+    let selectedVolumes = [];
+
+    require.config({ 
+        paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs' },
+        waitSeconds: 30 
+    });
+    
+    require(['vs/editor/editor.main'], function () {
+        composeEditor = monaco.editor.create(document.getElementById('editor'), {
+            value: '',
+            language: 'yaml',
+            theme: 'vs-dark',
+            automaticLayout: true
+        });
+        
+        isEditorInitialized = true;
+        loadUserImages();
+        loadImages();
+        loadVolumes();
+
+        composeEditor.onDidChangeModelContent(debounce(validateYaml, 500));
+        
+        const isUpdate = localStorage.getItem('isUpdate') === 'true';
+        if (isUpdate) {
+            const updateStackName = localStorage.getItem('updateStackName');
+            const updateStackYaml = localStorage.getItem('updateStackYaml');
+
+            composeEditor.setValue(updateStackYaml || '');
+            document.getElementById('compose-name').value = updateStackName || '';
+            document.getElementById('generate-compose').textContent = 'Update Project';
+        }
+    });
+
+    async function validateYaml() {
+    if (!isEditorInitialized) return;
+    
+    const yaml = composeEditor.getValue();
+    const statusEl = document.getElementById('yaml-status');
+    const errorEl = document.getElementById('yaml-error');
+    
+    // Clear previous state
+    statusEl.className = 'd-none';
+    errorEl.textContent = '';
+    
+    // Skip validation if empty
+    if (!yaml.trim()) return;
+
+    try {
+        const response = await fetch('/compose/validate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ yaml })
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.error || 'Validation request failed');
+        }
+        
+        const data = await response.json();
+
+        if (data.valid) {
+            statusEl.className = 'valid';
+            statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Valid YAML';
+            errorEl.textContent = '';
+            
+            // Clear any error markers in the editor
+            const model = composeEditor.getModel();
+            monaco.editor.setModelMarkers(model, 'yaml', []);
+        } else {
+            statusEl.className = 'invalid';
+            statusEl.innerHTML = '<i class="fas fa-times-circle"></i> Invalid YAML';
+            errorEl.textContent = data.error || 'YAML validation failed';
+            
+            // Try to add error markers in the editor
+            try {
+                const model = composeEditor.getModel();
+                const errorPosition = findErrorPosition(yaml, data.error);
+                
+                if (errorPosition) {
+                    monaco.editor.setModelMarkers(model, 'yaml', [{
+                        severity: monaco.MarkerSeverity.Error,
+                        message: data.error,
+                        startLineNumber: errorPosition.line,
+                        startColumn: errorPosition.column,
+                        endLineNumber: errorPosition.line,
+                        endColumn: errorPosition.column + 10 // Approximate length
+                    }]);
+                    
+                    // Scroll to the error
+                    composeEditor.revealPositionInCenter({
+                        lineNumber: errorPosition.line,
+                        column: errorPosition.column
+                    });
+                }
+            } catch (e) {
+                console.error('Could not set error markers:', e);
+            }
+        }
+    } catch (error) {
+        console.error('Validation error:', error);
+        statusEl.className = 'invalid';
+        statusEl.innerHTML = '<i class="fas fa-times-circle"></i> Validation Error';
+        errorEl.textContent = error.message;
+    }
+}
+
+function findErrorPosition(yaml, errorMessage) {
+    const lines = yaml.split('\n');
+    
+    // Try to find line number from common error patterns
+    if (errorMessage.includes('line')) {
+        const lineMatch = errorMessage.match(/line (\d+)/);
+        if (lineMatch) {
+            return {
+                line: parseInt(lineMatch[1]),
+                column: 1
+            };
+        }
+    }
+    
+    // Try to find by duplicate key
+    if (errorMessage.includes('duplicate key')) {
+        const keyMatch = errorMessage.match(/duplicate key: "([^"]+)"/);
+        if (keyMatch) {
+            const key = keyMatch[1];
+            for (let i = 0; i < lines.length; i++) {
+                if (lines[i].includes(key + ':')) {
+                    return {
+                        line: i + 1,
+                        column: lines[i].indexOf(key) + 1
+                    };
+                }
+            }
+        }
+    }
+    
+    // Default to first line if we can't determine position
+    return {
+        line: 1,
+        column: 1
+    };
+}
+    function updateTutorial() {
+        if (!isEditorInitialized) {
+            console.error('Editor not initialized yet');
+            return;
+        }
+        
+        const step = tutorialSteps[currentStep];
+        document.getElementById('compose-tutorial-step-description').textContent = step.description;
+
+        // Get current content and append new code
+        const existingContent = composeEditor.getValue();
+        const newContent = existingContent + (existingContent ? '\n' : '') + step.code;
+        composeEditor.setValue(newContent);
+
+        // Update progress
+        document.getElementById('compose-tutorial-progress').style.width = 
+            `${((currentStep + 1) / tutorialSteps.length) * 100}%`;
+        document.getElementById('compose-prev-step').disabled = currentStep === 0;
+        document.getElementById('compose-next-step').disabled = currentStep === tutorialSteps.length - 1;
+    }
+
+
+    // Function to generate Docker Compose YAML from description
+    async function generateYamlfileFromDescription(description) {
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: `Generate an optimized docker compose Yaml file for: ${description}` })
+            });
+            const data = await response.json();
+            return data.response;
+        } catch (error) {
+            console.error('Error generating YAML File:', error);
+            return null;
+        }
+    }
+
+    // Event listener for generate button
+    document.getElementById('generate-compose-ia').addEventListener('click', async function (event) {
+        event.preventDefault();
+        const description = document.getElementById('compose-description').value.trim();
+        if (description) {
+            const serviceContent = await generateYamlfileFromDescription(description);
+            if (serviceContent) {
+                // Display the generated YAML in the modal
+                document.getElementById('generated-service-content').textContent = serviceContent;
+                $('#generated-service-modal').modal('show');
+            } else {
+                alert('Failed to generate YAML File.');
+            }
+        } else {
+            alert('Please describe your application.');
+        }
+    });
+
+    // Apply generated YAML to the editor
+    document.getElementById('apply-generated-service').addEventListener('click', function () {
+        const generatedContent = document.getElementById('generated-service-content').textContent;
+        composeEditor.setValue(generatedContent); // Use composeEditor instead of editor
+        $('#generated-service-modal').modal('hide');
+    });
+
+    // Load Docker Compose Template
+    window.loadComposeTemplate = function () {
+        const template = document.getElementById('compose-template-dropdown').value;
+        let yamlContent = '';
+
+        switch (template) {
+            case 'node-mongo':
+                yamlContent = `
+version: '3'
+services:
+  web:
+    image: node:14
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+volumes:
+  mongo-data:
+                `;
+                break;
+            case 'wordpress-mysql':
+                yamlContent = `
+version: '3'
+services:
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    volumes:
+      - db-data:/var/lib/mysql
+volumes:
+  db-data:
+                `;
+                break;
+            default:
+                yamlContent = '';
+        }
+
+        composeEditor.setValue(yamlContent);
+    };
+
+    // Upload Docker Compose YAML
+    window.uploadCompose = function () {
+        const fileInput = document.getElementById('compose-input');
+        if (!fileInput.files.length) {
+            alert('Please select a file to upload.');
+            return;
+        }
+
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            const content = e.target.result;
+            composeEditor.setValue(content);
+            logMessage('File uploaded successfully.');
+        };
+
+        reader.onerror = function (e) {
+            logMessage('An error occurred while reading the file.');
+            console.error('Error:', e);
+        };
+
+        reader.readAsText(file);
+    };
+
+    // Analyze Docker Compose with AI
+    document.getElementById('analyze-compose').addEventListener('click', async function() {
+    const yaml = composeEditor.getValue();
+    if (!yaml.trim()) {
+        alert('Please enter some YAML content to analyze');
+        return;
+    }
+
+    const spinner = document.getElementById('loading-spinner');
+    spinner.style.display = 'block';
+    
+    try {
+        const analysis = await fetch('/compose/analyze-compose', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ yaml })
+        });
+
+        if (!analysis.ok) {
+            throw new Error(`HTTP error! status: ${analysis.status}`);
+        }
+
+        const analysisData = await analysis.json();
+        
+        if (!analysisData.suggestions) {
+            throw new Error('No suggestions returned from server');
+        }
+
+        document.getElementById('ai-suggestions-text').innerHTML = 
+            formatAiResponse(analysisData.suggestions);
+        $('#ai-suggestions-modal').modal('show');
+    } catch (error) {
+        console.error('Analysis Error:', error);
+        document.getElementById('ai-suggestions-text').textContent = 
+            `Analysis failed: ${error.message}`;
+        $('#ai-suggestions-modal').modal('show');
+    } finally {
+        spinner.style.display = 'none';
+    }
+});
+function formatAiResponse(text) {
+    // Convert markdown-style bullet points to HTML
+    return text.replace(/\n\s*-\s*/g, '<br>- ')
+               .replace(/\n\s*\*\s*/g, '<br>* ');
+}
+
+    // Save Docker Compose
+    document.getElementById('generate-compose').addEventListener('click', async function () {
+    const yaml = composeEditor.getValue();
+    const name = document.getElementById('compose-name').value;
+    if (!yaml || !name) {
+        alert('Please enter YAML content and a name.');
+        return;
+    }
+
+    try {
+        const isUpdate = localStorage.getItem('isUpdate') === 'true';
+
+        if (isUpdate) {
+            // Update the existing stack
+            const updateStackName = localStorage.getItem('updateStackName');
+            const response = await fetch(`/compose/stacks/${updateStackName}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ composeFile: yaml }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to update project.');
+            }
+
+            const data = await response.json();
+            logMessage(data.message || 'Project updated successfully.');
+
+            // Clear the update flag and data from localStorage
+            localStorage.removeItem('isUpdate');
+            localStorage.removeItem('updateStackName');
+            localStorage.removeItem('updateStackYaml');
+        } else {
+            // Create a new stack
+            const response = await fetch('/compose/add', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ composeFile: yaml, stackName: name }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to save YAML.');
+            }
+
+            const data = await response.json();
+            logMessage(data.message || 'Services deployed successfully.');
+        }
+
+        // Redirect to the Services List page
+        window.location.href = '/compose';
+    } catch (error) {
+        // Display the error in a modal
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: error.message,
+        });
+    }
+});
+// Download Docker Compose YAML
+    document.getElementById('download-compose').addEventListener('click', function () {
+        const yaml = composeEditor.getValue();
+        const blob = new Blob([yaml], { type: 'text/yaml' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'docker-compose.yml';
+        a.click();
+        URL.revokeObjectURL(url);
+    });
+
+    // Tutorial Functionality
+    const tutorialSteps = [
+    {
+            description: 'Step 1: Define the version of Docker Compose.',
+            code: 'version: \'3\'',
+        },
+        {
+            description: 'Step 1: Define the version of Docker Compose.',
+            code: 'version: \'3\'',
+        },
+        {
+            description: 'Step 2: Add a service (e.g., a Node.js app).',
+            code: `services:
+  app:
+    image: node:14
+    ports:
+      - "3000:3000"`,
+        },
+        {
+            description: 'Step 3: Add environment variables.',
+            code: `    environment:
+      - NODE_ENV=development`,
+        },
+        {
+            description: 'Step 4: Add volumes for persistent data.',
+            code: `    volumes:
+      - .:/app`,
+        },
+    ];
+
+    let currentStep = 0;
+
+    function updateTutorial() {
+        const step = tutorialSteps[currentStep];
+        document.getElementById('compose-tutorial-step-description').textContent = step.description;
+
+        // Append the new step's code to the existing content
+        const existingContent = composeEditor.getValue();
+        const newContent = existingContent + '\n' + step.code; // Append with a newline
+        composeEditor.setValue(newContent);
+
+        // Update progress bar and button states
+        document.getElementById('compose-tutorial-progress').style.width = `${((currentStep + 1) / tutorialSteps.length) * 100}%`;
+        document.getElementById('compose-prev-step').disabled = currentStep === 0;
+        document.getElementById('compose-next-step').disabled = currentStep === tutorialSteps.length - 1;
+    }
+
+    document.getElementById('compose-next-step').addEventListener('click', function () {
+        if (currentStep < tutorialSteps.length - 1) {
+            currentStep++;
+            updateTutorial();
+        }
+    });
+
+    document.getElementById('compose-prev-step').addEventListener('click', function () {
+        if (currentStep > 0) {
+            currentStep--;
+            updateTutorial();
+        }
+    });
+
+  
+  
+  
+   // Setup refresh buttons
+    document.getElementById('refresh-images').addEventListener('click', loadImages);
+    document.getElementById('refresh-volumes').addEventListener('click', loadVolumes);
+    
+    document.getElementById('proceed-to-config').addEventListener('click', function() {
+        document.getElementById('image-selection-section').style.display = 'none';
+        document.getElementById('services-config-section').style.display = 'block';
+        generateServiceFields();
+    });
+    
+    document.getElementById('back-to-images').addEventListener('click', function() {
+        document.getElementById('image-selection-section').style.display = 'block';
+        document.getElementById('services-config-section').style.display = 'none';
+    });
+    
+    // Form submission
+    document.getElementById('services-config-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        generateComposeFile();
+    });
+    // Initialize Tutorial
+    updateTutorial();
+
+    function logMessage(message) {
+    const logContainer = document.getElementById('logContainer');
+    if (logContainer) {
+        const logEntry = document.createElement('p');
+        logEntry.textContent = message;
+        logContainer.appendChild(logEntry);
+    } else {
+        console.error('Log container not found.'); // Log an error if the container is missing
+    }
+}
+
+
+
+
+
+// Function to load images from the server
+async function loadImages() {
+    try {
+        const response = await fetch('/images');
+        if (!response.ok) throw new Error('Failed to fetch images');
+        
+        const images = await response.json();
+        const container = document.querySelector('#image-list-container .list-group');
+        container.innerHTML = '';
+        
+        if (images.length === 0) {
+            container.innerHTML = '<div class="list-group-item text-muted">No images found</div>';
+            return;
+        }
+        
+        images.forEach(image => {
+            const item = document.createElement('div');
+            item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
+            item.innerHTML = `
+                <span>${image.name}</span>
+                <button class="btn btn-sm btn-outline-primary add-image-btn" data-image="${image.name}">
+                    <i class="fas fa-plus"></i> Add
+                </button>
+            `;
+            container.appendChild(item);
+        });
+        
+        // Add event listeners to the add buttons
+        document.querySelectorAll('.add-image-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const imageName = this.getAttribute('data-image');
+                addSelectedImage(imageName);
+            });
+        });
+        
+        // Setup search functionality
+        document.getElementById('image-search').addEventListener('input', function() {
+            const term = this.value.toLowerCase();
+            container.querySelectorAll('.list-group-item').forEach(item => {
+                const imageName = item.textContent.toLowerCase();
+                item.style.display = imageName.includes(term) ? '' : 'none';
+            });
+        });
+    } catch (error) {
+        console.error('Error loading images:', error);
+        const container = document.querySelector('#image-list-container .list-group');
+        container.innerHTML = `<div class="list-group-item text-danger">Error: ${error.message}</div>`;
+    }
+}
+
+// Function to load volumes from the server
+async function loadVolumes() {
+    try {
+        const response = await fetch('http://localhost:5000//volumes');
+        if (!response.ok) throw new Error('Failed to fetch volumes');
+        
+        const volumes = await response.json();
+        const container = document.querySelector('#volume-list-container .list-group');
+        container.innerHTML = '';
+        
+        if (volumes.length === 0) {
+            container.innerHTML = '<div class="list-group-item text-muted">No volumes found</div>';
+            return;
+        }
+        
+        volumes.forEach(volume => {
+            const item = document.createElement('div');
+            item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
+            item.innerHTML = `
+                <span>${volume.Name}</span>
+                <button class="btn btn-sm btn-outline-primary add-volume-btn" data-volume="${volume.Name}">
+                    <i class="fas fa-plus"></i> Add
+                </button>
+            `;
+            container.appendChild(item);
+        });
+        
+        // Add event listeners to the add buttons
+        document.querySelectorAll('.add-volume-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const volumeName = this.getAttribute('data-volume');
+                addSelectedVolume(volumeName);
+            });
+        });
+        
+        // Setup search functionality
+        document.getElementById('volume-search').addEventListener('input', function() {
+            const term = this.value.toLowerCase();
+            container.querySelectorAll('.list-group-item').forEach(item => {
+                const volumeName = item.textContent.toLowerCase();
+                item.style.display = volumeName.includes(term) ? '' : 'none';
+            });
+        });
+    } catch (error) {
+        console.error('Error loading volumes:', error);
+        const container = document.querySelector('#volume-list-container .list-group');
+        container.innerHTML = `<div class="list-group-item text-danger">Error: ${error.message}</div>`;
+    }
+}
+
+function addSelectedImage(imageName) {
+    if (!selectedImages.includes(imageName)) {
+        selectedImages.push(imageName);
+        updateSelectedImagesList();
+        document.getElementById('proceed-to-config').disabled = selectedImages.length === 0;
+    }
+}
+
+// Function to remove an image from selected images
+function removeSelectedImage(imageName) {
+    selectedImages = selectedImages.filter(img => img !== imageName);
+    updateSelectedImagesList();
+    document.getElementById('proceed-to-config').disabled = selectedImages.length === 0;
+}
+
+function updateSelectedImagesList() {
+    const container = document.getElementById('selected-images');
+    container.innerHTML = '';
+    
+    if (selectedImages.length === 0) {
+        container.innerHTML = '<div class="list-group-item text-muted">No images selected</div>';
+        return;
+    }
+    
+    selectedImages.forEach(imageName => {
+        const item = document.createElement('div');
+        item.className = 'list-group-item d-flex justify-content-between align-items-center';
+        item.innerHTML = `
+            <span>${imageName}</span>
+            <button class="btn btn-sm btn-outline-danger remove-image-btn" data-image="${imageName}">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+        container.appendChild(item);
+        
+        // Add event listener to remove button
+        item.querySelector('.remove-image-btn').addEventListener('click', function() {
+            removeSelectedImage(this.getAttribute('data-image'));
+        });
+    });
+}
+
+// Function to add a volume to selected volumes
+function addSelectedVolume(volumeName) {
+    if (!selectedVolumes.includes(volumeName)) {
+        selectedVolumes.push(volumeName);
+        updateSelectedVolumesList();
+    }
+}
+
+// Function to remove a volume from selected volumes
+function removeSelectedVolume(volumeName) {
+    selectedVolumes = selectedVolumes.filter(vol => vol !== volumeName);
+    updateSelectedVolumesList();
+}
+
+// Function to update the selected volumes list
+function updateSelectedVolumesList() {
+    const container = document.getElementById('selected-volumes');
+    container.innerHTML = '';
+    
+    if (selectedVolumes.length === 0) {
+        container.innerHTML = '<div class="list-group-item text-muted">No volumes selected</div>';
+        return;
+    }
+    
+    selectedVolumes.forEach(volumeName => {
+        const item = document.createElement('div');
+        item.className = 'list-group-item d-flex justify-content-between align-items-center';
+        item.innerHTML = `
+            <span>${volumeName}</span>
+            <button class="btn btn-sm btn-outline-danger remove-volume-btn" data-volume="${volumeName}">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+        container.appendChild(item);
+        
+        // Add event listener to remove button
+        item.querySelector('.remove-volume-btn').addEventListener('click', function() {
+            removeSelectedVolume(this.getAttribute('data-volume'));
+        });
+    });
+}
+
+// Function to generate service configuration fields
+function generateServiceFields() {
+    const container = document.getElementById('services-container');
+    container.innerHTML = '';
+    
+    selectedImages.forEach((image, index) => {
+        const serviceId = `service-${index}`;
+        const card = document.createElement('div');
+        card.className = 'card mb-3';
+        card.innerHTML = `
+            <div class="card-header">
+                <h6 class="mb-0">Service ${index + 1}: ${image}</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="${serviceId}-name" class="form-label">Service Name</label>
+                            <input type="text" class="form-control" id="${serviceId}-name" 
+                                   value="service${index + 1}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="${serviceId}-ports" class="form-label">Ports (optional)</label>
+                            <input type="text" class="form-control" id="${serviceId}-ports" 
+                                   placeholder="e.g., 8080:80">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="${serviceId}-env" class="form-label">Environment Variables (optional)</label>
+                            <input type="text" class="form-control" id="${serviceId}-env" 
+                                   placeholder="e.g., NODE_ENV=development">
+                        </div>
+                        <div class="mb-3">
+                            <label for="${serviceId}-volumes" class="form-label">Volumes (optional)</label>
+                            <input type="text" class="form-control" id="${serviceId}-volumes" 
+                                   placeholder="e.g., ./app:/app">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// Function to generate the Docker Compose file
+function generateComposeFile() {
+    const compose = {
+        version: '3',
+        services: {},
+        volumes: {}
+    };
+    
+    // Add services
+    selectedImages.forEach((image, index) => {
+        const serviceId = `service-${index}`;
+        const serviceName = document.getElementById(`${serviceId}-name`).value.trim();
+        const ports = document.getElementById(`${serviceId}-ports`).value.trim();
+        const env = document.getElementById(`${serviceId}-env`).value.trim();
+        const volumes = document.getElementById(`${serviceId}-volumes`).value.trim();
+        
+        compose.services[serviceName] = {
+            image: image
+        };
+        
+        if (ports) {
+            compose.services[serviceName].ports = [ports];
+        }
+        
+        if (env) {
+            compose.services[serviceName].environment = [env];
+        }
+        
+        if (volumes) {
+            compose.services[serviceName].volumes = [volumes];
+        }
+    });
+    
+    // Add volumes
+    selectedVolumes.forEach(volume => {
+        compose.volumes[volume] = {};
+    });
+    
+    // Convert to YAML and set in editor
+    const yaml = jsyaml.dump(compose);
+    composeEditor.setValue(yaml);
+    
+    // Set the compose name if empty
+    if (!document.getElementById('compose-name').value) {
+        const defaultName = selectedImages.length === 1 
+            ? `${document.getElementById('service-0-name').value.trim()}-stack`
+            : 'docker-compose-stack';
+        document.getElementById('compose-name').value = defaultName;
+    }
+}
+
+
+    
+   
+
+
+});
+
+
+
+  </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const chatbotToggle = document.getElementById('chatbot-toggle');
+      const chatbotInterface = document.getElementById('chatbot-interface');
+      const chatClose = document.getElementById('chat-close');
+      const chatBody = document.getElementById('chat-body');
+      const chatMessages = document.getElementById('chat-messages');
+      const chatMessageInput = document.getElementById('chat-message');
+      const chatSendButton = document.getElementById('chat-send');
+
+      // Toggle Chat Interface
+      chatbotToggle.addEventListener('click', () => {
+          chatbotInterface.style.display = 'block';
+      });
+
+      // Close Chat Interface
+      chatClose.addEventListener('click', () => {
+          chatbotInterface.style.display = 'none';
+      });
+
+      // Send Message to Chatbot
+      chatSendButton.addEventListener('click', async () => {
+          const message = chatMessageInput.value.trim();
+          if (message) {
+              // Add User Message to Chat
+              chatMessages.innerHTML += `<div class="message"><strong>You:</strong> ${message}</div>`;
+              chatMessageInput.value = '';
+
+              // Show Loading Spinner
+              chatMessages.innerHTML += `<div id="loading-spinner">Loading...</div>`;
+
+              // Call Backend API
+              try {
+                  const response = await fetch('/api/chat', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ message })
+                  });
+                  const data = await response.json();
+
+                  // Remove Loading Spinner and Add Bot Response
+                  document.getElementById('loading-spinner').remove();
+                  chatMessages.innerHTML += `<div class="message"><strong>Assistant:</strong> ${data.response}</div>`;
+              } catch (error) {
+                  console.error('Error:', error);
+                  chatMessages.innerHTML += `<div class="message"><strong>Error:</strong> Failed to get response.</div>`;
+              }
+
+              // Scroll to Bottom of Chat
+              chatBody.scrollTop = chatBody.scrollHeight;
+          }
+      });
+
+      // Allow Pressing "Enter" to Send a Message
+      chatMessageInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+              chatSendButton.click();
+          }
+      });
+  });
+</script>
+
+
+
+
+<script>
+  $(document).ready(function () {
+      $('.scrollbar').scrollbar();
+  });
+</script>
+  <script>
+    $(document).ready(function() {
+  $('[data-toggle="tooltip"]').tooltip(); 
+});
+
+  </script>
+  <script>
+    function logout() {
+            Swal.fire({
+                title: 'Logout Confirmation',
+                text: 'Are you sure you want to log out?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#326ce5',
+                cancelButtonColor: '#ff6666',
+                confirmButtonText: 'Yes, log out'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.clear();
+                    window.location.replace("/login");
+                }
+            });
+        }
+  </script>
+</body>
+
+</html>

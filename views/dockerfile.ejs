@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>DockerFile</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <link rel="icon" href="../assets/img/dockube3.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/dockerfile_.css">
+
+<!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.min.css">
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Load jQuery first -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- Load Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+
+<!-- jQuery Scrollbar -->
+<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+<!-- Chart JS -->
+<script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+<!-- jQuery Sparkline -->
+<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+<!-- Chart Circle -->
+<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+<!-- Datatables -->
+<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+<!-- Bootstrap Notify -->
+<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+<!-- jQuery Vector Maps -->
+<script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+<script src="../assets/js/plugin/jsvectormap/world.js"></script>
+
+<!-- Google Maps Plugin -->
+<script src="../assets/js/plugin/gmaps/gmaps.js"></script>
+
+<!-- Sweet Alert -->
+<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+<!-- Kaiadmin JS -->
+<script src="../assets/js/kaiadmin.min.js"></script>
+
+<!-- Kaiadmin DEMO methods, don't include it in your project! -->
+<script src="../assets/js/setting-demo2.js"></script>
+<script src="/assets/js/script.js"></script>
+<!-- Bootstrap CSS -->
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollbar/0.2.11/jquery.scrollbar.min.js"></script>
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["../assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <a href="/" class="logo" style="display: flex; align-items: center;">
+              <img src="assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" height="40" />
+              <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+            <div class="sidebar-content">
+              <ul class="nav nav-secondary">
+                <li class="nav-item">
+                  <a href="/" aria-expanded="false">
+                    <i class="fas fa-tachometer-alt"></i> <!-- Dashboard icon -->
+                    <p>Dashboard</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerRegistries">
+                    <i class="fas fa-warehouse"></i> <!-- Registry icon -->
+                    <p>Docker Registries</p>
+                  </a>
+                </li>
+                <li class="nav-item active">
+                  <a href="/dockerfile_list">
+                    <i class="fas fa-file-code"></i> <!-- Code file icon for Dockerfile -->
+                    <p>Dockerfile</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerimg">
+                    <i class="fas fa-images"></i> <!-- Images icon -->
+                    <p>Docker Images</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockercontainers">
+                    <i class="fas fa-box"></i> <!-- Box icon for containers -->
+                    <p>Docker Containers</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/volumes">
+                    <i class="fas fa-database"></i> <!-- Database icon for Volumes -->
+                    <p>Volumes</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/compose">
+                    <i class="fas fa-cubes"></i> <!-- Stacked cubes for Compose -->
+                    <p>Docker Compose</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                    <a href="swarm_list">
+                        <i class="fas fa-project-diagram"></i> <!-- Stacked cubes for Compose -->
+                      <p>Docker Swarm</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#kubernetesMenu" aria-expanded="false">
+                        <i class="fas fa-dharmachakra"></i>
+                        <p>Kubernetes</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="kubernetesMenu">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="/kubernetes/cluster">
+                                    <span class="sub-item">Cluster Setup</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/nodes">
+                                    <span class="sub-item">Nodes</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/deployments">
+                                    <span class="sub-item">Deployments</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/statefulsets">
+                                    <span class="sub-item">StatefulSets</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/services">
+                                    <span class="sub-item">Services</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/pods">
+                                    <span class="sub-item">Pods</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/pvcs">
+                                    <span class="sub-item">Storage</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/configs">
+                                    <span class="sub-item">ConfigMaps && Secrets</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/namespaces">
+                                    <span class="sub-item">Namespaces</span>
+                                </a>
+                            </li>
+                             <li>
+                <a href="/kubernetes/ingresses">
+                    <span class="sub-item">Ingresses</span>
+                </a>
+            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="/cicd_integration">
+                      <i class="fas fa-sync-alt"></i>
+                      <p>CI CD</p>
+                    </a>
+                  </li>
+                <li class="nav-item">
+                  <a data-bs-toggle="collapse" href="#" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> <!-- Logout icon -->
+                    <p>Logout</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <!-- End Sidebar -->
+      <div class="main-panel">
+        <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+              <a href="../index.html" class="logo">
+                <img src="../assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" />
+              </a>
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+            <div class="container-fluid">
+              <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button type="submit" class="btn btn-search pe-1">
+                      <i class="fa fa-search search-icon"></i>
+                    </button>
+                  </div>
+                  <input type="text" placeholder="Search ..." class="form-control" />
+                </div>
+              </nav>
+              <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                <li class="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" aria-haspopup="true">
+                    <i class="fa fa-search"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-search animated fadeIn">
+                    <form class="navbar-left navbar-form nav-search">
+                      <div class="input-group">
+                        <input type="text" placeholder="Search ..." class="form-control" />
+                      </div>
+                    </form>
+                  </ul>
+                </li>
+                <li class="nav-item topbar-user dropdown hidden-caret">
+                  <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="/profile" aria-expanded="false">
+                    <span class="profile-username">
+                      <span class="op-7">Hi,</span>
+                      <span class="fw-bold">Hizrian</span>
+                    </span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-user animated fadeIn">
+                    <div class="dropdown-user-scroll scrollbar-outer">
+                      <li>
+                        <div class="user-box">
+                          <div class="avatar-lg">
+                            <img src="assets/img/profile.jpg" alt="image profile" class="avatar-img rounded" />
+                          </div>
+                          <div class="u-text">
+                            <h4>Hizrian</h4>
+                            <p class="text-muted">hello@example.com</p>
+                            <a href="/profile" class="action-btn btn-blue1 btn-sm">Update Profile</a>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                      </li>
+                    </div>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              var user = JSON.parse(localStorage.getItem("user"));
+              if (user) {
+                document.querySelector(".profile-username .fw-bold").textContent = user.username;
+                document.querySelector(".u-text h4").textContent = user.username;
+                document.querySelector(".u-text .text-muted").textContent = user.email;
+              }
+            });
+          </script>
+          <!-- End Navbar -->
+        </div>
+        <div class="container">
+          <div class="page-inner">
+            <div class="page-header">
+
+                  <h3 class="fw-bold">Generate DockerFiles</h3>
+                  <ul class="breadcrumbs d-flex align-items-center">
+                      <li class="nav-home">
+                          <a href="#">
+                              <i class="icon-home"></i>
+                          </a>
+                      </li>
+                      <li class="separator mx-2">
+                          <i class="flaticon-right-arrow"></i>
+                      </li>
+                      <li class="nav-item">
+                          <a href="#">DockerFile</a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="card p-4 mt-3">
+                <h5 class="fw-semibold mb-3">Select Docker Registries to Search From</h5>
+                <div id="registries-checkbox-list" class="form-group">
+                    <!-- Dynamically populated with Docker registries -->
+                </div>
+                
+            </div>
+
+<div class="card p-4 mt-3">
+    <h5 class="fw-semibold mb-3">Upload Project Files</h5>
+    <div class="mb-3">
+        <input type="file" id="project-files-input" class="form-control" multiple>
+        <button type="button" class="action-btn btn-blue1 mt-2" onclick="uploadProjectFiles()">
+            <i class="fas fa-upload fa-fw"></i> Upload Files
+        </button>
+    </div>
+    <div id="uploaded-files-container" class="mt-3">
+        <h6>Uploaded Files:</h6>
+        <ul id="uploaded-files-list" class="list-group"></ul>
+    </div>
+</div>
+              <div class="card p-4 mt-3">
+                  <h5 class="fw-semibold">Upload Dockerfile</h5>
+                  <form id="upload-dockerfile-form" class="d-flex align-items-center gap-3" enctype="multipart/form-data">
+                      <input type="file" id="dockerfile-input" class="form-control" accept="Dockerfile,.txt" />
+                      <button type="button" class="action-btn btn-blue1" onclick="uploadDockerfile()">    <i class="fas fa-upload fa-fw"></i> Upload
+                      </button>
+                  </form>
+              </div>
+              <form id="add-line-form">
+              <div class="card p-4 mt-3">
+                
+                  <h5 class="fw-semibold">Select Dockerfile Template</h5>
+                  <select class="form-control" id="dockerfile-template-dropdown" onchange="loadTemplate()">
+                    <option value="">Select a Template</option>
+                    <option value="node">Node.js Application</option>
+                    <option value="python">Python Application</option>
+                    <option value="java">Java Application</option>
+                    <option value="go">Go Application</option>
+                    <option value="php">PHP Application</option>
+                    <option value="ruby">Ruby Application</option>
+                    <option value="dotnet">.NET Application</option>
+                    <option value="nginx">Nginx Server</option>
+                    <option value="postgres">PostgreSQL Database</option>
+                    <option value="mysql">MySQL Database</option>
+                </select>
+                
+              </div>
+              <div class="card p-4 mt-3">
+                <h5 class="fw-semibold">Generate Dockerfile from Description</h5>
+                <div class="input-group mb-3">
+                    <input type="text" id="app-description" class="form-control" placeholder="Describe your application (e.g., 'Node.js app with Express')">
+                    <button id="generate-dockerfile-ia" class="action-btn btn-blue1"><i class="fas fa-file-code fa-fw"></i> Generate Dockerfile</button>
+                </div>
+            </div>
+              <div class="card p-4 mt-3">
+                  <h5 class="fw-semibold">Add Instructions</h5>
+                  <div class="btn-group flex-wrap">
+                    <button type="button" id="add-from" class="action-btn btn-blue2" data-toggle="tooltip" title="Specifies the base image to use.">FROM</button>
+                    <button type="button" id="add-run" class="action-btn btn-blue2" data-toggle="tooltip" title="Executes a command in a new layer on top of the current image.">RUN</button>
+                    <button type="button" id="add-cmd" class="action-btn btn-blue2" data-toggle="tooltip" title="Provides defaults for an executing container.">CMD</button>
+                    <button type="button" id="add-entrypoint" class="action-btn btn-blue2" data-toggle="tooltip" title="Sets the command that will be run inside the container.">ENTRYPOINT</button>
+                    <button type="button" id="add-copy" class="action-btn btn-blue2" data-toggle="tooltip" title="Copies files from your local filesystem into the Docker image.">COPY</button>
+                    <button type="button" id="add-add" class="action-btn btn-blue2" data-toggle="tooltip" title="Adds files from a URL or a tar file into the image.">ADD</button>
+                    <button type="button" id="add-workdir" class="action-btn btn-blue2" data-toggle="tooltip" title="Sets the working directory for the container.">WORKDIR</button>
+                    <button type="button" id="add-env" class="action-btn btn-blue2" data-toggle="tooltip" title="Sets environment variables in the container.">ENV</button>
+                    <button type="button" id="add-expose" class="action-btn btn-blue2" data-toggle="tooltip" title="Informs Docker that the container listens on the specified network ports.">EXPOSE</button>
+                    <button type="button" id="add-volume" class="action-btn btn-blue2" data-toggle="tooltip" title="Creates a mount point with the specified path and marks it as holding externally mounted volumes.">VOLUME</button>
+                    <button type="button" id="add-user" class="action-btn btn-blue2" data-toggle="tooltip" title="Sets the user name or UID to use when running the image.">USER</button>
+                    <button type="button" id="add-arg" class="action-btn btn-blue2" data-toggle="tooltip" title="Defines a build-time variable.">ARG</button>
+                    <button type="button" id="add-label" class="action-btn btn-blue2" data-toggle="tooltip" title="Adds metadata to an image.">LABEL</button>
+                    <button type="button" id="add-onbuild" class="action-btn btn-blue2" data-toggle="tooltip" title="Adds a trigger instruction to be executed later.">ONBUILD</button>
+                    <button type="button" id="add-stopsignal" class="action-btn btn-blue2" data-toggle="tooltip" title="Sets the system call signal that will be sent to the container to exit.">STOPSIGNAL</button>
+                    <button type="button" id="add-shell" class="action-btn btn-blue2" data-toggle="tooltip" title="Override default shell instructions in Docker.">SHELL</button>
+                  </div>
+              </div>
+              <div class="form-group" id="details-container" style="display: none;">
+                <input type="text" id="line-input" name="line-input" class="form-control" placeholder="Enter details"><br>
+
+                <button type="submit" id="submit-line" name="submit-line" class="btn btn-blue2"> <i class="fas fa-check fa-fw"></i> Submit</button>
+            </div>
+          
+              <!-- <div id="lines-container"></div> -->
+              <div class="card p-4 mt-3">
+                <h5 class="fw-semibold">Dockerfile Editor</h5>
+                <div class="row">
+                    <!-- Tutorial Panel -->
+                    <div class="col-md-4">
+                        <div id="tutorial-panel" class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Dockerfile Tutorial</h6>
+                                <div id="tutorial-step-description" class="mb-3"></div>
+                                <div class="progress mb-3">
+                                    <div id="tutorial-progress" class="progress-bar" role="progressbar" style="width: 0%;"></div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <button id="prev-step" class="action-btn btn-pastel-red" disabled><i class="fas fa-arrow-left fa-fw"></i> Previous</button>
+                                    <button id="next-step" class="action-btn btn-blue2"><i class="fas fa-arrow-right fa-fw"></i> Next
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Editor -->
+                    <div class="col-md-8">
+                        <div id="editor" class="border rounded p-3 bg-white" style="height: 300px;"></div>
+                        <input type="text" id="dockerfile-name" class="form-control mt-3" placeholder="Enter Dockerfile Name" required>
+                    </div>
+                </div>
+            </div>
+            
+          
+              <div class="mt-3 d-flex gap-3 justify-content-center">
+               
+                <button id="analyze-dockerfile" type="button" class="action-btn btn-blue1 d-flex align-items-center gap-2 py-2 px-3">
+                    <i class="fas fa-robot fa-fw"></i> <span>Analyze with AI</span>
+                </button>
+                <button id="generate-dockerfile" type="button" name="generate-dockerfile" class="action-btn btn-blue1 d-flex align-items-center gap-2 py-2 px-3">
+                  <i class="fas fa-save fa-fw"></i> <span>Save Dockerfile</span>
+              </button>
+              <button id="validate-dockerfile" type="button" class="action-btn btn-blue1 d-flex align-items-center gap-2 py-2 px-3">
+        <i class="fas fa-check-circle fa-fw"></i> <span>Validate Dockerfile</span>
+    </button>
+             
+                
+            </div>
+            </form>
+              
+              <!-- Loading Spinner -->
+              <div id="loading-spinner" class="text-center mt-3" style="display: none;">
+                  <div class="spinner-border text-primary" role="status"></div>
+                  <p>Analyzing Dockerfile. Please wait...</p>
+              </div>
+              
+              <!-- Modal for AI Suggestions -->
+              <div id="ai-suggestions-modal" class="modal fade" tabindex="-1">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title">AI Suggestions</h5>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+                          <div class="modal-body">
+                              <p id="ai-suggestions-text"></p>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="action-btn btn-pastel-red" data-dismiss="modal">Close</button>
+                              <button type="button" id="apply-suggestions" class="action-btn btn-blue2">Apply Suggestions</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      </div>
+    
+<div id="generated-dockerfile-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Generated Dockerfile</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <pre id="generated-dockerfile-content"></pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="action-btn btn-pastel-red" data-dismiss="modal">Close</button>
+                <button type="button" id="apply-generated-dockerfile" class="action-btn btn-blue2">Apply to Editor</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="validation-results-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Dockerfile Validation Results</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="validation-success" class="alert alert-success" style="display: none;">
+                    <i class="fas fa-check-circle me-2"></i>
+                    <span id="validation-success-message"></span>
+                </div>
+                <div id="validation-errors" class="alert alert-danger" style="display: none;">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    <span id="validation-error-message"></span>
+                    <ul id="validation-error-list" class="mt-2"></ul>
+                </div>
+                <div class="mt-3">
+                    <h6>Build Output:</h6>
+                    <pre id="validation-output" class="p-2 bg-light rounded" style="max-height: 300px; overflow-y: auto;"></pre>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="action-btn btn-pastel-red" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Chatbot Interface -->
+<!-- Chatbot Container -->
+<div id="chatbot-container">
+  <!-- Chatbot Toggle Button (Circle with Logo) -->
+  <div id="chatbot-toggle">
+      <img src="../assets/img/dockube3.png" alt="Chatbot Logo" width="50" height="50">
+  </div>
+
+  <!-- Chatbot Interface (Hidden by Default) -->
+ 
+<div id="chatbot-interface" style="display: none;">
+  <!-- Chat Header -->
+  <div id="chat-header">
+      <strong>
+          <img src="../assets/img/dockube3.png" alt="Logo">
+          Docker & Kubernetes Assistant
+      </strong>
+      <button id="chat-close">×</button>
+  </div>
+
+  <!-- Chat Body -->
+  <div id="chat-body">
+      <div id="chat-messages">
+          <!-- Welcome Message -->
+          <div class="welcome-message" onclick="toggleWelcomeMessage()">
+              👋 Welcome! I'm your Docker & Kubernetes Assistant.
+              Ask me anything about Docker, Kubernetes, and best practices.
+              <div class="hidden-content">
+                  Hi! I'm your Docker & Kubernetes Assistant.  
+                  Ask me anything about Dockerfiles, Kubernetes configurations, and best practices.
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Chat Input -->
+  <div id="chat-input">
+      <input type="text" id="chat-message" placeholder="Type your question...">
+      <button id="chat-send">Send</button>
+  </div>
+</div>
+</div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs/loader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+    async function generateDockerfileFromDescription(description) {
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: `Generate an optimized Dockerfile for: ${description}` })
+            });
+            const data = await response.json();
+            return data.response;
+        } catch (error) {
+            console.error('Error generating Dockerfile:', error);
+            return null;
+        }
+    }
+
+
+    // Event listener for generate button
+    document.getElementById('generate-dockerfile-ia').addEventListener('click', function (event) {
+        event.preventDefault();
+        const description = document.getElementById('app-description').value.trim();
+        
+        if (description) {
+            // Always show the Flask Dockerfile template, regardless of description
+            document.getElementById('generated-dockerfile-content').textContent = flaskDockerfile;
+            $('#generated-dockerfile-modal').modal('show');
+        } else {
+            alert('Please describe your application.');
+        }
+    });
+
+    // Apply generated Dockerfile to the editor
+    document.getElementById('apply-generated-dockerfile').addEventListener('click', function () {
+        const generatedContent = document.getElementById('generated-dockerfile-content').textContent;
+        editor.setValue(generatedContent);
+        $('#generated-dockerfile-modal').modal('hide');
+    });
+});
+    </script>
+    <script>
+
+        let currentStep = 0;
+        const steps = [
+        {
+                command: 'FROM <base-image>',
+                description: 'Choose a base image that matches your application’s runtime. For example, <code>python:3.9</code> for a Python app or <code>nginx:latest</code> for a web server.',
+                highlight: true
+            },
+            {
+                command: 'FROM <base-image>',
+                description: 'Choose a base image that matches your application’s runtime. For example, <code>python:3.9</code> for a Python app or <code>nginx:latest</code> for a web server.',
+                highlight: true
+            },
+            {
+                command: 'WORKDIR /app',
+                description: 'Set the working directory inside the container where your application files will be stored.',
+                highlight: true
+            },
+            {
+                command: 'COPY . .',
+                description: 'Copy your application’s source code and files from your host machine into the container.',
+                highlight: true
+            },
+            {
+                command: 'RUN <installation-commands>',
+                description: 'Install required dependencies for your application. For example, use <code>apt-get install -y package</code> for Linux-based images or <code>pip install -r requirements.txt</code> for Python.',
+                highlight: true
+            },
+            {
+                command: 'EXPOSE <port>',
+                description: 'Specify the port on which your application runs. For example, <code>EXPOSE 5000</code> for a Flask app.',
+                highlight: true
+            },
+            {
+                command: 'CMD ["<executable>", "<arg1>", "<arg2>"]',
+                description: 'Define the command to start your application. Example: <code>CMD ["python", "app.py"]</code> for Python or <code>CMD ["nginx", "-g", "daemon off;"]</code> for Nginx.',
+                highlight: true
+            }
+        ];
+    
+        function startTutorial() {
+            currentStep = 0;
+            document.getElementById('tutorial-panel').style.display = 'block';
+            
+            updateTutorialStep();
+        }
+    
+        function updateTutorialStep() {
+            const step = steps[currentStep];
+            if (!step) {
+                document.getElementById('tutorial-panel').style.display = 'none';
+                return;
+            }
+    
+            // Update tutorial content
+            document.getElementById('tutorial-step-description').innerHTML = step.description;
+            document.getElementById('tutorial-progress').style.width = `${((currentStep + 1) / steps.length) * 100}%`;
+    
+            // Highlight the editor
+            if (step.highlight) {
+                document.getElementById('editor').classList.add('highlight-editor');
+            } else {
+                document.getElementById('editor').classList.remove('highlight-editor');
+            }
+    
+            // Insert the command into the editor with animation
+            const editorElement = document.getElementById('editor');
+            editorElement.style.transition = 'border 0.5s ease';
+            setTimeout(() => {
+                const newContent = editor.getValue() + `${step.command}\n`;
+                editor.setValue(newContent);
+    
+                // Update the lines array
+                lines = newContent.split('\n').map(line => line.trim()).filter(line => line !== '');
+    
+                // Save the content to the backend
+                //saveDockerfileToBackend(newContent);
+            }, 500);
+    
+            // Enable/disable navigation buttons
+            document.getElementById('prev-step').disabled = currentStep === 0;
+            document.getElementById('next-step').disabled = currentStep === steps.length - 1;
+        }
+    
+        // Event listeners for navigation
+        document.getElementById('prev-step').addEventListener('click', (event) => {
+    event.preventDefault();
+    if (currentStep > 0) {
+        currentStep--;
+        updateTutorialStep();
+    }
+});
+
+document.getElementById('next-step').addEventListener('click', (event) => {
+    event.preventDefault();
+    if (currentStep < steps.length - 1) {
+        currentStep++;
+        updateTutorialStep();
+    }
+});
+
+    
+    </script>
+    <script>
+document.getElementById('validate-dockerfile').addEventListener('click', function() {
+    validateDockerfile();
+});
+
+function validateDockerfile() {
+    const dockerfileContent = editor.getValue();
+    const dockerfileName = document.getElementById('dockerfile-name').value;
+
+    if (!dockerfileContent) {
+        Swal.fire('Error!', 'Please enter Dockerfile content to validate', 'error');
+        return;
+    }
+
+    // Show loading state
+    const validateBtn = document.getElementById('validate-dockerfile');
+    validateBtn.disabled = true;
+    validateBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Validating...';
+
+    fetch('/dockerfilees/validate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: dockerfileContent })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Reset button state
+        validateBtn.disabled = false;
+        validateBtn.innerHTML = '<i class="fas fa-check-circle fa-fw"></i> <span>Validate Dockerfile</span>';
+
+        // Prepare modal content
+        document.getElementById('validation-success').style.display = 'none';
+        document.getElementById('validation-errors').style.display = 'none';
+        document.getElementById('validation-output').textContent = data.output || 'No output';
+
+        if (data.success) {
+            document.getElementById('validation-success').style.display = 'block';
+            document.getElementById('validation-success-message').textContent = 
+                data.message || 'Dockerfile is valid and should build successfully';
+        } else {
+            document.getElementById('validation-errors').style.display = 'block';
+            document.getElementById('validation-error-message').textContent = 
+                data.message || 'Dockerfile validation failed';
+            
+            const errorList = document.getElementById('validation-error-list');
+            errorList.innerHTML = '';
+            
+            if (data.errors && data.errors.length > 0) {
+                data.errors.forEach(error => {
+                    const li = document.createElement('li');
+                    li.textContent = error;
+                    errorList.appendChild(li);
+                });
+            } else {
+                const li = document.createElement('li');
+                li.textContent = 'Unknown error occurred during validation';
+                errorList.appendChild(li);
+            }
+        }
+
+        // Show modal
+        $('#validation-results-modal').modal('show');
+    })
+    .catch(error => {
+        console.error('Validation error:', error);
+        validateBtn.disabled = false;
+        validateBtn.innerHTML = '<i class="fas fa-check-circle fa-fw"></i> <span>Validate Dockerfile</span>';
+        Swal.fire('Error!', 'Failed to validate Dockerfile: ' + error.message, 'error');
+    });
+}
+    </script>
+    <script>
+
+const apiUrl = 'http://localhost:5000/dockerfilees';
+let dockerFileId = localStorage.getItem('dockerfileId');
+
+let lines = [];
+let currentCommand = '';
+let editor;
+// Initialize Monaco Editor
+require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs' } });
+require(['vs/editor/editor.main'], function () {
+    // Register auto-complete for Dockerfile commands
+    monaco.languages.registerCompletionItemProvider('dockerfile', {
+        provideCompletionItems: function (model, position) {
+            const suggestions = [
+                {
+                    label: 'FROM',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'FROM ${1:base_image}',
+                    documentation: 'Specifies the base image to use.'
+                },
+                {
+                    label: 'RUN',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'RUN ${1:command}',
+                    documentation: 'Executes a command in a new layer on top of the current image.'
+                },
+                {
+                    label: 'WORKDIR',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'WORKDIR ${1:/path/to/workdir}',
+                    documentation: 'Sets the working directory for subsequent instructions.'
+                },
+                {
+                    label: 'COPY',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'COPY ${1:src} ${2:dest}',
+                    documentation: 'Copies files or directories from the host to the container.'
+                },
+                {
+                    label: 'CMD',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'CMD ["${1:executable}", "${2:arg1}", "${3:arg2}"]',
+                    documentation: 'Provides defaults for an executing container.'
+                },
+                {
+                    label: 'EXPOSE',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'EXPOSE ${1:port}',
+                    documentation: 'Informs Docker that the container listens on the specified network port.'
+                },
+                {
+                    label: 'ENV',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'ENV ${1:key} ${2:value}',
+                    documentation: 'Sets environment variables in the container.'
+                },
+                {
+                    label: 'ADD',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'ADD ${1:src} ${2:dest}',
+                    documentation: 'Copies files, directories, or remote URLs to the container.'
+                },
+                {
+                    label: 'ENTRYPOINT',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'ENTRYPOINT ["${1:executable}", "${2:arg1}", "${3:arg2}"]',
+                    documentation: 'Configures the container to run as an executable.'
+                },
+                {
+                    label: 'VOLUME',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'VOLUME ${1:["/path/to/mount"]}',
+                    documentation: 'Creates a mount point for external volumes.'
+                },
+                {
+                    label: 'USER',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'USER ${1:username}',
+                    documentation: 'Sets the user to run subsequent commands.'
+                },
+                {
+                    label: 'ARG',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'ARG ${1:key}=${2:value}',
+                    documentation: 'Defines a build-time variable.'
+                },
+                {
+                    label: 'LABEL',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'LABEL ${1:key}="${2:value}"',
+                    documentation: 'Adds metadata to the image.'
+                }
+            ];
+            return { suggestions: suggestions };
+        }
+    });
+     // Initialize Monaco Editor
+    monaco.languages.register({ id: 'dockerfile' });
+
+    // Initialize Monaco Editor
+    editor = monaco.editor.create(document.getElementById('editor'), {
+        value: '',
+        language: 'dockerfile',
+        theme: 'vs-dark',
+    });
+    loadRegistriesCheckboxList();
+
+// Autocomplete for base images
+editor.onDidChangeModelContent(() => {
+    const line = editor.getModel().getLineContent(editor.getPosition().lineNumber);
+    if (line.startsWith('FROM')) {
+        const query = line.split(' ')[1] || '';
+        if (query && query !== '${1:base_image}') {
+            // Get selected registries
+            const selectedRegistries = Array.from(document.querySelectorAll('#registries-checkbox-list input:checked'))
+                .map(checkbox => checkbox.value);
+
+            if (selectedRegistries.length > 0) {
+                // Search in selected registries
+                const searchPromises = selectedRegistries.map(registryId => {
+                    return fetch(`/docker-registries/${registryId}/search/${query}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                return data.images;
+                            } else {
+                                return [];
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching images:', error);
+                            return [];
+                        });
+                });
+
+                // Combine results from all selected registries
+                Promise.all(searchPromises).then(results => {
+                    const suggestions = results.flat();
+                    monaco.languages.registerCompletionItemProvider('dockerfile', {
+                        provideCompletionItems: () => ({ suggestions: suggestions.map(image => ({
+                            label: image,
+                            kind: monaco.languages.CompletionItemKind.Keyword,
+                            insertText: image
+                        })) }),
+                    });
+                    editor.trigger('', 'editor.action.triggerSuggest');
+                });
+            }
+        }
+    }
+});
+
+
+
+
+// Function to delete a build file
+function deleteBuildFile(fileId) {
+    console.log('Would delete file:', fileId);
+}
+// Load Docker registries
+function loadRegistriesCheckboxList() {
+    fetch('/docker-registries')
+        .then(response => response.json())
+        .then(data => {
+            const registriesList = document.getElementById('registries-checkbox-list');
+            registriesList.innerHTML = ''; 
+
+            data.registries.forEach(registry => {
+                const checkboxDiv = document.createElement('div');
+                checkboxDiv.className = 'form-check my-2'; 
+
+                const checkboxInput = document.createElement('input');
+                checkboxInput.type = 'checkbox';
+                checkboxInput.className = 'form-check-input me-2'; // Added right margin
+                checkboxInput.value = registry._id;
+                checkboxInput.id = `registry-${registry._id}`;
+
+                const checkboxLabel = document.createElement('label');
+                checkboxLabel.className = 'form-check-label d-flex align-items-center';
+                checkboxLabel.htmlFor = `registry-${registry._id}`;
+                
+                // Split name and URL for better formatting
+                const nameSpan = document.createElement('span');
+                nameSpan.className = 'fw-medium me-2'; // Make name bold and add right margin
+                nameSpan.textContent = registry.name;
+                
+                const urlSpan = document.createElement('span');
+                urlSpan.className = 'text-muted small';
+                urlSpan.textContent = `(${registry.url})`;
+                
+                checkboxLabel.appendChild(nameSpan);
+                checkboxLabel.appendChild(urlSpan);
+                
+                checkboxDiv.appendChild(checkboxInput);
+                checkboxDiv.appendChild(checkboxLabel);
+                registriesList.appendChild(checkboxDiv);
+            });
+        })
+        .catch(error => {
+            console.error('Error loading Docker registries:', error);
+            alert('Failed to load Docker registries. Please try again later.');
+        });
+}
+    // Function to analyze Dockerfile content
+function analyzeDockerfileRealTime() {
+    const dockerfileContent = editor.getValue();
+    const errors = [];
+    const lines = dockerfileContent.split('\n');
+
+    // Check for missing base image in FROM
+    if (!dockerfileContent.includes('FROM')) {
+        errors.push({
+            severity: monaco.MarkerSeverity.Error,
+            message: 'Missing FROM command. Every Dockerfile must start with a FROM instruction.',
+            startLineNumber: 1,
+            startColumn: 1,
+            endLineNumber: 1,
+            endColumn: 1
+        });
+    }
+
+    // Check for missing command in RUN
+    lines.forEach((line, index) => {
+        const lineNumber = index + 1;
+
+        if (line.trim().startsWith('RUN') && !line.trim().split(' ')[1]) {
+            errors.push({
+                severity: monaco.MarkerSeverity.Error,
+                message: 'Missing command in RUN instruction.',
+                startLineNumber: lineNumber,
+                startColumn: 1,
+                endLineNumber: lineNumber,
+                endColumn: line.length + 1
+            });
+        }
+
+        // Check for missing destination in COPY/ADD
+        if (line.trim().startsWith('COPY') || line.trim().startsWith('ADD')) {
+            const parts = line.trim().split(' ');
+            if (parts.length < 3) {
+                errors.push({
+                    severity: monaco.MarkerSeverity.Error,
+                    message: 'Missing source or destination in COPY/ADD instruction.',
+                    startLineNumber: lineNumber,
+                    startColumn: 1,
+                    endLineNumber: lineNumber,
+                    endColumn: line.length + 1
+                });
+            }
+        }
+
+        // Check for missing port in EXPOSE
+        if (line.trim().startsWith('EXPOSE') && !line.trim().split(' ')[1]) {
+            errors.push({
+                severity: monaco.MarkerSeverity.Error,
+                message: 'Missing port number in EXPOSE instruction.',
+                startLineNumber: lineNumber,
+                startColumn: 1,
+                endLineNumber: lineNumber,
+                endColumn: line.length + 1
+            });
+        }
+
+        // Check for missing key or value in ENV
+        if (line.trim().startsWith('ENV')) {
+            const parts = line.trim().split(' ');
+            if (parts.length < 3) {
+                errors.push({
+                    severity: monaco.MarkerSeverity.Error,
+                    message: 'Missing key or value in ENV instruction.',
+                    startLineNumber: lineNumber,
+                    startColumn: 1,
+                    endLineNumber: lineNumber,
+                    endColumn: line.length + 1
+                });
+            }
+        }
+
+        // Check for missing path in WORKDIR
+        if (line.trim().startsWith('WORKDIR') && !line.trim().split(' ')[1]) {
+            errors.push({
+                severity: monaco.MarkerSeverity.Error,
+                message: 'Missing path in WORKDIR instruction.',
+                startLineNumber: lineNumber,
+                startColumn: 1,
+                endLineNumber: lineNumber,
+                endColumn: line.length + 1
+            });
+        }
+
+        // Check for missing executable in CMD/ENTRYPOINT
+        if (line.trim().startsWith('CMD') || line.trim().startsWith('ENTRYPOINT')) {
+            const parts = line.trim().split(' ');
+            if (parts.length < 2) {
+                errors.push({
+                    severity: monaco.MarkerSeverity.Error,
+                    message: 'Missing executable in CMD/ENTRYPOINT instruction.',
+                    startLineNumber: lineNumber,
+                    startColumn: 1,
+                    endLineNumber: lineNumber,
+                    endColumn: line.length + 1
+                });
+            }
+        }
+
+        // Check for missing mount point in VOLUME
+        if (line.trim().startsWith('VOLUME') && !line.trim().split(' ')[1]) {
+            errors.push({
+                severity: monaco.MarkerSeverity.Error,
+                message: 'Missing mount point in VOLUME instruction.',
+                startLineNumber: lineNumber,
+                startColumn: 1,
+                endLineNumber: lineNumber,
+                endColumn: line.length + 1
+            });
+        }
+
+        // Check for missing user in USER
+        if (line.trim().startsWith('USER') && !line.trim().split(' ')[1]) {
+            errors.push({
+                severity: monaco.MarkerSeverity.Error,
+                message: 'Missing user in USER instruction.',
+                startLineNumber: lineNumber,
+                startColumn: 1,
+                endLineNumber: lineNumber,
+                endColumn: line.length + 1
+            });
+        }
+
+        // Check for missing key or value in LABEL
+        if (line.trim().startsWith('LABEL')) {
+            const parts = line.trim().split(' ');
+            if (parts.length < 3) {
+                errors.push({
+                    severity: monaco.MarkerSeverity.Error,
+                    message: 'Missing key or value in LABEL instruction.',
+                    startLineNumber: lineNumber,
+                    startColumn: 1,
+                    endLineNumber: lineNumber,
+                    endColumn: line.length + 1
+                });
+            }
+        }
+    });
+
+    // Set validation markers in the editor
+    monaco.editor.setModelMarkers(editor.getModel(), 'dockerfile', errors);
+
+    // Display suggestions in a small popup
+    if (errors.length > 0) {
+        const suggestionsElement = document.createElement('div');
+        suggestionsElement.className = 'alert alert-warning mt-3';
+        suggestionsElement.innerHTML = `<strong>AI Suggestions:</strong> ${errors.map(e => e.message).join('<br>')}`;
+        document.getElementById('editor').parentNode.insertBefore(suggestionsElement, document.getElementById('editor').nextSibling);
+        setTimeout(() => suggestionsElement.remove(), 5000); // Remove after 5 seconds
+    }
+}
+
+
+// Analyze Dockerfile whenever the content changes
+editor.getModel().onDidChangeContent(() => {
+    analyzeDockerfileRealTime();
+
+    // Function to validate Dockerfile content
+    function validateDockerfile(model) {
+        const errors = [];
+        const lines = model.getValue().split('\n');
+        lines.forEach((line, index) => {
+            const lineNumber = index + 1;
+
+            // Check for missing base image in FROM
+            if (line.trim().startsWith('FROM') && !line.trim().split(' ')[1]) {
+                errors.push({
+                    severity: monaco.MarkerSeverity.Error,
+                    message: 'Missing base image in FROM command',
+                    startLineNumber: lineNumber,
+                    startColumn: 1,
+                    endLineNumber: lineNumber,
+                    endColumn: line.length + 1
+                });
+            }
+
+            // Check for missing command in RUN
+            if (line.trim().startsWith('RUN') && !line.trim().split(' ')[1]) {
+                errors.push({
+                    severity: monaco.MarkerSeverity.Error,
+                    message: 'Missing command in RUN instruction',
+                    startLineNumber: lineNumber,
+                    startColumn: 1,
+                    endLineNumber: lineNumber,
+                    endColumn: line.length + 1
+                });
+            }
+        });
+
+        // Set validation markers
+        monaco.editor.setModelMarkers(model, 'dockerfile', errors);
+    }
+
+    // Validate Dockerfile whenever the content changes
+    // editor.getModel().onDidChangeContent(() => {
+    //     validateDockerfile(editor.getModel());
+    // });
+    editor.getModel().onDidChangeContent(() => {
+    analyzeDockerfileRealTime(),validateDockerfile(editor.getModel());
+});
+
+    // Initial validation
+    validateDockerfile(editor.getModel());
+});
+});
+    
+
+function uploadDockerfile() {
+    const input = document.getElementById('dockerfile-input');
+    const file = input.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const fileContent = event.target.result;
+            editor.setValue(fileContent); // Display in the editor
+
+            // Update the lines array
+            lines = fileContent.split('\n').map(line => line.trim()).filter(line => line !== '');
+
+            
+        };
+        reader.readAsText(file);
+    } else {
+        alert("Please select a Dockerfile to upload.");
+    }
+}
+
+function loadTemplate() {
+    const template = document.getElementById('dockerfile-template-dropdown').value;
+    let templateContent = '';
+
+    if (template === 'node') {
+        templateContent = `FROM node:18\nWORKDIR /app\nCOPY . .\nRUN npm install\nCMD ["npm", "start"]\n`;
+    } else if (template === 'python') {
+        templateContent = `FROM python:3.11\nWORKDIR /app\nCOPY . .\nRUN pip install -r requirements.txt\nCMD ["python", "app.py"]\n`;
+    } else if (template === 'java') {
+        templateContent = `FROM openjdk:17\nWORKDIR /app\nCOPY . .\nRUN javac Main.java\nCMD ["java", "Main"]\n`;
+    } else if (template === 'go') {
+        templateContent = `FROM golang:1.20\nWORKDIR /app\nCOPY . .\nRUN go build -o main .\nCMD ["./main"]\n`;
+    } else if (template === 'php') {
+        templateContent = `FROM php:8.2-apache\nWORKDIR /var/www/html\nCOPY . .\nCMD ["apache2-foreground"]\n`;
+    } else if (template === 'ruby') {
+        templateContent = `FROM ruby:3.2\nWORKDIR /app\nCOPY . .\nRUN bundle install\nCMD ["ruby", "app.rb"]\n`;
+    } else if (template === 'dotnet') {
+        templateContent = `FROM mcr.microsoft.com/dotnet/aspnet:7.0\nWORKDIR /app\nCOPY . .\nCMD ["dotnet", "MyApp.dll"]\n`;
+    } else if (template === 'nginx') {
+        templateContent = `FROM nginx:latest\nCOPY ./nginx.conf /etc/nginx/nginx.conf\nCMD ["nginx", "-g", "daemon off;"]\n`;
+    } else if (template === 'postgres') {
+        templateContent = `FROM postgres:15\nENV POSTGRES_USER=user\nENV POSTGRES_PASSWORD=password\nENV POSTGRES_DB=mydatabase\n`;
+    } else if (template === 'mysql') {
+        templateContent = `FROM mysql:8.0\nENV MYSQL_ROOT_PASSWORD=root\nENV MYSQL_DATABASE=mydb\nENV MYSQL_USER=user\nENV MYSQL_PASSWORD=password\n`;
+    }
+
+    editor.setValue(templateContent);
+
+    // Update the lines array
+    lines = templateContent.split('\n').map(line => line.trim()).filter(line => line !== '');
+
+
+}
+
+
+// Temporary storage for files before Dockerfile creation
+let tempFiles = new Map();
+let currentTempId = null;
+
+async function uploadProjectFiles() {
+    const input = document.getElementById('project-files-input');
+    const files = Array.from(input.files);
+    
+    if (files.length === 0) {
+        alert("Please select at least one file to upload.");
+        return;
+    }
+
+    // Verify we have a dockerfileId
+    if (!dockerFileId) {
+        alert("Please save your Dockerfile before uploading files.");
+        return;
+    }
+
+    const formData = new FormData();
+    files.forEach(file => {
+        formData.append('files', file); 
+    });
+
+    try {
+        const response = await fetch(`/dockerfilees/${dockerFileId}/upload-files`, {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to upload files');
+        }
+
+        displayUploadedFiles();
+        input.value = ''; // Clear the file input
+        Swal.fire('Success!', 'Files uploaded successfully!', 'success');
+    } catch (error) {
+        console.error('Error uploading files:', error);
+        Swal.fire('Error!', error.message, 'error');
+    }
+}
+async function displayUploadedFiles() {
+    const fileList = document.getElementById('uploaded-files-list');
+    fileList.innerHTML = '<li class="list-group-item">Loading files...</li>';
+
+    try {
+        const response = await fetch(`/dockerfilees/${dockerFileId}/uploaded-files`);
+        const data = await response.json();
+        
+        if (!data.success || !data.files || data.files.length === 0) {
+            fileList.innerHTML = '<li class="list-group-item">No files uploaded yet</li>';
+            return;
+        }
+
+        fileList.innerHTML = '';
+        data.files.forEach((file, index) => {
+            const listItem = document.createElement('li');
+            listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+            
+            listItem.innerHTML = `
+                <span>${file.originalName} (${formatFileSize(file.size)})</span>
+                <div>
+                    <button class="btn btn-sm btn-outline-danger" onclick="deleteUploadedFile('${file.originalName}')">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+            
+            fileList.appendChild(listItem);
+        });
+    } catch (error) {
+        console.error('Error fetching uploaded files:', error);
+        fileList.innerHTML = '<li class="list-group-item">Error loading files</li>';
+    }
+}
+
+// Add delete function
+async function deleteUploadedFile(filename) {
+    try {
+        const response = await fetch(`/dockerfilees/${dockerFileId}/uploaded-files/${encodeURIComponent(filename)}`, {
+            method: 'DELETE'
+        });
+        
+        const data = await response.json();
+        if (data.success) {
+            displayUploadedFiles();
+            Swal.fire('Success!', 'File deleted successfully!', 'success');
+        } else {
+            throw new Error(data.message || 'Failed to delete file');
+        }
+    } catch (error) {
+        console.error('Error deleting file:', error);
+        Swal.fire('Error!', error.message, 'error');
+    }
+}
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+
+function saveDockerfileToBackend(content) {
+    let url, method;
+
+    if (dockerFileId) {
+        // If dockerFileId exists, update the existing Dockerfile
+        url = `${apiUrl}/${dockerFileId}`;
+        method = 'PUT';
+    } else {
+        // If dockerFileId does not exist, create a new Dockerfile
+        url = apiUrl;
+        method = 'POST';
+    }
+
+    fetch(url, {
+        method: method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: document.getElementById('dockerfile-name').value, content: content }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Save successful:", data);
+
+        // If creating a new Dockerfile, store the new ID in localStorage
+        if (method === 'POST') {
+            dockerFileId = data._id; // Assuming the response contains the new Dockerfile ID
+            localStorage.setItem('dockerfileId', dockerFileId);
+        }
+
+        Swal.fire('Success!', `Dockerfile ${method === 'POST' ? 'created' : 'updated'} successfully!`, 'success').then(() => {
+            window.location.href = '/dockerfile_list';
+        });
+    })
+    .catch(error => {
+        console.error("Error saving Dockerfile:", error);
+        Swal.fire('Error!', 'Failed to save Dockerfile.', 'error');
+    });
+}
+document.addEventListener('DOMContentLoaded', function () {
+
+function handleCommandButton(command) {
+    currentCommand = command;
+    document.getElementById('details-container').style.display = 'block'; // Show input field
+    document.getElementById('line-input').value = ''; // Clear previous input
+    document.getElementById('line-input').placeholder = `Enter details for ${command}`;
+}
+
+document.getElementById('details-container').style.display = 'none';
+
+
+ // Function to add commands to the editor
+ function addCommandToEditor(command) {
+            const lineInput = prompt(`Enter additional details for ${command}:`);
+            if (lineInput) {
+                const dockerfileLine = `${command} ${lineInput}\n`;
+                const currentValue = editor.getValue();
+                editor.setValue(currentValue + dockerfileLine);
+            }
+        }
+// Add event listeners to buttons
+document.getElementById('add-from').addEventListener('click', () => handleCommandButton('FROM'));
+document.getElementById('add-run').addEventListener('click', () => handleCommandButton('RUN'));
+document.getElementById('add-cmd').addEventListener('click', () => handleCommandButton('CMD'));
+document.getElementById('add-entrypoint').addEventListener('click', () => handleCommandButton('ENTRYPOINT'));
+document.getElementById('add-copy').addEventListener('click', () => handleCommandButton('COPY'));
+document.getElementById('add-add').addEventListener('click', () => handleCommandButton('ADD'));
+document.getElementById('add-workdir').addEventListener('click', () => handleCommandButton('WORKDIR'));
+document.getElementById('add-env').addEventListener('click', () => handleCommandButton('ENV'));
+document.getElementById('add-expose').addEventListener('click', () => handleCommandButton('EXPOSE'));
+document.getElementById('add-volume').addEventListener('click', () => handleCommandButton('VOLUME'));
+document.getElementById('add-user').addEventListener('click', () => handleCommandButton('USER'));
+document.getElementById('add-arg').addEventListener('click', () => handleCommandButton('ARG'));
+document.getElementById('add-label').addEventListener('click', () => handleCommandButton('LABEL'));
+document.getElementById('add-onbuild').addEventListener('click', () => handleCommandButton('ONBUILD'));
+document.getElementById('add-stopsignal').addEventListener('click', () => handleCommandButton('STOPSIGNAL'));
+document.getElementById('add-shell').addEventListener('click', () => handleCommandButton('SHELL'));
+
+function addCommandToDockerfile() {
+    const additionalDetails = document.getElementById('line-input').value;
+    if (additionalDetails) {
+        const line = `${currentCommand} ${additionalDetails}\n`;
+        const newContent = editor.getValue() + line;
+        editor.setValue(newContent);
+
+        // Update the lines array
+        lines = newContent.split('\n').map(line => line.trim()).filter(line => line !== '');
+
+       
+
+        // Hide input field after adding
+document.getElementById('details-container').style.display = 'none';
+        document.getElementById('line-input').value = ''; // Reset input
+    }
+}
+
+
+
+document.getElementById('submit-line').addEventListener('click', function (event) {
+    event.preventDefault(); // Prevent form submission
+    addCommandToDockerfile(); // Call the analyze function
+});
+
+
+ 
+
+function displayDockerfileLines(contents) {
+    const lines = contents.split('\n');
+    const linesContainer = document.getElementById('dockerfile-lines');
+
+    linesContainer.innerHTML = '';
+
+    lines.forEach((line, index) => {
+        const lineDiv = document.createElement('div');
+        lineDiv.className = 'line-item';
+
+        const lineInput = document.createElement('input');
+        lineInput.type = 'text';
+        lineInput.name = `line-${index}`;
+        lineInput.value = line;
+        lineInput.className = 'line-input';
+
+        const saveButton = document.createElement('button');
+        saveButton.className = 'action-btn btn-success';
+        saveButton.textContent = 'Save';
+        saveButton.onclick = () => saveUpdatedLine(index, lineInput.value);
+
+        lineDiv.appendChild(lineInput);
+        lineDiv.appendChild(saveButton);
+
+        linesContainer.appendChild(lineDiv);
+    });
+}
+
+// Function to analyze Dockerfile with AI
+function analyzeDockerfile() {
+    const dockerfileContent = editor.getValue(); // Get content from Monaco editor
+
+    console.log('Dockerfile Content:', dockerfileContent); 
+    console.log('Request Payload:', JSON.stringify({ content: dockerfileContent }));
+    // Show loading spinner
+    document.getElementById('loading-spinner').style.display = 'block';
+
+    fetch(`${apiUrl}/analyze`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: dockerfileContent }) // Send content directly
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw err; });
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.suggestions) {
+            // Display suggestions in the modal
+            document.getElementById('ai-suggestions-text').textContent = data.suggestions;
+            $('#ai-suggestions-modal').modal('show'); // Show modal
+        } else {
+            alert('No suggestions found.');
+        }
+    })
+    .catch(error => {
+        console.error('Error analyzing Dockerfile:', error);
+        alert('Error analyzing Dockerfile: ' + (error.message || 'Unknown error'));
+    })
+    .finally(() => {
+        // Hide loading spinner
+        document.getElementById('loading-spinner').style.display = 'none';
+    });
+}
+
+// Function to apply AI suggestions
+function applySuggestions() {
+    const suggestions = document.getElementById('ai-suggestions-text').textContent;
+    editor.setValue(suggestions); // Replace editor content with suggestions
+    $('#ai-suggestions-modal').modal('hide'); // Hide modal
+}
+
+// Event listeners
+document.getElementById('analyze-dockerfile').addEventListener('click', function (event) {
+    event.preventDefault(); // Prevent form submission
+    analyzeDockerfile(); // Call the analyze function
+});
+document.getElementById('apply-suggestions').addEventListener('click', applySuggestions);
+
+        // Load predefined Dockerfile templates
+        function loadDockerFile() {
+    const storedDockerfileId = localStorage.getItem('dockerfileId');
+    if (storedDockerfileId) {
+        dockerFileId = storedDockerfileId;
+        fetch(`${apiUrl}/${dockerFileId}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('dockerfile-name').value = data.name || '';
+                editor.setValue(data.content || ''); // Update editor content
+                lines = data.content.split('\n').map(line => line.trim()).filter(line => line !== ''); // Update lines array
+            })
+            .catch(error => console.error('Error:', error));
+    } 
+}
+document.getElementById('generate-dockerfile').addEventListener('click', async function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const dockerfileName = document.getElementById('dockerfile-name').value;
+    const dockerfileContent = editor.getValue();
+
+    console.log('Dockerfile Name:', dockerfileName); 
+    console.log('Dockerfile Content:', dockerfileContent); 
+
+    if (!dockerfileName || !dockerfileContent) {
+        Swal.fire('Error!', 'Dockerfile name and content are required.', 'error');
+        return;
+    }
+
+    saveDockerfileToBackend(dockerfileContent);
+});
+window.onload = loadDockerFile;
+});
+
+
+
+    </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const chatbotToggle = document.getElementById('chatbot-toggle');
+      const chatbotInterface = document.getElementById('chatbot-interface');
+      const chatClose = document.getElementById('chat-close');
+      const chatBody = document.getElementById('chat-body');
+      const chatMessages = document.getElementById('chat-messages');
+      const chatMessageInput = document.getElementById('chat-message');
+      const chatSendButton = document.getElementById('chat-send');
+
+      // Toggle Chat Interface
+      chatbotToggle.addEventListener('click', () => {
+          chatbotInterface.style.display = 'block';
+      });
+
+      // Close Chat Interface
+      chatClose.addEventListener('click', () => {
+          chatbotInterface.style.display = 'none';
+      });
+
+      // Send Message to Chatbot
+      chatSendButton.addEventListener('click', async () => {
+          const message = chatMessageInput.value.trim();
+          if (message) {
+              // Add User Message to Chat
+              chatMessages.innerHTML += `<div class="message"><strong>You:</strong> ${message}</div>`;
+              chatMessageInput.value = '';
+
+              // Show Loading Spinner
+              chatMessages.innerHTML += `<div id="loading-spinner">Loading...</div>`;
+
+              // Call Backend API
+              try {
+                  const response = await fetch('/api/chat', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ message })
+                  });
+                  const data = await response.json();
+
+                  // Remove Loading Spinner and Add Bot Response
+                  document.getElementById('loading-spinner').remove();
+                  chatMessages.innerHTML += `<div class="message"><strong>Assistant:</strong> ${data.response}</div>`;
+              } catch (error) {
+                  console.error('Error:', error);
+                  chatMessages.innerHTML += `<div class="message"><strong>Error:</strong> Failed to get response.</div>`;
+              }
+
+              // Scroll to Bottom of Chat
+              chatBody.scrollTop = chatBody.scrollHeight;
+          }
+      });
+
+      // Allow Pressing "Enter" to Send a Message
+      chatMessageInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+              chatSendButton.click();
+          }
+      });
+  });
+</script>
+
+
+
+
+<script>
+  $(document).ready(function () {
+      $('.scrollbar').scrollbar();
+  });
+</script>
+  <script>
+    $(document).ready(function() {
+  $('[data-toggle="tooltip"]').tooltip(); 
+});
+
+  </script>
+  <script>
+    function logout() {
+            Swal.fire({
+                title: 'Logout Confirmation',
+                text: 'Are you sure you want to log out?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#326ce5',
+                cancelButtonColor: '#ff6666',
+                confirmButtonText: 'Yes, log out'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.clear();
+                    window.location.replace("/login");
+                }
+            });
+        }
+  </script>
+</body>
+
+</html>

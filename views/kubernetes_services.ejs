@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Kubernetes Services</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <link rel="icon" href="../assets/img/dockube3.png" type="image/x-icon" />
+    <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.min.css">
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.all.min.js"></script>
+<link rel="stylesheet" href="../assets/css/kubernetes_services.css">
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["../assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<!-- Bootstrap 4 -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+          <div class="sidebar-logo">
+              <!-- Logo Header -->
+              <div class="logo-header" data-background-color="dark">
+                  <a href="/" class="logo" style="display: flex; align-items: center;">
+                      <img src="../assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" height="40" />
+                      <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+                  </a>
+                  <div class="nav-toggle">
+                      <button class="btn btn-toggle toggle-sidebar">
+                          <i class="gg-menu-right"></i>
+                      </button>
+                      <button class="btn btn-toggle sidenav-toggler">
+                          <i class="gg-menu-left"></i>
+                      </button>
+                  </div>
+                  <button class="topbar-toggler more">
+                      <i class="gg-more-vertical-alt"></i>
+                  </button>
+              </div>
+              <!-- End Logo Header -->
+          </div>
+          <div class="sidebar-wrapper scrollbar scrollbar-inner">
+            <div class="sidebar-content">
+              <ul class="nav nav-secondary">
+                <li class="nav-item">
+                  <a href="/" aria-expanded="false">
+                    <i class="fas fa-tachometer-alt"></i> <!-- Dashboard icon -->
+                    <p>Dashboard</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerRegistries">
+                    <i class="fas fa-warehouse"></i> <!-- Registry icon -->
+                    <p>Docker Registries</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerfile_list">
+                    <i class="fas fa-file-code"></i> <!-- Code file icon for Dockerfile -->
+                    <p>Dockerfile</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerimg">
+                    <i class="fas fa-images"></i> <!-- Images icon -->
+                    <p>Docker Images</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockercontainers">
+                    <i class="fas fa-box"></i> <!-- Box icon for containers -->
+                    <p>Docker Containers</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/volumes">
+                    <i class="fas fa-database"></i> <!-- Database icon for Volumes -->
+                    <p>Volumes</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/compose">
+                    <i class="fas fa-cubes"></i> <!-- Stacked cubes for Compose -->
+                    <p>Docker Compose</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/swarm_list">
+                        <i class="fas fa-project-diagram"></i> <!-- Stacked cubes for Compose -->
+                      <p>Docker Swarm</p>
+                    </a>
+                  </li>
+<li class="nav-item active">
+    <a data-bs-toggle="collapse" href="#kubernetesMenu" aria-expanded="false">
+        <i class="fas fa-dharmachakra"></i>
+        <p>Kubernetes</p>
+        <span class="caret"></span>
+    </a>
+    <div class="collapse" id="kubernetesMenu">
+        <ul class="nav nav-collapse">
+            <li>
+                <a href="/kubernetes/cluster">
+                    <span class="sub-item">Cluster Setup</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/nodes">
+                    <span class="sub-item">Nodes</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/deployments">
+                    <span class="sub-item">Deployments</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/statefulsets">
+                    <span class="sub-item">StatefulSets</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/services">
+                    <span class="sub-item">Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/pods">
+                    <span class="sub-item">Pods</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/pvcs">
+                    <span class="sub-item">Storage</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/configs">
+                    <span class="sub-item">ConfigMaps && Secrets</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/namespaces">
+                    <span class="sub-item">Namespaces</span>
+                </a>
+            </li>
+             <li>
+                <a href="/kubernetes/ingresses">
+                    <span class="sub-item">Ingresses</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<li class="nav-item">
+    <a href="/cicd_integration">
+      <i class="fas fa-sync-alt"></i>
+      <p>CI CD</p>
+    </a>
+  </li>
+                <li class="nav-item">
+                  <a data-bs-toggle="collapse" href="#" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> <!-- Logout icon -->
+                    <p>Logout</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <!-- End Sidebar -->
+      <div class="main-panel">
+          <div class="main-header">
+              <div class="main-header-logo">
+                  <!-- Logo Header -->
+                  <div class="logo-header" data-background-color="dark">
+                      <a href="../index.html" class="logo">
+                          <img src="../assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" />
+                      </a>
+                      <div class="nav-toggle">
+                          <button class="btn btn-toggle toggle-sidebar">
+                              <i class="gg-menu-right"></i>
+                          </button>
+                          <button class="btn btn-toggle sidenav-toggler">
+                              <i class="gg-menu-left"></i>
+                          </button>
+                      </div>
+                      <button class="topbar-toggler more">
+                          <i class="gg-more-vertical-alt"></i>
+                      </button>
+                  </div>
+                  <!-- End Logo Header -->
+              </div>
+              <!-- Navbar Header -->
+              <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+                  <div class="container-fluid">
+                      <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+                          
+                      </nav>
+                      <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                          <li class="nav-item topbar-user dropdown hidden-caret">
+                              <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="/profile" aria-expanded="false">
+                                  <span class="profile-username">
+                                      <span class="op-7">Hi,</span>
+                                      <span class="fw-bold">Hizrian</span>
+                                  </span>
+                              </a>
+                              <ul class="dropdown-menu dropdown-user animated fadeIn">
+                                  <div class="dropdown-user-scroll scrollbar-outer">
+                                      <li>
+                                          <div class="user-box">
+                                              <div class="avatar-lg">
+                                                  <img src="../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded" />
+                                              </div>
+                                              <div class="u-text">
+                                                  <h4>Hizrian</h4>
+                                                  <p class="text-muted">hello@example.com</p>
+                                                  <a href="/profile" class="action-btn btn-blue1 btn-sm">Update Profile</a>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="dropdown-divider"></div>
+                                          <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                                      </li>
+                                  </div>
+                              </ul>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
+              <!-- Add Vis.js library -->
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<link href="https://unpkg.com/vis-network/styles/vis-network.min.css" rel="stylesheet" />
+              <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                      var user = JSON.parse(localStorage.getItem("user"));
+                      if (user) {
+                          document.querySelector(".profile-username .fw-bold").textContent = user.username;
+                          document.querySelector(".u-text h4").textContent = user.username;
+                          document.querySelector(".u-text .text-muted").textContent = user.email;
+                      }
+                  });
+              </script>
+              <!-- End Navbar -->
+          </div>
+          <div class="container">
+            <div class="card-body">
+                <!-- Kubernetes Creation Flow Stepper -->
+                <div class="kubernetes-flow-stepper mb-4">
+                    <div class="stepper-header">
+                        <h4>Kubernetes Creation Journey</h4>
+                        <p class="text-muted">Follow this guided path to successfully deploy your application</p>
+                    </div>
+                    
+                    <div class="stepper-container">
+                        <div class="stepper-progress">
+                            <div class="stepper-progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        
+                        <div class="stepper-steps">
+                            <!-- Cluster Setup -->
+                            <div class="step" data-step="1" data-route="/kubernetes/cluster">
+                                <div class="step-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div class="step-label">Cluster</div>
+                                <div class="step-tooltip">
+                                    <strong>Cluster Setup</strong><br>
+                                    Your Kubernetes foundation - like building the airport before planes can land
+                                </div>
+                            </div>
+                            
+                            <!-- Nodes -->
+                            <div class="step" data-step="2" data-route="/kubernetes/nodes">
+                                <div class="step-icon">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <div class="step-label">Nodes</div>
+                                <div class="step-tooltip">
+                                    <strong>Nodes</strong><br>
+                                    The worker bees of your cluster - add more to handle heavier loads
+                                </div>
+                            </div>
+                            
+                            <!-- Namespaces -->
+                            <div class="step" data-step="3" data-route="/kubernetes/namespaces">
+                                <div class="step-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="step-label">Namespaces</div>
+                                <div class="step-tooltip">
+                                    <strong>Namespaces</strong><br>
+                                    Create departments in your cluster - keeps things organized like office floors
+                                </div>
+                            </div>
+                            
+                            <!-- ConfigMaps & Secrets -->
+                            <div class="step" data-step="4" data-route="/kubernetes/configs">
+                                <div class="step-icon">
+                                    <i class="fas fa-key"></i>
+                                </div>
+                                <div class="step-label">Configs</div>
+                                <div class="step-tooltip">
+                                    <strong>ConfigMaps & Secrets</strong><br>
+                                    The configuration vault - where you store settings and sensitive data
+                                </div>
+                            </div>
+                            
+                            <!-- Storage -->
+                            <div class="step" data-step="5" data-route="/kubernetes/pvcs">
+                                <div class="step-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="step-label">Storage</div>
+                                <div class="step-tooltip">
+                                    <strong>Persistent Storage</strong><br>
+                                    Your cluster's hard drive - ensures data survives pod restarts
+                                </div>
+                            </div>
+                            
+                            <!-- Deployments/StatefulSets -->
+                            <div class="step" data-step="6" data-route="/kubernetes/deployments">
+                                <div class="step-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <div class="step-label">Workloads</div>
+                                <div class="step-tooltip">
+                                    <strong>Deployments/StatefulSets</strong><br>
+                                    Blueprint for your application - defines how many copies to run
+                                </div>
+                            </div>
+                            
+                            <!-- Pods -->
+                            <div class="step" data-step="7" data-route="/kubernetes/pods">
+                                <div class="step-icon">
+                                    <i class="fas fa-cube"></i>
+                                </div>
+                                <div class="step-label">Pods</div>
+                                <div class="step-tooltip">
+                                    <strong>Pods</strong><br>
+                                    Your running application containers - like individual hotel rooms
+                                </div>
+                            </div>
+                            
+                            <!-- Services -->
+                            <div class="step" data-step="8" data-route="/kubernetes/services">
+                                <div class="step-icon">
+                                    <i class="fas fa-plug"></i>
+                                </div>
+                                <div class="step-label">Services</div>
+                                <div class="step-tooltip">
+                                    <strong>Services</strong><br>
+                                    The front desk - provides stable access to your pods
+                                </div>
+                            </div>
+                            <!-- Ingress -->
+            <div class="step" data-step="9" data-route="/kubernetes/ingresses">
+                <div class="step-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="step-label">Ingress</div>
+                <div class="step-tooltip">
+                    <strong>Ingress</strong><br>
+                    The gateway to your services - manages external access with routing rules
+                </div>
+            </div>
+
+                        </div>
+                    </div>
+                    
+                    <!-- Current Step Explanation Panel -->
+                    <div class="step-explanation-panel">
+                        <div class="explanation-header">
+                            <h5><i class="fas fa-lightbulb"></i> Understanding This Step</h5>
+                            <div class="step-metaphor">
+                                <i class="fas fa-comment-dots"></i>
+                                <span id="currentStepMetaphor">Select a step to see its real-world analogy</span>
+                            </div>
+                        </div>
+                        
+                        <div class="explanation-content">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="explanation-card">
+                                        <div class="explanation-icon">
+                                            <i class="fas fa-question-circle"></i>
+                                        </div>
+                                        <h6>What is this?</h6>
+                                        <p id="whatIsThis">Select a step to learn about this Kubernetes component</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="explanation-card">
+                                        <div class="explanation-icon">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <h6>Why is it important?</h6>
+                                        <p id="whyImportant">Select a step to understand its role in your cluster</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-visual mt-3">
+                                <div class="visual-placeholder">
+                                    <i class="fas fa-image"></i>
+                                    <p>Visual representation will appear here when a step is selected</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Next Button Container -->
+                    <div class="stepper-navigation mt-3">
+                        <button id="prevStepBtn" class="btn btn-secondary" disabled>
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button id="nextStepBtn" class="btn btn-primary">
+                            Next Step <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <div class="step-counter">
+                            Step <span id="currentStepNumber">0</span> of <span id="totalSteps">9</span>
+                        </div>
+                    </div>
+                </div>
+            <div class="page-inner">
+                <div class="page-header">
+                    <h2>Kubernetes Services</h2>
+                </div>
+    
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header gradient-card-header">
+                                <ul class="nav nav-tabs" id="servicesTabs" role="tablist">
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true">
+                                             All Services
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="create-tab" data-toggle="tab" href="#create" role="tab" aria-controls="create" aria-selected="false">
+                                             Create Service
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content" id="servicesTabsContent">
+                                    <!-- Create Service Tab -->
+                                    <div class="tab-pane fade" id="create" role="tabpanel" aria-labelledby="create-tab">
+                                        <form id="createServiceForm">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="serviceName">Service Name</label>
+                                                        <input type="text" class="form-control" id="serviceName" required>
+                                                        <small class="form-text text-muted">Must be lowercase alphanumeric with dashes</small>
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label for="namespace">Namespace</label>
+                                                        <select class="form-control" id="namespace" required>
+                                                            <option value="default">default</option>
+                                                            <option value="kube-system">kube-system</option>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label for="serviceType">Service Type</label>
+                                                        <select class="form-control" id="serviceType" required>
+                                                            <option value="ClusterIP">ClusterIP</option>
+                                                            <option value="NodePort">NodePort</option>
+                                                            <option value="LoadBalancer">LoadBalancer</option>
+                                                            <option value="ExternalName">ExternalName</option>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                    <div id="externalNameContainer" style="display: none;">
+                                                        <div class="form-group">
+                                                            <label for="externalName">External Name</label>
+                                                            <input type="text" class="form-control" id="externalName" placeholder="e.g., my.database.example.com">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="deploymentSelector">Select Deployment</label>
+                                                        <select class="form-control" id="deploymentSelector">
+                                                            <option value="">Custom Selector</option>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                    <div id="customSelectorContainer">
+                                                        <div class="form-group">
+                                                            <label>Selector Labels</label>
+                                                            <div id="selectorLabelsContainer">
+                                                                <div class="row mb-2">
+                                                                    <div class="col-5">
+                                                                        <input type="text" class="form-control" placeholder="Key" name="selectorKey">
+                                                                    </div>
+                                                                    <div class="col-5">
+                                                                        <input type="text" class="form-control" placeholder="Value" name="selectorValue">
+                                                                    </div>
+                                                                    <div class="col-2">
+                                                                        <button type="button" class="btn btn-sm btn-outline-danger remove-selector" disabled>
+                                                                            <i class="fas fa-times"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" id="addSelector" class="btn btn-sm btn-outline-primary">
+                                                                <i class="fas fa-plus"></i> Add Label
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row mt-3">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Port Mappings</label>
+                                                        <div id="portsContainer">
+                                                            <div class="port-row row">
+                                                                <div class="col-3">
+                                        <input type="text" class="form-control" placeholder="Name" name="portName" required>
+                                    </div>
+                                                                <div class="col-3">
+                                                                    <input type="number" class="form-control" placeholder="Port" name="port" required>
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <input type="number" class="form-control" placeholder="Target Port" name="targetPort" required>
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <input type="text" class="form-control" placeholder="Protocol" name="protocol" value="TCP">
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <button type="button" class="btn btn-sm btn-outline-danger remove-port" disabled>
+                                                                        <i class="fas fa-times"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button type="button" id="addPort" class="btn btn-sm btn-outline-primary mt-2">
+                                                            <i class="fas fa-plus"></i> Add Port
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-check mb-3">
+                                                <input type="checkbox" class="form-check-input" id="showYamlPreview">
+                                                <label class="form-check-label" style="margin-left: 20px;" for="showYamlPreview">Show YAML Preview</label>
+                                            </div>
+                                            
+                                            <div id="yamlPreviewContainer" style="display: none;">
+                                                <h5>YAML Preview</h5>
+                                                <div class="yaml-container">
+                                                    <pre id="yamlPreview"></pre>
+                                                </div>
+                                            </div>
+                                            
+                                            <button type="submit" class="btn btn-primary mt-3">
+                                                <i class="fas fa-network-wired"></i> Create Service
+                                            </button>
+                                        </form>
+                                    </div>
+                                    
+                                    <!-- List Services Tab -->
+                                    <div class="tab-pane fade  show active" id="list" role="tabpanel" aria-labelledby="list-tab">
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <div class="form-group mb-0">
+                                                <select class="form-control" id="namespaceFilter" style="width: 200px;">
+                                                    <option value="">All Namespaces</option>
+                                                    <option value="default">default</option>
+                                                    <option value="kube-system">kube-system</option>
+                                                </select>
+                                            </div>
+                                            <button id="refreshServices" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-sync-alt"></i> Refresh
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Namespace</th>
+                                                        <th>Type</th>
+                                                        <th>Cluster IP</th>
+                                                        <th>Ports</th>
+                                                        <th>Selector</th>
+                                                        <th>Age</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="servicesTableBody">
+                                                    <tr>
+                                                        <td colspan="8" class="text-center">
+                                                            <div class="spinner-border text-primary" role="status">
+                                                                <span class="sr-only">Loading...</span>
+                                                            </div>
+                                                            <p>Loading services...</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Service Actions Modals -->
+        <div class="modal fade" id="deleteServiceModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete Service</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete service <strong id="deleteServiceName"></strong> in namespace <strong id="deleteServiceNamespace"></strong>?</p>
+                        <div class="alert alert-warning">
+                            <strong>Warning:</strong> This will remove all network access to the associated pods.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="viewYamlModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Service YAML</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="yaml-container">
+                            <pre id="serviceYaml"></pre>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="copyYaml">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="chatbot-container">
+        <!-- Chatbot Toggle Button (Circle with Logo) -->
+        <div id="chatbot-toggle">
+            <img src="../assets/img/dockube3.png" alt="Chatbot Logo" width="50" height="50">
+        </div>
+      
+        <!-- Chatbot Interface (Hidden by Default) -->
+       
+      <div id="chatbot-interface" style="display: none;">
+        <!-- Chat Header -->
+        <div id="chat-header">
+            <strong>
+                <img src="../assets/img/dockube3.png" alt="Logo">
+                Docker & Kubernetes Assistant
+            </strong>
+            <button id="chat-close">×</button>
+        </div>
+      
+        <!-- Chat Body -->
+        <div id="chat-body">
+            <div id="chat-messages">
+                <!-- Welcome Message -->
+                <div class="welcome-message" onclick="toggleWelcomeMessage()">
+                    👋 Welcome! I'm your Docker & Kubernetes Assistant.
+                    Ask me anything about Docker, Kubernetes, and best practices.
+                    <div class="hidden-content">
+                        Hi! I'm your Docker & Kubernetes Assistant.  
+                        Ask me anything about services, Kubernetes configurations, and best practices.
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <!-- Chat Input -->
+        <div id="chat-input">
+            <input type="text" id="chat-message" placeholder="Type your question...">
+            <button id="chat-send">Send</button>
+        </div>
+      </div>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotInterface = document.getElementById('chatbot-interface');
+            const chatClose = document.getElementById('chat-close');
+            const chatBody = document.getElementById('chat-body');
+            const chatMessages = document.getElementById('chat-messages');
+            const chatMessageInput = document.getElementById('chat-message');
+            const chatSendButton = document.getElementById('chat-send');
+      
+            // Toggle Chat Interface
+            chatbotToggle.addEventListener('click', () => {
+                chatbotInterface.style.display = 'block';
+            });
+      
+            // Close Chat Interface
+            chatClose.addEventListener('click', () => {
+                chatbotInterface.style.display = 'none';
+            });
+      
+            // Send Message to Chatbot
+            chatSendButton.addEventListener('click', async () => {
+                const message = chatMessageInput.value.trim();
+                if (message) {
+                    // Add User Message to Chat
+                    chatMessages.innerHTML += `<div class="message"><strong>You:</strong> ${message}</div>`;
+                    chatMessageInput.value = '';
+      
+                    // Show Loading Spinner
+                    chatMessages.innerHTML += `<div id="loading-spinner">Loading...</div>`;
+      
+                    // Call Backend API
+                    try {
+                        const response = await fetch('/api/chat', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ message })
+                        });
+                        const data = await response.json();
+      
+                        // Remove Loading Spinner and Add Bot Response
+                        document.getElementById('loading-spinner').remove();
+                        chatMessages.innerHTML += `<div class="message"><strong>Assistant:</strong> ${data.response}</div>`;
+                    } catch (error) {
+                        console.error('Error:', error);
+                        chatMessages.innerHTML += `<div class="message"><strong>Error:</strong> Failed to get response.</div>`;
+                    }
+      
+                    // Scroll to Bottom of Chat
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }
+            });
+      
+            // Allow Pressing "Enter" to Send a Message
+            chatMessageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    chatSendButton.click();
+                }
+            });
+        });
+      </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Complete step information database
+      const stepInfo = {
+          1: {
+              metaphor: "Like building the airport before planes can land",
+              whatIs: "The Kubernetes cluster is the foundation that runs your applications. It's the combination of control plane (management) and worker nodes (where workloads run).",
+              whyImportant: "Without a cluster, you have nowhere to deploy your applications. This is like having apps but no phone to run them on.",
+              visual: '<div class="cluster-visual"><div class="control-plane"><i class="fas fa-cog"></i> Control Plane</div><div class="worker-nodes"><div class="node"><i class="fas fa-server"></i> Node</div><div class="node"><i class="fas fa-server"></i> Node</div></div></div>'
+          },
+          2: {
+              metaphor: "The worker bees in your cluster hive",
+              whatIs: "Nodes are the worker machines (VMs or physical servers) that run your applications. They're managed by the control plane and can be added or removed as needed.",
+              whyImportant: "More nodes mean more capacity to run applications. Like adding more chefs to a kitchen to handle more orders. Healthy nodes ensure your applications run smoothly.",
+              visual: '<div class="nodes-visual"><div class="node healthy"><i class="fas fa-server"></i> Worker 1</div><div class="node healthy"><i class="fas fa-server"></i> Worker 2</div><div class="node warning"><i class="fas fa-server"></i> Worker 3</div></div>'
+          },
+          3: {
+              metaphor: "Like different floors in an office building",
+              whatIs: "Namespaces provide virtual clusters within your physical cluster, isolating resources between teams, projects, or environments (dev/test/prod).",
+              whyImportant: "Prevents naming collisions and provides logical separation, like having separate departments in a company. Essential for multi-team environments and resource quotas.",
+              visual: '<div class="namespaces-visual"><div class="namespace prod"><i class="fas fa-building"></i> Production</div><div class="namespace dev"><i class="fas fa-code"></i> Development</div><div class="namespace test"><i class="fas fa-flask"></i> Testing</div></div>'
+          },
+          4: {
+              metaphor: "The configuration vault of your applications",
+              whatIs: "ConfigMaps store configuration data as key-value pairs, while Secrets store sensitive information like passwords and API keys in encrypted form.",
+              whyImportant: "Separates configuration from application code, making your applications more portable and secure. Like having a secure filing cabinet separate from your work desk.",
+              visual: '<div class="configs-visual"><div class="config"><i class="fas fa-file-alt"></i> ConfigMap<br><small>database.url</small></div><div class="secret"><i class="fas fa-lock"></i> Secret<br><small>db-password</small></div></div>'
+          },
+          5: {
+              metaphor: "Your cluster's permanent storage locker",
+              whatIs: "Persistent Volumes (PVs) and Persistent Volume Claims (PVCs) provide durable storage that survives pod restarts, unlike ephemeral container storage.",
+              whyImportant: "Essential for stateful applications like databases. Like having a permanent locker in school versus temporary desk space that gets cleared daily.",
+              visual: '<div class="storage-visual"><div class="pvc"><i class="fas fa-hdd"></i> PVC Request</div><div class="arrow">→</div><div class="pv"><i class="fas fa-database"></i> PV Storage</div></div>'
+          },
+          6: {
+    metaphor: "The blueprint and foreman for your applications",
+    whatIs: "Deployments manage stateless applications with rolling updates, while StatefulSets manage stateful applications with stable identities and ordered operations.",
+    whyImportant: "Ensures your applications run with the desired replicas and update strategy. Deployments for stateless apps, StatefulSets for databases and ordered workloads.",
+    visual: '<div class="workload-visual">' +
+            '<div class="workload-option" data-target="/kubernetes/deployments">' +
+            '<i class="fas fa-copy"></i> Deployments' +
+            '</div>' +
+            '<div class="workload-option" data-target="/kubernetes/statefulsets">' +
+            '<i class="fas fa-list-ol"></i> StatefulSets' +
+            '</div></div>'
+  },
+          7: {
+              metaphor: "The individual hotel rooms for your containers",
+              whatIs: "Pods are the smallest deployable units in Kubernetes, containing one or more containers that share storage and network resources.",
+              whyImportant: "Your actual running application instances. Like individual hotel rooms that contain all the amenities (containers) needed for a guest (application) to function.",
+              visual: '<div class="pods-visual"><div class="pod"><div class="container"><i class="fas fa-box"></i> app</div><div class="container"><i class="fas fa-shield-alt"></i> sidecar</div></div><div class="pod single"><div class="container"><i class="fas fa-box"></i> app</div></div></div>'
+          },
+          8: {
+              metaphor: "The front desk and concierge service",
+              whatIs: "Services provide stable IP addresses and DNS names to access groups of pods, and can expose applications internally or to the outside world.",
+              whyImportant: "Provides reliable access to your applications even as individual pods come and go. Like having a hotel front desk that always knows which rooms are occupied.",
+              visual: '<div class="services-visual"><div class="service"><i class="fas fa-exchange-alt"></i> ClusterIP</div><div class="service"><i class="fas fa-sign-out-alt"></i> NodePort</div><div class="service"><i class="fas fa-globe"></i> LoadBalancer</div></div>'
+          },
+           9: {
+        metaphor: "The gateway and traffic controller",
+        whatIs: "Ingress manages external access to your services, typically HTTP/HTTPS, with host and path-based routing rules. It acts as a smart router for your cluster.",
+        whyImportant: "Provides a single entry point for multiple services, enables name-based virtual hosting, and can handle SSL termination. Like having a receptionist who directs visitors to the right department.",
+        visual: '<div class="ingress-visual"><div class="ingress"><i class="fas fa-globe"></i> Ingress</div><div class="arrows">⇩ ⇩ ⇩</div><div class="services-visual"><div class="service"><i class="fas fa-exchange-alt"></i> Service A</div><div class="service"><i class="fas fa-exchange-alt"></i> Service B</div><div class="service"><i class="fas fa-exchange-alt"></i> Service C</div></div></div>'
+    }
+      };
+  
+      // Initialize the stepper
+      const steps = document.querySelectorAll('.stepper-steps .step');
+      const progressBar = document.querySelector('.stepper-progress-bar');
+      const currentPath = window.location.pathname;
+      let currentStepIndex = 0;
+      
+      // Set total steps counter
+      document.getElementById('totalSteps').textContent = steps.length;
+      
+     // Find current step based on URL
+  steps.forEach((step, index) => {
+      const stepRoute = step.getAttribute('data-route');
+      // Check for both deployments and statefulsets under step 6
+      if (currentPath.includes(stepRoute) || 
+          (index === 5 && (currentPath.includes('/kubernetes/deployments') || 
+                          currentPath.includes('/kubernetes/statefulsets')))) {
+          currentStepIndex = index;
+          activateStep(step, index + 1);
+      }
+      
+      // Add click handler
+      step.addEventListener('click', function() {
+          navigateToStep(index);
+      });
+  });
+      
+      // Next/Previous button handlers
+      document.getElementById('nextStepBtn').addEventListener('click', function() {
+          if (currentStepIndex < steps.length - 1) {
+              navigateToStep(currentStepIndex + 1);
+          }
+      });
+      
+      document.getElementById('prevStepBtn').addEventListener('click', function() {
+          if (currentStepIndex > 0) {
+              navigateToStep(currentStepIndex - 1);
+          }
+      });
+      
+      // Update the navigateToStep function
+  function navigateToStep(index) {
+    const step = steps[index];
+    let route = step.getAttribute('data-route');
+    
+    // Special handling for Workloads step
+    if (index === 5) { // Step 6 is index 5 (0-based)
+        // Default to Deployments if coming from previous step
+        if (currentStepIndex < index) {
+            route = "/kubernetes/deployments";
+        } 
+        // If coming from next step, go to StatefulSets
+        else if (currentStepIndex > index) {
+            route = "/kubernetes/statefulsets";
+        }
+    }
+    
+    window.location.href = route;
+  }
+      
+  function activateStep(step, stepNumber) {
+      // Update UI
+      steps.forEach(s => {
+          s.classList.remove('active', 'completed');
+          const sNumber = parseInt(s.getAttribute('data-step'));
+          if (sNumber < stepNumber) {
+              s.classList.add('completed');
+          }
+      });
+      
+      step.classList.add('active');
+      
+      // Update progress bar
+      const progressPercentage = ((stepNumber - 1) / (steps.length - 1)) * 100;
+      progressBar.style.width = `${progressPercentage}%`;
+      
+      // Update step counter
+      document.getElementById('currentStepNumber').textContent = stepNumber;
+      
+      // Update explanation panel
+      if (stepInfo[stepNumber]) {
+          // Special handling for Workloads step
+          if (stepNumber === 6) {
+              if (window.location.pathname.includes('/kubernetes/statefulsets')) {
+                  document.getElementById('currentStepMetaphor').textContent = "The specialized blueprint for stateful applications";
+                  document.getElementById('whatIsThis').textContent = "StatefulSets manage stateful applications that need stable network identities, persistent storage, and ordered deployment/scaling.";
+                  document.getElementById('whyImportant').textContent = "Essential for databases and other stateful applications where pod order and persistence matter. Like having numbered parking spots where each car always gets the same spot.";
+                  document.querySelector('.visual-placeholder').innerHTML = '<div class="statefulset-visual"><div class="pod"><i class="fas fa-database"></i> db-0</div><div class="pod"><i class="fas fa-database"></i> db-1</div><div class="pod"><i class="fas fa-database"></i> db-2</div></div>';
+              } else {
+                  // Default to Deployments view
+                  document.getElementById('currentStepMetaphor').textContent = stepInfo[stepNumber].metaphor;
+                  document.getElementById('whatIsThis').textContent = stepInfo[stepNumber].whatIs;
+                  document.getElementById('whyImportant').textContent = stepInfo[stepNumber].whyImportant;
+                  document.querySelector('.visual-placeholder').innerHTML = stepInfo[stepNumber].visual;
+              }
+          } else {
+              // Normal step handling
+              document.getElementById('currentStepMetaphor').textContent = stepInfo[stepNumber].metaphor;
+              document.getElementById('whatIsThis').textContent = stepInfo[stepNumber].whatIs;
+              document.getElementById('whyImportant').textContent = stepInfo[stepNumber].whyImportant;
+              document.querySelector('.visual-placeholder').innerHTML = stepInfo[stepNumber].visual;
+          }
+      }
+      
+      // Add click handlers for workload options
+      if (stepNumber === 6) {
+          document.querySelectorAll('.workload-option').forEach(option => {
+              option.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  window.location.href = this.getAttribute('data-target');
+              });
+          });
+      }
+      
+      // Update navigation buttons
+      document.getElementById('prevStepBtn').disabled = stepNumber === 1;
+      document.getElementById('nextStepBtn').disabled = stepNumber === steps.length;
+  }
+  });
+  </script>
+
+      <script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.min.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.min.css" />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Service type change handler
+            document.getElementById('serviceType').addEventListener('change', function() {
+                const externalNameContainer = document.getElementById('externalNameContainer');
+                externalNameContainer.style.display = this.value === 'ExternalName' ? 'block' : 'none';
+                updateYamlPreview();
+            });
+            
+            // Deployment selector change handler
+            document.getElementById('deploymentSelector').addEventListener('change', function() {
+                const customSelectorContainer = document.getElementById('customSelectorContainer');
+                if (this.value) {
+                    customSelectorContainer.style.display = 'none';
+                    const deployment = JSON.parse(this.value);
+                    updateSelectorFromDeployment(deployment);
+                } else {
+                    customSelectorContainer.style.display = 'block';
+                    clearSelectors();
+                }
+                updateYamlPreview();
+            });
+            
+            // Port management
+            document.getElementById('addPort').addEventListener('click', function() {
+                addPortRow();
+                updateYamlPreview();
+            });
+            
+            // Selector label management
+            document.getElementById('addSelector').addEventListener('click', function() {
+                addSelectorRow();
+                updateYamlPreview();
+            });
+            
+            // YAML preview toggle
+            document.getElementById('showYamlPreview').addEventListener('change', function() {
+                const yamlContainer = document.getElementById('yamlPreviewContainer');
+                yamlContainer.style.display = this.checked ? 'block' : 'none';
+                if (this.checked) {
+                    updateYamlPreview();
+                }
+            });
+            
+            // Form submission
+            document.getElementById('createServiceForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                createService();
+            });
+            
+            // Refresh services
+            document.getElementById('refreshServices').addEventListener('click', function() {
+                loadServices();
+            });
+            
+            // Namespace filter
+            document.getElementById('namespaceFilter').addEventListener('change', function() {
+                loadServices();
+            });
+            
+            // Delete service modal
+            document.getElementById('confirmDelete').addEventListener('click', function() {
+                deleteService(currentServiceName, currentServiceNamespace);
+                $('#deleteServiceModal').modal('hide');
+            });
+            
+            // Copy YAML button
+            document.getElementById('copyYaml').addEventListener('click', function() {
+                const yamlText = document.getElementById('serviceYaml').textContent;
+                navigator.clipboard.writeText(yamlText).then(() => {
+                    Swal.fire({
+        title: 'Success',
+        text: 'YAML copied to clipboard!',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        timer: 1500
+    });                });
+            });
+            
+            // Load initial data
+            loadNamespaces();
+            loadDeploymentsForSelector();
+            loadServices();
+            addPortRow(); 
+            addSelectorRow(); 
+        });
+        
+        // Global variables for current service context
+        let currentServiceName = '';
+        let currentServiceNamespace = '';
+        
+        function addPortRow() {
+            const portsContainer = document.getElementById('portsContainer');
+            const portRow = document.createElement('div');
+            portRow.className = 'port-row row';
+            portRow.innerHTML = `
+            <div class="col-3">
+    <input type="text" class="form-control" placeholder="Name" name="portName" required>
+</div>
+                <div class="col-3">
+                    <input type="number" class="form-control" placeholder="Port" name="port" required>
+                </div>
+                <div class="col-3">
+                    <input type="number" class="form-control" placeholder="Target Port" name="targetPort" required>
+                </div>
+                <div class="col-3">
+                    <input type="text" class="form-control" placeholder="Protocol" name="protocol" value="TCP">
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-port">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            portsContainer.appendChild(portRow);
+            
+            // Enable all remove buttons except the first one
+            const removeButtons = document.querySelectorAll('.remove-port');
+            if (removeButtons.length > 1) {
+                removeButtons.forEach(btn => btn.disabled = false);
+            }
+            
+            // Add event listener to the new remove button
+            portRow.querySelector('.remove-port').addEventListener('click', function() {
+                portsContainer.removeChild(portRow);
+                updateYamlPreview();
+                
+                // Disable remove button if only one row left
+                if (document.querySelectorAll('.port-row').length === 1) {
+                    document.querySelector('.remove-port').disabled = true;
+                }
+            });
+            
+            // Add input listeners for YAML preview
+            portRow.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', updateYamlPreview);
+            });
+        }
+        
+        function addSelectorRow() {
+            const selectorContainer = document.getElementById('selectorLabelsContainer');
+            const selectorRow = document.createElement('div');
+            selectorRow.className = 'row mb-2';
+            selectorRow.innerHTML = `
+                <div class="col-5">
+                    <input type="text" class="form-control" placeholder="Key" name="selectorKey">
+                </div>
+                <div class="col-5">
+                    <input type="text" class="form-control" placeholder="Value" name="selectorValue">
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-selector">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            selectorContainer.appendChild(selectorRow);
+            
+            // Enable all remove buttons except the first one
+            const removeButtons = document.querySelectorAll('.remove-selector');
+            if (removeButtons.length > 1) {
+                removeButtons.forEach(btn => btn.disabled = false);
+            }
+            
+            // Add event listener to the new remove button
+            selectorRow.querySelector('.remove-selector').addEventListener('click', function() {
+                selectorContainer.removeChild(selectorRow);
+                updateYamlPreview();
+                
+                // Disable remove button if only one row left
+                if (document.querySelectorAll('#selectorLabelsContainer .row').length === 1) {
+                    document.querySelector('.remove-selector').disabled = true;
+                }
+            });
+            
+            // Add input listeners for YAML preview
+            selectorRow.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', updateYamlPreview);
+            });
+        }
+        
+        function clearSelectors() {
+            const selectorContainer = document.getElementById('selectorLabelsContainer');
+            selectorContainer.innerHTML = '';
+            addSelectorRow(); 
+        }
+        
+        function updateSelectorFromDeployment(deployment) {
+            const selector = deployment.spec.selector.matchLabels;
+            clearSelectors();
+            
+            for (const [key, value] of Object.entries(selector)) {
+                addSelectorRow();
+                const rows = document.querySelectorAll('#selectorLabelsContainer .row');
+                const lastRow = rows[rows.length - 1];
+                lastRow.querySelector('[name="selectorKey"]').value = key;
+                lastRow.querySelector('[name="selectorValue"]').value = value;
+            }
+            
+            updateYamlPreview();
+        }
+        
+        function updateYamlPreview() {
+            const serviceName = document.getElementById('serviceName').value || 'example-service';
+            const namespace = document.getElementById('namespace').value || 'default';
+            const serviceType = document.getElementById('serviceType').value || 'ClusterIP';
+            const externalName = document.getElementById('externalName').value;
+            
+            // Collect selectors
+            const selectors = {};
+            document.querySelectorAll('#selectorLabelsContainer .row').forEach(row => {
+                const key = row.querySelector('[name="selectorKey"]').value;
+                const value = row.querySelector('[name="selectorValue"]').value;
+                if (key) {
+                    selectors[key] = value;
+                }
+            });
+            
+            // Collect ports
+            const ports = [];
+            document.querySelectorAll('.port-row').forEach(row => {
+                const port = row.querySelector('[name="port"]').value;
+                const targetPort = row.querySelector('[name="targetPort"]').value;
+                const protocol = row.querySelector('[name="protocol"]').value;
+                if (port && targetPort) {
+                    ports.push({
+                        port: parseInt(port),
+                        targetPort: parseInt(targetPort),
+                        protocol: protocol || 'TCP'
+                    });
+                }
+            });
+            
+            // Generate YAML
+            let yaml = `apiVersion: v1
+kind: Service
+metadata:
+  name: ${serviceName}
+  namespace: ${namespace}
+spec:
+  type: ${serviceType}
+`;
+            
+            if (serviceType === 'ExternalName' && externalName) {
+                yaml += `  externalName: ${externalName}\n`;
+            } else {
+                if (Object.keys(selectors).length > 0) {
+                    yaml += `  selector:\n`;
+                    for (const [key, value] of Object.entries(selectors)) {
+                        yaml += `    ${key}: ${value}\n`;
+                    }
+                }
+                
+                if (ports.length > 0) {
+                    yaml += `  ports:\n`;
+                    ports.forEach(port => {
+                        yaml += `  - port: ${port.port}\n`;
+                        yaml += `    targetPort: ${port.targetPort}\n`;
+                        if (port.protocol !== 'TCP') {
+                            yaml += `    protocol: ${port.protocol}\n`;
+                        }
+                    });
+                }
+            }
+            
+            document.getElementById('yamlPreview').textContent = yaml;
+        }
+        
+        function createService() {
+            const serviceName = document.getElementById('serviceName').value;
+            const namespace = document.getElementById('namespace').value;
+            const serviceType = document.getElementById('serviceType').value;
+            const externalName = document.getElementById('externalName').value;
+            
+            // Collect selectors
+            const selectors = {};
+            document.querySelectorAll('#selectorLabelsContainer .row').forEach(row => {
+                const key = row.querySelector('[name="selectorKey"]').value;
+                const value = row.querySelector('[name="selectorValue"]').value;
+                if (key) {
+                    selectors[key] = value;
+                }
+            });
+            
+            // Collect ports
+            const ports = [];
+            document.querySelectorAll('.port-row').forEach(row => {
+                const port = row.querySelector('[name="port"]').value;
+                const targetPort = row.querySelector('[name="targetPort"]').value;
+                const protocol = row.querySelector('[name="protocol"]').value;
+                if (port && targetPort) {
+                    ports.push({
+                        port: parseInt(port),
+                        targetPort: parseInt(targetPort),
+                        protocol: protocol || 'TCP'
+                    });
+                }
+            });
+            
+            // Prepare service data
+            const serviceData = {
+                serviceName,
+                namespace,
+                serviceType,
+                externalName,
+                selectors,
+                ports
+            };
+            
+            // Show loading state
+            Swal.fire({
+    title: 'Creating Service',
+    text: `Creating service ${serviceName} in namespace ${namespace}...`,
+    icon: 'info',
+    showConfirmButton: false,
+    timer: 2000
+});            
+            // Send to API
+            fetch('/kubernetes/services/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(serviceData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+    title: 'Success',
+    text: `Service ${serviceName} created successfully`,
+    icon: 'success',
+    confirmButtonText: 'OK',
+    timer: 1500
+});                    // Switch to list tab and refresh
+                    document.getElementById('list-tab').click();
+                    loadServices();
+                } else {
+                    Swal.fire({
+    title: 'Error',
+    text: `Failed to create service: ${data.error}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});                }
+            })
+            .catch(error => {
+                Swal.fire({
+        title: 'Error',
+        text: `Failed to create service: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });            });
+        }
+        
+        function loadNamespaces() {
+            fetch('http://localhost:5000//kubernetes/namespaces')
+            .then(response => response.json())
+            .then(data => {
+                if (data.items && data.items.length > 0) {
+                    const namespaceSelect = document.getElementById('namespace');
+                    const namespaceFilter = document.getElementById('namespaceFilter');
+                    
+                    // Clear existing options except the first one
+                    while (namespaceSelect.options.length > 2) {
+                        namespaceSelect.remove(2);
+                    }
+                    while (namespaceFilter.options.length > 1) {
+                        namespaceFilter.remove(1);
+                    }
+                    
+                    // Add new options
+                    data.items.forEach(ns => {
+                        if (ns.metadata.name !== 'default' && ns.metadata.name !== 'kube-system') {
+                            const option = document.createElement('option');
+                            option.value = ns.metadata.name;
+                            option.textContent = ns.metadata.name;
+                            namespaceSelect.appendChild(option.cloneNode(true));
+                            namespaceFilter.appendChild(option);
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error loading namespaces:', error);
+            });
+        }
+        
+        function loadDeploymentsForSelector() {
+            fetch('http://localhost:5000//kubernetes/deployments')
+            .then(response => response.json())
+            .then(data => {
+                if (data.items && data.items.length > 0) {
+                    const deploymentSelector = document.getElementById('deploymentSelector');
+                    
+                    // Clear existing options except the first one
+                    while (deploymentSelector.options.length > 1) {
+                        deploymentSelector.remove(1);
+                    }
+                    
+                    // Add new options
+                    data.items.forEach(deployment => {
+                        const option = document.createElement('option');
+                        option.value = JSON.stringify(deployment);
+                        option.textContent = `${deployment.metadata.name} (${deployment.metadata.namespace})`;
+                        deploymentSelector.appendChild(option);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error loading deployments:', error);
+            });
+        }
+        
+        function loadServices() {
+            const namespaceFilter = document.getElementById('namespaceFilter').value;
+            const servicesTableBody = document.getElementById('servicesTableBody');
+            
+            servicesTableBody.innerHTML = `
+                <tr>
+                    <td colspan="8" class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <p>Loading services...</p>
+                    </td>
+                </tr>
+            `;
+            
+            let apiUrl = 'http://localhost:5000//kubernetes/services';
+            if (namespaceFilter) {
+                apiUrl += `?namespace=${namespaceFilter}`;
+            }
+            
+            fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.items && data.items.length > 0) {
+                    servicesTableBody.innerHTML = data.items.map(service => {
+                        const type = service.spec.type;
+                        let typeBadgeClass = '';
+                        switch (type) {
+                            case 'ClusterIP': typeBadgeClass = 'cluster-ip'; break;
+                            case 'NodePort': typeBadgeClass = 'node-port'; break;
+                            case 'LoadBalancer': typeBadgeClass = 'load-balancer'; break;
+                            case 'ExternalName': typeBadgeClass = 'external-name'; break;
+                            default: typeBadgeClass = 'bg-primary';
+                        }
+                        
+                        // Format ports
+                        let portsHtml = '';
+                        if (service.spec.ports) {
+                            service.spec.ports.forEach(port => {
+                                let portStr = `${port.port}`;
+                                if (port.targetPort) {
+                                    portStr += `:${port.targetPort}`;
+                                }
+                                if (port.protocol && port.protocol !== 'TCP') {
+                                    portStr += `/${port.protocol}`;
+                                }
+                                if (port.nodePort && type === 'NodePort') {
+                                    portStr += ` (Node:${port.nodePort})`;
+                                }
+                                portsHtml += `<div class="port-mapping">${portStr}</div>`;
+                            });
+                        }
+                        
+                        // Format selector
+                        let selectorHtml = '';
+                        if (service.spec.selector) {
+                            for (const [key, value] of Object.entries(service.spec.selector)) {
+                                selectorHtml += `<span class="badge selector-badge bg-light text-dark">${key}=${value}</span>`;
+                            }
+                        } else if (service.spec.type === 'ExternalName') {
+                            selectorHtml = '<span class="badge selector-badge bg-light text-dark">External: ' + service.spec.externalName + '</span>';
+                        }
+                        
+                        const age = timeSince(new Date(service.metadata.creationTimestamp));
+                        
+                        return `
+                            <tr>
+                                <td>${service.metadata.name}</td>
+                                <td>${service.metadata.namespace}</td>
+                                <td><span class="badge service-type-badge ${typeBadgeClass}">${type}</span></td>
+                                <td>${service.spec.clusterIP || '-'}</td>
+                                <td>${portsHtml || '-'}</td>
+                                <td>${selectorHtml || '-'}</td>
+                                <td>${age}</td>
+                                <td>
+  <div class="action-buttons">
+    <button class="action-btn btn-yaml" onclick="showServiceYaml('${service.metadata.name}', '${service.metadata.namespace}')"
+            data-tooltip="View YAML">
+      <i class="fas fa-code"></i> YAML
+    </button>
+    <button class="action-btn btn-delete" onclick="showDeleteModal('${service.metadata.name}', '${service.metadata.namespace}')"
+            data-tooltip="Delete service">
+      <i class="fas fa-trash-alt"></i> Delete
+    </button>
+  </div>
+</td>
+                            </tr>
+                        `;
+                    }).join('');
+                } else {
+                    servicesTableBody.innerHTML = `
+                        <tr>
+                            <td colspan="8" class="text-center">No services found</td>
+                        </tr>
+                    `;
+                }
+            })
+            .catch(error => {
+                servicesTableBody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="text-center text-danger">Error loading services: ${error.message}</td>
+                    </tr>
+                `;
+            });
+        }
+        
+        function showDeleteModal(serviceName, namespace) {
+            currentServiceName = serviceName;
+            currentServiceNamespace = namespace;
+            
+            document.getElementById('deleteServiceName').textContent = serviceName;
+            document.getElementById('deleteServiceNamespace').textContent = namespace;
+            
+            $('#deleteServiceModal').modal('show');
+        }
+        
+        function showServiceYaml(serviceName, namespace) {
+            fetch(`/kubernetes/services/yaml?name=${serviceName}&namespace=${namespace}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.yaml) {
+                    document.getElementById('serviceYaml').textContent = data.yaml;
+                    $('#viewYamlModal').modal('show');
+                } else {
+                    Swal.fire({
+    title: 'Error',
+    text: `Failed to load YAML: ${data.error}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});                }
+            })
+            .catch(error => {
+                Swal.fire({
+        title: 'Error',
+        text: `Failed to load YAML: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });            });
+        }
+        
+        function deleteService(serviceName, namespace) {
+            Swal.fire({
+    title: 'Deleting Service',
+    text: `Deleting service ${serviceName} in namespace ${namespace}...`,
+    icon: 'info',
+    showConfirmButton: false,
+    timer: 2000
+});            
+            fetch('/kubernetes/services/delete', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    serviceName,
+                    namespace
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+    title: 'Success',
+    text: `Service ${serviceName} deleted successfully`,
+    icon: 'success',
+    confirmButtonText: 'OK',
+    timer: 1500
+});                    loadServices();
+                } else {
+                    Swal.fire({
+    title: 'Error',
+    text: `Failed to delete service: ${data.error}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});                }
+            })
+            .catch(error => {
+                Swal.fire({
+        title: 'Error',
+        text: `Failed to delete service: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });            });
+        }
+        
+        // Utility functions
+        function timeSince(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            
+            let interval = Math.floor(seconds / 31536000);
+            if (interval >= 1) return `${interval}y`;
+            
+            interval = Math.floor(seconds / 2592000);
+            if (interval >= 1) return `${interval}mo`;
+            
+            interval = Math.floor(seconds / 86400);
+            if (interval >= 1) return `${interval}d`;
+            
+            interval = Math.floor(seconds / 3600);
+            if (interval >= 1) return `${interval}h`;
+            
+            interval = Math.floor(seconds / 60);
+            if (interval >= 1) return `${interval}m`;
+            
+            return `${Math.floor(seconds)}s`;
+        }
+        
+      
+   
+   </script>
+
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="../assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Google Maps Plugin -->
+    <script src="../assets/js/plugin/gmaps/gmaps.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="../assets/js/kaiadmin.min.js"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="../assets/js/setting-demo2.js"></script>
+	<script src="/assets/js/script.js"></script>
+  <script>
+    function logout() {
+            Swal.fire({
+                title: 'Logout Confirmation',
+                text: 'Are you sure you want to log out?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#326ce5',
+                cancelButtonColor: '#ff6666',
+                confirmButtonText: 'Yes, log out'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.clear();
+                    window.location.replace("/login");
+                }
+            });
+        }
+  </script>
+<script>
+  function recherche() {
+    var input, filter, items, item, name, i, txtValue;
+    input = document.getElementById("searchInput"); 
+    filter = input.value.toUpperCase();
+    items = document.getElementsByClassName("service-item"); // Target list items
+
+    for (i = 0; i < items.length; i++) {
+        item = items[i];
+        name = item.querySelector(".service-name"); // Target the service name
+        if (name) {
+            txtValue = name.textContent || name.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                item.style.display = "flex"; // Show the item (flex for the list layout)
+            } else {
+                item.style.display = "none"; // Hide the item
+            }
+        }
+    }
+  }
+</script>
+</body>
+
+</html>

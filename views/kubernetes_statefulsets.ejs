@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Kubernetes StatefulSets</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <link rel="icon" href="../assets/img/dockube3.png" type="image/x-icon" />
+    <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.min.css">
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.all.min.js"></script>
+<link rel="stylesheet" href="../assets/css/kubernetes_statefulset.css">
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["../assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<!-- Bootstrap 4 -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+          <div class="sidebar-logo">
+              <!-- Logo Header -->
+              <div class="logo-header" data-background-color="dark">
+                  <a href="/" class="logo" style="display: flex; align-items: center;">
+                      <img src="../assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" height="40" />
+                      <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+                  </a>
+                  <div class="nav-toggle">
+                      <button class="btn btn-toggle toggle-sidebar">
+                          <i class="gg-menu-right"></i>
+                      </button>
+                      <button class="btn btn-toggle sidenav-toggler">
+                          <i class="gg-menu-left"></i>
+                      </button>
+                  </div>
+                  <button class="topbar-toggler more">
+                      <i class="gg-more-vertical-alt"></i>
+                  </button>
+              </div>
+              <!-- End Logo Header -->
+          </div>
+          <div class="sidebar-wrapper scrollbar scrollbar-inner">
+            <div class="sidebar-content">
+              <ul class="nav nav-secondary">
+                <li class="nav-item">
+                  <a href="/" aria-expanded="false">
+                    <i class="fas fa-tachometer-alt"></i> <!-- Dashboard icon -->
+                    <p>Dashboard</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerRegistries">
+                    <i class="fas fa-warehouse"></i> <!-- Registry icon -->
+                    <p>Docker Registries</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerfile_list">
+                    <i class="fas fa-file-code"></i> <!-- Code file icon for Dockerfile -->
+                    <p>Dockerfile</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerimg">
+                    <i class="fas fa-images"></i> <!-- Images icon -->
+                    <p>Docker Images</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockercontainers">
+                    <i class="fas fa-box"></i> <!-- Box icon for containers -->
+                    <p>Docker Containers</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/volumes">
+                    <i class="fas fa-database"></i> <!-- Database icon for Volumes -->
+                    <p>Volumes</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/compose">
+                    <i class="fas fa-cubes"></i> <!-- Stacked cubes for Compose -->
+                    <p>Docker Compose</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/swarm_list">
+                        <i class="fas fa-project-diagram"></i> <!-- Stacked cubes for Compose -->
+                      <p>Docker Swarm</p>
+                    </a>
+                  </li>
+<li class="nav-item active">
+    <a data-bs-toggle="collapse" href="#kubernetesMenu" aria-expanded="false">
+        <i class="fas fa-dharmachakra"></i>
+        <p>Kubernetes</p>
+        <span class="caret"></span>
+    </a>
+    <div class="collapse" id="kubernetesMenu">
+        <ul class="nav nav-collapse">
+            <li>
+                <a href="/kubernetes/cluster">
+                    <span class="sub-item">Cluster Setup</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/nodes">
+                    <span class="sub-item">Nodes</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/deployments">
+                    <span class="sub-item">Deployments</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/statefulsets">
+                    <span class="sub-item">StatefulSets</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/services">
+                    <span class="sub-item">Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/pods">
+                    <span class="sub-item">Pods</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/pvcs">
+                    <span class="sub-item">Storage</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/configs">
+                    <span class="sub-item">ConfigMaps && Secrets</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/namespaces">
+                    <span class="sub-item">Namespaces</span>
+                </a>
+            </li>
+             <li>
+                <a href="/kubernetes/ingresses">
+                    <span class="sub-item">Ingresses</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<li class="nav-item">
+  <a href="/cicd_integration">
+    <i class="fas fa-sync-alt"></i>
+    <p>CI CD</p>
+  </a>
+</li>
+                <li class="nav-item">
+                  <a data-bs-toggle="collapse" href="#" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> <!-- Logout icon -->
+                    <p>Logout</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <!-- End Sidebar -->
+      <div class="main-panel">
+          <div class="main-header">
+              <div class="main-header-logo">
+                  <!-- Logo Header -->
+                  <div class="logo-header" data-background-color="dark">
+                      <a href="../index.html" class="logo">
+                          <img src="../assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" />
+                      </a>
+                      <div class="nav-toggle">
+                          <button class="btn btn-toggle toggle-sidebar">
+                              <i class="gg-menu-right"></i>
+                          </button>
+                          <button class="btn btn-toggle sidenav-toggler">
+                              <i class="gg-menu-left"></i>
+                          </button>
+                      </div>
+                      <button class="topbar-toggler more">
+                          <i class="gg-more-vertical-alt"></i>
+                      </button>
+                  </div>
+                  <!-- End Logo Header -->
+              </div>
+              <!-- Navbar Header -->
+              <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+                  <div class="container-fluid">
+                      <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+                          
+                      </nav>
+                      <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                          <li class="nav-item topbar-user dropdown hidden-caret">
+                              <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="/profile" aria-expanded="false">
+                                  <span class="profile-username">
+                                      <span class="op-7">Hi,</span>
+                                      <span class="fw-bold">Hizrian</span>
+                                  </span>
+                              </a>
+                              <ul class="dropdown-menu dropdown-user animated fadeIn">
+                                  <div class="dropdown-user-scroll scrollbar-outer">
+                                      <li>
+                                          <div class="user-box">
+                                              <div class="avatar-lg">
+                                                  <img src="../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded" />
+                                              </div>
+                                              <div class="u-text">
+                                                  <h4>Hizrian</h4>
+                                                  <p class="text-muted">hello@example.com</p>
+                                                  <a href="/profile" class="action-btn btn-blue1 btn-sm">Update Profile</a>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="dropdown-divider"></div>
+                                          <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                                      </li>
+                                  </div>
+                              </ul>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
+              <!-- Add Vis.js library -->
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<link href="https://unpkg.com/vis-network/styles/vis-network.min.css" rel="stylesheet" />
+              <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                      var user = JSON.parse(localStorage.getItem("user"));
+                      if (user) {
+                          document.querySelector(".profile-username .fw-bold").textContent = user.username;
+                          document.querySelector(".u-text h4").textContent = user.username;
+                          document.querySelector(".u-text .text-muted").textContent = user.email;
+                      }
+                  });
+              </script>
+              <!-- End Navbar -->
+          </div>
+          <div class="container">
+            <div class="card-body">
+              <!-- Kubernetes Creation Flow Stepper -->
+              <div class="kubernetes-flow-stepper mb-4">
+                  <div class="stepper-header">
+                      <h4>Kubernetes Creation Journey</h4>
+                      <p class="text-muted">Follow this guided path to successfully deploy your application</p>
+                  </div>
+                  
+                  <div class="stepper-container">
+                      <div class="stepper-progress">
+                          <div class="stepper-progress-bar" role="progressbar" style="width: 0%"></div>
+                      </div>
+                      
+                      <div class="stepper-steps">
+                          <!-- Cluster Setup -->
+                          <div class="step" data-step="1" data-route="/kubernetes/cluster">
+                              <div class="step-icon">
+                                  <i class="fas fa-server"></i>
+                              </div>
+                              <div class="step-label">Cluster</div>
+                              <div class="step-tooltip">
+                                  <strong>Cluster Setup</strong><br>
+                                  Your Kubernetes foundation - like building the airport before planes can land
+                              </div>
+                          </div>
+                          
+                          <!-- Nodes -->
+                          <div class="step" data-step="2" data-route="/kubernetes/nodes">
+                              <div class="step-icon">
+                                  <i class="fas fa-network-wired"></i>
+                              </div>
+                              <div class="step-label">Nodes</div>
+                              <div class="step-tooltip">
+                                  <strong>Nodes</strong><br>
+                                  The worker bees of your cluster - add more to handle heavier loads
+                              </div>
+                          </div>
+                          
+                          <!-- Namespaces -->
+                          <div class="step" data-step="3" data-route="/kubernetes/namespaces">
+                              <div class="step-icon">
+                                  <i class="fas fa-layer-group"></i>
+                              </div>
+                              <div class="step-label">Namespaces</div>
+                              <div class="step-tooltip">
+                                  <strong>Namespaces</strong><br>
+                                  Create departments in your cluster - keeps things organized like office floors
+                              </div>
+                          </div>
+                          
+                          <!-- ConfigMaps & Secrets -->
+                          <div class="step" data-step="4" data-route="/kubernetes/configs">
+                              <div class="step-icon">
+                                  <i class="fas fa-key"></i>
+                              </div>
+                              <div class="step-label">Configs</div>
+                              <div class="step-tooltip">
+                                  <strong>ConfigMaps & Secrets</strong><br>
+                                  The configuration vault - where you store settings and sensitive data
+                              </div>
+                          </div>
+                          
+                          <!-- Storage -->
+                          <div class="step" data-step="5" data-route="/kubernetes/pvcs">
+                              <div class="step-icon">
+                                  <i class="fas fa-database"></i>
+                              </div>
+                              <div class="step-label">Storage</div>
+                              <div class="step-tooltip">
+                                  <strong>Persistent Storage</strong><br>
+                                  Your cluster's hard drive - ensures data survives pod restarts
+                              </div>
+                          </div>
+                          
+                          <!-- Deployments/StatefulSets -->
+                          <div class="step" data-step="6" data-route="/kubernetes/deployments">
+                              <div class="step-icon">
+                                  <i class="fas fa-rocket"></i>
+                              </div>
+                              <div class="step-label">Workloads</div>
+                              <div class="step-tooltip">
+                                  <strong>Deployments/StatefulSets</strong><br>
+                                  Blueprint for your application - defines how many copies to run
+                              </div>
+                          </div>
+                          
+                          <!-- Pods -->
+                          <div class="step" data-step="7" data-route="/kubernetes/pods">
+                              <div class="step-icon">
+                                  <i class="fas fa-cube"></i>
+                              </div>
+                              <div class="step-label">Pods</div>
+                              <div class="step-tooltip">
+                                  <strong>Pods</strong><br>
+                                  Your running application containers - like individual hotel rooms
+                              </div>
+                          </div>
+                          
+                          <!-- Services -->
+                          <div class="step" data-step="8" data-route="/kubernetes/services">
+                              <div class="step-icon">
+                                  <i class="fas fa-plug"></i>
+                              </div>
+                              <div class="step-label">Services</div>
+                              <div class="step-tooltip">
+                                  <strong>Services</strong><br>
+                                  The front desk - provides stable access to your pods
+                              </div>
+                          </div>
+                          <!-- Ingress -->
+            <div class="step" data-step="9" data-route="/kubernetes/ingresses">
+                <div class="step-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="step-label">Ingress</div>
+                <div class="step-tooltip">
+                    <strong>Ingress</strong><br>
+                    The gateway to your services - manages external access with routing rules
+                </div>
+            </div>
+
+                      </div>
+                  </div>
+                  
+                  <!-- Current Step Explanation Panel -->
+                  <div class="step-explanation-panel">
+                      <div class="explanation-header">
+                          <h5><i class="fas fa-lightbulb"></i> Understanding This Step</h5>
+                          <div class="step-metaphor">
+                              <i class="fas fa-comment-dots"></i>
+                              <span id="currentStepMetaphor">Select a step to see its real-world analogy</span>
+                          </div>
+                      </div>
+                      
+                      <div class="explanation-content">
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <div class="explanation-card">
+                                      <div class="explanation-icon">
+                                          <i class="fas fa-question-circle"></i>
+                                      </div>
+                                      <h6>What is this?</h6>
+                                      <p id="whatIsThis">Select a step to learn about this Kubernetes component</p>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="explanation-card">
+                                      <div class="explanation-icon">
+                                          <i class="fas fa-check-circle"></i>
+                                      </div>
+                                      <h6>Why is it important?</h6>
+                                      <p id="whyImportant">Select a step to understand its role in your cluster</p>
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <div class="explanation-visual mt-3">
+                              <div class="visual-placeholder">
+                                  <i class="fas fa-image"></i>
+                                  <p>Visual representation will appear here when a step is selected</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <!-- Next Button Container -->
+                  <div class="stepper-navigation mt-3">
+                      <button id="prevStepBtn" class="btn btn-secondary" disabled>
+                          <i class="fas fa-arrow-left"></i> Previous
+                      </button>
+                      <button id="nextStepBtn" class="btn btn-primary">
+                          Next Step <i class="fas fa-arrow-right"></i>
+                      </button>
+                      <div class="step-counter">
+                          Step <span id="currentStepNumber">0</span> of <span id="totalSteps">9</span>
+                      </div>
+                  </div>
+              </div>
+            <div class="page-inner">
+              <div class="page-header">
+                <h2>Kubernetes StatefulSets</h2>
+              </div>
+      
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header gradient-card-header">
+                      <ul class="nav nav-tabs" id="statefulsetTabs" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" id="statefulsets-tab" data-toggle="tab" href="#statefulsets" role="tab" aria-controls="statefulsets" aria-selected="true">
+                            StatefulSets
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="create-tab" data-toggle="tab" href="#create" role="tab" aria-controls="create" aria-selected="false">
+                            Create StatefulSet
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card-body">
+                      <div class="tab-content" id="statefulsetTabsContent">
+                        <!-- StatefulSets List Tab -->
+                        <div class="tab-pane fade show active" id="statefulsets" role="tabpanel" aria-labelledby="statefulsets-tab">
+                          <div class="d-flex justify-content-between mb-3">
+                            <div class="form-group mb-0">
+                              <select class="form-control" id="statefulsetNamespaceFilter" style="width: 200px;">
+                                <option value="">All Namespaces</option>
+                                <option value="default">default</option>
+                              </select>
+                            </div>
+                            <button id="refreshStatefulSets" class="btn btn-sm btn-primary">
+                              <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                          </div>
+                          
+                          <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Name</th>
+                                  <th>Namespace</th>
+                                  <th>Replicas</th>
+                                  <th>Status</th>
+                                  <th>Age</th>
+                                  <th>Actions</th>
+                                </tr>
+                              </thead>
+                              <tbody id="statefulsetTableBody">
+                                <tr>
+                                  <td colspan="6" class="text-center">
+                                    <div class="spinner-border text-primary" role="status">
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <p>Loading StatefulSets...</p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        
+                        <!-- Create StatefulSet Tab -->
+                        <div class="tab-pane fade" id="create" role="tabpanel" aria-labelledby="create-tab">
+                          <form id="createStatefulSetForm">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="statefulsetName">StatefulSet Name</label>
+                                  <input type="text" class="form-control" id="statefulsetName" required>
+                                  <small class="form-text text-muted">Must be lowercase alphanumeric with dashes</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                  <label for="statefulsetNamespace">Namespace</label>
+                                  <select class="form-control" id="statefulsetNamespace" required>
+                                    <option value="default">default</option>
+                                  </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                  <label for="statefulsetReplicas">Replicas</label>
+                                  <input type="number" class="form-control" id="statefulsetReplicas" min="1" value="1" required>
+                                </div>
+                              </div>
+                              
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="statefulsetServiceName">Headless Service Name</label>
+                                  <input type="text" class="form-control" id="statefulsetServiceName" required>
+                                  <small class="form-text text-muted">The name of the headless service that governs this StatefulSet</small>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <hr>
+                            <h5>Container Settings</h5>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="imageName">Container Image</label>
+                                  <div class="input-group">
+                                      <input type="text" class="form-control" id="containerImage" placeholder="e.g., nginx:latest" required>
+                                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                          <i class="fas fa-images"></i> My Images
+                                      </button>
+                                      <ul class="dropdown-menu dropdown-menu-end">
+                                          <li><div class="dropdown-header">Your Saved Images</div></li>
+                                          <li><hr class="dropdown-divider"></li>
+                                          <li class="dropdown-item-text px-3 py-1">
+                                              <div class="input-group mb-2">
+                                                  <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                                  <input type="text" class="form-control image-search" placeholder="Search images...">
+                                              </div>
+                                          </li>
+                                          <li><div class="dropdown-item-text text-center py-2 loading-images" style="display: none;">
+                                              <div class="spinner-border spinner-border-sm" role="status">
+                                                  <span class="visually-hidden">Loading...</span>
+                                              </div>
+                                              Loading your images...
+                                          </div></li>
+                                          <div class="image-list-container" style="max-height: 300px; overflow-y: auto;">
+                                              <div class="dropdown-item-text text-center py-2">Click "My Images" to load</div>
+                                          </div>
+                                      </ul>
+                                  </div>
+                              </div>
+                                
+                                <div class="form-group">
+                                  <label for="containerPort">Container Port</label>
+                                  <input type="number" class="form-control" id="containerPort" placeholder="80" required>
+                                </div>
+                              </div>
+                              
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="containerName">Container Name</label>
+                                  <input type="text" class="form-control" id="containerName" placeholder="nginx" required>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="form-group">
+                              <label>Environment Variables</label>
+                              <div id="envVarsContainer">
+                                <div class="row mb-2">
+                                  <div class="col-md-5">
+                                    <input type="text" class="form-control" placeholder="Key" name="envKey">
+                                  </div>
+                                  <div class="col-md-5">
+                                    <input type="text" class="form-control" placeholder="Value" name="envValue">
+                                  </div>
+                                  <div class="col-md-2">
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="removeEnvVar(this)">
+                                      <i class="fas fa-trash"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                              <button type="button" class="btn btn-secondary btn-sm mt-2" onclick="addEnvVar()">
+                                <i class="fas fa-plus"></i> Add Variable
+                              </button>
+                            </div>
+                            
+                            <hr>
+                            <h5>Volume Claims</h5>
+                            <div id="volumeClaimsContainer">
+                              <div class="card mb-3">
+                                <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-md-4">
+                                      <div class="form-group">
+                                        <label for="volumeClaimName">Volume Claim Name</label>
+                                        <input type="text" class="form-control" name="volumeClaimName" placeholder="www" required>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <div class="form-group">
+                                        <label for="volumeClaimSize">Storage Size (GB)</label>
+                                        <input type="number" class="form-control" name="volumeClaimSize" min="1" value="1" required>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <div class="form-group">
+                                        <label for="volumeClaimMountPath">Mount Path</label>
+                                        <input type="text" class="form-control" name="volumeClaimMountPath" placeholder="/usr/share/nginx/html" required>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-1 d-flex align-items-end">
+                                      <button type="button" class="btn btn-danger btn-sm" onclick="removeVolumeClaim(this)">
+                                        <i class="fas fa-trash"></i>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <button type="button" class="btn btn-secondary btn-sm mb-3" onclick="addVolumeClaim()">
+                              <i class="fas fa-plus"></i> Add Volume Claim
+                            </button>
+                            
+                            <hr>
+                            <div class="form-check mb-3">
+                              <input type="checkbox" class="form-check-input" id="showStatefulSetYamlPreview">
+                              <label class="form-check-label" style="margin-left: 20px;" for="showStatefulSetYamlPreview">Show YAML Preview</label>
+                            </div>
+                            
+                            <div id="statefulSetYamlPreviewContainer" style="display: none;">
+                              <h5>YAML Preview</h5>
+                              <div class="yaml-container">
+                                <pre id="statefulSetYamlPreview"></pre>
+                              </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary mt-3">
+                              <i class="fas fa-save"></i> Create StatefulSet
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <!-- StatefulSet Actions Modals -->
+          <div class="modal fade" id="deleteStatefulSetModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Delete StatefulSet</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you want to delete StatefulSet <strong id="deleteStatefulSetName"></strong> in namespace <strong id="deleteStatefulSetNamespace"></strong>?</p>
+                  <div class="alert alert-warning">
+                    <strong>Warning:</strong> This will permanently delete the StatefulSet and its Pods.
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-danger" id="confirmDeleteStatefulSet">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="modal fade" id="viewStatefulSetYamlModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">StatefulSet YAML</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="yaml-container">
+                    <pre id="statefulSetYaml"></pre>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="copyStatefulSetYaml">
+                    <i class="fas fa-copy"></i> Copy
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="modal fade" id="scaleStatefulSetModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Scale StatefulSet</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Scale StatefulSet <strong id="scaleStatefulSetName"></strong> in namespace <strong id="scaleStatefulSetNamespace"></strong> to:</p>
+                  <div class="form-group">
+                    <input type="number" class="form-control" id="scaleStatefulSetReplicas" min="0">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary" id="confirmScaleStatefulSet">Scale</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="modal fade" id="viewStatefulSetPodsModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">StatefulSet Pods</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Status</th>
+                          <th>Ready</th>
+                          <th>Restarts</th>
+                          <th>Age</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody id="statefulSetPodsBody">
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+    <div id="chatbot-container">
+        <!-- Chatbot Toggle Button (Circle with Logo) -->
+        <div id="chatbot-toggle">
+            <img src="../assets/img/dockube3.png" alt="Chatbot Logo" width="50" height="50">
+        </div>
+      
+        <!-- Chatbot Interface (Hidden by Default) -->
+       
+      <div id="chatbot-interface" style="display: none;">
+        <!-- Chat Header -->
+        <div id="chat-header">
+            <strong>
+                <img src="../assets/img/dockube3.png" alt="Logo">
+                Docker & Kubernetes Assistant
+            </strong>
+            <button id="chat-close">×</button>
+        </div>
+      
+        <!-- Chat Body -->
+        <div id="chat-body">
+            <div id="chat-messages">
+                <!-- Welcome Message -->
+                <div class="welcome-message" onclick="toggleWelcomeMessage()">
+                    👋 Welcome! I'm your Docker & Kubernetes Assistant.
+                    Ask me anything about Docker, Kubernetes, and best practices.
+                    <div class="hidden-content">
+                        Hi! I'm your Docker & Kubernetes Assistant.  
+                        Ask me anything about services, Kubernetes configurations, and best practices.
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <!-- Chat Input -->
+        <div id="chat-input">
+            <input type="text" id="chat-message" placeholder="Type your question...">
+            <button id="chat-send">Send</button>
+        </div>
+      </div>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotInterface = document.getElementById('chatbot-interface');
+            const chatClose = document.getElementById('chat-close');
+            const chatBody = document.getElementById('chat-body');
+            const chatMessages = document.getElementById('chat-messages');
+            const chatMessageInput = document.getElementById('chat-message');
+            const chatSendButton = document.getElementById('chat-send');
+      
+            // Toggle Chat Interface
+            chatbotToggle.addEventListener('click', () => {
+                chatbotInterface.style.display = 'block';
+            });
+      
+            // Close Chat Interface
+            chatClose.addEventListener('click', () => {
+                chatbotInterface.style.display = 'none';
+            });
+      
+            // Send Message to Chatbot
+            chatSendButton.addEventListener('click', async () => {
+                const message = chatMessageInput.value.trim();
+                if (message) {
+                    // Add User Message to Chat
+                    chatMessages.innerHTML += `<div class="message"><strong>You:</strong> ${message}</div>`;
+                    chatMessageInput.value = '';
+      
+                    // Show Loading Spinner
+                    chatMessages.innerHTML += `<div id="loading-spinner">Loading...</div>`;
+      
+                    // Call Backend API
+                    try {
+                        const response = await fetch('/api/chat', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ message })
+                        });
+                        const data = await response.json();
+      
+                        // Remove Loading Spinner and Add Bot Response
+                        document.getElementById('loading-spinner').remove();
+                        chatMessages.innerHTML += `<div class="message"><strong>Assistant:</strong> ${data.response}</div>`;
+                    } catch (error) {
+                        console.error('Error:', error);
+                        chatMessages.innerHTML += `<div class="message"><strong>Error:</strong> Failed to get response.</div>`;
+                    }
+      
+                    // Scroll to Bottom of Chat
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }
+            });
+      
+            // Allow Pressing "Enter" to Send a Message
+            chatMessageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    chatSendButton.click();
+                }
+            });
+        });
+      </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Complete step information database
+    const stepInfo = {
+        1: {
+            metaphor: "Like building the airport before planes can land",
+            whatIs: "The Kubernetes cluster is the foundation that runs your applications. It's the combination of control plane (management) and worker nodes (where workloads run).",
+            whyImportant: "Without a cluster, you have nowhere to deploy your applications. This is like having apps but no phone to run them on.",
+            visual: '<div class="cluster-visual"><div class="control-plane"><i class="fas fa-cog"></i> Control Plane</div><div class="worker-nodes"><div class="node"><i class="fas fa-server"></i> Node</div><div class="node"><i class="fas fa-server"></i> Node</div></div></div>'
+        },
+        2: {
+            metaphor: "The worker bees in your cluster hive",
+            whatIs: "Nodes are the worker machines (VMs or physical servers) that run your applications. They're managed by the control plane and can be added or removed as needed.",
+            whyImportant: "More nodes mean more capacity to run applications. Like adding more chefs to a kitchen to handle more orders. Healthy nodes ensure your applications run smoothly.",
+            visual: '<div class="nodes-visual"><div class="node healthy"><i class="fas fa-server"></i> Worker 1</div><div class="node healthy"><i class="fas fa-server"></i> Worker 2</div><div class="node warning"><i class="fas fa-server"></i> Worker 3</div></div>'
+        },
+        3: {
+            metaphor: "Like different floors in an office building",
+            whatIs: "Namespaces provide virtual clusters within your physical cluster, isolating resources between teams, projects, or environments (dev/test/prod).",
+            whyImportant: "Prevents naming collisions and provides logical separation, like having separate departments in a company. Essential for multi-team environments and resource quotas.",
+            visual: '<div class="namespaces-visual"><div class="namespace prod"><i class="fas fa-building"></i> Production</div><div class="namespace dev"><i class="fas fa-code"></i> Development</div><div class="namespace test"><i class="fas fa-flask"></i> Testing</div></div>'
+        },
+        4: {
+            metaphor: "The configuration vault of your applications",
+            whatIs: "ConfigMaps store configuration data as key-value pairs, while Secrets store sensitive information like passwords and API keys in encrypted form.",
+            whyImportant: "Separates configuration from application code, making your applications more portable and secure. Like having a secure filing cabinet separate from your work desk.",
+            visual: '<div class="configs-visual"><div class="config"><i class="fas fa-file-alt"></i> ConfigMap<br><small>database.url</small></div><div class="secret"><i class="fas fa-lock"></i> Secret<br><small>db-password</small></div></div>'
+        },
+        5: {
+            metaphor: "Your cluster's permanent storage locker",
+            whatIs: "Persistent Volumes (PVs) and Persistent Volume Claims (PVCs) provide durable storage that survives pod restarts, unlike ephemeral container storage.",
+            whyImportant: "Essential for stateful applications like databases. Like having a permanent locker in school versus temporary desk space that gets cleared daily.",
+            visual: '<div class="storage-visual"><div class="pvc"><i class="fas fa-hdd"></i> PVC Request</div><div class="arrow">→</div><div class="pv"><i class="fas fa-database"></i> PV Storage</div></div>'
+        },
+        6: {
+  metaphor: "The blueprint and foreman for your applications",
+  whatIs: "Deployments manage stateless applications with rolling updates, while StatefulSets manage stateful applications with stable identities and ordered operations.",
+  whyImportant: "Ensures your applications run with the desired replicas and update strategy. Deployments for stateless apps, StatefulSets for databases and ordered workloads.",
+  visual: '<div class="workload-visual">' +
+          '<div class="workload-option" data-target="/kubernetes/deployments">' +
+          '<i class="fas fa-copy"></i> Deployments' +
+          '</div>' +
+          '<div class="workload-option" data-target="/kubernetes/statefulsets">' +
+          '<i class="fas fa-list-ol"></i> StatefulSets' +
+          '</div></div>'
+},
+        7: {
+            metaphor: "The individual hotel rooms for your containers",
+            whatIs: "Pods are the smallest deployable units in Kubernetes, containing one or more containers that share storage and network resources.",
+            whyImportant: "Your actual running application instances. Like individual hotel rooms that contain all the amenities (containers) needed for a guest (application) to function.",
+            visual: '<div class="pods-visual"><div class="pod"><div class="container"><i class="fas fa-box"></i> app</div><div class="container"><i class="fas fa-shield-alt"></i> sidecar</div></div><div class="pod single"><div class="container"><i class="fas fa-box"></i> app</div></div></div>'
+        },
+        8: {
+            metaphor: "The front desk and concierge service",
+            whatIs: "Services provide stable IP addresses and DNS names to access groups of pods, and can expose applications internally or to the outside world.",
+            whyImportant: "Provides reliable access to your applications even as individual pods come and go. Like having a hotel front desk that always knows which rooms are occupied.",
+            visual: '<div class="services-visual"><div class="service"><i class="fas fa-exchange-alt"></i> ClusterIP</div><div class="service"><i class="fas fa-sign-out-alt"></i> NodePort</div><div class="service"><i class="fas fa-globe"></i> LoadBalancer</div></div>'
+        },
+         9: {
+        metaphor: "The gateway and traffic controller",
+        whatIs: "Ingress manages external access to your services, typically HTTP/HTTPS, with host and path-based routing rules. It acts as a smart router for your cluster.",
+        whyImportant: "Provides a single entry point for multiple services, enables name-based virtual hosting, and can handle SSL termination. Like having a receptionist who directs visitors to the right department.",
+        visual: '<div class="ingress-visual"><div class="ingress"><i class="fas fa-globe"></i> Ingress</div><div class="arrows">⇩ ⇩ ⇩</div><div class="services-visual"><div class="service"><i class="fas fa-exchange-alt"></i> Service A</div><div class="service"><i class="fas fa-exchange-alt"></i> Service B</div><div class="service"><i class="fas fa-exchange-alt"></i> Service C</div></div></div>'
+    }
+    };
+
+    // Initialize the stepper
+    const steps = document.querySelectorAll('.stepper-steps .step');
+    const progressBar = document.querySelector('.stepper-progress-bar');
+    const currentPath = window.location.pathname;
+    let currentStepIndex = 0;
+    
+    // Set total steps counter
+    document.getElementById('totalSteps').textContent = steps.length;
+    
+   // Find current step based on URL
+steps.forEach((step, index) => {
+    const stepRoute = step.getAttribute('data-route');
+    // Check for both deployments and statefulsets under step 6
+    if (currentPath.includes(stepRoute) || 
+        (index === 5 && (currentPath.includes('/kubernetes/deployments') || 
+                        currentPath.includes('/kubernetes/statefulsets')))) {
+        currentStepIndex = index;
+        activateStep(step, index + 1);
+    }
+    
+    // Add click handler
+    step.addEventListener('click', function() {
+        navigateToStep(index);
+    });
+});
+    
+    // Next/Previous button handlers
+    document.getElementById('nextStepBtn').addEventListener('click', function() {
+        if (currentStepIndex < steps.length - 1) {
+            navigateToStep(currentStepIndex + 1);
+        }
+    });
+    
+    document.getElementById('prevStepBtn').addEventListener('click', function() {
+        if (currentStepIndex > 0) {
+            navigateToStep(currentStepIndex - 1);
+        }
+    });
+    
+    // Update the navigateToStep function
+function navigateToStep(index) {
+  const step = steps[index];
+  let route = step.getAttribute('data-route');
+  
+  // Special handling for Workloads step
+  if (index === 5) { // Step 6 is index 5 (0-based)
+      // Default to Deployments if coming from previous step
+      if (currentStepIndex < index) {
+          route = "/kubernetes/deployments";
+      } 
+      // If coming from next step, go to StatefulSets
+      else if (currentStepIndex > index) {
+          route = "/kubernetes/statefulsets";
+      }
+  }
+  
+  window.location.href = route;
+}
+    
+function activateStep(step, stepNumber) {
+    // Update UI
+    steps.forEach(s => {
+        s.classList.remove('active', 'completed');
+        const sNumber = parseInt(s.getAttribute('data-step'));
+        if (sNumber < stepNumber) {
+            s.classList.add('completed');
+        }
+    });
+    
+    step.classList.add('active');
+    
+    // Update progress bar
+    const progressPercentage = ((stepNumber - 1) / (steps.length - 1)) * 100;
+    progressBar.style.width = `${progressPercentage}%`;
+    
+    // Update step counter
+    document.getElementById('currentStepNumber').textContent = stepNumber;
+    
+    // Update explanation panel
+    if (stepInfo[stepNumber]) {
+        // Special handling for Workloads step
+        if (stepNumber === 6) {
+            if (window.location.pathname.includes('/kubernetes/statefulsets')) {
+                document.getElementById('currentStepMetaphor').textContent = "The specialized blueprint for stateful applications";
+                document.getElementById('whatIsThis').textContent = "StatefulSets manage stateful applications that need stable network identities, persistent storage, and ordered deployment/scaling.";
+                document.getElementById('whyImportant').textContent = "Essential for databases and other stateful applications where pod order and persistence matter. Like having numbered parking spots where each car always gets the same spot.";
+                document.querySelector('.visual-placeholder').innerHTML = '<div class="statefulset-visual"><div class="pod"><i class="fas fa-database"></i> db-0</div><div class="pod"><i class="fas fa-database"></i> db-1</div><div class="pod"><i class="fas fa-database"></i> db-2</div></div>';
+            } else {
+                // Default to Deployments view
+                document.getElementById('currentStepMetaphor').textContent = stepInfo[stepNumber].metaphor;
+                document.getElementById('whatIsThis').textContent = stepInfo[stepNumber].whatIs;
+                document.getElementById('whyImportant').textContent = stepInfo[stepNumber].whyImportant;
+                document.querySelector('.visual-placeholder').innerHTML = stepInfo[stepNumber].visual;
+            }
+        } else {
+            // Normal step handling
+            document.getElementById('currentStepMetaphor').textContent = stepInfo[stepNumber].metaphor;
+            document.getElementById('whatIsThis').textContent = stepInfo[stepNumber].whatIs;
+            document.getElementById('whyImportant').textContent = stepInfo[stepNumber].whyImportant;
+            document.querySelector('.visual-placeholder').innerHTML = stepInfo[stepNumber].visual;
+        }
+    }
+    
+    // Add click handlers for workload options
+    if (stepNumber === 6) {
+        document.querySelectorAll('.workload-option').forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.stopPropagation();
+                window.location.href = this.getAttribute('data-target');
+            });
+        });
+    }
+    
+    // Update navigation buttons
+    document.getElementById('prevStepBtn').disabled = stepNumber === 1;
+    document.getElementById('nextStepBtn').disabled = stepNumber === steps.length;
+}
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    initImageDropdown('containerImage'); // StatefulSet form
+
+    function initImageDropdown(inputId) {
+        const input = document.getElementById(inputId);
+        if (!input) return;
+
+        const dropdownToggle = input.nextElementSibling;
+        const dropdownMenu = dropdownToggle.nextElementSibling;
+        const searchInput = dropdownMenu.querySelector('.image-search');
+        const imageList = dropdownMenu.querySelector('.image-list-container');
+        const loading = dropdownMenu.querySelector('.loading-images');
+
+        // Load images when dropdown is shown
+        dropdownToggle.addEventListener('click', function() {
+            loadUserImages(imageList, loading);
+        });
+
+        // Search functionality
+        searchInput.addEventListener('input', function() {
+            const term = this.value.toLowerCase();
+            imageList.querySelectorAll('.image-item').forEach(item => {
+                const imageName = item.dataset.name.toLowerCase();
+                item.style.display = imageName.includes(term) ? '' : 'none';
+            });
+        });
+    }
+
+    async function loadUserImages(container, loadingElement) {
+        try {
+            loadingElement.style.display = 'block';
+            container.innerHTML = '';
+
+            const response = await fetch('/images');
+            if (!response.ok) throw new Error('Failed to fetch images');
+            
+            const images = await response.json();
+            
+            if (images.length === 0) {
+                container.innerHTML = '<div class="dropdown-item-text text-muted">No saved images found</div>';
+                return;
+            }
+
+            images.forEach(image => {
+                const item = document.createElement('div');
+                item.className = 'dropdown-item image-item';
+                item.dataset.name = image.name;
+                item.innerHTML = `
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-truncate" style="max-width: 80%">${image.name}</span>
+                        <small class="text-muted">${new Date(image.created).toLocaleDateString()}</small>
+                    </div>
+                `;
+                
+                item.addEventListener('click', function() {
+                    const input = this.closest('.input-group').querySelector('input');
+                    input.value = image.name;
+                    // Close the dropdown
+                    bootstrap.Dropdown.getInstance(this.closest('.dropdown-toggle')).hide();
+                });
+                
+                container.appendChild(item);
+            });
+        } catch (error) {
+            console.error('Error loading images:', error);
+            container.innerHTML = `
+                <div class="dropdown-item-text text-danger">
+                    Error loading images: ${error.message}
+                </div>
+            `;
+        } finally {
+            loadingElement.style.display = 'none';
+        }
+    }
+});
+</script>
+      <script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.min.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.min.css" />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      <script>
+        // Global variables for current context
+        let currentStatefulSetName = '';
+        let currentStatefulSetNamespace = '';
+        
+        document.addEventListener('DOMContentLoaded', function() {
+          // Load initial data
+          loadNamespaces();
+          loadStatefulSets();
+          
+          // StatefulSet event listeners
+          document.getElementById('refreshStatefulSets').addEventListener('click', loadStatefulSets);
+          document.getElementById('statefulsetNamespaceFilter').addEventListener('change', loadStatefulSets);
+          document.getElementById('confirmDeleteStatefulSet').addEventListener('click', function() {
+            deleteStatefulSet(currentStatefulSetName, currentStatefulSetNamespace);
+            $('#deleteStatefulSetModal').modal('hide');
+          });
+          document.getElementById('copyStatefulSetYaml').addEventListener('click', function() {
+            const yamlText = document.getElementById('statefulSetYaml').textContent;
+            navigator.clipboard.writeText(yamlText).then(() => {
+              Swal.fire({
+        title: 'Success',
+        text: 'YAML copied to clipboard!',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        timer: 1500
+    });            });
+          });
+          document.getElementById('confirmScaleStatefulSet').addEventListener('click', function() {
+            const replicas = document.getElementById('scaleStatefulSetReplicas').value;
+            scaleStatefulSet(currentStatefulSetName, currentStatefulSetNamespace, replicas);
+            $('#scaleStatefulSetModal').modal('hide');
+          });
+          
+          // StatefulSet form event listeners
+          document.getElementById('showStatefulSetYamlPreview').addEventListener('change', function() {
+            const yamlContainer = document.getElementById('statefulSetYamlPreviewContainer');
+            yamlContainer.style.display = this.checked ? 'block' : 'none';
+            if (this.checked) {
+              updateStatefulSetYamlPreview();
+            }
+          });
+          
+          document.getElementById('createStatefulSetForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            createStatefulSet();
+          });
+          
+          // Input change listeners for YAML preview
+          document.querySelectorAll('#createStatefulSetForm input, #createStatefulSetForm select, #createStatefulSetForm textarea').forEach(element => {
+            element.addEventListener('input', updateStatefulSetYamlPreview);
+            element.addEventListener('change', updateStatefulSetYamlPreview);
+          });
+        });
+        
+        // StatefulSet functions
+        function loadStatefulSets() {
+          const namespaceFilter = document.getElementById('statefulsetNamespaceFilter').value;
+          const statefulsetTableBody = document.getElementById('statefulsetTableBody');
+          
+          statefulsetTableBody.innerHTML = `
+            <tr>
+              <td colspan="6" class="text-center">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <p>Loading StatefulSets...</p>
+              </td>
+            </tr>
+          `;
+          
+          let apiUrl = 'http://localhost:5000//kubernetes/statefulsets';
+          if (namespaceFilter) {
+            apiUrl += `?namespace=${namespaceFilter}`;
+          }
+          
+          fetch(apiUrl)
+          .then(response => response.json())
+          .then(data => {
+            if (data.items && data.items.length > 0) {
+              statefulsetTableBody.innerHTML = data.items.map(statefulset => {
+                const readyReplicas = statefulset.status.readyReplicas || 0;
+                const replicas = statefulset.spec.replicas || 0;
+                const status = readyReplicas === replicas ? 'Ready' : `${readyReplicas}/${replicas} ready`;
+                const age = timeSince(new Date(statefulset.metadata.creationTimestamp));
+                
+                return `
+                  <tr>
+                    <td>${statefulset.metadata.name}</td>
+                    <td>${statefulset.metadata.namespace}</td>
+                    <td>${replicas}</td>
+                    <td>
+                      <span class="badge ${readyReplicas === replicas ? 'bg-success' : 'bg-warning'}">${status}</span>
+                    </td>
+                    <td>${age}</td>
+                    <td>
+  <div class="action-buttons">
+    <button class="action-btn btn-yaml" onclick="viewStatefulSetPods('${statefulset.metadata.name}', '${statefulset.metadata.namespace}')"
+            data-tooltip="View pods">
+      <i class="fas fa-boxes"></i> Pods
+    </button>
+    <button class="action-btn btn-scale" onclick="scaleStatefulSetModal('${statefulset.metadata.name}', '${statefulset.metadata.namespace}', ${replicas})"
+            data-tooltip="Scale StatefulSet">
+      <i class="fas fa-expand-arrows-alt"></i> Scale
+    </button>
+    <button class="action-btn btn-yaml" onclick="showStatefulSetYaml('${statefulset.metadata.name}', '${statefulset.metadata.namespace}')"
+            data-tooltip="View YAML">
+      <i class="fas fa-code"></i> YAML
+    </button>
+    <button class="action-btn btn-delete" onclick="showDeleteStatefulSetModal('${statefulset.metadata.name}', '${statefulset.metadata.namespace}')"
+            data-tooltip="Delete StatefulSet">
+      <i class="fas fa-trash-alt"></i> Delete
+    </button>
+  </div>
+</td>
+                  </tr>
+                `;
+              }).join('');
+            } else {
+              statefulsetTableBody.innerHTML = `
+                <tr>
+                  <td colspan="6" class="text-center">No StatefulSets found</td>
+                </tr>
+              `;
+            }
+          })
+          .catch(error => {
+            statefulsetTableBody.innerHTML = `
+              <tr>
+                <td colspan="6" class="text-center text-danger">Error loading StatefulSets: ${error.message}</td>
+              </tr>
+            `;
+          });
+        }
+        
+        function showDeleteStatefulSetModal(name, namespace) {
+          currentStatefulSetName = name;
+          currentStatefulSetNamespace = namespace;
+          
+          document.getElementById('deleteStatefulSetName').textContent = name;
+          document.getElementById('deleteStatefulSetNamespace').textContent = namespace;
+          
+          $('#deleteStatefulSetModal').modal('show');
+        }
+        
+        function scaleStatefulSetModal(name, namespace, currentReplicas) {
+          currentStatefulSetName = name;
+          currentStatefulSetNamespace = namespace;
+          
+          document.getElementById('scaleStatefulSetName').textContent = name;
+          document.getElementById('scaleStatefulSetNamespace').textContent = namespace;
+          document.getElementById('scaleStatefulSetReplicas').value = currentReplicas;
+          
+          $('#scaleStatefulSetModal').modal('show');
+        }
+        
+        function showStatefulSetYaml(name, namespace) {
+          fetch(`/kubernetes/statefulsets/yaml?name=${name}&namespace=${namespace}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.yaml) {
+              document.getElementById('statefulSetYaml').textContent = data.yaml;
+              $('#viewStatefulSetYamlModal').modal('show');
+            } else {
+              Swal.fire({
+    title: 'Error',
+    text: `Failed to load YAML: ${data.error}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});            }
+          })
+          .catch(error => {
+            Swal.fire({
+        title: 'Error',
+        text: `Failed to load YAML: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });          });
+        }
+        
+function viewStatefulSetPods(name, namespace) {
+          fetch(`/kubernetes/statefulsets/pods?name=${name}&namespace=${namespace}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.items) {
+              const podsBody = document.getElementById('statefulSetPodsBody');
+              podsBody.innerHTML = '';
+              
+              data.items.forEach(pod => {
+                const readyContainers = pod.status.containerStatuses ? 
+                  pod.status.containerStatuses.filter(c => c.ready).length : 0;
+                const totalContainers = pod.status.containerStatuses ? 
+                  pod.status.containerStatuses.length : 0;
+                const restartCount = pod.status.containerStatuses ? 
+                  pod.status.containerStatuses.reduce((sum, c) => sum + c.restartCount, 0) : 0;
+                const age = timeSince(new Date(pod.metadata.creationTimestamp));
+                
+                podsBody.innerHTML += `
+                  <tr>
+                    <td>${pod.metadata.name}</td>
+                    <td>
+                      <span class="badge ${pod.status.phase === 'Running' ? 'bg-success' : 'bg-warning'}">
+                        ${pod.status.phase}
+                      </span>
+                    </td>
+                    <td>${readyContainers}/${totalContainers}</td>
+                    <td>${restartCount}</td>
+                    <td>${age}</td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-info" onclick="viewPodLogs('${pod.metadata.name}', '${pod.metadata.namespace}')">
+                        <i class="fas fa-file-alt"></i> Logs
+                      </button>
+                    </td>
+                  </tr>
+                `;
+              });
+              
+              currentStatefulSetName = name;
+              currentStatefulSetNamespace = namespace;
+              $('#viewStatefulSetPodsModal').modal('show');
+            } else {
+              Swal.fire({
+    title: 'Error',
+    text: `Failed to load Pods: ${data.error}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});            }
+          })
+          .catch(error => {
+            Swal.fire({
+        title: 'Error',
+        text: `Failed to load Pods: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });          });
+        }
+        
+function viewPodLogs(podName, namespace) {
+fetch(`/kubernetes/statefulsets/podlogs?podName=${podName}&namespace=${namespace}`)    .then(response => response.json())
+    .then(data => {
+        if (data.containers) {
+            // If multiple containers, show selector
+            if (data.containers.length > 1) {
+                Swal.fire({
+                    title: 'Select Container',
+                    input: 'select',
+                    inputOptions: data.containers.reduce((options, container) => {
+                        options[container] = container;
+                        return options;
+                    }, {}),
+                    inputPlaceholder: 'Select a container',
+                    showCancelButton: true,
+                    confirmButtonText: 'View Logs',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        showPodLogsModal(podName, namespace, result.value);
+                    }
+                });
+            } else {
+                showPodLogsModal(podName, namespace, data.containers[0]);
+            }
+        } else if (data.success === false) {
+            Swal.fire('Error', data.error, 'error');
+        }
+    })
+    .catch(error => {
+        Swal.fire('Error', `Failed to get containers: ${error.message}`, 'error');
+    });
+}
+
+function showPodLogsModal(podName, namespace, container) {
+    // Create a modal for logs
+    const logModal = `
+        <div class="modal fade" id="podLogsModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Logs: ${podName} (${container})</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div>
+                                <button class="btn btn-sm btn-primary" onclick="refreshPodLogs('${podName}', '${namespace}', '${container}')">
+                                    <i class="fas fa-sync-alt"></i> Refresh
+                                </button>
+                                <button class="btn btn-sm btn-secondary ms-2" onclick="followPodLogs('${podName}', '${namespace}', '${container}')">
+                                    <i class="fas fa-play"></i> Follow
+                                </button>
+                            </div>
+                            <div class="input-group" style="width: 200px;">
+                                <span class="input-group-text">Lines</span>
+                                <input type="number" id="logLines" class="form-control" value="100" min="10">
+                            </div>
+                        </div>
+                        <div class="log-container">
+                            <pre id="podLogsContent" class="p-3 bg-dark text-white rounded"></pre>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="downloadPodLogs('${podName}', '${namespace}', '${container}')">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    if (!document.getElementById('podLogsModal')) {
+        document.body.insertAdjacentHTML('beforeend', logModal);
+    }
+    
+    // Initialize the modal
+    const modal = new bootstrap.Modal(document.getElementById('podLogsModal'));
+    
+    // Load initial logs
+    refreshPodLogs(podName, namespace, container);
+    
+    // Show the modal
+    modal.show();
+}
+
+function refreshPodLogs(podName, namespace, container) {
+    const lines = document.getElementById('logLines')?.value || 100;
+    fetch(`/kubernetes/statefulsets/podlogs?podName=${podName}&namespace=${namespace}&container=${container}&tailLines=${lines}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.success && data.logs) {
+            const logContent = document.getElementById('podLogsContent');
+            logContent.textContent = data.logs;
+            logContent.scrollTop = logContent.scrollHeight;
+        } else {
+            Swal.fire('Error', data.error || 'Failed to load logs', 'error');
+        }
+    })
+    .catch(error => {
+        Swal.fire('Error', `Failed to load logs: ${error.message}`, 'error');
+    });
+}
+
+function followPodLogs(podName, namespace, container) {
+
+    const interval = setInterval(() => {
+        refreshPodLogs(podName, namespace, container);
+    }, 2000);
+    
+    const modal = document.getElementById('podLogsModal');
+    modal.dataset.logInterval = interval;
+    
+    modal.addEventListener('hidden.bs.modal', function() {
+        clearInterval(modal.dataset.logInterval);
+    });
+}
+
+function downloadPodLogs(podName, namespace, container) {
+    const logs = document.getElementById('podLogsContent').textContent;
+    const blob = new Blob([logs], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${podName}-${container}-logs.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+        
+        function deleteStatefulSet(name, namespace) {
+          Swal.fire({
+    title: 'Deleting StatefulSet',
+    text: `Deleting StatefulSet ${name} in namespace ${namespace}...`,
+    icon: 'info',
+    showConfirmButton: false,
+    timer: 2000
+});          
+          fetch('/kubernetes/statefulsets/delete', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name,
+              namespace
+            })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              Swal.fire({
+    title: 'Success',
+    text: `StatefulSet ${name} deleted successfully`,
+    icon: 'success',
+    confirmButtonText: 'OK',
+    timer: 1500
+});
+              loadStatefulSets();
+            } else {
+              Swal.fire({
+    title: 'Error',
+    text: `Failed to delete StatefulSet: ${data.error}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});
+            }
+          })
+          .catch(error => {
+            Swal.fire({
+        title: 'Error',
+        text: `Failed to delete StatefulSet: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });
+            });
+        }
+        
+        function scaleStatefulSet(name, namespace, replicas) {
+          Swal.fire({
+    title: 'Scaling StatefulSet',
+    text: `Scaling StatefulSet ${name} in namespace ${namespace} to ${replicas} replicas...`,
+    icon: 'info',
+    showConfirmButton: false,
+    timer: 2000
+});          
+          fetch('/kubernetes/statefulsets/scale', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name,
+              namespace,
+              replicas: parseInt(replicas)
+            })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              Swal.fire({
+    title: 'Success',
+    text: `StatefulSet ${name} scaled to ${replicas} replicas`,
+    icon: 'success',
+    confirmButtonText: 'OK',
+    timer: 1500
+});
+              loadStatefulSets();
+            } else {
+              Swal.fire({
+    title: 'Error',
+    text: `Failed to scale StatefulSet: ${data.error}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});            }
+          })
+          .catch(error => {
+            Swal.fire({
+        title: 'Error',
+        text: `Failed to scale StatefulSet: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });
+            });
+        }
+        
+        function addEnvVar() {
+          const container = document.getElementById('envVarsContainer');
+          const newVar = document.createElement('div');
+          newVar.className = 'row mb-2';
+          newVar.innerHTML = `
+            <div class="col-md-5">
+              <input type="text" class="form-control" placeholder="Key" name="envKey">
+            </div>
+            <div class="col-md-5">
+              <input type="text" class="form-control" placeholder="Value" name="envValue">
+            </div>
+            <div class="col-md-2">
+              <button type="button" class="btn btn-danger btn-sm" onclick="removeEnvVar(this)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          `;
+          container.appendChild(newVar);
+          updateStatefulSetYamlPreview();
+        }
+        
+        function removeEnvVar(button) {
+          button.closest('.row').remove();
+          updateStatefulSetYamlPreview();
+        }
+        
+        function addVolumeClaim() {
+          const container = document.getElementById('volumeClaimsContainer');
+          const newClaim = document.createElement('div');
+          newClaim.className = 'card mb-3';
+          newClaim.innerHTML = `
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="volumeClaimName">Volume Claim Name</label>
+                    <input type="text" class="form-control" name="volumeClaimName" placeholder="www" required>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="volumeClaimSize">Storage Size (GB)</label>
+                    <input type="number" class="form-control" name="volumeClaimSize" min="1" value="1" required>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="volumeClaimMountPath">Mount Path</label>
+                    <input type="text" class="form-control" name="volumeClaimMountPath" placeholder="/usr/share/nginx/html" required>
+                  </div>
+                </div>
+                <div class="col-md-1 d-flex align-items-end">
+                  <button type="button" class="btn btn-danger btn-sm" onclick="removeVolumeClaim(this)">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+          container.appendChild(newClaim);
+          updateStatefulSetYamlPreview();
+        }
+        
+        function removeVolumeClaim(button) {
+          button.closest('.card').remove();
+          updateStatefulSetYamlPreview();
+        }
+        
+        function updateStatefulSetYamlPreview() {
+          const name = document.getElementById('statefulsetName').value || 'example-statefulset';
+          const namespace = document.getElementById('statefulsetNamespace').value || 'default';
+          const replicas = document.getElementById('statefulsetReplicas').value || 1;
+          const serviceName = document.getElementById('statefulsetServiceName').value || 'example-service';
+          const containerName = document.getElementById('containerName').value || 'nginx';
+          const containerImage = document.getElementById('containerImage').value || 'nginx:latest';
+          const containerPort = document.getElementById('containerPort').value || 80;
+          
+          // Collect environment variables
+          const envVars = [];
+          document.querySelectorAll('#envVarsContainer .row').forEach(row => {
+            const key = row.querySelector('input[name="envKey"]').value;
+            const value = row.querySelector('input[name="envValue"]').value;
+            if (key) {
+              envVars.push(`        - name: ${key}\n          value: "${value}"`);
+            }
+          });
+          
+          // Collect volume claims
+          const volumeClaims = [];
+          const volumeMounts = [];
+          document.querySelectorAll('#volumeClaimsContainer .card').forEach((card, index) => {
+            const claimName = card.querySelector('input[name="volumeClaimName"]').value || `www-${index}`;
+            const claimSize = card.querySelector('input[name="volumeClaimSize"]').value || 1;
+            const mountPath = card.querySelector('input[name="volumeClaimMountPath"]').value || `/data-${index}`;
+            
+            volumeClaims.push(`  - metadata:
+        name: ${claimName}
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: ${claimSize}Gi`);
+            
+            volumeMounts.push(`        - name: ${claimName}
+            mountPath: ${mountPath}`);
+          });
+          
+          let yaml = `apiVersion: apps/v1
+  kind: StatefulSet
+  metadata:
+    name: ${name}
+    namespace: ${namespace}
+  spec:
+    serviceName: "${serviceName}"
+    replicas: ${replicas}
+    selector:
+      matchLabels:
+        app: ${name}
+    template:
+      metadata:
+        labels:
+          app: ${name}
+      spec:
+        containers:
+        - name: ${containerName}
+          image: ${containerImage}
+          ports:
+          - containerPort: ${containerPort}
+  `;
+          
+          if (envVars.length > 0) {
+            yaml += `        env:\n${envVars.join('\n')}\n`;
+          }
+          
+          if (volumeMounts.length > 0) {
+            yaml += `        volumeMounts:\n${volumeMounts.join('\n')}\n`;
+          }
+          
+          if (volumeClaims.length > 0) {
+            yaml += `  volumeClaimTemplates:\n${volumeClaims.join('\n')}\n`;
+          }
+          
+          document.getElementById('statefulSetYamlPreview').textContent = yaml;
+        }
+        
+        function createStatefulSet() {
+          const name = document.getElementById('statefulsetName').value;
+          const namespace = document.getElementById('statefulsetNamespace').value;
+          const replicas = document.getElementById('statefulsetReplicas').value;
+          const serviceName = document.getElementById('statefulsetServiceName').value;
+          const containerName = document.getElementById('containerName').value;
+          const containerImage = document.getElementById('containerImage').value;
+          const containerPort = document.getElementById('containerPort').value;
+          
+          // Validate inputs
+          if (!name || !namespace || !replicas || !serviceName || !containerName || !containerImage || !containerPort) {
+            Swal.fire({
+        title: 'Error',
+        text: 'All fields (name, namespace, replicas, service name, container name, image, and port) are required!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });            return;
+          }
+          
+          // Collect environment variables
+          const envVars = {};
+          document.querySelectorAll('#envVarsContainer .row').forEach(row => {
+            const key = row.querySelector('input[name="envKey"]').value;
+            const value = row.querySelector('input[name="envValue"]').value;
+            if (key) {
+              envVars[key] = value;
+            }
+          });
+          
+          // Collect volume claims
+          const volumeClaims = [];
+          document.querySelectorAll('#volumeClaimsContainer .card').forEach(card => {
+            const claimName = card.querySelector('input[name="volumeClaimName"]').value;
+            const claimSize = card.querySelector('input[name="volumeClaimSize"]').value;
+            const mountPath = card.querySelector('input[name="volumeClaimMountPath"]').value;
+            
+            if (claimName && claimSize && mountPath) {
+              volumeClaims.push({
+                name: claimName,
+                size: claimSize,
+                mountPath: mountPath
+              });
+            }
+          });
+          
+          const statefulSetData = {
+            name,
+            namespace,
+            replicas: parseInt(replicas),
+            serviceName,
+            container: {
+              name: containerName,
+              image: containerImage,
+              port: parseInt(containerPort),
+              envVars
+            },
+            volumeClaims
+          };
+          
+          Swal.fire({
+    title: 'Creating StatefulSet',
+    text: `Creating StatefulSet ${name} in namespace ${namespace}...`,
+    icon: 'info',
+    showConfirmButton: false,
+    timer: 2000
+});          
+          fetch('/kubernetes/statefulsets/create', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(statefulSetData)
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              Swal.fire({
+    title: 'Success',
+    text: `StatefulSet ${name} created successfully`,
+    icon: 'success',
+    confirmButtonText: 'OK',
+    timer: 1500
+});              document.getElementById('createStatefulSetForm').reset();
+              document.getElementById('envVarsContainer').innerHTML = `
+                <div class="row mb-2">
+                  <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Key" name="envKey">
+                  </div>
+                  <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Value" name="envValue">
+                  </div>
+                  <div class="col-md-2">
+                    <button type="button" class="btn btn-danger btn-sm" onclick="removeEnvVar(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              `;
+              document.getElementById('volumeClaimsContainer').innerHTML = `
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="volumeClaimName">Volume Claim Name</label>
+                          <input type="text" class="form-control" name="volumeClaimName" placeholder="www" required>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="volumeClaimSize">Storage Size (GB)</label>
+                          <input type="number" class="form-control" name="volumeClaimSize" min="1" value="1" required>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="volumeClaimMountPath">Mount Path</label>
+                          <input type="text" class="form-control" name="volumeClaimMountPath" placeholder="/usr/share/nginx/html" required>
+                        </div>
+                      </div>
+                      <div class="col-md-1 d-flex align-items-end">
+                        <button type="button" class="btn btn-danger btn-sm" onclick="removeVolumeClaim(this)">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `;
+              loadStatefulSets();
+            } else {
+              Swal.fire({
+    title: 'Error',
+    text: `Failed to create StatefulSet: ${data.error}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});            }
+          })
+          .catch(error => {
+            Swal.fire({
+        title: 'Error',
+        text: `Failed to create StatefulSet: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });          });
+        }
+        
+        // Utility functions
+        function timeSince(date) {
+          const seconds = Math.floor((new Date() - date) / 1000);
+          
+          let interval = Math.floor(seconds / 31536000);
+          if (interval >= 1) return `${interval}y`;
+          
+          interval = Math.floor(seconds / 2592000);
+          if (interval >= 1) return `${interval}mo`;
+          
+          interval = Math.floor(seconds / 86400);
+          if (interval >= 1) return `${interval}d`;
+          
+          interval = Math.floor(seconds / 3600);
+          if (interval >= 1) return `${interval}h`;
+          
+          interval = Math.floor(seconds / 60);
+          if (interval >= 1) return `${interval}m`;
+          
+          return `${Math.floor(seconds)}s`;
+        }
+        
+      
+        function loadNamespaces() {
+          fetch('http://localhost:5000//kubernetes/namespaces')
+          .then(response => response.json())
+          .then(data => {
+            if (data.items && data.items.length > 0) {
+              const statefulsetNamespace = document.getElementById('statefulsetNamespace');
+              const statefulsetNamespaceFilter = document.getElementById('statefulsetNamespaceFilter');
+              
+              while (statefulsetNamespace.options.length > 1) {
+                statefulsetNamespace.remove(1);
+              }
+              while (statefulsetNamespaceFilter.options.length > 1) {
+                statefulsetNamespaceFilter.remove(1);
+              }
+              
+              // Add new options
+              data.items.forEach(ns => {
+                if (ns.metadata.name !== 'default') {
+                  const option = document.createElement('option');
+                  option.value = ns.metadata.name;
+                  option.textContent = ns.metadata.name;
+                  statefulsetNamespace.appendChild(option.cloneNode(true));
+                  statefulsetNamespaceFilter.appendChild(option);
+                }
+              });
+            }
+          })
+          .catch(error => {
+            console.error('Error loading namespaces:', error);
+          });
+        }
+      </script>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="../assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Google Maps Plugin -->
+    <script src="../assets/js/plugin/gmaps/gmaps.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="../assets/js/kaiadmin.min.js"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="../assets/js/setting-demo2.js"></script>
+	<script src="/assets/js/script.js"></script>
+  <script>
+    function logout() {
+            Swal.fire({
+                title: 'Logout Confirmation',
+                text: 'Are you sure you want to log out?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#326ce5',
+                cancelButtonColor: '#ff6666',
+                confirmButtonText: 'Yes, log out'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.clear();
+                    window.location.replace("/login");
+                }
+            });
+        }
+  </script>
+<script>
+  function recherche() {
+    var input, filter, items, item, name, i, txtValue;
+    input = document.getElementById("searchInput"); 
+    filter = input.value.toUpperCase();
+    items = document.getElementsByClassName("service-item"); // Target list items
+
+    for (i = 0; i < items.length; i++) {
+        item = items[i];
+        name = item.querySelector(".service-name"); // Target the service name
+        if (name) {
+            txtValue = name.textContent || name.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                item.style.display = "flex"; // Show the item (flex for the list layout)
+            } else {
+                item.style.display = "none"; // Hide the item
+            }
+        }
+    }
+  }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,680 @@
+    #editor { height: 300px; width: 100%; }
+
+      /* Highlight the editor during the tutorial */
+.highlight-editor {
+    border: 2px solid #007bff !important;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+      .line-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
+      .line-text {
+        flex: 1;
+        margin-right: 10px;
+      }
+      .line-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .line-actions button {
+        margin-bottom: 5px;
+      }
+    
+
+  
+      /* Chatbot Container */
+      #chatbot-container {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          z-index: 1000;
+      }
+  
+      /* Chatbot Toggle Button (Circle with Logo) */
+      #chatbot-toggle {
+          width: 70px;
+          height: 70px;
+          background: #1e90ff;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+  
+      #chatbot-toggle img {
+          width: 50px;
+          height: 50px;
+      }
+  
+   
+  /* Chatbot Styling */
+  #chatbot-interface {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 450px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+  }
+
+  /* Chat Header */
+  #chat-header {
+      background: #1e90ff;
+      color: white;
+      padding: 15px;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+  }
+
+  #chat-header img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+  }
+
+  #chat-header strong {
+      display: flex;
+      align-items: center;
+  }
+
+  #chat-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+  }
+
+  /* Chat Body */
+  #chat-body {
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 10px;
+      background: white;
+  }
+
+  /* Chat Messages */
+  .chat-message {
+      background: #e9ecef;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      width: fit-content;
+      max-width: 80%;
+      font-size: 14px;
+  }
+
+  .bot-message {
+      background: #d1ecf1;
+      color: #0c5460;
+      align-self: flex-start;
+  }
+
+  /* Welcome Message Styling */
+  .welcome-message {
+      background: #1e90ff;
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+  }
+
+  .welcome-message:hover {
+      background: #0056b3;
+  }
+
+  .hidden-content {
+      display: none; /* Ensures it's hidden by default */
+      margin-top: 5px;
+      background: white;
+      padding: 8px;
+      border-radius: 5px;
+      font-size: 14px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Chat Input */
+  #chat-input {
+      display: flex;
+      padding: 10px;
+      background: #f8f9fa;
+      border-top: 1px solid #ddd;
+  }
+
+  #chat-message {
+      flex-grow: 1;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+  }
+
+  #chat-send {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      margin-left: 5px;
+      border-radius: 6px;
+      cursor: pointer;
+  }
+
+  #chat-send:hover {
+      background: #0056b3;
+  }
+
+ 
+    #tutorial-panel {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#tutorial-step-description {
+    font-size: 14px;
+    color: #333;
+}
+
+.progress-bar {
+    background-color: #1e90ff;
+}
+
+#editor {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+#service-name {
+    margin-top: 10px;
+}
+  /* General Button Style */
+  .btn-pastel {
+      font-weight: 600 !important;
+      border-radius: 10px !important;
+      padding: 12px 20px !important;
+      margin: 8px !important;
+      border: none !important;
+      transition: all 0.3s ease-in-out !important;
+      text-transform: uppercase !important;
+      display: inline-block !important;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* Docker Blue (Darker Pastel) */
+  .btn-blue1 {
+      background-color: #1e90ff; /* Docker Blue */
+      color: #fff;
+  }
+
+  .btn-blue1:hover {
+      background-color: #1c86ee; /* Slightly darker on hover */
+  }
+
+  /* Kubernetes Blue (Darker Pastel) */
+  .btn-blue2 {
+      background-color: #326ce5; /* Kubernetes Blue */
+      color: #fff;
+  }
+
+  .btn-blue2:hover {
+      background-color: #2b5fc7; /* Slightly darker on hover */
+  }
+
+  /* Update Button (Darker Pastel Orange) */
+  .btn-update {
+      background-color: #ffa64d; /* Darker Pastel Orange */
+      color: #333;
+  }
+
+  .btn-update:hover {
+      background-color: #e69544; /* Slightly darker on hover */
+  }
+
+  /* Delete Button (Darker Pastel Red) */
+  .btn-red {
+      background-color: #ff6666; /* Darker Pastel Red */
+      color: #fff;
+  }
+
+  .btn-red:hover {
+      background-color: #e65c5c; /* Slightly darker on hover */
+  }
+
+  .btn-pastel-gray {
+            background-color: #b3b3b3 !important;
+            color: #333 !important;
+        }
+
+        .btn-pastel-gray:hover {
+            background-color: #999999 !important;
+        }
+        .btn-pastel-red {
+            background-color: #ff6666 !important;
+            color: #fff !important;
+        }
+
+        .btn-pastel-red:hover {
+            background-color: #e65c5c !important;
+        }
+
+
+  
+   
+    .container {
+      margin-top: 20px;
+    }
+    .page-header {
+      border-bottom: 2px solid #dee2e6;
+      padding-bottom: 15px;
+    }
+    .breadcrumbs {
+      padding: 0;
+      list-style: none;
+    }
+    .breadcrumbs li {
+      display: inline;
+      margin-right: 5px;
+    }
+    .breadcrumbs li i {
+      margin-right: 5px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .btn-secondary {
+      margin: 5px;
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .btn-group .btn {
+      margin: 5px;
+    }
+    #details-container {
+      margin-top: 20px;
+    }
+    #lines-container {
+      margin-top: 20px;
+    }
+   
+    .form-control {
+      border-radius: 0.25rem;
+    }
+    .main-panel{
+        background-color: #f5f7fd;
+    }
+
+    .nav-item i {
+    color: rgba(255, 255, 255, 0.937) !important; /* Change to match your theme */
+    font-size: 18px;
+}
+
+/* Help icon base style */
+.help-icon {
+  cursor: help;
+  display: inline-block;
+  margin-left: 4px;
+  position: relative;
+}
+
+.help-icon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 100%;        /* Changed from bottom: 100% */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 400px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  z-index: 100;    /* Increased z-index */
+ 
+}
+
+
+
+.help-icon:hover::after {
+  opacity: 1;
+  visibility: visible;
+  top: calc(100% + 5px);  /* Changed from bottom */
+}
+
+/* Special styling for input group help */
+.input-group .help-icon {
+  background: #f8f9fa;
+  border-left: 1px solid #ced4da;
+  padding: 0 10px;
+}
+
+#validation-feedback {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#yaml-status.valid {
+    color: #28a745;
+    display: inline-block !important;
+}
+
+#yaml-status.invalid {
+    color: #dc3545;
+    display: inline-block !important;
+}
+
+
+#yaml-error {
+    font-family: monospace;
+    white-space: pre-wrap;
+    background-color: #fff8f8;
+    padding: 5px;
+    border-radius: 4px;
+    border-left: 3px solid #dc3545;
+    margin-top: 5px;
+}
+
+#editor .monaco-editor .marker-error {
+    background-color: rgba(255, 0, 0, 0.2);
+    border-left: 3px solid #dc3545;
+}
+
+  .swal2-show {
+    animation: swal2-show 0.3s ease-out forwards;
+  }
+  
+  .swal2-hide {
+    animation: swal2-hide 0.15s ease-out forwards;
+  }
+  
+  @keyframes swal2-show {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes swal2-hide {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.98);
+    }
+  }
+  
+  /* Success/Error icon animations */
+  .swal2-success [class^=swal2-success-line] {
+    animation: swal2-success-animate 0.75s;
+  }
+  
+  .swal2-error [class^=swal2-x-mark-line] {
+    animation: swal2-error-animate 0.5s;
+  }
+  
+  /* Backdrop styling - ensures proper removal */
+  .swal2-backdrop-show {
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: background-color 0.1s;
+  }
+  
+  .swal2-backdrop-hide {
+    background-color: transparent !important;
+  }
+  
+  /* Fix for stacking context */
+  body.swal2-shown {
+    overflow-y: auto !important;
+  }
+ 
+  /* Enhanced Action Buttons - Outline Style */
+.action-buttons {
+    display: flex !important;
+    gap: 8px !important;
+    justify-content: flex-end !important;
+    flex-wrap: wrap !important;
+}
+
+.action-btn {
+    position: relative !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    transition: all 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 100px !important;
+    border: 1px solid !important;
+    cursor: pointer !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+    background-color: transparent !important; /* Transparent background by default */
+}
+
+.action-btn i {
+    margin-right: 6px !important;
+    font-size: 13px !important;
+}
+
+.action-btn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    color: white !important; /* White text on hover */
+}
+
+.action-btn:active {
+    transform: translateY(0) !important;
+}
+
+/* Specific button styles - Outline versions */
+.btn-yaml {
+    color: #1e90ff !important;
+    border-color: #1e90ff !important;
+}
+
+.btn-yaml:hover {
+    background-color: #1e90ff !important;
+}
+
+.btn-scale {
+    color: #326ce5 !important;
+    border-color: #326ce5 !important;
+}
+
+.btn-scale:hover {
+    background-color: #326ce5 !important;
+}
+
+.btn-delete {
+    color: #ff6666 !important;
+    border-color: #ff6666 !important;
+}
+
+.btn-delete:hover {
+    background-color: #ff6666 !important;
+}
+
+.btn-blue1 {
+    color: #1e90ff !important;
+    border-color: #1e90ff !important;
+}
+
+.btn-blue1:hover {
+    background-color: #1e90ff !important;
+}
+
+.btn-blue2 {
+    color: #326ce5 !important;
+    border-color: #326ce5 !important;
+}
+
+.btn-blue2:hover {
+    background-color: #326ce5 !important;
+}
+
+.btn-pastel-red {
+    color: #ff6666 !important;
+    border-color: #ff6666 !important;
+}
+
+.btn-pastel-red:hover {
+    background-color: #ff6666 !important;
+}
+
+.btn-pastel-gray {
+    color: #666 !important;
+    border-color: #666 !important;
+}
+
+.btn-pastel-gray:hover {
+    background-color: #666 !important;
+}
+
+.btn-pastel-docker-blue {
+    color: #2496ed !important;
+    border-color: #2496ed !important;
+}
+
+.btn-pastel-docker-blue:hover {
+    background-color: #2496ed !important;
+}
+
+
+
+
+
+/* Disabled button style */
+.action-btn.disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
+.action-btn.disabled:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    color: inherit !important;
+}
+  
+/* Compact image panel styles */
+#imageListContainer {
+    max-height: 100px !important;
+    font-size: 0.85rem !important;
+    scrollbar-width: thin !important;
+}
+
+.list-group-sm .list-group-item {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+.list-group-sm .insert-image {
+    padding: 0.1rem 0.3rem;
+    font-size: 0.7rem;
+}
+
+/* Make sure Monaco editor still has enough height */
+#editor {
+    min-height: 250px;
+}
+
+
+/* Simple Compose Form Styles */
+/* Form Styles */
+#image-selection-section, #services-config-section {
+    transition: all 0.3s ease;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+#image-list-container, #volume-list-container, 
+#selected-images, #selected-volumes {
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.service-card {
+    margin-bottom: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+}
+
+.service-card .card-header {
+    background-color: #e9ecef;
+    padding: 0.5rem 1rem;
+}
+
+.service-card .card-body {
+    padding: 1rem;
+}
+
+/* Make the generate button stand out */
+#services-config-form .btn-blue1 {
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+}
+
+#image-list-container, #volume-list-container {
+    max-height: 120px !important; /* Set a fixed height to limit space */
+    overflow-y: auto !important; /* Enable vertical scrolling */
+    scrollbar-width: thin !important; /* For Firefox: thinner scrollbar */
+}
+
+
+
+#image-list-container, #volume-list-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 0.25rem;
+}
+
+#image-list-container, #volume-list-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 0.25rem;
+}
+
+#image-list-container, #volume-list-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

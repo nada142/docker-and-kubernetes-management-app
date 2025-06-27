@@ -1,0 +1,3184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>CI/CD Integration</title>
+        <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+        <link rel="icon" href="../assets/img/dockube3.png" type="image/x-icon" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- Fonts and icons -->
+        <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+        <script>
+          WebFont.load({
+            google: { families: ["Public Sans:300,400,500,600,700"] },
+            custom: {
+              families: [
+                "Font Awesome 5 Solid",
+                "Font Awesome 5 Regular",
+                "Font Awesome 5 Brands",
+                "simple-line-icons",
+              ],
+              urls: ["../assets/css/fonts.min.css"],
+            },
+            active: function () {
+              sessionStorage.fonts = true;
+            },
+          });
+        </script>
+      
+        <!-- Core CSS Files -->
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+        <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+        <link rel="stylesheet" href="../assets/css/cicd.css">
+
+        <!-- Demo CSS (optional) -->
+        <link rel="stylesheet" href="../assets/css/demo.css" />
+      
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+      
+        <!-- Monaco Editor CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs/editor/editor.main.min.css">
+      
+        <!-- SweetAlert2 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+      
+
+  
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<!-- Bootstrap 4 -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+          <div class="sidebar-logo">
+              <!-- Logo Header -->
+              <div class="logo-header" data-background-color="dark">
+                  <a href="/" class="logo" style="display: flex; align-items: center;">
+                      <img src="../assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" height="40" />
+                      <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+                  </a>
+                  <div class="nav-toggle">
+                      <button class="btn btn-toggle toggle-sidebar">
+                          <i class="gg-menu-right"></i>
+                      </button>
+                      <button class="btn btn-toggle sidenav-toggler">
+                          <i class="gg-menu-left"></i>
+                      </button>
+                  </div>
+                  <button class="topbar-toggler more">
+                      <i class="gg-more-vertical-alt"></i>
+                  </button>
+              </div>
+              <!-- End Logo Header -->
+          </div>
+          <div class="sidebar-wrapper scrollbar scrollbar-inner">
+            <div class="sidebar-content">
+              <ul class="nav nav-secondary">
+                <li class="nav-item">
+                  <a href="/" aria-expanded="false">
+                    <i class="fas fa-tachometer-alt"></i> <!-- Dashboard icon -->
+                    <p>Dashboard</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerRegistries">
+                    <i class="fas fa-warehouse"></i> <!-- Registry icon -->
+                    <p>Docker Registries</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerfile_list">
+                    <i class="fas fa-file-code"></i> <!-- Code file icon for Dockerfile -->
+                    <p>Dockerfile</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerimg">
+                    <i class="fas fa-images"></i> <!-- Images icon -->
+                    <p>Docker Images</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockercontainers">
+                    <i class="fas fa-box"></i> <!-- Box icon for containers -->
+                    <p>Docker Containers</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/volumes">
+                    <i class="fas fa-database"></i> <!-- Database icon for Volumes -->
+                    <p>Volumes</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/compose">
+                    <i class="fas fa-cubes"></i> <!-- Stacked cubes for Compose -->
+                    <p>Docker Compose</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/swarm_list">
+                        <i class="fas fa-project-diagram"></i> <!-- Stacked cubes for Compose -->
+                      <p>Docker Swarm</p>
+                    </a>
+                  </li>
+<li class="nav-item">
+    <a data-bs-toggle="collapse" href="#kubernetesMenu" aria-expanded="false">
+        <i class="fas fa-dharmachakra"></i>
+        <p>Kubernetes</p>
+        <span class="caret"></span>
+    </a>
+    <div class="collapse" id="kubernetesMenu">
+        <ul class="nav nav-collapse">
+            <li>
+                <a href="/kubernetes/cluster">
+                    <span class="sub-item">Cluster Setup</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/nodes">
+                    <span class="sub-item">Nodes</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/deployments">
+                    <span class="sub-item">Deployments</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/statefulsets">
+                    <span class="sub-item">StatefulSets</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/services">
+                    <span class="sub-item">Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/pods">
+                    <span class="sub-item">Pods</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/pvcs">
+                    <span class="sub-item">Storage</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/configs">
+                    <span class="sub-item">ConfigMaps && Secrets</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/namespaces">
+                    <span class="sub-item">Namespaces</span>
+                </a>
+            </li>
+             <li>
+                <a href="/kubernetes/ingresses">
+                    <span class="sub-item">Ingresses</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+
+<li class="nav-item active">
+    <a href="/cicd_integration">
+      <i class="fas fa-sync-alt"></i>
+      <p>CI CD</p>
+    </a>
+  </li>
+                <li class="nav-item">
+                  <a data-bs-toggle="collapse" href="#" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> <!-- Logout icon -->
+                    <p>Logout</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <!-- End Sidebar -->
+      <div class="main-panel">
+          <div class="main-header">
+              <div class="main-header-logo">
+                  <!-- Logo Header -->
+                  <div class="logo-header" data-background-color="dark">
+                      <a href="../index.html" class="logo">
+                          <img src="../assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" />
+                      </a>
+                      <div class="nav-toggle">
+                          <button class="btn btn-toggle toggle-sidebar">
+                              <i class="gg-menu-right"></i>
+                          </button>
+                          <button class="btn btn-toggle sidenav-toggler">
+                              <i class="gg-menu-left"></i>
+                          </button>
+                      </div>
+                      <button class="topbar-toggler more">
+                          <i class="gg-more-vertical-alt"></i>
+                      </button>
+                  </div>
+                  <!-- End Logo Header -->
+              </div>
+              <!-- Navbar Header -->
+              <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+                  <div class="container-fluid">
+                      <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+                          
+                      </nav>
+                      <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                          <li class="nav-item topbar-user dropdown hidden-caret">
+                              <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="/profile" aria-expanded="false">
+                                  <span class="profile-username">
+                                      <span class="op-7">Hi,</span>
+                                      <span class="fw-bold">Hizrian</span>
+                                  </span>
+                              </a>
+                              <ul class="dropdown-menu dropdown-user animated fadeIn">
+                                  <div class="dropdown-user-scroll scrollbar-outer">
+                                      <li>
+                                          <div class="user-box">
+                                              <div class="avatar-lg">
+                                                  <img src="../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded" />
+                                              </div>
+                                              <div class="u-text">
+                                                  <h4>Hizrian</h4>
+                                                  <p class="text-muted">hello@example.com</p>
+                                                  <a href="/profile" class="action-btn btn-blue1 btn-sm">Update Profile</a>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="dropdown-divider"></div>
+                                          <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                                      </li>
+                                  </div>
+                              </ul>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
+              <!-- Add Vis.js library -->
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<link href="https://unpkg.com/vis-network/styles/vis-network.min.css" rel="stylesheet" />
+              <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                      var user = JSON.parse(localStorage.getItem("user"));
+                      if (user) {
+                          document.querySelector(".profile-username .fw-bold").textContent = user.username;
+                          document.querySelector(".u-text h4").textContent = user.username;
+                          document.querySelector(".u-text .text-muted").textContent = user.email;
+                      }
+                  });
+              </script>
+              <!-- End Navbar -->
+          </div>
+          <div class="container">
+            <div class="page-inner">
+                <div class="page-header">
+                    <h2>CI/CD Integration</h2>
+                    <p class="text-muted">Automate your build, test, and deployment workflows</p>
+                </div>
+                
+                <!-- Enhanced Horizontal Tabs -->
+                <div class="cicd-tabs">
+                    <button class="cicd-tab-btn active" data-target="overview">
+                        <i class="fas fa-tachometer-alt mr-2"></i>Overview
+                        <span id="pipelineCountBadge" class="badge badge-pill badge-primary ml-2">0</span>
+                    </button>
+                    <button class="cicd-tab-btn" data-target="connect">
+                        <i class="fas fa-plug mr-2"></i>Connect CI/CD
+                    </button>
+                    <button class="cicd-tab-btn" data-target="templates">
+                        <i class="fas fa-cubes mr-2"></i>Templates
+                    </button>
+                    <button class="cicd-tab-btn" data-target="editor">
+                        <i class="fas fa-code mr-2"></i>Pipeline Editor
+                    </button>
+                </div>
+                
+                <!-- Tab Contents -->
+                <div id="overview" class="cicd-tab-content active">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4>Active Pipelines</h4>
+                        <div class="d-flex">
+                            <div class="input-group input-group-sm mr-2" style="width: 250px;">
+                                <input type="text" class="form-control" placeholder="Search pipelines...">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button class="btn btn-sm btn-primary" onclick="refreshPipelines()">
+                                <i class="fas fa-sync-alt mr-1"></i> Refresh
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card card-statistic">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h6 class="text-muted mb-1">Total Pipelines</h6>
+                                            <h4 id="totalPipelines">0</h4>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fas fa-project-diagram text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card card-statistic">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h6 class="text-muted mb-1">Running</h6>
+                                            <h4 id="runningPipelines">0</h4>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fas fa-sync-alt fa-spin text-info"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card card-statistic">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h6 class="text-muted mb-1">Success</h6>
+                                            <h4 id="successPipelines">0</h4>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fas fa-check-circle text-success"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card card-statistic">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h6 class="text-muted mb-1">Failed</h6>
+                                            <h4 id="failedPipelines">0</h4>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fas fa-times-circle text-danger"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                     <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Pipeline Analytics</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="successRateChart" style="width: 100%; height: 400px;"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="durationChart" style="width: 100%; height: 400px;"></div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div id="deploymentFrequencyChart" style="width: 100%; height: 400px;"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="errorTrendsChart" style="width: 100%; height: 400px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                </div>
+                
+                <div id="connect" class="cicd-tab-content">
+                    <div class="wizard-step">
+                        <h5>Connect CI/CD Tool</h5>
+                        <p class="text-muted mb-4">Connect to your existing CI/CD tools to manage pipelines</p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="card card-integration">
+                                    <div class="card-body text-center">
+                                        <div class="integration-icon bg-jenkins">
+                                            <i class="fab fa-jenkins fa-2x"></i>
+                                        </div>
+                                        <h5 class="mt-3">Jenkins</h5>
+                                        <p class="text-muted">Connect to existing Jenkins server</p>
+                                        <button class="btn btn-primary btn-block" onclick="showJenkinsConnectModal()">
+                                            <i class="fas fa-plug mr-2"></i>Connect
+                                        </button>
+                                        <div class="mt-3">
+                                            <a href="#" class="text-muted small" data-toggle="collapse" data-target="#jenkinsHelp">
+                                                <i class="fas fa-question-circle mr-1"></i> How to get Jenkins credentials?
+                                            </a>
+                                            <div id="jenkinsHelp" class="collapse mt-2 text-left">
+                                                <small>
+                                                    1. Log in to your Jenkins server<br>
+                                                    2. Click your username → Configure<br>
+                                                    3. Click "Add new Token" and generate an API token<br>
+                                                    4. Use your username and this token to connect
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-integration">
+                                    <div class="card-body text-center">
+                                        <div class="integration-icon bg-gitlab">
+                                            <i class="fab fa-gitlab fa-2x"></i>
+                                        </div>
+                                        <h5 class="mt-3">GitLab CI/CD</h5>
+                                        <p class="text-muted">Connect to GitLab repository</p>
+                                        <button class="btn btn-primary btn-block" onclick="showGitLabConnectModal()">
+                                            <i class="fas fa-plug mr-2"></i>Connect
+                                        </button>
+                                        <div class="mt-3">
+                                            <a href="#" class="text-muted small" data-toggle="collapse" data-target="#gitlabHelp">
+                                                <i class="fas fa-question-circle mr-1"></i> How to get GitLab token?
+                                            </a>
+                                            <div id="gitlabHelp" class="collapse mt-2 text-left">
+                                                <small>
+                                                    1. Log in to GitLab<br>
+                                                    2. Go to Settings → Access Tokens<br>
+                                                    3. Create token with "api" scope<br>
+                                                    4. Use this token to connect
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="connected-services mt-5">
+                            <h6 class="section-title">Connected Services</h6>
+                            <div id="connectedServicesList" class="list-group">
+                                <!-- Connected services will be loaded here -->
+                                <div class="list-group-item text-center text-muted py-4">
+                                    <i class="fas fa-plug fa-2x mb-2"></i><br>
+                                    No connected services yet
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="templates" class="cicd-tab-content">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Pipeline Templates</h5>
+                        <div class="form-group mb-0">
+                            <select class="form-control form-control-sm" id="templateFilter" style="width: 200px;">
+                                <option value="all">All Templates</option>
+                                <option value="docker">Docker</option>
+                                <option value="kubernetes">Kubernetes</option>
+                                <option value="testing">Testing</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row" id="templatesContainer">
+                        <div class="col-12">
+                            <div class="alert alert-info">
+                                <i class="fas fa-spinner fa-spin mr-2"></i> Loading templates...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="editor" class="cicd-tab-content">
+    <div class="card">
+        <div class="card-header gradient-card-header">
+            <h5 class="card-title">Pipeline Editor</h5>
+            <div class="card-actions">
+                <div class="btn-group">
+                    <button class="action-btn btn-pastel-gray dropdown-toggle" type="button" data-toggle="dropdown">
+                        <i class="fas fa-file-import mr-1"></i> Load Template
+                    </button>
+                    <div class="dropdown-menu" id="templateDropdown">
+                        <a class="dropdown-item" href="#">Loading templates...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label>Pipeline Name</label>
+                <input type="text" class="form-control" id="pipelineName" placeholder="e.g. frontend-deployment">
+            </div>
+            <div class="form-group">
+                <label>CI/CD Provider</label>
+                <select class="form-control" id="ciCdType">
+                    <option value="gitlab">GitLab</option>
+                    <option value="jenkins">Jenkins</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Repository URL</label>
+                    <input type="text" class="form-control" id="repoUrl" placeholder="https://github.com/your/repo">
+                </div>
+                 <div class="form-group col-md-6">
+        <label>Docker Registry</label>
+        <select class="form-control" id="dockerRegistrySelect">
+            <option value="">-- Select Registry --</option>
+        </select>
+    </div>
+                <div class="form-group col-md-6">
+                    <label>Branch</label>
+                    <input type="text" class="form-control" id="branchName" value="main">
+                </div>
+            </div>
+            
+            <ul class="nav nav-tabs" id="editorTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="jenkins-tab" data-toggle="tab" href="#jenkinsEditor">
+                        <i class="fab fa-jenkins mr-1"></i> Jenkinsfile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="gitlab-tab" data-toggle="tab" href="#gitlabEditor">
+                        <i class="fab fa-gitlab mr-1"></i> .gitlab-ci.yml
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="tab-content pt-3">
+                <div class="tab-pane fade show active" id="jenkinsEditor"></div>              
+                <div class="tab-pane fade" id="gitlabEditor"></div>                          
+            </div>
+            
+            <div class="action-buttons mt-3">
+                <button class="action-btn btn-blue2" id="aiSuggestBtn">
+        <i class="fas fa-robot mr-1"></i> Suggest with AI
+    </button>
+                <button class="action-btn btn-blue1" id="savePipelineBtn">
+                    <i class="fas fa-save mr-1"></i> Save Pipeline
+                </button>
+                <button class="action-btn btn-pastel-gray" id="validatePipelineBtn">
+                    <i class="fas fa-check-circle mr-1"></i> Validate
+                </button>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-header gradient-card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Saved Pipelines</h5>
+                    <button class="action-btn btn-blue1" onclick="refreshPipelines()">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover" id="pipelinesTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Repository</th>
+                                <th>Status</th>
+                                <th>Last Run</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="modal fade" id="jenkinsConnectModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            <i class="fab fa-jenkins mr-2 text-dark"></i> Connect Jenkins
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="jenkinsConnectForm">
+                            <div class="form-group">
+                                <label>Jenkins URL</label>
+                                <input type="url" class="form-control" name="jenkinsUrl" 
+                                       placeholder="https://jenkins.yourdomain.com" required>
+                                <small class="form-text text-muted">Base URL of your Jenkins server</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label>API Token</label>
+                                <input type="password" class="form-control" name="apiToken" required>
+                                <small class="form-text text-muted">
+                                    <a href="#" data-toggle="collapse" data-target="#jenkinsTokenHelp">
+                                        How to get API token?
+                                    </a>
+                                    <div id="jenkinsTokenHelp" class="collapse mt-2">
+                                        <small>
+                                            1. Log in to Jenkins<br>
+                                            2. Click your username → Configure<br>
+                                            3. Click "Add new Token" and generate an API token
+                                        </small>
+                                    </div>
+                                </small>
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="testConnection" checked>
+                                <label class="form-check-label" for="testConnection">Test connection immediately</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+  <button type="button" class="action-btn btn-pastel-gray" data-dismiss="modal">Cancel</button>
+  <button type="button" class="action-btn btn-blue1" id="connectJenkinsBtn">
+    <span id="jenkinsConnectBtnText">Connect</span>
+    <span id="jenkinsConnectSpinner" class="spinner-border spinner-border-sm ml-2" style="display: none;"></span>
+  </button>
+</div>
+                </div>
+            </div>
+        </div>
+  
+<div class="modal fade" id="gitlabConnectModal" tabindex="-1" role="dialog">    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fab fa-gitlab mr-2 text-dark"></i> Connect GitLab
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="gitlabConnectForm">
+                    <div class="form-group">
+                        <label>GitLab URL</label>
+                        <input type="text" class="form-control" id="gitlabUrl" name="gitlabUrl" placeholder="https://gitlab.com">
+                        <small class="form-text text-muted">Base URL of your GitLab instance</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Project ID</label>
+                        <input type="text" class="form-control" id="projectId" name="projectId" placeholder="123456">
+                        <small class="form-text text-muted">Find this in your GitLab project's settings</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Access Token</label>
+                        <input type="password" class="form-control" id="accessToken" name="accessToken" placeholder="Your GitLab access token">                        <small class="form-text text-muted">
+                            <a href="#" data-toggle="collapse" data-target="#gitlabTokenHelp">
+                                How to get Access Token?
+                            </a>
+                            <div id="gitlabTokenHelp" class="collapse mt-2">
+                                <small>
+                                    1. Log in to GitLab<br>
+                                    2. Go to Settings → Access Tokens<br>
+                                    3. Create a token with "api" scope
+                                </small>
+                            </div>
+                        </small>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="testGitlabConnection" checked>
+                        <label class="form-check-label" for="testGitlabConnection">Test connection immediately</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="connectGitlabBtn">
+                    <span id="gitlabConnectBtnText">Connect</span>
+                    <span id="gitlabConnectSpinner" class="spinner-border spinner-border-sm ml-2" style="display: none;"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+     <div class="modal fade" id="pipelineStatusModal" tabindex="-1" role="dialog" aria-labelledby="pipelineStatusTitle" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-gradient-primary text-white">
+        <h5 class="modal-title font-weight-bold" id="pipelineStatusTitle">Pipeline Status</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="mb-4">
+          <h6 class="text-uppercase text-muted">Pipeline Details</h6>
+          <div id="pipelineDetails" class="border rounded p-3 bg-light"></div>
+          <div id="pipelineErrorDetails" class="mt-2" style="display: none;"></div>
+        </div>
+
+        <!-- Stages and Jobs -->
+        <div class="mb-4">
+          <h6 class="text-uppercase text-muted">Stages & Jobs</h6>
+          <div id="pipelineStages" class="border rounded p-3"></div>
+        </div>
+
+        <!-- Log Output -->
+        <div>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h6 class="text-uppercase text-muted">Log Output</h6>
+            <button class="btn btn-sm btn-outline-secondary" id="clearLogsBtn">
+              <i class="fas fa-trash mr-1"></i> Clear Logs
+            </button>
+          </div>
+          <div class="log-container border rounded p-3 bg-dark text-light">
+            <pre id="pipelineLogOutput" class="m-0" style="max-height: 300px; overflow-y: auto;"></pre>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="refreshStatusBtn">
+          <i class="fas fa-sync-alt mr-1"></i> Refresh
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+        
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+            <div class="loading-content">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="loading-message mt-3" id="loadingMessage">Processing your request...</div>
+                <div class="progress mt-2" id="loadingProgress" style="display: none;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    </div>
+    
+    <div id="loadingSpinner" style="display: none;">
+        <i class="fas fa-spinner fa-spin"></i> Loading...
+    </div>
+    <div id="chatbot-container">
+        <!-- Chatbot Toggle Button (Circle with Logo) -->
+        <div id="chatbot-toggle">
+            <img src="../assets/img/dockube3.png" alt="Chatbot Logo" width="50" height="50">
+        </div>
+      
+       
+      <div id="chatbot-interface" style="display: none;">
+        <!-- Chat Header -->
+        <div id="chat-header">
+            <strong>
+                <img src="../assets/img/dockube3.png" alt="Logo">
+                Docker & Kubernetes Assistant
+            </strong>
+            <button id="chat-close">×</button>
+        </div>
+      
+        <!-- Chat Body -->
+        <div id="chat-body">
+            <div id="chat-messages">
+                <!-- Welcome Message -->
+                <div class="welcome-message" onclick="toggleWelcomeMessage()">
+                    👋 Welcome! I'm your Docker & Kubernetes Assistant.
+                    Ask me anything about Docker, Kubernetes, and best practices.
+                    <div class="hidden-content">
+                        Hi! I'm your Docker & Kubernetes Assistant.  
+                        Ask me anything about services, Kubernetes configurations, and best practices.
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <!-- Chat Input -->
+        <div id="chat-input">
+            <input type="text" id="chat-message" placeholder="Type your question...">
+            <button id="chat-send">Send</button>
+        </div>
+      </div>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotInterface = document.getElementById('chatbot-interface');
+            const chatClose = document.getElementById('chat-close');
+            const chatBody = document.getElementById('chat-body');
+            const chatMessages = document.getElementById('chat-messages');
+            const chatMessageInput = document.getElementById('chat-message');
+            const chatSendButton = document.getElementById('chat-send');
+      
+            // Toggle Chat Interface
+            chatbotToggle.addEventListener('click', () => {
+                chatbotInterface.style.display = 'block';
+            });
+      
+            // Close Chat Interface
+            chatClose.addEventListener('click', () => {
+                chatbotInterface.style.display = 'none';
+            });
+      
+            // Send Message to Chatbot
+            chatSendButton.addEventListener('click', async () => {
+                const message = chatMessageInput.value.trim();
+                if (message) {
+                    // Add User Message to Chat
+                    chatMessages.innerHTML += `<div class="message"><strong>You:</strong> ${message}</div>`;
+                    chatMessageInput.value = '';
+      
+                    // Show Loading Spinner
+                    chatMessages.innerHTML += `<div id="loading-spinner">Loading...</div>`;
+      
+                    // Call Backend API
+                    try {
+                        const response = await fetch('/api/chat', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ message })
+                        });
+                        const data = await response.json();
+      
+                        // Remove Loading Spinner and Add Bot Response
+                        document.getElementById('loading-spinner').remove();
+                        chatMessages.innerHTML += `<div class="message"><strong>Assistant:</strong> ${data.response}</div>`;
+                    } catch (error) {
+                        console.error('Error:', error);
+                        chatMessages.innerHTML += `<div class="message"><strong>Error:</strong> Failed to get response.</div>`;
+                    }
+      
+                    // Scroll to Bottom of Chat
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }
+            });
+      
+            // Allow Pressing "Enter" to Send a Message
+            chatMessageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    chatSendButton.click();
+                }
+            });
+        });
+      </script>
+
+
+<!-- Core JS Files -->
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+
+<!-- jQuery and Plugins -->
+<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+<script src="../assets/js/plugin/jsvectormap/world.js"></script>
+<script src="../assets/js/plugin/gmaps/gmaps.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!-- Monaco Editor -->
+<script>
+  var require = { paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs' } };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs/loader.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs/editor/editor.main.nls.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs/editor/editor.main.js"></script>
+
+
+
+<!-- Kaiadmin JS -->
+<script src="../assets/js/kaiadmin.min.js"></script>
+
+<!-- Demo JS (optional) -->
+<script src="../assets/js/setting-demo2.js"></script>
+
+<!-- Your CI/CD Page JavaScript -->
+<script src="/assets/js/script.js"></script>
+
+  
+      <script>
+       // Define editors globally
+       let jenkinsEditor, gitlabEditor;
+let editorsInitialized = false;
+let cicdSocket = null;
+let socketClosedIntentionally = false;
+
+// Global variables
+let socketReconnectAttempts = 0;
+const MAX_RECONNECT_ATTEMPTS = 5;
+
+function connectToCICDWebSocket(pipelineId) {
+  if (cicdSocket) {
+    cicdSocket.close();
+  }
+
+  const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+  const socketUrl = `${protocol}//${window.location.host}/ws/cicd?pipelineId=${pipelineId}`;
+
+  cicdSocket = new WebSocket(socketUrl);
+
+  cicdSocket.onopen = () => {
+    console.log('WebSocket connected for pipeline', pipelineId);
+  };
+
+  cicdSocket.onmessage = (event) => {
+    try {
+      const data = JSON.parse(event.data);
+      updatePipelineStatus(data);
+    } catch (e) {
+      console.error('Error parsing WebSocket message:', e);
+    }
+  };
+
+  cicdSocket.onclose = () => {
+    console.log('WebSocket closed');
+  };
+}
+
+
+function updatePipelineStatus(data) {
+  const statusBadge = $(`[data-pipeline-id="${data.pipelineId}"] .status-badge`);
+  if (statusBadge.length) {
+    statusBadge
+      .removeClass('badge-success badge-danger badge-info badge-warning')
+      .addClass(`badge-${getStatusClass(data.status)}`)
+      .text(data.status);
+  }
+
+  if ($('#pipelineStatusModal').is(':visible') && 
+      $('#pipelineStatusModal').data('pipelineId') === data.pipelineId) {
+    updateStatusModal(data);
+  }
+}
+
+function getStatusClass(status) {
+  switch(status.toLowerCase()) {
+    case 'success': return 'success';
+    case 'failed': return 'danger';
+    case 'running': return 'info';
+    case 'pending': return 'warning';
+    default: return 'secondary';
+  }
+}
+function updatePipelineUI(data) {
+  $(`tr[data-id="${data.pipelineId}"] .status-badge`)
+    .removeClass('badge-success badge-danger badge-info')
+    .addClass(`badge-${data.status === 'success' ? 'success' : data.status === 'failed' ? 'danger' : 'info'}`)
+    .text(data.status);
+
+  if (data.lastRun) {
+    $(`tr[data-id="${data.pipelineId}"] .last-run`).text(new Date(data.lastRun).toLocaleString());
+  }
+
+  if ($('#pipelineStatusModal').is(':visible') && $('#pipelineStatusModal').data('pipelineId') === data.pipelineId) {
+    updateStatusModal(data);
+  }
+
+  if (data.status === 'success') {
+    showAlert('success', `Pipeline ${data.pipelineId} completed successfully!`);
+  } else if (data.status === 'failed') {
+    showAlert('error', `Pipeline ${data.pipelineId} failed: ${data.error || 'Unknown error'}`);
+  }
+}
+
+function updateStatusModal(data) {
+  $('#pipelineStatusTitle').text(`Pipeline Status: ${data.status.charAt(0).toUpperCase() + data.status.slice(1)}`);
+  $('#pipelineStatusText').text(data.status).removeClass().addClass(`badge badge-${data.status === 'success' ? 'success' : data.status === 'failed' ? 'danger' : 'info'}`);
+  
+  if (data.webUrl) {
+    $('#pipelineWebUrl').attr('href', data.webUrl).show();
+  }
+  
+  if (data.stages) {
+    const $timeline = $('#stageTimeline').empty();
+    data.stages.forEach(stage => {
+      $timeline.append(`
+        <div class="stage ${stage.status}">
+          <div class="stage-name">${stage.name}</div>
+          <div class="stage-status">${stage.status}</div>
+          ${stage.duration ? `<div class="stage-duration">${formatDuration(stage.duration)}</div>` : ''}
+        </div>
+      `);
+    });
+  }
+  
+  if (data.logs) {
+    $('#pipelineLogOutput').append(`<div class="log-line">${data.logs}</div>`);
+    $('#pipelineLogOutput').scrollTop($('#pipelineLogOutput')[0].scrollHeight);
+  }
+}
+
+function appendPipelineLog(content) {
+    const logOutput = document.getElementById('pipelineLogOutput');
+    const logLine = document.createElement('div');
+    logLine.className = 'log-line';
+    logLine.textContent = content;
+    logOutput.appendChild(logLine);
+    logOutput.scrollTop = logOutput.scrollHeight;
+}
+
+function initEditors() {
+    if (window.monaco && !window.editorsInitialized) {
+        window.jenkinsEditor = monaco.editor.create(document.getElementById('jenkinsEditor'), {
+            value: '// Your Jenkinsfile will appear here\npipeline {\n  agent any\n\n  stages {\n    stage(\'Example\') {\n      steps {\n        echo \'Hello World\'\n      }\n    }\n  }\n}',
+            language: 'groovy',
+            theme: 'vs-dark',
+            automaticLayout: true
+        });
+
+        // Initialize GitLab editor
+        window.gitlabEditor = monaco.editor.create(document.getElementById('gitlabEditor'), {
+            value: '// Your .gitlab-ci.yml will appear here\nstages:\n  - build\n  - test\n  - deploy\n\nbuild_job:\n  stage: build\n  script:\n    - echo "Building the application..."',
+            language: 'yaml',
+            theme: 'vs-dark',
+            automaticLayout: true
+        });
+
+        window.editorsInitialized = true;
+                initRegistryImageSuggestions();
+
+    }
+}
+function loadMonacoEditor() {
+    return new Promise((resolve) => {
+        if (typeof monaco !== 'undefined') {
+            resolve();
+            return;
+        }
+        
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/loader.min.js';
+        script.onload = () => {
+            require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs' }});
+            require(['vs/editor/editor.main'], resolve);
+        };
+        document.body.appendChild(script);
+    });
+}
+
+// Initialize editors when the editor tab is clicked
+$('.cicd-tab-btn[data-target="editor"]').click(function() {
+    if (typeof monaco === 'undefined') {
+        loadMonacoEditor().then(initEditors);
+    } else {
+        initEditors();
+    }
+});
+
+
+function loadTemplateToEditor(templateId, type) {
+  showLoading(`Loading ${type} template...`);
+  
+  $.ajax({
+    url: `/api/cicd/templates/${templateId}`,
+    method: 'GET',
+    success: function(response) {
+      const template = response.data;
+      let content = '';
+      
+      if (type === 'jenkins') {
+        content = template.jenkins || '';
+      } else if (type === 'gitlab') {
+        content = template.gitlab || '';
+      }
+      
+      $('.cicd-tab-btn[data-target="editor"]').click();
+      
+      if (!window.editorsInitialized) {
+        initEditors();
+      }
+      
+      setTimeout(() => {
+        if (type === 'jenkins' && window.jenkinsEditor) {
+          window.jenkinsEditor.setValue(content);
+          $('#jenkins-tab').tab('show');
+        } else if (type === 'gitlab' && window.gitlabEditor) {
+          window.gitlabEditor.setValue(content);
+          $('#gitlab-tab').tab('show');
+        }
+        
+        if (template.suggestedName) {
+          $('#pipelineName').val(template.suggestedName);
+        }
+        
+        if (template.parameters && template.parameters.length > 0) {
+          showTemplateParametersModal(template, type);
+        }
+      }, 300);
+    },
+    error: function(xhr) {
+      showAlert('error', 'Failed to load template');
+    },
+    complete: function() {
+      hideLoading();
+    }
+  });
+}
+
+function showTemplateParametersModal(template, editorType) {
+  const modalHtml = `
+    <div class="modal fade" id="templateParamsModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Configure ${template.name} Template</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="templateParamsForm">
+              ${template.parameters.map(param => `
+                <div class="form-group">
+                  <label>${param.name}</label>
+                  ${param.description ? `<small class="form-text text-muted">${param.description}</small>` : ''}
+                  <input type="text" class="form-control" 
+                    name="${param.name}" 
+                    value="${param.defaultValue || ''}"
+                    ${param.required ? 'required' : ''}>
+                </div>
+              `).join('')}
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" onclick="applyTemplateWithParams('${editorType}')">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  const $modal = $(modalHtml).appendTo('body');
+  $modal.modal('show');
+  
+  $modal.data({
+    'template-id': templateId,
+    'editor-type': editorType
+  });
+}
+
+function applyTemplateWithParams(editorType) {
+  const formData = $('#templateParamsForm').serializeArray();
+  const params = {};
+  formData.forEach(item => {
+    params[item.name] = item.value;
+  });
+  
+  const templateId = $('#templateDropdown').find('.active').data('template-id');
+  
+  $.ajax({
+    url: `/api/cicd/templates/${templateId}`,
+    method: 'GET',
+    success: function(response) {
+      const template = response.data;
+      let content = '';
+      
+      if (editorType === 'jenkins' && typeof template.jenkins === 'function') {
+        content = template.jenkins(params);
+      } else if (editorType === 'gitlab' && typeof template.gitlab === 'function') {
+        content = template.gitlab(params);
+      } else {
+        content = editorType === 'jenkins' ? template.jenkins : template.gitlab;
+      }
+      
+      // Set the editor content
+      if (editorType === 'jenkins' && window.jenkinsEditor) {
+        window.jenkinsEditor.setValue(content);
+      } else if (editorType === 'gitlab' && window.gitlabEditor) {
+        window.gitlabEditor.setValue(content);
+      }
+      
+      $('#templateParamsModal').modal('hide').remove();
+    },
+    error: function(xhr) {
+      showAlert('success', 'Template applied successufuly');
+    }
+  });
+}
+
+function createEditors() {
+    // Initialize Jenkins editor
+    jenkinsEditor = monaco.editor.create(document.getElementById('jenkinsEditor'), {
+        value: 'pipeline {\n  agent any\n\n  stages {\n    stage(\'Example\') {\n      steps {\n        echo \'Hello World\'\n      }\n    }\n  }\n}',
+        language: 'groovy',
+        theme: 'vs-dark',
+        automaticLayout: true
+    });
+
+    gitlabEditor = monaco.editor.create(document.getElementById('gitlabEditor'), {
+        value: 'stages:\n  - build\n  - test\n  - deploy\n\nbuild_job:\n  stage: build\n  script:\n    - echo "Building..."',
+        language: 'yaml',
+        theme: 'vs-dark',
+        automaticLayout: true
+    });
+}
+$(document).ready(function() {
+    
+    const urlParams = new URLSearchParams(window.location.search);
+  const pipelineId = urlParams.get('pipelineId');
+  if (pipelineId) {
+    connectToCICDWebSocket(pipelineId);
+  }
+    if (typeof $.fn.scrollbar === 'function') {
+        $('.scrollbar-inner').scrollbar();
+    } else {
+        console.warn('jQuery Scrollbar plugin not loaded or incompatible.');
+    }
+
+    $('.cicd-tab-btn').click(function(e) {
+        e.preventDefault();
+        const target = $(this).data('target');
+        
+        $('.cicd-tab-btn').removeClass('active');
+        $('.cicd-tab-content').removeClass('active');
+        
+        $(this).addClass('active');
+        $(`#${target}`).addClass('active');
+        
+        switch(target) {
+            case 'templates':
+                loadTemplates();
+                break;
+            case 'editor':
+                initEditors();
+               $('#aiSuggestBtn').click(showAISuggestions);
+
+                $('#savePipelineBtn').off('click').click(savePipeline);
+                $('#runPipelineBtn').off('click').click(function() {
+  const pipelineId =  $('#pipelineIdField').val();
+  if (pipelineId) {
+    runPipeline(pipelineId);
+  } else {
+    const savedPipelineId = $('#pipelineIdField').val();
+    if (savedPipelineId) {
+      runPipeline(savedPipelineId);
+    } else {
+      showAlert('error', 'Please save the pipeline first');
+    }
+  }
+});
+                $('#validatePipelineBtn').off('click').click(validatePipeline);
+                break;
+            case 'connect':
+                loadConnectedServices();
+                break;
+            case 'overview':
+                loadPipelines();
+                if (!window.chartsInitialized) {
+                initCharts();
+                window.chartsInitialized = true;
+            }
+                break;
+        }
+    });
+    
+    loadConnectedServices();
+    loadTemplates();
+    loadPipelines();
+    loadPipelineStats()
+    initRegistryImageSuggestions();
+
+
+    $('.cicd-tab-btn.active').click();
+
+
+
+    $('#templateFilter').change(function() {
+        filterTemplates($(this).val());
+    });
+    $('#connectJenkinsBtn').click(function() {
+        connectJenkins();
+    });
+    $('#connectGitlabBtn').click(function() {
+        connectGitLab();
+    });
+    $('#jenkinsConnectForm').submit(function(e) {
+        e.preventDefault();
+        connectJenkins();
+    });
+   
+   
+    $('#gitlabConnectForm').submit(function(e) {
+        e.preventDefault();
+        connectGitLab();
+    });
+    $('.cicd-tab-btn[data-target="editor"]').click(function() {
+        loadRegistriesCheckboxList();
+    });
+});
+
+
+function loadPipelineStats() {
+    $.ajax({
+        url: '/api/cicd/pipeline-stats',
+        method: 'GET',
+        success: function(response) {
+            const stats = response.data;
+            $('#totalPipelines').text(stats.totalPipelines);
+            $('#runningPipelines').text(stats.byStatus.running);
+            $('#successPipelines').text(stats.byStatus.success);
+            $('#failedPipelines').text(stats.byStatus.failed);
+            $('#pipelineCountBadge').text(stats.totalPipelines);
+        },
+        error: handleAjaxError
+    });
+}
+function updatePipelineStats(pipelines) {
+    $.ajax({
+        url: '/api/cicd/pipeline-stats',
+        method: 'GET',
+        success: function(response) {
+            const stats = response.data;
+            $('#totalPipelines').text(stats.totalPipelines);
+            $('#runningPipelines').text(stats.byStatus.running);
+            $('#successPipelines').text(stats.byStatus.success);
+            $('#failedPipelines').text(stats.byStatus.failed);
+            $('#pipelineCountBadge').text(stats.totalPipelines);
+        },
+        error: function(xhr) {
+            console.error('Failed to load pipeline stats:', xhr);
+            $('#totalPipelines').text('0');
+            $('#runningPipelines').text('0');
+            $('#successPipelines').text('0');
+            $('#failedPipelines').text('0');
+            $('#pipelineCountBadge').text('0');
+        }
+    });
+}
+function savePipeline() {
+    const pipelineName = $('#pipelineName').val();
+    const repoUrl = $('#repoUrl').val();
+    const branch = $('#branchName').val();
+    const ciCdType = $('#ciCdType').val();
+    if (!window.editorsInitialized) {
+        initEditors();
+    }
+    let jenkinsContent = '';
+    let gitlabContent = '';
+    
+    try {
+        jenkinsContent = window.jenkinsEditor ? window.jenkinsEditor.getValue() : '';
+        gitlabContent = window.gitlabEditor ? window.gitlabEditor.getValue() : '';
+    } catch (e) {
+        console.error('Error getting editor content:', e);
+        showAlert('error', 'Failed to get pipeline content. Please try again.');
+        return;
+    }
+
+    if (!pipelineName || !repoUrl) {
+        showAlert('error', 'Pipeline name and repository URL are required');
+        return;
+    }
+
+    showLoading('Saving pipeline...');
+
+    $.ajax({
+        url: '/api/cicd/pipelines',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            pipelineName,
+            gitRepoUrl: repoUrl,
+            branch,
+            jenkinsfile: jenkinsContent,
+            gitlabCi: gitlabContent,
+            ciCdType
+        }),
+        success: function(response) {
+  showAlert('success', 'Pipeline saved successfully!');
+  $('<input>').attr({
+    type: 'hidden',
+    id: 'pipelineIdField',
+    value: response.data.id
+  }).appendTo('body');
+  loadPipelines();
+
+    error: handleAjaxError
+
+        },
+        error: function (xhr) {
+            console.error('Save pipeline error:', xhr.responseJSON);
+            showAlert('error', xhr.responseJSON?.message || 'Failed to save pipeline');
+        },
+        complete: function () {
+            hideLoading();
+        }
+    });
+}
+
+
+function runPipeline(pipelineId) {
+  if (!pipelineId) {
+    showAlert('error', 'No pipeline selected');
+    return;
+  }
+
+  showLoading('Triggering pipeline...');
+  connectToCICDWebSocket(pipelineId);
+
+  $.ajax({
+    url: `/api/cicd/pipelines/${pipelineId}/run`,
+    method: 'POST',
+    success: function(response) {
+      showAlert('success', `Pipeline started! <a href="${response.data.webUrl}" target="_blank">View in GitLab</a>`);
+      startPipelineStatusPolling(pipelineId);
+    },
+    error: function(xhr) {
+      const errorMessage = xhr.responseJSON?.message || 'Failed to trigger pipeline';
+      showAlert('error', errorMessage);
+    },
+    complete: function() {
+      hideLoading();
+    }
+  });
+}
+
+
+async function checkGitlabFileExists(pipeline) {
+    try {
+        const response = await $.ajax({
+            url: `/api/cicd/pipelines/${pipeline.id}/file-status`,
+            method: 'GET'
+        });
+        return response.exists;
+    } catch (error) {
+        return false;
+    }
+}
+
+async function recreateGitlabCiFile(pipeline) {
+    await $.ajax({
+        url: `/api/cicd/pipelines/${pipeline.id}/recreate-file`,
+        method: 'POST',
+        data: {
+            content: pipeline.gitlabCi
+        }
+    });
+}
+
+function updatePipelineStatusInTable(pipelineId, status, errorDetails) {
+    const statusClass = {
+        running: 'text-info',
+        success: 'text-success',
+        failed: 'text-danger',
+        created: 'text-secondary',
+        unknown: 'text-muted'
+    }[status] || 'text-muted';
+    const $row = $(`tr[data-id="${pipelineId}"]`);
+    let statusText = `<i class="fas fa-circle mr-1"></i> ${status}`;
+    if (errorDetails && status === 'failed') {
+        statusText += ` <i class="fas fa-exclamation-triangle" title="${errorDetails.errorMessage}"></i>`;
+    }
+    $row.find('td:nth-child(3)').html(statusText).removeClass().addClass(statusClass);
+}
+// Enhanced appendPipelineLog function for clearer logs
+function appendPipelineLog(content, type = 'info') {
+  const logOutput = document.getElementById('pipelineLogOutput');
+  const logLine = document.createElement('div');
+  logLine.className = `log-line ${type}`;
+  const timestamp = new Date().toLocaleTimeString();
+  logLine.textContent = `[${timestamp}] ${content}`;
+  logOutput.appendChild(logLine);
+  logOutput.scrollTop = logOutput.scrollHeight;
+}
+
+function viewPipelineStatus(pipelineId) {
+  showLoading('Loading pipeline details...');
+  connectToCICDWebSocket(pipelineId);
+
+  $.ajax({
+    url: `/api/cicd/pipelines/${pipelineId}`,
+    method: 'GET',
+    success: function(pipelineResponse) {
+      const pipeline = pipelineResponse.data;
+      
+      $.ajax({
+        url: `/api/cicd/pipelines/${pipelineId}/jobs`,
+        method: 'GET',
+        success: function(jobsResponse) {
+          const jobs = jobsResponse.data.jobs || [];
+          
+          $('#pipelineStatusTitle').text(`Pipeline: ${pipeline.name}`);
+          $('#pipelineStatusModal').data('pipelineId', pipelineId);
+          
+          $('#pipelineDetails').html(`
+            <div class="pipeline-info">
+              <p><strong>Status:</strong> 
+                <span class="badge badge-${getStatusClass(pipeline.status)}">
+                  ${pipeline.status}
+                </span>
+              </p>
+              <p><strong>Repository:</strong>${pipeline.gitRepoUrl}</p>
+              <p><strong>Branch:</strong> ${pipeline.branch}</p>
+              <p><strong>Last Run:</strong> ${pipeline.lastRun ? new Date(pipeline.lastRun).toLocaleString() : 'Never'}</p>
+              ${pipeline.lastPipelineId ? `<p><strong>Pipeline ID:</strong> ${pipeline.lastPipelineId}</p>` : ''}
+              ${pipeline.gitlabPipelineData?.web_url ? `
+                <p><strong>View in GitLab:</strong> 
+                  <a href="${pipeline.gitlabPipelineData.web_url}" target="_blank" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-external-link-alt mr-1"></i> Open Pipeline
+                  </a>
+                </p>
+              ` : ''} 
+            </div>
+          `);
+          
+          if (jobs.length > 0) {
+            const $jobsContainer = $('#pipelineStages').empty();
+            jobs.forEach(job => {
+              const jobStatusClass = getStatusClass(job.status); // Fixed syntax error
+              const logContent = job.log ? job.log : 'No logs available';
+              const logExcerpt = job.logExcerpt ? job.logExcerpt : 'No log excerpt available';
+              
+              $jobsContainer.append(`
+                <div class="card job-card mb-3">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">${job.name}</h6>
+                    <span class="badge badge-${jobStatusClass}">${job.status}</span>
+                  </div>
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                      <small>Stage: ${job.stage}</small>
+                      <small>Duration: ${job.duration || 'N/A'}</small>
+                    </div>
+                    <div class="log-container mb-3">
+                      <h6 class="text-muted">Log Excerpt:</h6>
+                      <div class="log-output bg-dark text-light p-2 rounded">
+                        <pre>${logExcerpt}</pre>
+                      </div>
+                      ${job.web_url ? `
+                        <a href="${job.web_url}" target="_blank" class="btn btn-sm btn-outline-primary mt-2">
+                          <i class="fas fa-external-link-alt mr-1"></i> View Full Logs
+                        </a>
+                      ` : ''}
+                    </div>
+                    ${job.status === 'failed' ? `
+                      <div class="alert alert-danger">
+                        <h6>Failure Details</h6>
+                        <p>${job.failure_reason || 'No failure reason provided'}</p>
+                      </div>
+                    ` : ''}
+                  </div>
+                </div>
+              `);
+            });
+          } else {
+            $('#pipelineStages').html('<p class="text-muted">No job information available</p>');
+          }
+          
+          $('#pipelineLogOutput').empty();
+          
+          $('#pipelineStatusModal').modal('show');
+        },
+        error: function(xhr) {
+          showAlert('error', 'Failed to load job details');
+        }
+      });
+    },
+    error: function(xhr) {
+      showAlert('error', 'Failed to load pipeline details');
+    },
+    complete: function() {
+      hideLoading();
+    }
+  });
+}
+
+$('#clearLogsBtn').click(function() {
+  $('#pipelineLogOutput').empty();
+  showAlert('success', 'Logs cleared successfully');
+});
+
+function updatePipelineStatus(data) {
+  const statusBadge = $(`[data-pipeline-id="${data.pipelineId}"] .status-badge`);
+  if (statusBadge.length) {
+    statusBadge
+      .removeClass('badge-success badge-danger badge-info badge-warning')
+      .addClass(`badge-${getStatusClass(data.status)}`)
+      .text(data.status);
+  }
+
+  if ($('#pipelineStatusModal').is(':visible') && 
+      $('#pipelineStatusModal').data('pipelineId') === data.pipelineId) {
+    if (data.logs) {
+      appendPipelineLog(data.logs, data.status === 'failed' ? 'error' : 'info');
+    }
+    if (data.status !== 'running') {
+      $('#pipelineDetails .pipeline-info').find('.badge')
+        .removeClass('badge-info badge-success badge-danger badge-warning')
+        .addClass(`badge-${getStatusClass(data.status)}`)
+        .text(data.status);
+    }
+  }
+}
+
+function getStageIcon(status) {
+  switch(status.toLowerCase()) {
+    case 'success': return 'fa-check-circle';
+    case 'failed': return 'fa-times-circle';
+    case 'running': return 'fa-sync-alt fa-spin';
+    default: return 'fa-circle';
+  }
+}
+
+function renderPipelineCard(pipeline) {
+    return `
+        <div class="col-md-4 pipeline-card" data-pipeline-id="${pipeline.id}">
+            <div class="card ${pipeline.status}">
+                <div class="card-header">
+                    <h5>${pipeline.name}</h5>
+                    <span class="badge badge-${getStatusBadgeClass(pipeline.status)} pipeline-status">
+                        ${pipeline.status}
+                    </span>
+                </div>
+                <div class="card-body">
+                    <p><small>${pipeline.gitRepoUrl}</small></p>
+                    <div class="pipeline-progress">
+                        ${renderPipelineStages(pipeline.stages)}
+                    </div>
+                    <div class="pipeline-actions action-buttons">
+                        <button class="action-btn btn-blue2 run-btn" onclick="viewPipelineStatus('${pipeline.id}')">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        ${pipeline.status === 'running' ? `
+                        <button class="action-btn btn-blue1 edit-btn" onclick="stopPipeline('${pipeline.id}')">
+                            <i class="fas fa-stop"></i> Stop
+                        </button>
+                        ` : `
+                        <button class="btn btn-sm btn-success" id="runPipelineBtn" data-id="${pipeline.id}"">
+                            <i class="fas fa-play"></i> Run
+                        </button>
+                        `}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <small>Last run: ${pipeline.lastRun ? new Date(pipeline.lastRun).toLocaleString() : 'Never'}</small>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderPipelineStages(stages) {
+    if (!stages || stages.length === 0) return '<div class="text-muted">No stage information</div>';
+    
+    return stages.map(stage => `
+        <div class="stage ${stage.status}" title="${stage.name}: ${stage.status}">
+            <div class="stage-name">${stage.name}</div>
+            <div class="stage-status">${stage.status}</div>
+        </div>
+    `).join('');
+}
+
+function renderPipelineStatus(pipelineData) {
+    const container = document.getElementById('pipelineVisualization');
+    container.innerHTML = '';
+    
+    // Header with pipeline status
+    const header = document.createElement('div');
+    header.className = `pipeline-header ${pipelineData.status}`;
+    header.innerHTML = `
+        <h4>Pipeline Status: <span class="badge badge-${getStatusBadgeClass(pipelineData.status)}">
+            ${pipelineData.status.toUpperCase()}
+        </span></h4>
+        ${pipelineData.webUrl ? `<a href="${pipelineData.webUrl}" target="_blank" class="btn btn-sm btn-outline-primary">
+            <i class="fas fa-external-link-alt mr-1"></i> View in GitLab
+        </a>` : ''}
+    `;
+    container.appendChild(header);
+    
+    // Timeline visualization
+    const timeline = document.createElement('div');
+    timeline.className = 'pipeline-timeline';
+    
+    pipelineData.stages.forEach(stage => {
+        const stageEl = document.createElement('div');
+        stageEl.className = `pipeline-stage ${stage.status}`;
+        
+        const stageHeader = document.createElement('div');
+        stageHeader.className = 'stage-header';
+        stageHeader.innerHTML = `
+            <span class="stage-name">${stage.name}</span>
+            <span class="stage-status badge badge-${getStatusBadgeClass(stage.status)}">
+                ${stage.status.toUpperCase()}
+            </span>
+            ${stage.duration ? `<span class="stage-duration">${formatDuration(stage.duration)}</span>` : ''}
+        `;
+        stageEl.appendChild(stageHeader);
+        
+        const jobsContainer = document.createElement('div');
+        jobsContainer.className = 'stage-jobs';
+        
+        stage.jobs.forEach(job => {
+            const jobEl = document.createElement('div');
+            jobEl.className = `pipeline-job ${job.status}`;
+            jobEl.innerHTML = `
+                <div class="job-header">
+                    <span class="job-name">${job.name}</span>
+                    <span class="job-status badge badge-${getStatusBadgeClass(job.status)}">
+                        ${job.status.toUpperCase()}
+                    </span>
+                    ${job.duration ? `<span class="job-duration">${formatDuration(job.duration)}</span>` : ''}
+                    ${job.webUrl ? `<a href="${job.webUrl}" target="_blank" class="job-link">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>` : ''}
+                </div>
+                ${job.status === 'failed' ? `
+                <div class="job-error">
+                    <div class="error-message">${job.errorMessage || 'Job failed'}</div>
+                    ${job.logExcerpt ? `
+                    <div class="log-snippet">
+                        <pre>${job.logExcerpt}</pre>
+                        ${job.webUrl ? `<a href="${job.webUrl}" target="_blank" class="btn btn-sm btn-outline-secondary">
+                            View Full Log
+                        </a>` : ''}
+                    </div>
+                    ` : ''}
+                </div>
+                ` : ''}
+            `;
+            jobsContainer.appendChild(jobEl);
+        });
+        
+        stageEl.appendChild(jobsContainer);
+        timeline.appendChild(stageEl);
+    });
+    
+    container.appendChild(timeline);
+    
+    // Error details if pipeline failed
+    if (pipelineData.status === 'failed' && pipelineData.errorDetails) {
+        const errorPanel = document.createElement('div');
+        errorPanel.className = 'pipeline-error alert alert-danger';
+        errorPanel.innerHTML = `
+            <h5><i class="fas fa-exclamation-triangle mr-2"></i> Pipeline Failed</h5>
+            <p><strong>Stage:</strong> ${pipelineData.errorDetails.stage}</p>
+            <p><strong>Job:</strong> ${pipelineData.errorDetails.jobName}</p>
+            <p><strong>Error:</strong> ${pipelineData.errorDetails.errorMessage}</p>
+            ${pipelineData.errorDetails.logExcerpt ? `
+            <div class="log-snippet">
+                <pre>${pipelineData.errorDetails.logExcerpt}</pre>
+                ${pipelineData.errorDetails.webUrl ? `
+                <a href="${pipelineData.errorDetails.webUrl}" target="_blank" class="btn btn-sm btn-outline-danger">
+                    <i class="fas fa-external-link-alt mr-1"></i> View Full Log
+                </a>
+                ` : ''}
+            </div>
+            ` : ''}
+        `;
+        container.appendChild(errorPanel);
+    }
+}
+
+function getStatusBadgeClass(status) {
+    switch(status) {
+        case 'success': return 'success';
+        case 'failed': return 'danger';
+        case 'running': return 'info';
+        case 'pending': return 'warning';
+        default: return 'secondary';
+    }
+}
+
+function formatDuration(ms) {
+    if (!ms) return '';
+    const seconds = Math.floor(ms / 1000) % 60;
+    const minutes = Math.floor(ms / (1000 * 60)) % 60;
+    const hours = Math.floor(ms / (1000 * 60 * 60));
+    
+    let parts = [];
+    if (hours > 0) parts.push(`${hours}h`);
+    if (minutes > 0) parts.push(`${minutes}m`);
+    if (seconds > 0 || parts.length === 0) parts.push(`${seconds}s`);
+    
+    return parts.join(' ');
+}
+
+function startPipelineStatusPolling(pipelineId) {
+    const interval = setInterval(() => {
+        $.ajax({
+            url: `/api/cicd/pipelines/${pipelineId}/status`,
+            method: 'GET',
+            success: function(response) {
+                const data = response.data;
+                console.log(`Pipeline ${pipelineId} status: ${data.status}`);
+                updatePipelineStatusInTable(pipelineId, data.status, data.errorDetails);
+
+                if ($('#pipelineStatusModal').hasClass('show')) {
+                    viewPipelineStatus(pipelineId); 
+                }
+
+                if (data.status !== 'running') {
+                    clearInterval(interval);
+                    const alertType = data.status === 'success' ? 'success' : 'error';
+                    let alertMessage = `Pipeline finished with status: ${data.status}`;
+                    if (data.errorDetails && data.status === 'failed') {
+                        alertMessage += ` - Error in ${data.errorDetails.stage} (${data.errorDetails.jobName}): ${data.errorDetails.errorMessage}`;
+                    }
+                    showAlert(alertType, alertMessage);
+                    loadPipelines(); // Refresh table and stats
+                }
+            },
+            error: function(xhr) {
+                console.error('Status polling error:', xhr);
+                clearInterval(interval);
+                showAlert('error', 'Failed to check pipeline status');
+            }
+        });
+    }, 5000);
+}
+
+
+function editPipeline(pipelineId) {
+  console.log('Editing pipeline:', pipelineId);
+  if (!pipelineId) {
+    showAlert('error', 'No pipeline selected');
+    return;
+  }
+
+  $('.cicd-tab-btn[data-target="editor"]').click();
+  showLoading('Loading pipeline...');
+
+  $.ajax({
+    url: `/api/cicd/pipelines/${pipelineId}`,
+    method: 'GET',
+    success: function(response) {
+      console.log('Pipeline data:', response.data);
+      const pipeline = response.data;
+      
+      // Set basic fields
+      $('#pipelineName').val(pipeline.name);
+      $('#repoUrl').val(pipeline.gitRepoUrl);
+      $('#branchName').val(pipeline.branch || 'main');
+      $('#pipelineIdField').val(pipeline.id);
+      $('#ciCdType').val(pipeline.ciCd.type);
+
+      if (!window.editorsInitialized) {
+        initEditors();
+      }
+
+      setTimeout(() => {
+        try {
+          if (window.jenkinsEditor) {
+            window.jenkinsEditor.setValue(pipeline.jenkinsfile || '');
+          }
+          if (window.gitlabEditor) {
+            window.gitlabEditor.setValue(pipeline.gitlabCi || '');
+          }
+          
+          if (pipeline.ciCd.type === 'gitlab') {
+            $('#gitlab-tab').tab('show');
+          } else {
+            $('#jenkins-tab').tab('show');
+          }
+        } catch (e) {
+          console.error('Error setting editor content:', e);
+          showAlert('error', 'Failed to load pipeline content');
+        }
+      }, 300);
+    },
+    error: function(xhr) {
+      console.error('Edit pipeline error:', xhr);
+      showAlert('error', 'Failed to load pipeline');
+    },
+    complete: function() {
+      hideLoading();
+    }
+  });
+}
+
+function deletePipeline(pipelineId) {
+    console.log('Deleting pipeline:', pipelineId);
+    if (!pipelineId) {
+        showAlert('error', 'No pipeline selected');
+        return;
+    }
+
+    if (!confirm('Are you sure you want to delete this pipeline? This action cannot be undone.')) return;
+    showLoading('Deleting pipeline...');
+
+    $.ajax({
+        url: `/api/cicd/pipelines/${pipelineId}`,
+        method: 'DELETE',
+        success: function() {
+            showAlert('success', 'Pipeline deleted successfully');
+            loadPipelines();
+        },
+        error: function(xhr) {
+            console.error('Delete pipeline error:', xhr);
+            showAlert('error', 'Failed to delete pipeline');
+        },
+        complete: function() {
+            hideLoading();
+        }
+    });
+}
+function validatePipeline() {
+    const activeTab = $('.nav-tabs .active').attr('id');
+    let content, type;
+    
+    try {
+        if (activeTab === 'jenkins-tab') {
+            content = window.jenkinsEditor ? window.jenkinsEditor.getValue() : '';
+            type = 'jenkins';
+        } else if (activeTab === 'gitlab-tab') {
+            content = window.gitlabEditor ? window.gitlabEditor.getValue() : '';
+            type = 'gitlab';
+        } else {
+            showAlert('error', 'Please select either Jenkins or GitLab editor tab');
+            return;
+        }
+
+        if (!content) {
+            showAlert('error', 'No content to validate');
+            return;
+        }
+
+        showLoading('Validating pipeline...');
+        
+        $.ajax({
+            url: '/api/cicd/pipelines/validate',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ 
+                content: content, 
+                type: type 
+            }),
+            success: function(response) {
+                showAlert('success', 'Pipeline is valid!');
+            },
+            error: handleAjaxError,
+            complete: hideLoading
+        });
+    } catch (e) {
+        console.error('Validation error:', e);
+        showAlert('error', 'Failed to validate pipeline');
+        hideLoading();
+    }
+}
+
+function refreshPipelines() {
+  loadPipelines();
+  loadChartData();
+}
+
+
+
+
+
+
+
+        function showLoading(message, showProgress = false) {
+            $('#loadingMessage').text(message || 'Processing your request...');
+            if (showProgress) {
+                $('#loadingProgress').show();
+            } else {
+                $('#loadingProgress').hide();
+            }
+            $('#loadingOverlay').fadeIn();
+        }
+        
+        function hideLoading() {
+            $('#loadingOverlay').fadeOut();
+        }
+        
+        function showJenkinsConnectModal() {
+            $('#jenkinsConnectModal').modal('show');
+        }
+        
+        function showGitLabConnectModal() {
+            $('#gitlabConnectModal').modal('show');        }
+        
+            function connectGitLab() {
+    const formData = $('#gitlabConnectForm').serializeArray();
+    const data = {};
+
+    formData.forEach(item => {
+        data[item.name] = item.value.trim();
+    });
+
+    if (!data.gitlabUrl || !data.projectId || !data.accessToken) {
+        showAlert('error', 'GitLab URL, Project ID, and Access Token are required');
+        return;
+    }
+
+    $('#connectGitlabBtn').prop('disabled', true);
+    $('#gitlabConnectBtnText').text('Connecting...');
+    $('#gitlabConnectSpinner').show();
+    showLoading('Connecting to GitLab...');
+
+    $.ajax({
+        url: '/api/cicd/gitlab/connect',
+        method: 'POST',
+        contentType: 'application/json',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+        data: JSON.stringify({
+            gitlabUrl: data.gitlabUrl,
+            projectId: data.projectId,
+            accessToken: data.accessToken
+        }),
+        success: function(response) {
+            $('#gitlabConnectModal').modal('hide');
+            showAlert('success', 'GitLab connected successfully!');
+            loadConnectedServices();
+        },
+        error: function(xhr) {
+            let errorMessage = 'Failed to connect to GitLab';
+            if (xhr.responseJSON) {
+                errorMessage = xhr.responseJSON.message || xhr.responseJSON.error || errorMessage;
+                if (xhr.responseJSON.errors) {
+                    errorMessage += ': ' + xhr.responseJSON.errors.join(', ');
+                }
+            }
+            console.error('GitLab connection error:', JSON.stringify(xhr.responseJSON, null, 2));
+            showAlert('error', errorMessage);
+        },
+        complete: function() {
+            $('#connectGitlabBtn').prop('disabled', false);
+            $('#gitlabConnectBtnText').text('Connect');
+            $('#gitlabConnectSpinner').hide();
+            hideLoading();
+        }
+    });
+}
+function filterTemplates(filter) {
+    const $templates = $('.template-card').parent();
+    
+    if (filter === 'all') {
+        $templates.show();
+        return;
+    }
+    
+    $templates.each(function() {
+        const $card = $(this).find('.template-card');
+        const shouldShow = $card.text().toLowerCase().includes(filter.toLowerCase());
+        $(this).toggle(shouldShow);
+    });
+}
+function connectJenkins() {
+    const formData = $('#jenkinsConnectForm').serializeArray();
+    const data = {};
+
+    formData.forEach(item => {
+        data[item.name] = item.value.trim();
+    });
+
+    // Client-side check for empty fields
+    if (!data.jenkinsUrl || !data.username || !data.apiToken) {
+        showAlert('error', 'Jenkins URL, Username, and API Token are required');
+        return;
+    }
+
+    $('#connectJenkinsBtn').prop('disabled', true);
+    $('#jenkinsConnectBtnText').text('Connecting...');
+    $('#jenkinsConnectSpinner').show();
+    showLoading('Connecting to Jenkins server...');
+
+    $.ajax({
+        url: '/api/cicd/jenkins/connect',
+        method: 'POST',
+        contentType: 'application/json',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+        data: JSON.stringify({
+            jenkinsUrl: data.jenkinsUrl,
+            username: data.username,
+            apiToken: data.apiToken
+        }),
+        success: function(response) {
+            $('#jenkinsConnectModal').modal('hide');
+            showAlert('success', 'Jenkins connected successfully!');
+            loadConnectedServices();
+        },
+        error: function(xhr) {
+            let errorMessage = 'Failed to connect to Jenkins';
+            if (xhr.responseJSON) {
+                errorMessage = xhr.responseJSON.message || xhr.responseJSON.error || errorMessage;
+                if (xhr.responseJSON.errors) {
+                    errorMessage += ': ' + xhr.responseJSON.errors.join(', ');
+                }
+            }
+            console.error('Jenkins connection error:', JSON.stringify(xhr.responseJSON, null, 2));
+            showAlert('error', errorMessage);
+        },
+        complete: function() {
+            $('#connectJenkinsBtn').prop('disabled', false);
+            $('#jenkinsConnectBtnText').text('Connect');
+            $('#jenkinsConnectSpinner').hide();
+            hideLoading();
+        }
+    });
+}
+
+$('#gitlabConnectForm').submit(function(e) {
+    e.preventDefault();
+    connectGitLab();
+});
+function loadConnectedServices() {
+            showLoading('Loading connected services...');
+            
+            $.ajax({
+                url: '/api/cicd/integrations',
+                method: 'GET',
+                success: function(response) {
+                    const services = response.data || [];
+                    const $list = $('#connectedServicesList');
+                    
+                    $list.empty();
+                    
+                    if (services.length === 0) {
+                        $list.append(`
+                            <div class="list-group-item text-center text-muted py-4">
+                                <i class="fas fa-plug fa-2x mb-2"></i><br>
+                                No connected services yet
+                            </div>
+                        `);
+                        return;
+                    }
+                    
+                    services.forEach(service => {
+                        let icon, badgeClass;
+                        if (service.type === 'jenkins') {
+                            icon = 'fab fa-jenkins';
+                            badgeClass = 'badge-dark';
+                        } else {
+                            icon = 'fab fa-gitlab';
+                            badgeClass = 'badge-orange';
+                        }
+                        
+                        $list.append(`
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="${icon} mr-2"></i>
+                                        <strong>${service.type === 'jenkins' ? 'Jenkins' : 'GitLab'}</strong>
+                                        <span class="text-muted ml-2">${service.url}</span>
+                                    </div>
+                                    <div>
+                                        <span class="badge ${badgeClass} mr-2">${service.version || ''}</span>
+                                        <span class="badge ${service.status === 'connected' ? 'badge-success' : 'badge-danger'}">
+                                            ${service.status}
+                                        </span>
+                                        <button class="btn btn-sm btn-outline-danger ml-2" onclick="disconnectService('${service._id}')">
+                                            <i class="fas fa-unlink"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+                    });
+                },
+                error: function(xhr) {
+                    showAlert('error', 'Failed to load connected services');
+                },
+                complete: function() {
+                    hideLoading();
+                }
+            });
+        }
+   function renderPipelineView(pipeline, jobs) {
+  $('#pipelineStatusModal .modal-body').empty();
+  
+  const $container = $('<div class="pipeline-view-container"></div>');
+  
+  const statusClass = {
+    running: 'info',
+    success: 'success',
+    failed: 'danger',
+    pending: 'warning'
+  }[pipeline.status] || 'secondary';
+  
+  $container.append(`
+    <div class="pipeline-header">
+      <h4>${pipeline.name}</h4>
+      <span class="badge badge-${statusClass}">${pipeline.status}</span>
+      ${pipeline.lastPipelineId ? `
+        <a href="${pipeline.ciCd.integrationId.url}/${pipeline.gitRepoUrl.replace(/.*\//, '')}/-/pipelines/${pipeline.lastPipelineId}" 
+           target="_blank" class="btn btn-sm btn-outline-primary">
+          <i class="fas fa-external-link-alt"></i> View in GitLab
+        </a>
+      ` : ''}
+    </div>
+    <div class="pipeline-meta">
+      <div><strong>Repository:</strong> ${pipeline.gitRepoUrl}</div>
+      <div><strong>Branch:</strong> ${pipeline.branch}</div>
+      <div><strong>Last Run:</strong> ${pipeline.lastRun ? new Date(pipeline.lastRun).toLocaleString() : 'Never'}</div>
+    </div>
+  `);
+  
+  if (pipeline.stages?.length > 0) {
+    const $stages = $('<div class="pipeline-stages"></div>');
+    pipeline.stages.forEach(stage => {
+      const stageStatusClass = stage.status ? `stage-${stage.status}` : '';
+      $stages.append(`
+        <div class="pipeline-stage ${stageStatusClass}">
+          <div class="stage-header">
+            <span class="stage-name">${stage.name}</span>
+            <span class="stage-status">${stage.status || 'unknown'}</span>
+          </div>
+          ${renderJobsForStage(stage, jobs)}
+        </div>
+      `);
+    });
+    $container.append($stages);
+  }
+  
+  if (pipeline.errorDetails) {
+    $container.append(`
+      <div class="pipeline-error alert alert-danger">
+        <h5><i class="fas fa-exclamation-triangle"></i> Error Details</h5>
+        <p><strong>Stage:</strong> ${pipeline.errorDetails.stage}</p>
+        <p><strong>Job:</strong> ${pipeline.errorDetails.jobName}</p>
+        <p><strong>Message:</strong> ${pipeline.errorDetails.errorMessage}</p>
+      </div>
+    `);
+  }
+  
+  $('#pipelineStatusModal .modal-body').append($container);
+}
+
+function renderJobsForStage(stage, allJobs) {
+  const jobs = allJobs.filter(j => j.stage === stage.name);
+  if (jobs.length === 0) return '';
+  
+  return `
+    <div class="stage-jobs">
+      ${jobs.map(job => `
+        <div class="pipeline-job job-${job.status}">
+          <div class="job-header">
+            <span class="job-name">${job.name}</span>
+            <span class="job-status">${job.status}</span>
+            <span class="job-duration">${job.duration ? (job.duration/60).toFixed(1)+'m' : ''}</span>
+            <button class="btn btn-sm btn-outline-secondary toggle-log" data-jobid="${job.id}">
+              <i class="fas fa-terminal"></i> Logs
+            </button>
+          </div>
+          <div class="job-log" id="log-${job.id}" style="display:none;">
+            <pre>${job.logExcerpt || 'No logs available'}</pre>
+            ${job.web_url ? `
+              <a href="${job.web_url}" target="_blank" class="btn btn-sm btn-outline-primary">
+                <i class="fas fa-external-link-alt"></i> Full Logs
+              </a>
+            ` : ''}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}    
+function truncateUrl(url, startChars = 5, endChars = 14) {
+  if (!url || url === 'N/A') return 'N/A';
+  if (url.length <= startChars + endChars) return url; // No truncation needed for short URLs
+  return `${url.slice(0, startChars)}...${url.slice(-endChars)}`;
+}
+
+function loadPipelines() {
+  showLoading('Loading pipelines...');
+  $.ajax({
+    url: '/api/cicd/pipelines',
+    method: 'GET',
+    success: function(response) {
+      console.log('API Response:', response);
+      const $tbody = $('#pipelinesTable tbody');
+      $tbody.empty();
+      if (!response.data || response.data.length === 0) {
+        $tbody.append(`
+          <tr>
+            <td colspan="5" class="text-center">No pipelines found</td>
+          </tr>
+        `);
+        updatePipelineStats([]);
+        return;
+      }
+      response.data.forEach(pipeline => {
+        const statusClass = {
+          running: 'text-info',
+          success: 'text-success',
+          failed: 'text-danger',
+          created: 'text-secondary',
+          unknown: 'text-muted'
+        }[pipeline.status] || 'text-muted';
+        const stageCount = pipeline.stages ? pipeline.stages.length : 0;
+        const repoUrl = pipeline.repoUrl || pipeline.gitRepoUrl || 'N/A';
+        const truncatedUrl = truncateUrl(repoUrl);
+        $tbody.append(`
+          <tr data-id="${pipeline.id}">
+            <td>${pipeline.name}</td>
+            <td title="${repoUrl}">${truncatedUrl}</td>
+            <td class="${statusClass}">
+              <i class="fas fa-circle mr-1"></i> ${pipeline.status}
+              ${pipeline.errorDetails ? `<i class="fas fa-exclamation-triangle ml-1" title="${pipeline.errorDetails.errorMessage}"></i>` : ''}
+            </td>
+            <td>${pipeline.lastRun ? new Date(pipeline.lastRun).toLocaleString() : 'Never'} (${stageCount} stages)</td>
+            <td class="action-buttons">
+              <button class="action-btn btn-blue2 run-btn" data-id="${pipeline.id}">
+                <i class="fas fa-play"></i> Run
+              </button>
+              <button class="action-btn btn-blue1 edit-btn" data-id="${pipeline.id}">
+                <i class="fas fa-edit"></i> Edit
+              </button>
+              <button class="action-btn btn-pastel-red delete-btn" data-id="${pipeline.id}">
+                <i class="fas fa-trash"></i> Delete
+              </button>
+              <button class="action-btn btn-pastel-gray view-btn" data-id="${pipeline.id}">
+                <i class="fas fa-eye"></i> View
+              </button>
+            </td>
+          </tr>
+        `);
+      });
+      updatePipelineStats(response.data);
+    },
+    error: handleAjaxError,
+    complete: hideLoading
+  });
+}
+
+$(document).on('click', '.run-btn', function() {
+  const pipelineId = $(this).data('id');
+  console.log('Run button clicked, pipelineId:', pipelineId);
+  if (!pipelineId) {
+    showAlert('error', 'Invalid pipeline ID');
+    return;
+  }
+  // Store the pipeline ID in a hidden field
+  $('#pipelineIdField').val(pipelineId);
+  runPipeline(pipelineId);
+});
+$(document).on('click', '.toggle-log', function() {
+  const jobId = $(this).data('jobid');
+  $(`#log-${jobId}`).toggle();
+});
+$(document).on('click', '.edit-btn', function() {
+    const pipelineId = $(this).data('id');
+    console.log('Edit button clicked, pipelineId:', pipelineId);
+    if (!pipelineId) {
+        showAlert('error', 'Invalid pipeline ID');
+        return;
+    }
+    editPipeline(pipelineId);
+});
+
+$(document).on('click', '.delete-btn', function() {
+    const pipelineId = $(this).data('id');
+    console.log('Delete button clicked, pipelineId:', pipelineId);
+    if (!pipelineId) {
+        showAlert('error', 'Invalid pipeline ID');
+        return;
+    }
+    deletePipeline(pipelineId);
+});
+$(document).on('click', '.view-btn', function() {
+    const pipelineId = $(this).data('id');
+    console.log('View button clicked, pipelineId:', pipelineId); // Debug log
+    if (!pipelineId) {
+        showAlert('error', 'Invalid pipeline ID');
+        return;
+    }
+    viewPipelineStatus(pipelineId); // Call the correct function
+});
+
+
+function handleAjaxError(xhr) {
+    let errorMessage = 'An error occurred';
+    let errorDetails = '';
+    
+    if (xhr.responseJSON) {
+        errorMessage = xhr.responseJSON.message || errorMessage;
+        errorDetails = xhr.responseJSON.error || '';
+        
+        if (xhr.responseJSON.errors) {
+            errorDetails = xhr.responseJSON.errors.join(', ');
+        }
+    }
+    
+    console.error(`AJAX Error: ${errorMessage}`, {
+        status: xhr.status,
+        response: xhr.responseJSON,
+        url: xhr.responseJSON?.config?.url || 'unknown'
+    });
+    
+    showAlert('error', `${errorMessage} ${errorDetails ? `(${errorDetails})` : ''}`);
+    
+    return false;
+}
+
+
+
+function loadTemplates() {
+    showLoading('Loading templates...');
+    
+    $.ajax({
+        url: '/api/cicd/templates',
+        method: 'GET',
+        success: function(response) {
+            const templates = response.data || [];
+            const $container = $('#templatesContainer');
+            const $dropdown = $('#templateDropdown');
+            
+            $container.empty();
+            $dropdown.empty();
+                error: handleAjaxError
+
+            if (templates.length === 0) {
+                $container.append(`
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle mr-2"></i> No templates available
+                        </div>
+                    </div>
+                `);
+                $dropdown.append('<a class="dropdown-item" href="#">No templates available</a>');
+                return;
+            }
+            
+            templates.forEach(template => {
+                $container.append(`
+                    <div class="col-md-6 col-lg-4">
+                        <div class="template-card">
+                            <h5>${template.name}</h5>
+                            <p class="text-muted">${template.description}</p>
+                            <div class="mt-3">
+                                <button class="btn btn-sm btn-primary mr-2" 
+                                    onclick="loadTemplateToEditor('${template.id}', 'jenkins')">
+                                    <i class="fab fa-jenkins mr-1"></i> Jenkins
+                                </button>
+                                <button class="btn btn-sm btn-secondary" 
+                                    onclick="loadTemplateToEditor('${template.id}', 'gitlab')">
+                                    <i class="fab fa-gitlab mr-1"></i> GitLab
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `);
+                
+                $dropdown.append(`
+                    <a class="dropdown-item" href="#" onclick="loadTemplateToEditor('${template.id}', 'jenkins')">
+                        <i class="fab fa-jenkins mr-2"></i> ${template.name} (Jenkins)
+                    </a>
+                    <a class="dropdown-item" href="#" onclick="loadTemplateToEditor('${template.id}', 'gitlab')">
+                        <i class="fab fa-gitlab mr-2"></i> ${template.name} (GitLab)
+                    </a>
+                    <div class="dropdown-divider"></div>
+                `);
+            });
+        },
+        error: function(xhr) {
+            showAlert('error', 'Failed to load templates');
+        },
+        complete: function() {
+            hideLoading();
+        }
+    });
+}
+
+function viewPipeline(pipelineId) {
+            showLoading('Loading pipeline details...');
+            
+            $.ajax({
+                url: `/api/cicd/pipelines/${pipelineId}`,
+                method: 'GET',
+                success: function(response) {
+                    const pipeline = response.data.pipeline;
+                    const status = response.data.status;
+                    
+                    // Update modal title
+                    $('#pipelineStatusTitle').html(`
+                        ${pipeline.type === 'jenkins' ? '<i class="fab fa-jenkins mr-2"></i>' : '<i class="fab fa-gitlab mr-2"></i>'}
+                        ${pipeline.name} - Status
+                    `);
+                    
+                    // Update status badge
+                    let statusClass, statusText;
+                    if (status.result === 'SUCCESS' || status.status === 'success') {
+                        statusClass = 'badge-success';
+                        statusText = 'Success';
+                    } else if (status.result === 'FAILURE' || status.status === 'failed') {
+                        statusClass = 'badge-danger';
+                        statusText = 'Failed';
+                    } else if (status.status === 'running') {
+                        statusClass = 'badge-info';
+                        statusText = 'Running';
+                    } else {
+                        statusClass = 'badge-secondary';
+                        statusText = status.result || status.status || 'Unknown';
+                    }
+                    
+                    $('#pipelineStatusText').removeClass().addClass(`badge badge-pill ${statusClass}`).text(statusText);
+                    
+                    // Update other details
+                    $('#pipelineStartTime').text(status.timestamp ? new Date(status.timestamp).toLocaleString() : '-');
+                    $('#pipelineDuration').text(status.duration ? formatDuration(status.duration) : '-');
+                    $('#pipelineTrigger').text(status.trigger || 'Manual');
+                    
+                    // Show modal
+                    $('#pipelineStatusModal').modal('show');
+                        error: handleAjaxError
+
+                    // Start streaming logs if pipeline is running
+                    if (status.status === 'running') {
+                        streamPipelineLogs(pipelineId);
+                    }
+                },
+                error: function(xhr) {
+                    showAlert('error', 'Failed to load pipeline details');
+                },
+                complete: function() {
+                    hideLoading();
+                }
+            });
+        }
+        
+        function streamPipelineLogs(pipelineId) {
+            // Implementation would depend on your backend's log streaming capability
+            // This is a simplified example using WebSockets or SSE
+            console.log(`Starting log stream for pipeline ${pipelineId}`);
+        }
+        
+        function formatDuration(ms) {
+            if (!ms) return '0s';
+            const seconds = Math.floor(ms / 1000) % 60;
+            const minutes = Math.floor(ms / (1000 * 60)) % 60;
+            const hours = Math.floor(ms / (1000 * 60 * 60));
+            
+            let parts = [];
+            if (hours > 0) parts.push(`${hours}h`);
+            if (minutes > 0) parts.push(`${minutes}m`);
+            parts.push(`${seconds}s`);
+            
+            return parts.join(' ');
+        }
+        
+       function showAlert(type, message) {
+    Swal.fire({
+        title: type === 'success' ? 'Success!' : 'Error!',
+        text: message,
+        icon: type,
+        confirmButtonColor: type === 'success' ? '#326ce5' : '#ff6666',
+        timer: 5000,
+        timerProgressBar: true
+    });
+}
+function setupPipelineRealTimeUpdates(pipelineId) {
+    const socketProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const socketUrl = `${socketProtocol}//${window.location.host}/ws/pipelines/${pipelineId}`;
+    
+    const socket = new WebSocket(socketUrl);
+    
+    socket.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.type === 'pipeline_update') {
+            fetchPipelineStatus(pipelineId);
+            
+            if (data.status === 'success') {
+                showToast('Pipeline succeeded!', 'success');
+            } else if (data.status === 'failed') {
+                showToast('Pipeline failed', 'error');
+            }
+        }
+    };
+    
+    socket.onclose = () => {
+        console.log('WebSocket disconnected');
+        setTimeout(() => setupPipelineRealTimeUpdates(pipelineId), 5000);
+    };
+    
+    return socket;
+}
+
+let pipelineSocket;
+function loadPipelineView(pipelineId) {
+    fetchPipelineStatus(pipelineId);
+    pipelineSocket = setupPipelineRealTimeUpdates(pipelineId);
+}
+
+window.addEventListener('beforeunload', () => {
+    if (pipelineSocket) {
+        pipelineSocket.close();
+    }
+});       
+
+function showAISuggestions() {
+  const repoUrl = $('#repoUrl').val();
+  const branch = $('#branchName').val() || 'main';
+  
+  if (!repoUrl) {
+    showAlert('error', 'Please enter a repository URL first');
+    return;
+  }
+
+  showLoading('Analyzing repository and generating suggestions...');
+  
+  $.ajax({
+    url: `/api/cicd/analysis?repoUrl=${encodeURIComponent(repoUrl)}&branch=${encodeURIComponent(branch)}`,
+    method: 'GET',
+    success: function(response) {
+      displayAISuggestions(response.data);
+    },
+    error: function(xhr) {
+      console.error('AI suggestion error:', xhr);
+      showAlert('error', xhr.responseJSON?.message || 'Failed to generate AI suggestions');
+    },
+    complete: function() {
+      hideLoading();
+    }
+  });
+}
+
+function displayAISuggestions(data) {
+    // Create modal for suggestions
+    const modalHtml = `
+    <div class="modal fade" id="aiSuggestionsModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">
+                        <i class="fas fa-robot mr-2"></i> AI Pipeline Suggestions
+                    </h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h6>Repository Analysis</h6>
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Primary Language
+                                    <span class="badge badge-primary">${data.fileAnalysis.language}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Dockerfile Present
+                                    <span class="badge badge-${data.fileAnalysis.hasDockerfile ? 'success' : 'secondary'}">
+                                        ${data.fileAnalysis.hasDockerfile ? 'Yes' : 'No'}
+                                    </span>
+                                </li>
+                                ${Object.entries(data.fileAnalysis)
+                                    .filter(([key]) => key.startsWith('has') && key !== 'hasDockerfile')
+                                    .map(([key, value]) => `
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        ${key.replace('has', '').replace(/([A-Z])/g, ' $1').trim()}
+                                        <span class="badge badge-${value ? 'success' : 'secondary'}">
+                                            ${value ? 'Yes' : 'No'}
+                                        </span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>AI Suggestions</h6>
+                            <div class="suggestions-container bg-light p-3 rounded" style="max-height: 400px; overflow-y: auto;">
+                                ${marked.parse(data.suggestions || "No suggestions generated")}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary" onclick="applySuggestion()">
+                            <i class="fas fa-magic mr-2"></i> Apply Selected Suggestion
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+    
+    // Add modal to DOM and show it
+    $('body').append(modalHtml);
+    $('#aiSuggestionsModal').modal('show');
+    
+}
+
+function applySuggestion() {
+  const yamlContent = $('#aiSuggestionsModal pre').first().text();
+  
+  if (!yamlContent) {
+    showAlert('error', 'No valid YAML found in suggestions');
+    return;
+  }
+  
+  $('.cicd-tab-btn[data-target="editor"]').click();
+  
+  setTimeout(() => {
+    if (window.gitlabEditor) {
+      window.gitlabEditor.setValue(yamlContent);
+      $('#gitlab-tab').tab('show');
+      showAlert('success', 'Suggestion applied to GitLab CI editor!');
+    } else {
+      showAlert('error', 'Editor not ready. Please try again.');
+    }
+    $('#aiSuggestionsModal').modal('hide');
+  }, 300);
+}
+
+function initRegistryImageSuggestions() {
+    // Load registries into dropdown
+    loadRegistriesDropdown();
+    
+    // Setup editor content change listener for image suggestions
+    // Wait for editor to be initialized
+    const checkEditor = setInterval(() => {
+        if (window.gitlabEditor) {
+            clearInterval(checkEditor);
+            setupGitlabEditorImageSuggestions();
+        }
+    }, 100);
+}
+
+function setupGitlabEditorImageSuggestions() {
+    if (!window.gitlabEditor || !window.gitlabEditor.onDidChangeModelContent) {
+        console.error('GitLab editor not properly initialized');
+        return;
+    }
+
+    let completionProvider = null;
+
+    window.gitlabEditor.onDidChangeModelContent(() => {
+        const position = window.gitlabEditor.getPosition();
+        if (!position) return;
+        
+        const lineContent = window.gitlabEditor.getModel().getLineContent(position.lineNumber);
+        
+        if (lineContent.includes('DOCKER_IMAGE:')) {
+            const registryId = $('#dockerRegistrySelect').val();
+            if (!registryId) return;
+            
+            const lineParts = lineContent.split(':');
+            const currentValue = lineParts.length > 1 ? lineParts[1].trim() : '';
+            
+            if (currentValue && currentValue.length > 0) {
+                fetchImageSuggestions(registryId, currentValue);
+            }
+        }
+    });
+}
+
+function fetchImageSuggestions(registryId, query) {
+    $.ajax({
+        url: `/docker-registries/${registryId}/search/${encodeURIComponent(query)}`,
+        method: 'GET',
+        success: function(response) {
+            if (response.success && response.images && response.images.length > 0) {
+                registerImageSuggestions(response.images);
+            }
+        },
+        error: function(xhr) {
+            console.error('Failed to fetch images:', xhr);
+        }
+    });
+}
+
+function registerImageSuggestions(images) {
+    if (window.imageCompletionProvider) {
+        window.imageCompletionProvider.dispose();
+    }
+    
+    window.imageCompletionProvider = monaco.languages.registerCompletionItemProvider('yaml', {
+        provideCompletionItems: function(model, position) {
+            const lineContent = model.getLineContent(position.lineNumber);
+            
+            // Only suggest if we're on a DOCKER_IMAGE line
+            if (!lineContent.includes('DOCKER_IMAGE:')) {
+                return { suggestions: [] };
+            }
+            
+            // Get the text after DOCKER_IMAGE:
+            const textAfterColon = lineContent.substring(lineContent.indexOf(':') + 1);
+            const currentText = textAfterColon.substring(0, position.column - (lineContent.indexOf(':') + 1)).trim();
+            
+            return {
+                suggestions: images.map(image => ({
+                    label: image,
+                    kind: monaco.languages.CompletionItemKind.Value,
+                    insertText: image,
+                    range: new monaco.Range(
+                        position.lineNumber, 
+                        lineContent.indexOf(':') + 2, 
+                        position.lineNumber, 
+                        lineContent.length + 1
+                    ),
+                    // Only show suggestions that match what's already typed
+                    filterText: currentText,
+                    preselect: true
+                }))
+            };
+        }
+    });
+    
+    setTimeout(() => {
+        if (window.gitlabEditor) {
+            window.gitlabEditor.trigger('', 'editor.action.triggerSuggest');
+        }
+    }, 100);
+}
+function loadRegistriesDropdown() {
+    $.ajax({
+        url: '/docker-registries',
+        method: 'GET',
+        success: function(response) {
+            const $select = $('#dockerRegistrySelect');
+            $select.empty();
+            $select.append('<option value="">-- Select Registry --</option>');
+            
+            response.registries.forEach(registry => {
+                $select.append(`<option value="${registry._id}">${registry.name} (${registry.url})</option>`);
+            });
+        },
+        error: function(xhr) {
+            console.error('Failed to load registries:', xhr);
+        }
+    });
+}
+
+function loadRegistriesCheckboxList() {
+    $.ajax({
+        url: '/docker-registries',
+        method: 'GET',
+        success: function(response) {
+            const registriesList = document.getElementById('registries-checkbox-list');
+            registriesList.innerHTML = ''; 
+
+            response.registries.forEach(registry => {
+                const checkboxDiv = document.createElement('div');
+                checkboxDiv.className = 'form-check my-2';
+
+                const checkboxInput = document.createElement('input');
+                checkboxInput.type = 'checkbox';
+                checkboxInput.className = 'form-check-input me-2';
+                checkboxInput.value = registry._id;
+                checkboxInput.id = `registry-${registry._id}`;
+
+                const checkboxLabel = document.createElement('label');
+                checkboxLabel.className = 'form-check-label d-flex align-items-center';
+                checkboxLabel.htmlFor = `registry-${registry._id}`;
+                
+                const nameSpan = document.createElement('span');
+                nameSpan.className = 'fw-medium me-2';
+                nameSpan.textContent = registry.name;
+                
+                const urlSpan = document.createElement('span');
+                urlSpan.className = 'text-muted small';
+                urlSpan.textContent = `(${registry.url})`;
+                
+                checkboxLabel.appendChild(nameSpan);
+                checkboxLabel.appendChild(urlSpan);
+                checkboxDiv.appendChild(checkboxInput);
+                checkboxDiv.appendChild(checkboxLabel);
+                registriesList.appendChild(checkboxDiv);
+            });
+        },
+        error: function(error) {
+            console.error('Error loading Docker registries:', error);
+            showAlert('error', 'Failed to load Docker registries. Please try again later.');
+        }
+    });
+}
+
+
+function initCharts() {
+    window.successRateChart = echarts.init(document.getElementById('successRateChart'));
+    window.durationChart = echarts.init(document.getElementById('durationChart'));
+    window.deploymentFrequencyChart = echarts.init(document.getElementById('deploymentFrequencyChart'));
+    window.errorTrendsChart = echarts.init(document.getElementById('errorTrendsChart'));
+    
+    const charts = [successRateChart, durationChart, deploymentFrequencyChart, errorTrendsChart];
+    charts.forEach(chart => {
+        chart.setOption({
+            backgroundColor: 'transparent',
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'horizontal',
+                bottom: 0
+            }
+        });
+        
+        window.addEventListener('resize', function() {
+            chart.resize();
+        });
+    });
+    
+    loadChartData();
+}
+
+function loadChartData() {
+    $.ajax({
+        url: '/api/cicd/pipeline-stats',
+        method: 'GET',
+        success: function(response) {
+            renderSuccessRateChart(response.data);
+            renderDurationChart(response.data);
+            renderDeploymentFrequencyChart(response.data);
+            renderErrorTrendsChart(response.data);
+        },
+        error: function(xhr) {
+            console.error('Failed to load chart data:', xhr);
+        }
+    });
+}
+
+function renderSuccessRateChart(data) {
+    const option = {
+        title: {
+            text: 'Build Success/Failure Rate',
+            left: 'center'
+        },
+        tooltip: {
+            formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        series: [{
+            name: 'Build Status',
+            type: 'pie',
+            radius: ['40%', '70%'],
+            avoidLabelOverlap: false,
+            itemStyle: {
+                borderRadius: 10,
+                borderColor: '#fff',
+                borderWidth: 2
+            },
+            label: {
+                show: false,
+                position: 'center'
+            },
+            emphasis: {
+                label: {
+                    show: true,
+                    fontSize: '18',
+                    fontWeight: 'bold'
+                }
+            },
+            labelLine: {
+                show: false
+            },
+            data: [
+                { value: data.byStatus.success, name: 'Success' },
+                { value: data.byStatus.failed, name: 'Failed' },
+                { value: data.byStatus.running, name: 'Running' }
+            ]
+        }]
+    };
+    
+    successRateChart.setOption(option);
+}
+
+function renderDurationChart(data) {
+    const option = {
+        title: {
+            text: 'Average Pipeline Duration (seconds)',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        xAxis: {
+            type: 'category',
+            data: ['Jenkins', 'GitLab']
+        },
+        yAxis: {
+            type: 'value',
+            name: 'Duration (s)'
+        },
+        series: [{
+            name: 'Duration',
+            type: 'bar',
+            data: [
+                { 
+                    value: data.avgDuration.jenkins,
+                    itemStyle: { color: '#d33833' } // Jenkins red
+                },
+                { 
+                    value: data.avgDuration.gitlab,
+                    itemStyle: { color: '#fc6d26' } // GitLab orange
+                }
+            ],
+            showBackground: true,
+            backgroundStyle: {
+                color: 'rgba(180, 180, 180, 0.2)'
+            }
+        }]
+    };
+    
+    durationChart.setOption(option);
+}
+
+// Deployment Frequency Line Chart
+function renderDeploymentFrequencyChart(data) {
+    const option = {
+        title: {
+            text: 'Deployment Frequency (Last 7 Days)',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        xAxis: {
+            type: 'category',
+            data: ['6d ago', '5d ago', '4d ago', '3d ago', '2d ago', 'Yesterday', 'Today']
+        },
+        yAxis: {
+            type: 'value',
+            name: 'Deployments'
+        },
+        series: [{
+            name: 'Deployments',
+            type: 'line',
+            data: data.activity.last7Days,
+            smooth: true,
+            lineStyle: {
+                width: 3,
+                color: '#4e73df' // Blue
+            },
+            itemStyle: {
+                color: '#4e73df'
+            }
+        }]
+    };
+    
+    deploymentFrequencyChart.setOption(option);
+}
+
+function renderErrorTrendsChart(data) {
+    const option = {
+        title: {
+            text: 'Error Trends (Last 24 Hours)',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: Array.from({length: 24}, (_, i) => `${i}:00`)
+        },
+        yAxis: {
+            type: 'value',
+            name: 'Errors'
+        },
+        series: [{
+            name: 'Errors',
+            type: 'line',
+            data: data.activity.byHour,
+            areaStyle: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    {
+                        offset: 0,
+                        color: 'rgba(231, 74, 59, 0.5)'
+                    },
+                    {
+                        offset: 1,
+                        color: 'rgba(231, 74, 59, 0.1)'
+                    }
+                ])
+            },
+            lineStyle: {
+                width: 2,
+                color: '#e74a3b' // Red
+            },
+            itemStyle: {
+                color: '#e74a3b'
+            }
+        }]
+    };
+    
+    errorTrendsChart.setOption(option);
+}
+
+
+
+</script>
+
+  
+  <script>
+    function logout() {
+            Swal.fire({
+                title: 'Logout Confirmation',
+                text: 'Are you sure you want to log out?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#326ce5',
+                cancelButtonColor: '#ff6666',
+                confirmButtonText: 'Yes, log out'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.clear();
+                    window.location.replace("/login");
+                }
+            });
+        }
+  </script>
+<script>
+  function recherche() {
+    var input, filter, items, item, name, i, txtValue;
+    input = document.getElementById("searchInput"); 
+    filter = input.value.toUpperCase();
+    items = document.getElementsByClassName("service-item"); // Target list items
+
+    for (i = 0; i < items.length; i++) {
+        item = items[i];
+        name = item.querySelector(".service-name"); // Target the service name
+        if (name) {
+            txtValue = name.textContent || name.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                item.style.display = "flex"; 
+            } else {
+                item.style.display = "none"; 
+            }
+        }
+    }
+  }
+</script>
+</body>
+
+</html>

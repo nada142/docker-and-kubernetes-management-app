@@ -1,0 +1,141 @@
+{
+  "version": "1.0.0",
+  "name": "node_app",
+  "dependencies": {
+    "@shadcn/ui": {
+      "version": "0.0.4",
+      "resolved": "https://registry.npmjs.org/@shadcn/ui/-/ui-0.0.4.tgz",
+      "overridden": false
+    },
+    "axios": {
+      "version": "1.7.9",
+      "resolved": "https://registry.npmjs.org/axios/-/axios-1.7.9.tgz",
+      "overridden": false
+    },
+    "bcrypt": {
+      "version": "5.1.1",
+      "resolved": "https://registry.npmjs.org/bcrypt/-/bcrypt-5.1.1.tgz",
+      "overridden": false
+    },
+    "bcryptjs": {
+      "version": "2.4.3",
+      "resolved": "https://registry.npmjs.org/bcryptjs/-/bcryptjs-2.4.3.tgz",
+      "overridden": false
+    },
+    "connect-mongo": {
+      "version": "5.1.0",
+      "resolved": "https://registry.npmjs.org/connect-mongo/-/connect-mongo-5.1.0.tgz",
+      "overridden": false
+    },
+    "cookie-parser": {
+      "version": "1.4.6",
+      "resolved": "https://registry.npmjs.org/cookie-parser/-/cookie-parser-1.4.6.tgz",
+      "overridden": false
+    },
+    "dockerode": {
+      "version": "4.0.2",
+      "resolved": "https://registry.npmjs.org/dockerode/-/dockerode-4.0.2.tgz",
+      "overridden": false
+    },
+    "dotenv": {
+      "version": "16.4.5",
+      "resolved": "https://registry.npmjs.org/dotenv/-/dotenv-16.4.5.tgz",
+      "overridden": false
+    },
+    "ejs": {
+      "version": "3.1.10",
+      "resolved": "https://registry.npmjs.org/ejs/-/ejs-3.1.10.tgz",
+      "overridden": false
+    },
+    "express-ejs-layouts": {
+      "version": "2.5.1",
+      "resolved": "https://registry.npmjs.org/express-ejs-layouts/-/express-ejs-layouts-2.5.1.tgz",
+      "overridden": false
+    },
+    "express-session": {
+      "version": "1.18.0",
+      "resolved": "https://registry.npmjs.org/express-session/-/express-session-1.18.0.tgz",
+      "overridden": false
+    },
+    "express-ws": {
+      "version": "5.0.2",
+      "resolved": "https://registry.npmjs.org/express-ws/-/express-ws-5.0.2.tgz",
+      "overridden": false
+    },
+    "express": {
+      "version": "4.19.2",
+      "resolved": "https://registry.npmjs.org/express/-/express-4.19.2.tgz",
+      "overridden": false
+    },
+    "js-yaml": {
+      "version": "4.1.0",
+      "resolved": "https://registry.npmjs.org/js-yaml/-/js-yaml-4.1.0.tgz",
+      "overridden": false
+    },
+    "jsonwebtoken": {
+      "version": "9.0.2",
+      "resolved": "https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-9.0.2.tgz",
+      "overridden": false
+    },
+    "method-override": {
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/method-override/-/method-override-3.0.0.tgz",
+      "overridden": false
+    },
+    "mongoose": {
+      "version": "8.5.2",
+      "resolved": "https://registry.npmjs.org/mongoose/-/mongoose-8.5.2.tgz",
+      "overridden": false
+    },
+    "node-fetch": {
+      "version": "3.3.2",
+      "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-3.3.2.tgz",
+      "overridden": false
+    },
+    "node-pty": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/node-pty/-/node-pty-1.0.0.tgz",
+      "overridden": false
+    },
+    "nodemon": {
+      "version": "3.1.4",
+      "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+      "overridden": false
+    },
+    "socket.io-client": {
+      "version": "4.7.5",
+      "resolved": "https://registry.npmjs.org/socket.io-client/-/socket.io-client-4.7.5.tgz",
+      "overridden": false
+    },
+    "socket.io": {
+      "version": "4.7.5",
+      "resolved": "https://registry.npmjs.org/socket.io/-/socket.io-4.7.5.tgz",
+      "overridden": false
+    },
+    "uuid": {
+      "version": "11.1.0",
+      "resolved": "https://registry.npmjs.org/uuid/-/uuid-11.1.0.tgz",
+      "overridden": false
+    },
+    "winston": {
+      "version": "3.17.0",
+      "resolved": "https://registry.npmjs.org/winston/-/winston-3.17.0.tgz",
+      "overridden": false
+    },
+    "ws": {
+      "version": "8.18.0",
+      "resolved": "https://registry.npmjs.org/ws/-/ws-8.18.0.tgz",
+      "overridden": false
+    },
+    "xterm-addon-fit": {
+      "version": "0.8.0",
+      "resolved": "https://registry.npmjs.org/xterm-addon-fit/-/xterm-addon-fit-0.8.0.tgz",
+      "overridden": false
+    },
+    "xterm": {
+      "version": "5.3.0",
+      "resolved": "https://registry.npmjs.org/xterm/-/xterm-5.3.0.tgz",
+      "overridden": false
+    }
+  }
+}

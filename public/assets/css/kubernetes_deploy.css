@@ -1,0 +1,1206 @@
+
+    /* Chatbot Container */
+    #chatbot-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    /* Chatbot Toggle Button (Circle with Logo) */
+    #chatbot-toggle {
+        width: 70px;
+        height: 70px;
+        background: #1e90ff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #chatbot-toggle img {
+        width: 50px;
+        height: 50px;
+    }
+
+ 
+/* Chatbot Styling */
+#chatbot-interface {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 450px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Chat Header */
+#chat-header {
+    background: #1e90ff;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+#chat-header img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+#chat-header strong {
+    display: flex;
+    align-items: center;
+}
+
+#chat-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Chat Body */
+#chat-body {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    background: white;
+}
+
+/* Chat Messages */
+.chat-message {
+    background: #e9ecef;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    width: fit-content;
+    max-width: 80%;
+    font-size: 14px;
+}
+
+.bot-message {
+    background: #d1ecf1;
+    color: #0c5460;
+    align-self: flex-start;
+}
+
+/* Welcome Message Styling */
+.welcome-message {
+    background: #1e90ff;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.welcome-message:hover {
+    background: #0056b3;
+}
+
+.hidden-content {
+    display: none; /* Ensures it's hidden by default */
+    margin-top: 5px;
+    background: white;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat Input */
+#chat-input {
+    display: flex;
+    padding: 10px;
+    background: #f8f9fa;
+    border-top: 1px solid #ddd;
+}
+
+#chat-message {
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+#chat-send {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#chat-send:hover {
+    background: #0056b3;
+}
+.service-item.invalid {
+    border-left: 5px solid #ff6666; /* Red border for invalid services */
+    background-color: #fff5f5; /* Light red background */
+}
+
+
+    /* Kubernetes Flow Stepper */
+.kubernetes-flow-stepper {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid #e1e5eb;
+}
+
+.stepper-header h4 {
+    color: #3a3b45;
+    margin-bottom: 5px;
+}
+
+.stepper-container {
+    position: relative;
+    padding: 20px 0;
+}
+
+.stepper-progress {
+    height: 6px;
+    background-color: #e9ecef;
+    border-radius: 3px;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.stepper-progress-bar {
+    height: 100%;
+    background-color: #4e73df;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+
+.stepper-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    width: 12%;
+}
+
+.step-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 3px solid #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.step.active .step-icon {
+    border-color: #4e73df;
+    color: #4e73df;
+    background-color: #f0f4ff;
+}
+
+.step.completed .step-icon {
+    border-color: #1cc88a;
+    color: #1cc88a;
+    background-color: #f0f9f5;
+}
+
+.step-label {
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6c757d;
+}
+
+.step.active .step-label,
+.step.completed .step-label {
+    color: #3a3b45;
+}
+
+.step-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #3a3b45;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    width: 180px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+    margin-bottom: 15px;
+    z-index: 10;
+}
+
+.step-tooltip:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #3a3b45 transparent transparent transparent;
+}
+
+.step:hover .step-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.stepper-footer {
+    margin-top: 15px;
+}
+/* Enhanced Stepper CSS */
+.step-explanation-panel {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+    border: 1px solid #e1e5eb;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.explanation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e1e5eb;
+}
+
+.explanation-header h5 {
+    color: #4e73df;
+    margin: 0;
+}
+
+.step-metaphor {
+    background-color: #e3f2fd;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #1976d2;
+}
+
+.explanation-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    height: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.explanation-icon {
+    font-size: 24px;
+    color: #4e73df;
+    margin-bottom: 10px;
+}
+
+.explanation-card h6 {
+    color: #3a3b45;
+    margin-bottom: 10px;
+}
+
+.explanation-card p {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.explanation-visual {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.visual-placeholder {
+    color: #adb5bd;
+}
+
+.visual-placeholder i {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.stepper-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.step-counter {
+    background-color: #4e73df;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Animation for step activation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.step.active .step-icon {
+    animation: pulse 0.5s ease;
+    box-shadow: 0 0 0 5px rgba(78, 115, 223, 0.2);
+}
+/* Visual elements for step explanations */
+.cluster-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.control-plane {
+    background: #4e73df;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.worker-nodes {
+    display: flex;
+    gap: 10px;
+}
+
+.node {
+    background: #1cc88a;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.nodes-visual {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.node.healthy {
+    background: #1cc88a;
+    color: white;
+}
+
+.node.warning {
+    background: #f6c23e;
+    color: #000;
+}
+
+.namespaces-visual {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.namespace {
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.namespace.prod {
+    background: #e74a3b;
+    color: white;
+}
+
+.namespace.dev {
+    background: #36b9cc;
+    color: white;
+}
+
+.namespace.test {
+    background: #f6c23e;
+    color: #000;
+}
+
+/* ... similar styles for other visual elements ... */
+
+.pods-visual {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.pod {
+    border: 2px solid #4e73df;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.pod.single {
+    border-color: #1cc88a;
+}
+
+.container {
+    background: #f8f9fa;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.services-visual {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.service {
+    background: #858796;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+.workload-visual {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.workload-option {
+    padding: 15px;
+    border-radius: 8px;
+    background: #f8f9fa;
+    border: 1px solid #e1e5eb;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 45%;
+}
+
+.workload-option:hover {
+    background: #e9ecef;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.workload-option i {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #4e73df;
+}
+
+.statefulset-visual {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.statefulset-visual .pod {
+    background: #f8f9fa;
+    border: 1px solid #4e73df;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+    /* General Styles */
+    body {
+        font-family: 'Public Sans', sans-serif;
+        background-color: #F5F7FD !important;
+    }
+
+    /* Container Styles */
+    .container {
+        padding: 20px;
+    }
+
+    #swarmVisualization {
+    height: 600px; /* Increase the height */
+    width: 100%; /* Ensure it takes full width */
+    border: 2px solid #ccc; /* Optional: Add a border */
+}
+
+     /* Table Styles */
+  .swarm-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #fff; /* White background for the table only */
+      border-radius: 8px; /* Rounded corners for the table */
+      overflow: hidden; /* Ensures rounded corners are visible */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .swarm-table th,
+  .swarm-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0; /* Light gray border */
+  }
+  
+  .swarm-table th {
+    background-color: #f8f9fa75; /* Light gray background */
+    color: #333; /* Dark text for contrast */
+    font-weight: 600; /* Bold text */
+    text-transform: uppercase; /* Uppercase header text */
+    letter-spacing: 0.5px; /* Slightly spaced letters */
+    font-size: 0.9em; /* Smaller font size for elegance */
+    border-bottom: 2px solid #e0e0e074; /* Subtle border to separate header */
+    position: sticky; /* Makes the header stick to the top when scrolling */
+    top: 0; /* Ensures it sticks at the top */
+    z-index: 2; /* Keeps the header above the rows */
+}
+
+/*  a soft gradient for a more modern look */
+.swarm-table th {
+    background: linear-gradient(to bottom, #f8f9fa, #e9ecef); /* Light gradient */
+}
+  
+  .swarm-table tr {
+      background-color: #fff; /* White background for rows */
+      transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover transition */
+  }
+  
+  .swarm-table tr:hover {
+      transform: translateX(3px); /* Slight movement to the right */
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .swarm-table .actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+  }
+  
+  .swarm-table .actions button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
+  .swarm-table .actions {
+    display: flex !important;
+    gap: 10px !important;
+    width: 100% !important;  /* Ensures actions span full width */
+    justify-content: flex-end !important; /* Moves buttons to the right */
+}
+
+.swarm-table .actions button {
+    padding: 8px 12px !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s !important;
+    
+    /* Optional: Make buttons expand */
+    /* flex-grow: 1 !important; */  
+    /* width: 100% !important; */  
+}
+.swarm-table th.actions {
+    text-align: left !important; /* Aligns "Actions" header with buttons */
+}
+
+.swarm-table th.ac1 {
+    text-align: left !important; /* Aligns "Actions" header with buttons */
+    padding-right: 330px !important;
+}
+.swarm-table th.ac2 {
+    text-align: left !important; /* Aligns "Actions" header with buttons */
+    padding-right: 230px !important;
+}
+.swarm-table th.ac3 {
+    text-align: left !important; /* Aligns "Actions" header with buttons */
+    padding-right: 120px !important;
+}
+
+
+    /* Button Styles */
+    .btn-pastel-red {
+        background-color: #ff6666 !important;
+        color: #fff !important;
+    }
+
+    .btn-pastel-red:hover {
+        background-color: #e65c5c !important;
+    }
+
+    .btn-pastel-gray {
+        background-color: #b3b3b3 !important;
+        color: #333 !important;
+    }
+
+    .btn-pastel-gray:hover {
+        background-color: #999999 !important;
+    }
+
+    .btn-pastel-docker-blue {
+        background-color: #1e90ff !important;
+        color: #fff !important;
+    }
+
+    .btn-pastel-docker-blue:hover {
+        background-color: #1c86ee !important;
+    }
+
+    .btn-blue2 {
+        background-color: #326ce5 !important;
+        color: #fff !important;
+    }
+
+    .btn-blue2:hover {
+        background-color: #2b5fc7 !important;
+    }
+
+    .disabled {
+        opacity: 0.5;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+
+    /* Search Input Styles */
+    .input-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        transition: border-color 0.3s;
+    }
+
+    .form-control:focus {
+        border-color: #326ce5;
+        outline: none;
+    }
+
+    /* Page Header Styles */
+    .page-header h2 {
+        color: #333; /* Dark text for the header */
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    
+
+  /* Custom styles for cluster metrics cards */
+#metricsContainer .metric-card {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+    flex: 1 1 calc(33.333% - 20px); /* 3 cards per row */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#metricsContainer .metric-card h6 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #1e90ff; /* Blue header */
+}
+
+#metricsContainer .metric-card p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+#metricsContainer .metric-card .metric-value {
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+
+   
+
+    /* Expandable Rows for Stacks */
+    .stack-row {
+        cursor: pointer;
+    }
+
+    .stack-row:hover {
+        background-color: #f8f9fa; /* Light hover effect */
+    }
+
+    .services-row {
+        background-color: #f8f9fa; /* Light background for services */
+    }
+
+    .services-row td {
+        padding: 12px 24px !important; /* Indent services for better hierarchy */
+    }
+
+    .services-row .service {
+        margin-bottom: 10px;
+    }
+
+    .services-row .service h4 {
+        margin: 0;
+        font-size: 1em;
+        font-weight: 600;
+    }
+
+    .services-row .service p {
+        margin: 4px 0;
+        color: #666;
+    }
+
+  
+    /* Search Bar */
+    #searchInput {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+  
+    /* Add Button */
+    .add-button {
+        margin-bottom: 20px;
+    }
+  
+    .add-button button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+  
+    /* Log Container */
+    #logContainer {
+        background-color: #343a40; /* Dark background for logs */
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: monospace;
+        font-size: 14px;
+    }.nav-item i {
+    color: rgba(255, 255, 255, 0.937) !important; /* Change to match your theme */
+    font-size: 18px;
+}
+
+
+/* Help icon base style */
+.help-icon {
+  cursor: help;
+  display: inline-block;
+  margin-left: 4px;
+  position: relative;
+}
+
+.help-icon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 100%;        /* Changed from bottom: 100% */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 400px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  z-index: 100;    /* Increased z-index */
+ 
+}
+
+
+
+.help-icon:hover::after {
+  opacity: 1;
+  visibility: visible;
+  top: calc(100% + 5px);  /* Changed from bottom */
+}
+
+/* Special styling for input group help */
+.input-group .help-icon {
+  background: #f8f9fa;
+  border-left: 1px solid #ced4da;
+  padding: 0 10px;
+}
+
+
+    .deployment-card {
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+    }
+    .deployment-card:hover {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .deployment-status {
+        display: flex;
+        align-items: center;
+    }
+    .status-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+    }
+    .status-running {
+        background-color: #28a745;
+    }
+    .status-pending {
+        background-color: #ffc107;
+    }
+    .status-failed {
+        background-color: #dc3545;
+    }
+    .pod-status {
+        display: inline-flex;
+        align-items: center;
+        margin-right: 10px;
+    }
+    .badge-label {
+        margin-right: 5px;
+        margin-bottom: 5px;
+        display: inline-block;
+    }
+    .yaml-container {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+    .env-var-row {
+        margin-bottom: 10px;
+    }
+    .port-row {
+        margin-bottom: 10px;
+    }
+    .replica-slider {
+        width: 100%;
+    }
+    .slider-value {
+        display: inline-block;
+        width: 30px;
+        text-align: center;
+    }
+    .tab-content {
+        padding: 15px 0;
+    }
+    .nav-tabs .nav-link.active {
+        font-weight: bold;
+    }
+    .gradient-card-header {
+    background: linear-gradient(to bottom, #f8f9fa, #e9ecef) !important;
+    border-bottom: 1px solid #dee2e6; /* Optional: adds a subtle border */
+}
+
+:root {
+        --pastel-red: #ff6666;
+        --pastel-red-hover: #e65c5c;
+        --pastel-gray: #b3b3b3;
+        --pastel-gray-hover: #999999;
+        --docker-blue: #1e90ff;
+        --docker-blue-hover: #1c86ee;
+        --blue2: #326ce5;
+        --blue2-hover: #2b5fc7;
+        --status-ready: #28a745;
+        --status-not-ready: #dc3545;
+    }
+.btn-outline-docker-blue {
+    color: var(--docker-blue) !important;
+    border-color: var(--docker-blue) !important;
+}
+.btn-outline-docker-blue:hover {
+    color: white !important;
+    background-color: var(--docker-blue) !important;
+    border-color: var(--docker-blue) !important;
+}
+
+.btn-outline-blue2 {
+    color: var(--blue2) !important;
+    border-color: var(--blue2) !important;
+}
+.btn-outline-blue2:hover {
+    color: white !important;
+    background-color: var(--blue2) !important;
+    border-color: var(--blue2) !important;
+}
+
+.btn-outline-pastel-red {
+    color: var(--pastel-red) !important;
+    border-color: var(--pastel-red) !important;
+}
+.btn-outline-pastel-red:hover {
+    color: white !important;
+    background-color: var(--pastel-red) !important;
+    border-color: var(--pastel-red) !important;
+}
+
+.btn-outline-pastel-gray {
+    color: var(--pastel-gray) !important;
+    border-color: var(--pastel-gray) !important;
+}
+.btn-outline-pastel-gray:hover {
+    color: white !important;
+    background-color: var(--pastel-gray) !important;
+    border-color: var(--pastel-gray) !important;
+}
+
+    /* Enhanced Action Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+    
+    .action-btn {
+      position: relative;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 13px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 100px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .action-btn i {
+      margin-right: 6px;
+      font-size: 13px;
+    }
+    
+    .action-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .action-btn:active {
+      transform: translateY(0);
+    }
+    
+    /* Specific button styles */
+    .btn-yaml {
+      background-color: #f8f9fa;
+      color: #1e90ff;
+      border-color: #1e90ff;
+    }
+    
+    .btn-yaml:hover {
+      background-color: #1e90ff;
+      color: white;
+    }
+    
+    .btn-scale {
+      background-color: #f8f9fa;
+      color: #326ce5;
+      border-color: #326ce5;
+    }
+    
+    .btn-scale:hover {
+      background-color: #326ce5;
+      color: white;
+    }
+    
+    .btn-delete {
+      background-color: #f8f9fa;
+      color: #ff6666;
+      border-color: #ff6666;
+    }
+    
+    .btn-delete:hover {
+      background-color: #ff6666;
+      color: white;
+    }
+    
+    /* Tooltip for buttons */
+    .action-btn::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s;
+      z-index: 10;
+    }
+    
+    .action-btn:hover::after {
+      opacity: 1;
+      visibility: visible;
+      top: -35px;
+    }
+
+    .swal2-show {
+      animation: swal2-show 0.3s ease-out forwards;
+    }
+    
+    .swal2-hide {
+      animation: swal2-hide 0.15s ease-out forwards;
+    }
+    
+    @keyframes swal2-show {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    @keyframes swal2-hide {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.98);
+      }
+    }
+    
+    /* Success/Error icon animations */
+    .swal2-success [class^=swal2-success-line] {
+      animation: swal2-success-animate 0.75s;
+    }
+    
+    .swal2-error [class^=swal2-x-mark-line] {
+      animation: swal2-error-animate 0.5s;
+    }
+    
+    /* Backdrop styling - ensures proper removal */
+    .swal2-backdrop-show {
+      background-color: rgba(0, 0, 0, 0.4);
+      transition: background-color 0.1s;
+    }
+    
+    .swal2-backdrop-hide {
+      background-color: transparent !important;
+    }
+    
+    /* Fix for stacking context */
+    body.swal2-shown {
+      overflow-y: auto !important;
+    }
+
+    /* Image Selector Styles */
+.image-selector .dropdown-menu {
+  width: 100%;
+  min-width: 300px;
+  padding: 0;
+}
+
+.image-selector .image-list-container {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.image-selector .image-item {
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.image-selector .image-item:hover {
+  background-color: #f8f9fa;
+}
+
+.image-selector .image-search {
+  border-radius: 0;
+}
+
+.image-selector .loading-images {
+  display: none;
+}
+
+
+
+.btn-rollback {
+      background-color: #f8f9fa;
+      color: #535353;
+      border-color: #c0b9a6;
+    }
+    
+    .btn-rollback:hover {
+      background-color: #c0b9a6;
+      color: white;
+    }
+
+/* Revision details styling */
+#revisionDetails {
+    font-size: 0.9rem;
+}
+
+#revisionDetails h6 {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+/* Modal header for rollback */
+#rollbackDeploymentModal .modal-header {
+    background-color: #fff3cd;
+    border-bottom: 1px solid #ffeeba;
+}
+
+#rollbackDeploymentModal .modal-title {
+    color: #856404;
+}
+  

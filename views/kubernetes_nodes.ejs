@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Kubernetes Cluster Setup</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <link rel="icon" href="../assets/img/dockube3.png" type="image/x-icon" />
+    <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.min.css">
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.all.min.js"></script>
+
+<link rel="stylesheet" href="../assets/css/kubernetes_nodes.css">
+
+
+
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["../assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<!-- Bootstrap 4 -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+          <div class="sidebar-logo">
+              <!-- Logo Header -->
+              <div class="logo-header" data-background-color="dark">
+                  <a href="/" class="logo" style="display: flex; align-items: center;">
+                      <img src="../assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" height="40" />
+                      <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+                  </a>
+                  <div class="nav-toggle">
+                      <button class="btn btn-toggle toggle-sidebar">
+                          <i class="gg-menu-right"></i>
+                      </button>
+                      <button class="btn btn-toggle sidenav-toggler">
+                          <i class="gg-menu-left"></i>
+                      </button>
+                  </div>
+                  <button class="topbar-toggler more">
+                      <i class="gg-more-vertical-alt"></i>
+                  </button>
+              </div>
+              <!-- End Logo Header -->
+          </div>
+          <div class="sidebar-wrapper scrollbar scrollbar-inner">
+            <div class="sidebar-content">
+              <ul class="nav nav-secondary">
+                <li class="nav-item">
+                  <a href="/" aria-expanded="false">
+                    <i class="fas fa-tachometer-alt"></i> <!-- Dashboard icon -->
+                    <p>Dashboard</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerRegistries">
+                    <i class="fas fa-warehouse"></i> <!-- Registry icon -->
+                    <p>Docker Registries</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerfile_list">
+                    <i class="fas fa-file-code"></i> <!-- Code file icon for Dockerfile -->
+                    <p>Dockerfile</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerimg">
+                    <i class="fas fa-images"></i> <!-- Images icon -->
+                    <p>Docker Images</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockercontainers">
+                    <i class="fas fa-box"></i> <!-- Box icon for containers -->
+                    <p>Docker Containers</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/volumes">
+                    <i class="fas fa-database"></i> <!-- Database icon for Volumes -->
+                    <p>Volumes</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/compose">
+                    <i class="fas fa-cubes"></i> <!-- Stacked cubes for Compose -->
+                    <p>Docker Compose</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/swarm_list">
+                        <i class="fas fa-project-diagram"></i> <!-- Stacked cubes for Compose -->
+                      <p>Docker Swarm</p>
+                    </a>
+                  </li>
+<li class="nav-item active">
+    <a data-bs-toggle="collapse" href="#kubernetesMenu" aria-expanded="false">
+        <i class="fas fa-dharmachakra"></i>
+        <p>Kubernetes</p>
+        <span class="caret"></span>
+    </a>
+    <div class="collapse" id="kubernetesMenu">
+        <ul class="nav nav-collapse">
+            <li>
+                <a href="/kubernetes/cluster">
+                    <span class="sub-item">Cluster Setup</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/nodes">
+                    <span class="sub-item">Nodes</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/deployments">
+                    <span class="sub-item">Deployments</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/statefulsets">
+                    <span class="sub-item">StatefulSets</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/services">
+                    <span class="sub-item">Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/pods">
+                    <span class="sub-item">Pods</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/pvcs">
+                    <span class="sub-item">Storage</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/configs">
+                    <span class="sub-item">ConfigMaps && Secrets</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/namespaces">
+                    <span class="sub-item">Namespaces</span>
+                </a>
+            </li>
+             <li>
+                <a href="/kubernetes/ingresses">
+                    <span class="sub-item">Ingresses</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<li class="nav-item">
+    <a href="/cicd_integration">
+      <i class="fas fa-sync-alt"></i>
+      <p>CI CD</p>
+    </a>
+  </li>
+                <li class="nav-item">
+                  <a data-bs-toggle="collapse" href="#" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> <!-- Logout icon -->
+                    <p>Logout</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <!-- End Sidebar -->
+      <div class="main-panel">
+          <div class="main-header">
+              <div class="main-header-logo">
+                  <!-- Logo Header -->
+                  <div class="logo-header" data-background-color="dark">
+                      <a href="../index.html" class="logo">
+                          <img src="../assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" />
+                      </a>
+                      <div class="nav-toggle">
+                          <button class="btn btn-toggle toggle-sidebar">
+                              <i class="gg-menu-right"></i>
+                          </button>
+                          <button class="btn btn-toggle sidenav-toggler">
+                              <i class="gg-menu-left"></i>
+                          </button>
+                      </div>
+                      <button class="topbar-toggler more">
+                          <i class="gg-more-vertical-alt"></i>
+                      </button>
+                  </div>
+                  <!-- End Logo Header -->
+              </div>
+              <!-- Navbar Header -->
+              <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+                  <div class="container-fluid">
+                      <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+                          
+                      </nav>
+                      <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                          <li class="nav-item topbar-user dropdown hidden-caret">
+                              <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="/profile" aria-expanded="false">
+                                  <span class="profile-username">
+                                      <span class="op-7">Hi,</span>
+                                      <span class="fw-bold">Hizrian</span>
+                                  </span>
+                              </a>
+                              <ul class="dropdown-menu dropdown-user animated fadeIn">
+                                  <div class="dropdown-user-scroll scrollbar-outer">
+                                      <li>
+                                          <div class="user-box">
+                                              <div class="avatar-lg">
+                                                  <img src="../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded" />
+                                              </div>
+                                              <div class="u-text">
+                                                  <h4>Hizrian</h4>
+                                                  <p class="text-muted">hello@example.com</p>
+                                                  <a href="/profile" class="action-btn btn-blue1 btn-sm">Update Profile</a>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="dropdown-divider"></div>
+                                          <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                                      </li>
+                                  </div>
+                              </ul>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
+              <!-- Add Vis.js library -->
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<link href="https://unpkg.com/vis-network/styles/vis-network.min.css" rel="stylesheet" />
+              <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                      var user = JSON.parse(localStorage.getItem("user"));
+                      if (user) {
+                          document.querySelector(".profile-username .fw-bold").textContent = user.username;
+                          document.querySelector(".u-text h4").textContent = user.username;
+                          document.querySelector(".u-text .text-muted").textContent = user.email;
+                      }
+                  });
+              </script>
+              <!-- End Navbar -->
+          </div>
+          <div class="container">
+            <div class="card-body">
+                <!-- Kubernetes Creation Flow Stepper -->
+                <div class="kubernetes-flow-stepper mb-4">
+                    <div class="stepper-header">
+                        <h4>Kubernetes Creation Journey</h4>
+                        <p class="text-muted">Follow this guided path to successfully deploy your application</p>
+                    </div>
+                    
+                    <div class="stepper-container">
+                        <div class="stepper-progress">
+                            <div class="stepper-progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        
+                        <div class="stepper-steps">
+                            <!-- Cluster Setup -->
+                            <div class="step" data-step="1" data-route="/kubernetes/cluster">
+                                <div class="step-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div class="step-label">Cluster</div>
+                                <div class="step-tooltip">
+                                    <strong>Cluster Setup</strong><br>
+                                    Your Kubernetes foundation - like building the airport before planes can land
+                                </div>
+                            </div>
+                            
+                            <!-- Nodes -->
+                            <div class="step" data-step="2" data-route="/kubernetes/nodes">
+                                <div class="step-icon">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <div class="step-label">Nodes</div>
+                                <div class="step-tooltip">
+                                    <strong>Nodes</strong><br>
+                                    The worker bees of your cluster - add more to handle heavier loads
+                                </div>
+                            </div>
+                            
+                            <!-- Namespaces -->
+                            <div class="step" data-step="3" data-route="/kubernetes/namespaces">
+                                <div class="step-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="step-label">Namespaces</div>
+                                <div class="step-tooltip">
+                                    <strong>Namespaces</strong><br>
+                                    Create departments in your cluster - keeps things organized like office floors
+                                </div>
+                            </div>
+                            
+                            <!-- ConfigMaps & Secrets -->
+                            <div class="step" data-step="4" data-route="/kubernetes/configs">
+                                <div class="step-icon">
+                                    <i class="fas fa-key"></i>
+                                </div>
+                                <div class="step-label">Configs</div>
+                                <div class="step-tooltip">
+                                    <strong>ConfigMaps & Secrets</strong><br>
+                                    The configuration vault - where you store settings and sensitive data
+                                </div>
+                            </div>
+                            
+                            <!-- Storage -->
+                            <div class="step" data-step="5" data-route="/kubernetes/pvcs">
+                                <div class="step-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="step-label">Storage</div>
+                                <div class="step-tooltip">
+                                    <strong>Persistent Storage</strong><br>
+                                    Your cluster's hard drive - ensures data survives pod restarts
+                                </div>
+                            </div>
+                            
+                            <!-- Deployments/StatefulSets -->
+                            <div class="step" data-step="6" data-route="/kubernetes/deployments">
+                                <div class="step-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <div class="step-label">Workloads</div>
+                                <div class="step-tooltip">
+                                    <strong>Deployments/StatefulSets</strong><br>
+                                    Blueprint for your application - defines how many copies to run
+                                </div>
+                            </div>
+                            
+                            <!-- Pods -->
+                            <div class="step" data-step="7" data-route="/kubernetes/pods">
+                                <div class="step-icon">
+                                    <i class="fas fa-cube"></i>
+                                </div>
+                                <div class="step-label">Pods</div>
+                                <div class="step-tooltip">
+                                    <strong>Pods</strong><br>
+                                    Your running application containers - like individual hotel rooms
+                                </div>
+                            </div>
+                            
+                            <!-- Services -->
+                            <div class="step" data-step="8" data-route="/kubernetes/services">
+                                <div class="step-icon">
+                                    <i class="fas fa-plug"></i>
+                                </div>
+                                <div class="step-label">Services</div>
+                                <div class="step-tooltip">
+                                    <strong>Services</strong><br>
+                                    The front desk - provides stable access to your pods
+                                </div>
+                            </div>
+                            <!-- Ingress -->
+            <div class="step" data-step="9" data-route="/kubernetes/ingresses">
+                <div class="step-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="step-label">Ingress</div>
+                <div class="step-tooltip">
+                    <strong>Ingress</strong><br>
+                    The gateway to your services - manages external access with routing rules
+                </div>
+            </div>
+
+                        </div>
+                    </div>
+                    
+                    <!-- Current Step Explanation Panel -->
+                    <div class="step-explanation-panel">
+                        <div class="explanation-header">
+                            <h5><i class="fas fa-lightbulb"></i> Understanding This Step</h5>
+                            <div class="step-metaphor">
+                                <i class="fas fa-comment-dots"></i>
+                                <span id="currentStepMetaphor">Select a step to see its real-world analogy</span>
+                            </div>
+                        </div>
+                        
+                        <div class="explanation-content">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="explanation-card">
+                                        <div class="explanation-icon">
+                                            <i class="fas fa-question-circle"></i>
+                                        </div>
+                                        <h6>What is this?</h6>
+                                        <p id="whatIsThis">Select a step to learn about this Kubernetes component</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="explanation-card">
+                                        <div class="explanation-icon">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <h6>Why is it important?</h6>
+                                        <p id="whyImportant">Select a step to understand its role in your cluster</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-visual mt-3">
+                                <div class="visual-placeholder">
+                                    <i class="fas fa-image"></i>
+                                    <p>Visual representation will appear here when a step is selected</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Next Button Container -->
+                    <div class="stepper-navigation mt-3">
+                        <button id="prevStepBtn" class="btn btn-secondary" disabled>
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button id="nextStepBtn" class="btn btn-primary">
+                            Next Step <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <div class="step-counter">
+                            Step <span id="currentStepNumber">0</span> of <span id="totalSteps">9</span>
+                        </div>
+                    </div>
+                </div>
+            <div class="page-inner">
+                <div class="page-header">
+                    <h2>Kubernetes Nodes Management</h2>
+                </div>
+        
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header gradient-card-header">
+                                <ul class="nav nav-tabs" id="nodesTabs" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true">Cluster Nodes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="add-tab" data-toggle="tab" href="#add" role="tab" aria-controls="add" aria-selected="false">Add Nodes</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content" id="nodesTabsContent">
+                                    <!-- Cluster Nodes Tab -->
+                                    <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <div class="btn-group view-mode" role="group">
+                                                <button type="button" class="btn btn-sm btn-blue2 active" id="cardViewBtn">
+                                                    <i class="fas fa-th-large"></i> Card View
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-blue2" id="tableViewBtn">
+                                                    <i class="fas fa-table"></i> Table View
+                                                </button>
+                                            </div>
+                                            <button id="refreshNodes" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-sync-alt"></i> Refresh
+                                            </button>
+                                        </div>
+                                        
+                                        <!-- Card View -->
+                                        <div id="nodesCardView">
+                                            <div class="row" id="nodesContainer">
+                                                <!-- Nodes will be loaded here -->
+                                                <div class="col-12 text-center">
+                                                    <div class="spinner-border text-primary" role="status">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+                                                    <p>Loading nodes...</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Table View (hidden by default) -->
+                                        <div id="nodesTableView" style="display: none;">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Role</th>
+                                                            <th>Status</th>
+                                                            <th>CPU</th>
+                                                            <th>Memory</th>
+                                                            <th>Age</th>
+                                                            <th>Labels</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="nodesTableBody">
+                                                        <tr>
+                                                            <td colspan="8" class="text-center">
+                                                                <div class="spinner-border text-primary" role="status">
+                                                                    <span class="sr-only">Loading...</span>
+                                                                </div>
+                                                                <p>Loading nodes...</p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Add Nodes Tab -->
+                                    <div class="tab-pane fade" id="add" role="tabpanel" aria-labelledby="add-tab">
+    <div class="card">
+        <div class="card-header">
+            <h5>Add Worker Nodes</h5>
+            <p class="mb-0 text-muted">Configure and add new worker nodes to your cluster</p>
+        </div>
+        <div class="card-body">
+            <form id="addNodeForm">
+                <div class="form-group">
+                    <label for="nodeCount">Number of Nodes</label>
+                    <input type="number" class="form-control" id="nodeCount" min="1" value="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="nodeCPU">CPU Cores</label>
+                    <select class="form-control" id="nodeCPU">
+                        <option value="1">1 CPU</option>
+                        <option value="2" selected>2 CPUs</option>
+                        <option value="4">4 CPUs</option>
+                        <option value="8">8 CPUs</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nodeMemory">Memory (GB)</label>
+                    <select class="form-control" id="nodeMemory">
+                        <option value="2">2 GB</option>
+                        <option value="4" selected>4 GB</option>
+                        <option value="8">8 GB</option>
+                        <option value="16">16 GB</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nodeDisk">Disk Space (GB)</label>
+                    <select class="form-control" id="nodeDisk">
+                        <option value="5">5 GB</option>
+                        <option value="10">10 GB</option>
+
+                        <option value="20">20 GB</option>
+                        <option value="50" selected>50 GB</option>
+                        <option value="100">100 GB</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="fas fa-plus-circle"></i> Add Nodes
+                </button>
+            </form>
+            
+            <div class="add-node-progress mt-4" style="display: none;">
+                <h5>Node Addition Progress</h5>
+                <div class="progress mb-2">
+                    <div id="addNodeProgressBar" class="progress-bar progress-bar-striped progress-bar-animated" 
+                         role="progressbar" style="width: 0%"></div>
+                </div>
+                <div id="addNodeOutput" class="log-output"></div>
+            </div>
+        </div>
+    </div>
+</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- Node Actions Modals -->
+        <div class="modal fade" id="drainNodeModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Drain Node</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to drain <strong id="drainNodeName"></strong>?</p>
+                        <p>This will evict all pods from the node and mark it as unschedulable.</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="deleteLocalData">
+                            <label class="form-check-label" style="margin-left: 20px;" for="deleteLocalData">
+                                Delete local data (pods using emptyDir)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="ignoreDaemonsets">
+                            <label class="form-check-label" style="margin-left: 20px;" for="ignoreDaemonsets">
+                                Ignore DaemonSet pods
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirmDrain">Drain Node</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="cordonNodeModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cordonModalTitle">Cordon Node</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="cordonModalText"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="confirmCordon">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="deleteNodeModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Remove Node from Cluster</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to remove <strong id="deleteNodeName"></strong> from the cluster?</p>
+                        <div class="alert alert-warning">
+                            <strong>Warning:</strong> This will permanently remove the node from the cluster. 
+                            Make sure to drain the node first if you want to gracefully remove workloads.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirmDelete">Remove Node</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Node Actions Modals -->
+        <div class="modal fade" id="drainNodeModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Drain Node</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to drain <strong id="drainNodeName"></strong>?</p>
+                        <p>This will evict all pods from the node and mark it as unschedulable.</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="deleteLocalData">
+                            <label class="form-check-label" style="margin-left: 20px;" for="deleteLocalData">
+                                Delete local data (pods using emptyDir)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="ignoreDaemonsets">
+                            <label class="form-check-label" style="margin-left: 20px;" for="ignoreDaemonsets">
+                                Ignore DaemonSet pods
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirmDrain">Drain Node</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="cordonNodeModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cordonModalTitle">Cordon Node</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="cordonModalText"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="confirmCordon">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="deleteNodeModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Remove Node from Cluster</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to remove <strong id="deleteNodeName"></strong> from the cluster?</p>
+                        <div class="alert alert-warning">
+                            <strong>Warning:</strong> This will permanently remove the node from the cluster. 
+                            Make sure to drain the node first if you want to gracefully remove workloads.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirmDelete">Remove Node</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <div id="chatbot-container">
+        <!-- Chatbot Toggle Button (Circle with Logo) -->
+        <div id="chatbot-toggle">
+            <img src="../assets/img/dockube3.png" alt="Chatbot Logo" width="50" height="50">
+        </div>
+      
+        <!-- Chatbot Interface (Hidden by Default) -->
+       
+      <div id="chatbot-interface" style="display: none;">
+        <!-- Chat Header -->
+        <div id="chat-header">
+            <strong>
+                <img src="../assets/img/dockube3.png" alt="Logo">
+                Docker & Kubernetes Assistant
+            </strong>
+            <button id="chat-close">×</button>
+        </div>
+      
+        <!-- Chat Body -->
+        <div id="chat-body">
+            <div id="chat-messages">
+                <!-- Welcome Message -->
+                <div class="welcome-message" onclick="toggleWelcomeMessage()">
+                    👋 Welcome! I'm your Docker & Kubernetes Assistant.
+                    Ask me anything about Docker, Kubernetes, and best practices.
+                    <div class="hidden-content">
+                        Hi! I'm your Docker & Kubernetes Assistant.  
+                        Ask me anything about services, Kubernetes configurations, and best practices.
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <!-- Chat Input -->
+        <div id="chat-input">
+            <input type="text" id="chat-message" placeholder="Type your question...">
+            <button id="chat-send">Send</button>
+        </div>
+      </div>
+      </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Complete step information database
+          const stepInfo = {
+              1: {
+                  metaphor: "Like building the airport before planes can land",
+                  whatIs: "The Kubernetes cluster is the foundation that runs your applications. It's the combination of control plane (management) and worker nodes (where workloads run).",
+                  whyImportant: "Without a cluster, you have nowhere to deploy your applications. This is like having apps but no phone to run them on.",
+                  visual: '<div class="cluster-visual"><div class="control-plane"><i class="fas fa-cog"></i> Control Plane</div><div class="worker-nodes"><div class="node"><i class="fas fa-server"></i> Node</div><div class="node"><i class="fas fa-server"></i> Node</div></div></div>'
+              },
+              2: {
+                  metaphor: "The worker bees in your cluster hive",
+                  whatIs: "Nodes are the worker machines (VMs or physical servers) that run your applications. They're managed by the control plane and can be added or removed as needed.",
+                  whyImportant: "More nodes mean more capacity to run applications. Like adding more chefs to a kitchen to handle more orders. Healthy nodes ensure your applications run smoothly.",
+                  visual: '<div class="nodes-visual"><div class="node healthy"><i class="fas fa-server"></i> Worker 1</div><div class="node healthy"><i class="fas fa-server"></i> Worker 2</div><div class="node warning"><i class="fas fa-server"></i> Worker 3</div></div>'
+              },
+              3: {
+                  metaphor: "Like different floors in an office building",
+                  whatIs: "Namespaces provide virtual clusters within your physical cluster, isolating resources between teams, projects, or environments (dev/test/prod).",
+                  whyImportant: "Prevents naming collisions and provides logical separation, like having separate departments in a company. Essential for multi-team environments and resource quotas.",
+                  visual: '<div class="namespaces-visual"><div class="namespace prod"><i class="fas fa-building"></i> Production</div><div class="namespace dev"><i class="fas fa-code"></i> Development</div><div class="namespace test"><i class="fas fa-flask"></i> Testing</div></div>'
+              },
+              4: {
+                  metaphor: "The configuration vault of your applications",
+                  whatIs: "ConfigMaps store configuration data as key-value pairs, while Secrets store sensitive information like passwords and API keys in encrypted form.",
+                  whyImportant: "Separates configuration from application code, making your applications more portable and secure. Like having a secure filing cabinet separate from your work desk.",
+                  visual: '<div class="configs-visual"><div class="config"><i class="fas fa-file-alt"></i> ConfigMap<br><small>database.url</small></div><div class="secret"><i class="fas fa-lock"></i> Secret<br><small>db-password</small></div></div>'
+              },
+              5: {
+                  metaphor: "Your cluster's permanent storage locker",
+                  whatIs: "Persistent Volumes (PVs) and Persistent Volume Claims (PVCs) provide durable storage that survives pod restarts, unlike ephemeral container storage.",
+                  whyImportant: "Essential for stateful applications like databases. Like having a permanent locker in school versus temporary desk space that gets cleared daily.",
+                  visual: '<div class="storage-visual"><div class="pvc"><i class="fas fa-hdd"></i> PVC Request</div><div class="arrow">→</div><div class="pv"><i class="fas fa-database"></i> PV Storage</div></div>'
+              },
+              6: {
+        metaphor: "The blueprint and foreman for your applications",
+        whatIs: "Deployments manage stateless applications with rolling updates, while StatefulSets manage stateful applications with stable identities and ordered operations.",
+        whyImportant: "Ensures your applications run with the desired replicas and update strategy. Deployments for stateless apps, StatefulSets for databases and ordered workloads.",
+        visual: '<div class="workload-visual">' +
+                '<div class="workload-option" data-target="/kubernetes/deployments">' +
+                '<i class="fas fa-copy"></i> Deployments' +
+                '</div>' +
+                '<div class="workload-option" data-target="/kubernetes/statefulsets">' +
+                '<i class="fas fa-list-ol"></i> StatefulSets' +
+                '</div></div>'
+      },
+              7: {
+                  metaphor: "The individual hotel rooms for your containers",
+                  whatIs: "Pods are the smallest deployable units in Kubernetes, containing one or more containers that share storage and network resources.",
+                  whyImportant: "Your actual running application instances. Like individual hotel rooms that contain all the amenities (containers) needed for a guest (application) to function.",
+                  visual: '<div class="pods-visual"><div class="pod"><div class="container"><i class="fas fa-box"></i> app</div><div class="container"><i class="fas fa-shield-alt"></i> sidecar</div></div><div class="pod single"><div class="container"><i class="fas fa-box"></i> app</div></div></div>'
+              },
+              8: {
+                  metaphor: "The front desk and concierge service",
+                  whatIs: "Services provide stable IP addresses and DNS names to access groups of pods, and can expose applications internally or to the outside world.",
+                  whyImportant: "Provides reliable access to your applications even as individual pods come and go. Like having a hotel front desk that always knows which rooms are occupied.",
+                  visual: '<div class="services-visual"><div class="service"><i class="fas fa-exchange-alt"></i> ClusterIP</div><div class="service"><i class="fas fa-sign-out-alt"></i> NodePort</div><div class="service"><i class="fas fa-globe"></i> LoadBalancer</div></div>'
+              },
+               9: {
+        metaphor: "The gateway and traffic controller",
+        whatIs: "Ingress manages external access to your services, typically HTTP/HTTPS, with host and path-based routing rules. It acts as a smart router for your cluster.",
+        whyImportant: "Provides a single entry point for multiple services, enables name-based virtual hosting, and can handle SSL termination. Like having a receptionist who directs visitors to the right department.",
+        visual: '<div class="ingress-visual"><div class="ingress"><i class="fas fa-globe"></i> Ingress</div><div class="arrows">⇩ ⇩ ⇩</div><div class="services-visual"><div class="service"><i class="fas fa-exchange-alt"></i> Service A</div><div class="service"><i class="fas fa-exchange-alt"></i> Service B</div><div class="service"><i class="fas fa-exchange-alt"></i> Service C</div></div></div>'
+    }
+          };
+      
+          // Initialize the stepper
+          const steps = document.querySelectorAll('.stepper-steps .step');
+          const progressBar = document.querySelector('.stepper-progress-bar');
+          const currentPath = window.location.pathname;
+          let currentStepIndex = 0;
+          
+          // Set total steps counter
+          document.getElementById('totalSteps').textContent = steps.length;
+          
+         // Find current step based on URL
+      steps.forEach((step, index) => {
+          const stepRoute = step.getAttribute('data-route');
+          // Check for both deployments and statefulsets under step 6
+          if (currentPath.includes(stepRoute) || 
+              (index === 5 && (currentPath.includes('/kubernetes/deployments') || 
+                              currentPath.includes('/kubernetes/statefulsets')))) {
+              currentStepIndex = index;
+              activateStep(step, index + 1);
+          }
+          
+          // Add click handler
+          step.addEventListener('click', function() {
+              navigateToStep(index);
+          });
+      });
+          
+          // Next/Previous button handlers
+          document.getElementById('nextStepBtn').addEventListener('click', function() {
+              if (currentStepIndex < steps.length - 1) {
+                  navigateToStep(currentStepIndex + 1);
+              }
+          });
+          
+          document.getElementById('prevStepBtn').addEventListener('click', function() {
+              if (currentStepIndex > 0) {
+                  navigateToStep(currentStepIndex - 1);
+              }
+          });
+          
+          // Update the navigateToStep function
+      function navigateToStep(index) {
+        const step = steps[index];
+        let route = step.getAttribute('data-route');
+        
+        // Special handling for Workloads step
+        if (index === 5) { // Step 6 is index 5 (0-based)
+            // Default to Deployments if coming from previous step
+            if (currentStepIndex < index) {
+                route = "/kubernetes/deployments";
+            } 
+            // If coming from next step, go to StatefulSets
+            else if (currentStepIndex > index) {
+                route = "/kubernetes/statefulsets";
+            }
+        }
+        
+        window.location.href = route;
+      }
+          
+      function activateStep(step, stepNumber) {
+          // Update UI
+          steps.forEach(s => {
+              s.classList.remove('active', 'completed');
+              const sNumber = parseInt(s.getAttribute('data-step'));
+              if (sNumber < stepNumber) {
+                  s.classList.add('completed');
+              }
+          });
+          
+          step.classList.add('active');
+          
+          // Update progress bar
+          const progressPercentage = ((stepNumber - 1) / (steps.length - 1)) * 100;
+          progressBar.style.width = `${progressPercentage}%`;
+          
+          // Update step counter
+          document.getElementById('currentStepNumber').textContent = stepNumber;
+          
+          // Update explanation panel
+          if (stepInfo[stepNumber]) {
+              // Special handling for Workloads step
+              if (stepNumber === 6) {
+                  if (window.location.pathname.includes('/kubernetes/statefulsets')) {
+                      document.getElementById('currentStepMetaphor').textContent = "The specialized blueprint for stateful applications";
+                      document.getElementById('whatIsThis').textContent = "StatefulSets manage stateful applications that need stable network identities, persistent storage, and ordered deployment/scaling.";
+                      document.getElementById('whyImportant').textContent = "Essential for databases and other stateful applications where pod order and persistence matter. Like having numbered parking spots where each car always gets the same spot.";
+                      document.querySelector('.visual-placeholder').innerHTML = '<div class="statefulset-visual"><div class="pod"><i class="fas fa-database"></i> db-0</div><div class="pod"><i class="fas fa-database"></i> db-1</div><div class="pod"><i class="fas fa-database"></i> db-2</div></div>';
+                  } else {
+                      // Default to Deployments view
+                      document.getElementById('currentStepMetaphor').textContent = stepInfo[stepNumber].metaphor;
+                      document.getElementById('whatIsThis').textContent = stepInfo[stepNumber].whatIs;
+                      document.getElementById('whyImportant').textContent = stepInfo[stepNumber].whyImportant;
+                      document.querySelector('.visual-placeholder').innerHTML = stepInfo[stepNumber].visual;
+                  }
+              } else {
+                  // Normal step handling
+                  document.getElementById('currentStepMetaphor').textContent = stepInfo[stepNumber].metaphor;
+                  document.getElementById('whatIsThis').textContent = stepInfo[stepNumber].whatIs;
+                  document.getElementById('whyImportant').textContent = stepInfo[stepNumber].whyImportant;
+                  document.querySelector('.visual-placeholder').innerHTML = stepInfo[stepNumber].visual;
+              }
+          }
+          
+          // Add click handlers for workload options
+          if (stepNumber === 6) {
+              document.querySelectorAll('.workload-option').forEach(option => {
+                  option.addEventListener('click', function(e) {
+                      e.stopPropagation();
+                      window.location.href = this.getAttribute('data-target');
+                  });
+              });
+          }
+          
+          // Update navigation buttons
+          document.getElementById('prevStepBtn').disabled = stepNumber === 1;
+          document.getElementById('nextStepBtn').disabled = stepNumber === steps.length;
+      }
+      });
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotInterface = document.getElementById('chatbot-interface');
+            const chatClose = document.getElementById('chat-close');
+            const chatBody = document.getElementById('chat-body');
+            const chatMessages = document.getElementById('chat-messages');
+            const chatMessageInput = document.getElementById('chat-message');
+            const chatSendButton = document.getElementById('chat-send');
+      
+            // Toggle Chat Interface
+            chatbotToggle.addEventListener('click', () => {
+                chatbotInterface.style.display = 'block';
+            });
+      
+            // Close Chat Interface
+            chatClose.addEventListener('click', () => {
+                chatbotInterface.style.display = 'none';
+            });
+      
+            // Send Message to Chatbot
+            chatSendButton.addEventListener('click', async () => {
+                const message = chatMessageInput.value.trim();
+                if (message) {
+                    // Add User Message to Chat
+                    chatMessages.innerHTML += `<div class="message"><strong>You:</strong> ${message}</div>`;
+                    chatMessageInput.value = '';
+      
+                    // Show Loading Spinner
+                    chatMessages.innerHTML += `<div id="loading-spinner">Loading...</div>`;
+      
+                    // Call Backend API
+                    try {
+                        const response = await fetch('/api/chat', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ message })
+                        });
+                        const data = await response.json();
+      
+                        // Remove Loading Spinner and Add Bot Response
+                        document.getElementById('loading-spinner').remove();
+                        chatMessages.innerHTML += `<div class="message"><strong>Assistant:</strong> ${data.response}</div>`;
+                    } catch (error) {
+                        console.error('Error:', error);
+                        chatMessages.innerHTML += `<div class="message"><strong>Error:</strong> Failed to get response.</div>`;
+                    }
+      
+                    // Scroll to Bottom of Chat
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }
+            });
+      
+            // Allow Pressing "Enter" to Send a Message
+            chatMessageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    chatSendButton.click();
+                }
+            });
+        });
+      </script>
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.min.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.min.css" />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // View mode toggle
+            const cardViewBtn = document.getElementById('cardViewBtn');
+            const tableViewBtn = document.getElementById('tableViewBtn');
+            const cardView = document.getElementById('nodesCardView');
+            const tableView = document.getElementById('nodesTableView');
+            
+            cardViewBtn.addEventListener('click', function() {
+                this.classList.add('active');
+                tableViewBtn.classList.remove('active');
+                cardView.style.display = 'block';
+                tableView.style.display = 'none';
+            });
+            
+            tableViewBtn.addEventListener('click', function() {
+                this.classList.add('active');
+                cardViewBtn.classList.remove('active');
+                cardView.style.display = 'none';
+                tableView.style.display = 'block';
+            });
+            
+            // Refresh nodes
+            document.getElementById('refreshNodes').addEventListener('click', function() {
+                loadNodes();
+            });
+            
+            // Load initial data
+            loadNodes();
+            
+            // Node action modals
+            let currentNodeName = '';
+            
+            // Drain node
+            document.getElementById('confirmDrain').addEventListener('click', function() {
+                const deleteLocalData = document.getElementById('deleteLocalData').checked;
+                const ignoreDaemonsets = document.getElementById('ignoreDaemonsets').checked;
+                
+                drainNode(currentNodeName, deleteLocalData, ignoreDaemonsets);
+                $('#drainNodeModal').modal('hide');
+            });
+            
+            // Cordon/uncordon node
+            document.getElementById('confirmCordon').addEventListener('click', function() {
+                const action = document.getElementById('confirmCordon').getAttribute('data-action');
+                
+                if (action === 'cordon') {
+                    cordonNode(currentNodeName);
+                } else {
+                    uncordonNode(currentNodeName);
+                }
+                
+                $('#cordonNodeModal').modal('hide');
+            });
+            
+            // Delete node
+            document.getElementById('confirmDelete').addEventListener('click', function() {
+                deleteNode(currentNodeName);
+                $('#deleteNodeModal').modal('hide');
+            });
+        });
+        
+        function loadNodes() {
+            // Show loading state
+            const nodesContainer = document.getElementById('nodesContainer');
+            const nodesTableBody = document.getElementById('nodesTableBody');
+            
+            nodesContainer.innerHTML = `
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <p>Loading nodes...</p>
+                </div>
+            `;
+            
+            nodesTableBody.innerHTML = `
+                <tr>
+                    <td colspan="8" class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <p>Loading nodes...</p>
+                    </td>
+                </tr>
+            `;
+            
+            // Fetch nodes from API
+            fetch('/kubernetes/cluster/nodes')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.items && data.items.length > 0) {
+                        renderNodesCardView(data.items);
+                        renderNodesTableView(data.items);
+                    } else {
+                        nodesContainer.innerHTML = `
+                            <div class="col-12 text-center">
+                                <p>No nodes found in the cluster</p>
+                            </div>
+                        `;
+                        
+                        nodesTableBody.innerHTML = `
+                            <tr>
+                                <td colspan="8" class="text-center">No nodes found in the cluster</td>
+                            </tr>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    nodesContainer.innerHTML = `
+                        <div class="col-12 text-center text-danger">
+                            <p>Error loading nodes: ${error.message}</p>
+                        </div>
+                    `;
+                    
+                    nodesTableBody.innerHTML = `
+                        <tr>
+                            <td colspan="8" class="text-center text-danger">Error loading nodes: ${error.message}</td>
+                        </tr>
+                    `;
+                });
+        }
+        
+        function renderNodesCardView(nodes) {
+            const nodesContainer = document.getElementById('nodesContainer');
+            let html = '';
+            
+            nodes.forEach(node => {
+                const status = node.status.conditions.find(c => c.type === 'Ready').status;
+                const statusClass = status === 'True' ? 'status-ready' : 'status-not-ready';
+                const statusText = status === 'True' ? 'Ready' : 'Not Ready';
+                
+                const getNodeRole = (node) => {
+    const labels = node.metadata.labels || {};
+    
+    // Check for current label naming (control-plane)
+    if (labels['node-role.kubernetes.io/control-plane'] === 'true') {
+        return 'Control Plane';
+    }
+    // Check for legacy label naming (master)
+    if (labels['node-role.kubernetes.io/master'] === 'true') {
+        return 'Control Plane';
+    }
+    // Check for other roles (like worker)
+    for (const key in labels) {
+        if (key.startsWith('node-role.kubernetes.io/') && key !== 'node-role.kubernetes.io/master') {
+            return key.split('/')[1].charAt(0).toUpperCase() + key.split('/')[1].slice(1);
+        }
+    }
+    // Default to Worker if no specific role is found
+    return 'Worker';
+};
+
+const role = getNodeRole(node);
+                
+const roleBadge = role === 'Control Plane' ? 'badge-primary' : 
+                 role === 'Worker' ? 'badge-secondary' : 'badge-info';                
+                const cpuCapacity = node.status.capacity ? node.status.capacity.cpu : 'N/A';
+                const memoryCapacity = node.status.capacity ? formatMemory(node.status.capacity.memory) : 'N/A';
+                
+                // Get taints
+                let taintsHtml = '';
+                if (node.spec.taints) {
+                    node.spec.taints.forEach(taint => {
+                        taintsHtml += `
+                            <span class="badge taint-badge bg-primary text-dark" 
+                                  title="${taint.key}: ${taint.value}=${taint.effect}">
+                                ${taint.key}: ${taint.effect}
+                            </span>
+                        `;
+                    });
+                }
+                
+                // Get labels
+                let labelsHtml = '';
+                if (node.metadata.labels) {
+                    for (const [key, value] of Object.entries(node.metadata.labels)) {
+                        if (!key.startsWith('node-role.kubernetes.io/')) {
+                            labelsHtml += `
+                                <span class="badge badge-label bg-light text-dark" title="${key}=${value}">
+                                    ${key}: ${value}
+                                </span>
+                            `;
+                        }
+                    }
+                }
+                
+                // Check if node is cordoned
+                const isUnschedulable = node.spec.unschedulable;
+                const cordonStatus = isUnschedulable ? 
+                    '<span class="badge badge-danger">Unschedulable</span>' : 
+                    '<span class="badge badge-success">Schedulable</span>';
+                
+                html += `
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card node-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="card-title">${node.metadata.name}</h5>
+                                    <span class="badge ${roleBadge}">${role}</span>
+                                </div>
+                                
+                                <div class="node-status mb-2">
+                                    <div class="status-indicator ${statusClass}"></div>
+                                    <span>${statusText}</span>
+                                    ${cordonStatus}
+                                </div>
+                                
+                                <div class="mb-2">
+                                    <small class="text-muted">CPU: ${cpuCapacity}</small>
+                                    <div class="resource-bar cpu-bar">
+                                        <div class="cpu-usage metrics-loading" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-2">
+                                    <small class="text-muted">Memory: ${memoryCapacity}</small>
+                                    <div class="resource-bar memory-bar">
+                                        <div class="memory-usage metrics-loading" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-2">
+                                    <small class="text-muted">Age: ${timeSince(new Date(node.metadata.creationTimestamp))}</small>
+                                </div>
+                                
+                                ${taintsHtml ? `<div class="mb-2"><small class="text-muted">Taints:</small><br>${taintsHtml}</div>` : ''}
+                                
+                                ${labelsHtml ? `<div class="mb-2"><small class="text-muted">Labels:</small><br>${labelsHtml}</div>` : ''}
+                                
+                               <div class="node-actions">
+  <div class="action-buttons">
+    <button class="action-btn btn-yaml" onclick="showNodeDetails('${node.metadata.name}')"
+            data-tooltip="Node details">
+      <i class="fas fa-info-circle"></i> Details
+    </button>
+    ${role === 'Worker' ? `
+    <button class="action-btn btn-scale" onclick="showDrainModal('${node.metadata.name}')"
+            data-tooltip="Drain node">
+      <i class="fas fa-tint"></i> Drain
+    </button>
+    ` : ''}
+    <button class="action-btn btn-yaml" onclick="showCordonModal('${node.metadata.name}', ${isUnschedulable})"
+            data-tooltip="${isUnschedulable ? 'Uncordon node' : 'Cordon node'}">
+      <i class="fas ${isUnschedulable ? 'fa-play-circle' : 'fa-pause-circle'}"></i> 
+      ${isUnschedulable ? 'Uncordon' : 'Cordon'}
+    </button>
+    ${role === 'Worker' ? `
+    <button class="action-btn btn-delete" onclick="showDeleteModal('${node.metadata.name}')"
+            data-tooltip="Remove node">
+      <i class="fas fa-trash-alt"></i> Remove
+    </button>
+    ` : ''}
+  </div>
+</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            nodesContainer.innerHTML = html;
+            
+            // Load metrics for each node
+            nodes.forEach(node => {
+                loadNodeMetrics(node.metadata.name);
+            });
+        }
+        
+        function renderNodesTableView(nodes) {
+            const nodesTableBody = document.getElementById('nodesTableBody');
+            let html = '';
+            
+            nodes.forEach(node => {
+                const status = node.status.conditions.find(c => c.type === 'Ready').status;
+                const statusClass = status === 'True' ? 'status-ready' : 'status-not-ready';
+                const statusText = status === 'True' ? 'Ready' : 'Not Ready';
+                
+                const getNodeRole = (node) => {
+    const labels = node.metadata.labels || {};
+    
+    // Check for current label naming (control-plane)
+    if (labels['node-role.kubernetes.io/control-plane'] === 'true') {
+        return 'Control Plane';
+    }
+    // Check for legacy label naming (master)
+    if (labels['node-role.kubernetes.io/master'] === 'true') {
+        return 'Control Plane';
+    }
+    // Check for other roles (like worker)
+    for (const key in labels) {
+        if (key.startsWith('node-role.kubernetes.io/') && key !== 'node-role.kubernetes.io/master') {
+            return key.split('/')[1].charAt(0).toUpperCase() + key.split('/')[1].slice(1);
+        }
+    }
+    // Default to Worker if no specific role is found
+    return 'Worker';
+};
+
+const role = getNodeRole(node);
+                
+                const cpuCapacity = node.status.capacity ? node.status.capacity.cpu : 'N/A';
+                const memoryCapacity = node.status.capacity ? formatMemory(node.status.capacity.memory) : 'N/A';
+                
+                // Check if node is cordoned
+                const isUnschedulable = node.spec.unschedulable;
+                const cordonStatus = isUnschedulable ? 
+                    '<span class="badge badge-danger">Unschedulable</span>' : 
+                    '<span class="badge badge-success">Schedulable</span>';
+                
+                // Get labels (simplified for table view)
+                let labelsText = '';
+                if (node.metadata.labels) {
+                    const filteredLabels = Object.entries(node.metadata.labels)
+                        .filter(([key]) => !key.startsWith('node-role.kubernetes.io/'));
+                    labelsText = filteredLabels.map(([key, value]) => `${key}=${value}`).join(', ');
+                }
+                
+                html += `
+                    <tr>
+                        <td>${node.metadata.name}</td>
+                        <td>${role}</td>
+                        <td>
+                            <div class="node-status">
+                                <div class="status-indicator ${statusClass}"></div>
+                                ${statusText}
+                                ${cordonStatus}
+                            </div>
+                        </td>
+                        <td>
+                            <small>${cpuCapacity}</small>
+                            <div class="resource-bar cpu-bar">
+                                <div class="cpu-usage metrics-loading" style="width: 0%"></div>
+                            </div>
+                        </td>
+                        <td>
+                            <small>${memoryCapacity}</small>
+                            <div class="resource-bar memory-bar">
+                                <div class="memory-usage metrics-loading" style="width: 0%"></div>
+                            </div>
+                        </td>
+                        <td>${timeSince(new Date(node.metadata.creationTimestamp))}</td>
+                        <td>
+                            <small>${labelsText || 'None'}</small>
+                        </td>
+                       <td>
+  <div class="action-buttons">
+    <button class="action-btn btn-yaml" onclick="showNodeDetails('${node.metadata.name}')"
+            data-tooltip="Node details">
+      <i class="fas fa-info-circle"></i> Details
+    </button>
+    ${role === 'Worker' ? `
+    <button class="action-btn btn-scale" onclick="showDrainModal('${node.metadata.name}')"
+            data-tooltip="Drain node">
+      <i class="fas fa-tint"></i> Drain
+    </button>
+    ` : ''}
+    ${role === 'Control Plane' ? '' : `
+<button class="action-btn btn-yaml" onclick="showCordonModal('${node.metadata.name}', ${isUnschedulable})"
+        data-tooltip="${isUnschedulable ? 'Uncordon node' : 'Cordon node'}">
+    <i class="fas ${isUnschedulable ? 'fa-play-circle' : 'fa-pause-circle'}"></i> 
+    ${isUnschedulable ? 'Uncordon' : 'Cordon'}
+</button>
+`}
+    ${role === 'Worker' ? `
+    <button class="action-btn btn-delete" onclick="showDeleteModal('${node.metadata.name}')"
+            data-tooltip="Delete node">
+      <i class="fas fa-trash-alt"></i> Delete
+    </button>
+    ` : ''}
+  </div>
+</td>
+                    </tr>
+                `;
+            });
+            
+            nodesTableBody.innerHTML = html;
+            
+            // Load metrics for each node
+            nodes.forEach(node => {
+                loadNodeMetrics(node.metadata.name);
+            });
+        }
+        
+        function loadNodeMetrics(nodeName) {
+            
+            
+            setTimeout(() => {
+                // Simulate API call delay
+                const cpuUsage = Math.floor(Math.random() * 100);
+                const memoryUsage = Math.floor(Math.random() * 100);
+                
+                // Update card view
+                document.querySelectorAll(`.node-card h5.card-title:contains('${nodeName}')`).forEach(card => {
+                    const cpuBar = card.closest('.node-card').querySelector('.cpu-usage');
+                    const memoryBar = card.closest('.node-card').querySelector('.memory-usage');
+                    
+                    if (cpuBar) {
+                        cpuBar.style.width = `${cpuUsage}%`;
+                        cpuBar.textContent = `${cpuUsage}%`;
+                        cpuBar.classList.remove('metrics-loading');
+                    }
+                    
+                    if (memoryBar) {
+                        memoryBar.style.width = `${memoryUsage}%`;
+                        memoryBar.textContent = `${memoryUsage}%`;
+                        memoryBar.classList.remove('metrics-loading');
+                    }
+                });
+                
+                // Update table view
+                document.querySelectorAll(`#nodesTableBody tr td:first-child:contains('${nodeName}')`).forEach(cell => {
+                    const row = cell.closest('tr');
+                    const cpuBar = row.querySelector('.cpu-usage');
+                    const memoryBar = row.querySelector('.memory-usage');
+                    
+                    if (cpuBar) {
+                        cpuBar.style.width = `${cpuUsage}%`;
+                        cpuBar.textContent = `${cpuUsage}%`;
+                        cpuBar.classList.remove('metrics-loading');
+                    }
+                    
+                    if (memoryBar) {
+                        memoryBar.style.width = `${memoryUsage}%`;
+                        memoryBar.textContent = `${memoryUsage}%`;
+                        memoryBar.classList.remove('metrics-loading');
+                    }
+                });
+            }, 1000 + Math.random() * 2000); 
+        }
+        
+        // Modal functions
+        function showDrainModal(nodeName) {
+            currentNodeName = nodeName;
+            document.getElementById('drainNodeName').textContent = nodeName;
+            $('#drainNodeModal').modal('show');
+        }
+        
+        function showCordonModal(nodeName, isUnschedulable) {
+            currentNodeName = nodeName;
+            const modalTitle = document.getElementById('cordonModalTitle');
+            const modalText = document.getElementById('cordonModalText');
+            const confirmBtn = document.getElementById('confirmCordon');
+            
+            if (isUnschedulable) {
+                modalTitle.textContent = 'Uncordon Node';
+                modalText.innerHTML = `Are you sure you want to mark <strong>${nodeName}</strong> as schedulable again?`;
+                confirmBtn.textContent = 'Uncordon';
+                confirmBtn.setAttribute('data-action', 'uncordon');
+            } else {
+                modalTitle.textContent = 'Cordon Node';
+                modalText.innerHTML = `Are you sure you want to mark <strong>${nodeName}</strong> as unschedulable?`;
+                confirmBtn.textContent = 'Cordon';
+                confirmBtn.setAttribute('data-action', 'cordon');
+            }
+            
+            $('#cordonNodeModal').modal('show');
+        }
+        
+        function showDeleteModal(nodeName) {
+            currentNodeName = nodeName;
+            document.getElementById('deleteNodeName').textContent = nodeName;
+            $('#deleteNodeModal').modal('show');
+        }
+        
+      function showNodeDetails(nodeName) {
+    // Fetch detailed node information
+    fetch(`/kubernetes/cluster/nodes/${nodeName}`)
+        .then(response => response.json())
+        .then(node => {
+             const metricsHtml = node.metrics ? `
+                <h6 class="mt-3">Current Resource Usage</h6>
+                <table class="table table-sm">
+                    <tr>
+                        <th>CPU</th>
+                        <td>${node.metrics.cpu}</td>
+                    </tr>
+                    <tr>
+                        <th>Memory</th>
+                        <td>${node.metrics.memory}</td>
+                    </tr>
+                </table>
+            ` : `
+                <div class="alert alert-warning mt-3">
+                    <i class="fas fa-exclamation-triangle"></i> 
+                    Metrics API not available. To see resource usage metrics, install the 
+                    <a href="https://github.com/kubernetes-sigs/metrics-server" target="_blank">Metrics Server</a>.
+                </div>
+            `;
+const getNodeRole = (node) => {
+    const labels = node.metadata.labels || {};}
+            const errorHtml = node.metricsError ? `
+                <div class="alert alert-danger mt-3">
+                    <i class="fas fa-exclamation-circle"></i> 
+                    Error fetching metrics: ${node.metricsError}
+                </div>
+            ` : '';
+            // Create a detailed modal with node information
+       const modalContent = `
+    <div class="modal fade" id="nodeDetailsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" style="color: black;">Node Details: ${node.metadata.name}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Basic Information</h6>
+                            <table class="table table-sm">
+                                <tr>
+                                    <th>Name</th>
+                                    <td>${node.metadata.name}</td>
+                                </tr>
+                                <tr>
+                                    <th>Role</th>
+                                    <td>${getNodeRole(node)}</td>
+                                </tr>
+                                <tr>
+                                    <th>Created</th>
+                                    <td>${new Date(node.metadata.creationTimestamp).toLocaleString()}</td>
+                                </tr>
+                                <tr>
+                                    <th>Kubelet Version</th>
+                                    <td>${node.status.nodeInfo.kubeletVersion}</td>
+                                </tr>
+                                <tr>
+                                    <th>OS</th>
+                                    <td>${node.status.nodeInfo.operatingSystem} (${node.status.nodeInfo.osImage})</td>
+                                </tr>
+                                <tr>
+                                    <th>Architecture</th>
+                                    <td>${node.status.nodeInfo.architecture}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Resources</h6>
+                            <table class="table table-sm">
+                                <tr>
+                                    <th>CPU</th>
+                                    <td>${node.status.capacity?.cpu || 'N/A'} cores</td>
+                                </tr>
+                                <tr>
+                                    <th>Memory</th>
+                                    <td>${formatMemory(node.status.capacity?.memory)}</td>
+                                </tr>
+                                <tr>
+                                    <th>Pods</th>
+                                    <td>${node.status.capacity?.pods || 'N/A'}</td>
+                                </tr>
+                                <tr>
+                                    <th>Ephemeral Storage</th>
+                                    <td>${formatMemory(node.status.capacity?.['ephemeral-storage'])}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <h6 class="mt-3">Conditions</h6>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Last Heartbeat</th>
+                                <th>Reason</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${node.status.conditions.map(condition => `
+                                <tr> <!-- Removed class="${condition.status === 'True' ? 'table-success' : 'table-danger'}" -->
+                                    <td>${condition.type}</td>
+                                    <td>${condition.status}</td>
+                                    <td>${timeSince(new Date(condition.lastHeartbeatTime))} ago</td>
+                                    <td>${condition.reason || '-'}</td>
+                                    <td>${condition.message || '-'}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                                
+                                <h6 class="mt-3">Addresses</h6>
+                                <table class="table table-sm">
+                                    ${node.status.addresses.map(addr => `
+                                        <tr>
+                                            <td>${addr.type}</td>
+                                            <td>${addr.address}</td>
+                                        </tr>
+                                    `).join('')}
+                                </table>
+                                
+                                ${node.spec.taints ? `
+                                <h6 class="mt-3">Taints</h6>
+                                <table class="table table-sm">
+                                    ${node.spec.taints.map(taint => `
+                                        <tr>
+                                            <td>${taint.key}</td>
+                                            <td>${taint.value || '-'}</td>
+                                            <td>${taint.effect}</td>
+                                        </tr>
+                                    `).join('')}
+                                </table>
+                                ` : ''}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', modalContent);
+            const modal = new bootstrap.Modal(document.getElementById('nodeDetailsModal'));
+            modal.show();
+            
+            // Remove modal when closed
+            document.getElementById('nodeDetailsModal').addEventListener('hidden.bs.modal', () => {
+                document.getElementById('nodeDetailsModal').remove();
+            });
+        })
+        .catch(error => {
+            Swal.fire('Error', `Failed to get node details: ${error.message}`, 'error');
+        });
+}
+        
+        // Node action functions
+        function drainNode(nodeName, deleteLocalData, ignoreDaemonsets) {
+            // Show loading state
+            Swal.fire({
+  title: 'Draining Node',
+  text: `Draining node ${nodeName}...`,
+  icon: 'info',
+  showConfirmButton: false,
+  timer: 2000
+});            
+            fetch('/kubernetes/cluster/drain-node', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    nodeName,
+                    deleteLocalData,
+                    ignoreDaemonsets
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire('Success!', `Node ${nodeName} drained successfully`, 'success');                    loadNodes();
+                } else {
+                    Swal.fire('Error!', `Error draining node: ${data.error}`, 'error');                }
+            })
+            .catch(error => {
+                Swal.fire('Error!', `Error draining node: ${error.message}`, 'error');            });
+        }
+        
+        function cordonNode(nodeName) {
+            Swal.fire({
+  title: 'Cordoning Node',
+  text: `Marking node ${nodeName} as unschedulable...`,
+  icon: 'info',
+  showConfirmButton: false,
+  timer: 2000
+});            
+            fetch('/kubernetes/cluster/cordon-node', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nodeName })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire('Success!', `Node ${nodeName} marked as unschedulable`, 'success');                    loadNodes();
+                } else {
+                    Swal.fire('Error!', `Error cordoning node: ${data.error}`, 'error');                }
+            })
+            .catch(error => {
+                Swal.fire('Error!', `Error cordoning node: ${error.message}`, 'error');            });
+        }
+        
+        function uncordonNode(nodeName) {
+            Swal.fire({
+  title: 'Uncordoning Node',
+  text: `Marking node ${nodeName} as schedulable...`,
+  icon: 'info',
+  showConfirmButton: false,
+  timer: 2000
+});            
+            fetch('/kubernetes/cluster/uncordon-node', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nodeName })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire('Success!', `Node ${nodeName} marked as schedulable`, 'success');                    loadNodes();
+                } else {
+                    Swal.fire('Error!', `Error uncordoning node: ${data.error}`, 'error');                }
+            })
+            .catch(error => {
+                Swal.fire('Error!', `Error uncordoning node: ${error.message}`, 'error');            });
+        }
+        
+        function deleteNode(nodeName) {
+            Swal.fire({
+  title: 'Deleting Node',
+  text: `Removing node ${nodeName} from cluster...`,
+  icon: 'info',
+  showConfirmButton: false,
+  timer: 2000
+});            
+            fetch('/kubernetes/cluster/delete-node', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nodeName })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire('Success!', `Node ${nodeName} removed from cluster`, 'success');                    loadNodes();
+                } else {
+                    Swal.fire('Error!', `Error removing node: ${data.error}`, 'error');                }
+            })
+            .catch(error => {
+                Swal.fire('Error!', `Error removing node: ${error.message}`, 'error');            });
+        }
+        
+        // Utility functions
+        function formatMemory(memory) {
+            if (!memory) return 'N/A';
+            
+            if (memory.endsWith('Ki')) {
+                const value = parseInt(memory) / 1024;
+                return `${Math.round(value)} MB`;
+            } else if (memory.endsWith('Mi')) {
+                return `${parseInt(memory)} MB`;
+            } else if (memory.endsWith('Gi')) {
+                return `${parseInt(memory)} GB`;
+            } else {
+                return memory;
+            }
+        }
+        
+        function timeSince(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            
+            let interval = Math.floor(seconds / 31536000);
+            if (interval >= 1) return `${interval}y`;
+            
+            interval = Math.floor(seconds / 2592000);
+            if (interval >= 1) return `${interval}mo`;
+            
+            interval = Math.floor(seconds / 86400);
+            if (interval >= 1) return `${interval}d`;
+            
+            interval = Math.floor(seconds / 3600);
+            if (interval >= 1) return `${interval}h`;
+            
+            interval = Math.floor(seconds / 60);
+            if (interval >= 1) return `${interval}m`;
+            
+            return `${Math.floor(seconds)}s`;
+        }
+        
+       
+ 
+
+
+document.getElementById('addNodeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const nodeCount = parseInt(document.getElementById('nodeCount').value);
+    const cpu = parseInt(document.getElementById('nodeCPU').value);
+    const memory = parseInt(document.getElementById('nodeMemory').value) * 1024; // Convert GB to MB
+    
+    const progressSection = document.querySelector('.add-node-progress');
+    const progressBar = document.getElementById('addNodeProgressBar');
+    const outputDiv = document.getElementById('addNodeOutput');
+    
+    // Show progress section
+    progressSection.style.display = 'block';
+    outputDiv.innerHTML = '';
+    progressBar.style.width = '0%';
+    progressBar.classList.remove('bg-danger', 'bg-success');
+    progressBar.classList.add('bg-primary');
+    
+    // Create EventSource connection
+    const eventSource = new EventSource(`/kubernetes/cluster/add-node?cpu=${cpu}&memory=${memory}&count=${nodeCount}`);
+    
+    eventSource.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        const messageElement = document.createElement('div');
+        messageElement.innerHTML = `<span class="log-type-${data.type}">${data.message}</span>`;
+        outputDiv.appendChild(messageElement);
+        outputDiv.scrollTop = outputDiv.scrollHeight;
+        
+        // Update progress based on messages
+        if (data.type === 'success') {
+            progressBar.style.width = '100%';
+            progressBar.classList.remove('bg-primary', 'bg-danger');
+            progressBar.classList.add('bg-success');
+        } else if (data.type === 'error') {
+            progressBar.style.width = '100%';
+            progressBar.classList.remove('bg-primary', 'bg-success');
+            progressBar.classList.add('bg-danger');
+        } else {
+            // Incremental progress
+            const currentWidth = parseInt(progressBar.style.width) || 0;
+            progressBar.style.width = `${Math.min(currentWidth + (100/(nodeCount*5)), 90)}%`;
+        }
+    };
+    
+    eventSource.onerror = function() {
+        outputDiv.innerHTML += '<div class="log-type-error">Connection error occurred</div>';
+        progressBar.classList.remove('bg-primary', 'bg-success');
+        progressBar.classList.add('bg-danger');
+        eventSource.close();
+    };
+    
+    // Close connection when modal is closed
+    $('#addNodeModal').on('hidden.bs.modal', function() {
+        eventSource.close();
+    });
+}); 
+
+
+function loadNodeMetrics(nodeName) {
+    
+    
+    setTimeout(() => {
+        const cpuUsage = Math.floor(Math.random() * 100);
+        const memoryUsage = Math.floor(Math.random() * 100);
+        
+        document.querySelectorAll('.node-card h5.card-title').forEach(title => {
+            if (title.textContent.includes(nodeName)) {
+                const cpuBar = title.closest('.node-card').querySelector('.cpu-usage');
+                const memoryBar = title.closest('.node-card').querySelector('.memory-usage');
+                
+                if (cpuBar) {
+                    cpuBar.style.width = `${cpuUsage}%`;
+                    cpuBar.textContent = `${cpuUsage}%`;
+                    cpuBar.classList.remove('metrics-loading');
+                }
+                
+                if (memoryBar) {
+                    memoryBar.style.width = `${memoryUsage}%`;
+                    memoryBar.textContent = `${memoryUsage}%`;
+                    memoryBar.classList.remove('metrics-loading');
+                }
+            }
+        });
+        
+        // Update table view
+        document.querySelectorAll('#nodesTableBody tr td:first-child').forEach(cell => {
+            if (cell.textContent.includes(nodeName)) {
+                const row = cell.closest('tr');
+                const cpuBar = row.querySelector('.cpu-usage');
+                const memoryBar = row.querySelector('.memory-usage');
+                
+                if (cpuBar) {
+                    cpuBar.style.width = `${cpuUsage}%`;
+                    cpuBar.textContent = `${cpuUsage}%`;
+                    cpuBar.classList.remove('metrics-loading');
+                }
+                
+                if (memoryBar) {
+                    memoryBar.style.width = `${memoryUsage}%`;
+                    memoryBar.textContent = `${memoryUsage}%`;
+                    memoryBar.classList.remove('metrics-loading');
+                }
+            }
+        });
+    }, 1000 + Math.random() * 2000); 
+}
+    </script>
+    
+
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="../assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Google Maps Plugin -->
+    <script src="../assets/js/plugin/gmaps/gmaps.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="../assets/js/kaiadmin.min.js"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="../assets/js/setting-demo2.js"></script>
+	<script src="/assets/js/script.js"></script>
+  <script>
+    function logout() {
+            Swal.fire({
+                title: 'Logout Confirmation',
+                text: 'Are you sure you want to log out?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#326ce5',
+                cancelButtonColor: '#ff6666',
+                confirmButtonText: 'Yes, log out'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.clear();
+                    window.location.replace("/login");
+                }
+            });
+        }
+  </script>
+<script>
+  function recherche() {
+    var input, filter, items, item, name, i, txtValue;
+    input = document.getElementById("searchInput"); 
+    filter = input.value.toUpperCase();
+    items = document.getElementsByClassName("service-item"); // Target list items
+
+    for (i = 0; i < items.length; i++) {
+        item = items[i];
+        name = item.querySelector(".service-name"); // Target the service name
+        if (name) {
+            txtValue = name.textContent || name.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                item.style.display = "flex"; // Show the item (flex for the list layout)
+            } else {
+                item.style.display = "none"; // Hide the item
+            }
+        }
+    }
+  }
+</script>
+</body>
+
+</html>

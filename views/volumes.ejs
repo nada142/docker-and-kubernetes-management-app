@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Containers List</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <link
+      rel="icon"
+      href="../assets/img/dockube3.png"
+      type="image/x-icon"
+    />
+    <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.min.css">
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="../assets/css/volumes.css">
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["../assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+			<a href="/" class="logo" style="display: flex; align-items: center;">
+                <img
+                  src="assets/img/dockube3.png"
+                  alt="navbar brand"
+                  class="navbar-brand"
+                  height="40"
+                />
+                <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+              </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <li class="nav-item">
+                <a href="/" aria-expanded="false">
+                  <i class="fas fa-tachometer-alt"></i> <!-- Dashboard icon -->
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockerRegistries">
+                  <i class="fas fa-warehouse"></i> <!-- Registry icon -->
+                  <p>Docker Registries</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockerfile_list">
+                  <i class="fas fa-file-code"></i> <!-- Code file icon for Dockerfile -->
+                  <p>Dockerfile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockerimg">
+                  <i class="fas fa-images"></i> <!-- Images icon -->
+                  <p>Docker Images</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockercontainers">
+                  <i class="fas fa-box"></i> <!-- Box icon for containers -->
+                  <p>Docker Containers</p>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a href="/volumes">
+                  <i class="fas fa-database"></i> <!-- Database icon for Volumes -->
+                  <p>Volumes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/compose">
+                  <i class="fas fa-cubes"></i> <!-- Stacked cubes for Compose -->
+                  <p>Docker Compose</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="swarm_list">
+                    <i class="fas fa-project-diagram"></i> <!-- Stacked cubes for Compose -->
+                  <p>Docker Swarm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#kubernetesMenu" aria-expanded="false">
+                    <i class="fas fa-dharmachakra"></i>
+                    <p>Kubernetes</p>
+                    <span class="caret"></span>
+                </a>
+                <div class="collapse" id="kubernetesMenu">
+                    <ul class="nav nav-collapse">
+                        <li>
+                            <a href="/kubernetes/cluster">
+                                <span class="sub-item">Cluster Setup</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/nodes">
+                                <span class="sub-item">Nodes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/deployments">
+                                <span class="sub-item">Deployments</span>
+                            </a>
+                        </li>
+                        <li>
+                          <a href="/kubernetes/statefulsets">
+                              <span class="sub-item">StatefulSets</span>
+                          </a>
+                      </li>
+                        <li>
+                            <a href="/kubernetes/services">
+                                <span class="sub-item">Services</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/pods">
+                                <span class="sub-item">Pods</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/pvcs">
+                                <span class="sub-item">Storage</span>
+                            </a>
+                        </li>
+                        <li>
+                          <a href="/kubernetes/configs">
+                              <span class="sub-item">ConfigMaps && Secrets</span>
+                          </a>
+                      </li>
+                        <li>
+                            <a href="/kubernetes/namespaces">
+                                <span class="sub-item">Namespaces</span>
+                            </a>
+                        </li>
+                         <li>
+                <a href="/kubernetes/ingresses">
+                    <span class="sub-item">Ingresses</span>
+                </a>
+            </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+              <a href="/cicd_integration">
+                <i class="fas fa-sync-alt"></i>
+                <p>CI CD</p>
+              </a>
+            </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#" onclick="logout()">
+                  <i class="fas fa-sign-out-alt"></i> <!-- Logout icon -->
+                  <p>Logout</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+
+      <div class="main-panel">
+        <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+              <a href="/" class="logo" style="display: flex; align-items: center;">
+                <img
+                  src="assets/img/dockube3.png"
+                  alt="navbar brand"
+                  class="navbar-brand"
+                  height="20"
+                />
+                <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+              </a>
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav
+          class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+        >
+          <div class="container-fluid">
+            <nav
+              class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
+            >
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <button type="submit" onclick="recherche()" class="btn btn-search pe-1">
+
+                    <i class="fa fa-search search-icon"></i>
+                  </button>
+                </div>
+                <input type="text" name="table_search" id="myInput" onkeyup="recherche()" class="form-control" placeholder="Search">
+
+                
+              
+              </div>
+            </nav>
+
+            <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+              <li class="nav-item topbar-user dropdown hidden-caret">
+                <a
+                  class="dropdown-toggle profile-pic"
+                  data-bs-toggle="dropdown"
+                  href="/profile"
+                  aria-expanded="false"
+                >
+                
+                  
+                  <span class="profile-username">
+                    <span class="op-7">Hi,</span>
+                    <span class="fw-bold">Hizrian</span>
+                  </span>
+                </a>
+                <ul class="dropdown-menu dropdown-user animated fadeIn">
+                  <div class="dropdown-user-scroll scrollbar-outer">
+                    <li>
+                      <div class="user-box">
+                        <div class="avatar-lg">
+                          <img
+                            src="assets/img/profile.jpg"
+                            alt="image profile"
+                            class="avatar-img rounded"
+                          />
+                        </div>
+                        <div class="u-text">
+                          <h4>Hizrian</h4>
+                          <p class="text-muted">hello@example.com</p>
+                          <a
+                            href="/profile"
+                            class="action-btn btn-blue1 btn-sm"
+                            >Update Profile</a
+                          >
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                     
+                      <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                    </li>
+                  </div>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+          <script>
+            document.addEventListener("DOMContentLoaded", function() {
+  var user = JSON.parse(localStorage.getItem("user"));
+  if (user) {
+      document.querySelector(".profile-username .fw-bold").textContent = user.username;
+      document.querySelector(".u-text h4").textContent = user.username;
+      document.querySelector(".u-text .text-muted").textContent = user.email;
+  }
+});
+          </script>
+          <!-- End Navbar -->
+        </div>
+        <div class="container">
+          <div class="page-inner">
+              <div class="page-header">
+                <h2 class="text-center">Docker Volumes
+                  <span class="help-icon" data-tooltip="Persistent data storage outside container lifecycle">
+                    <i class="fas fa-info-circle"></i>
+                  </span>
+                </h2>
+              
+              </div>
+              <div class="add-button">
+                  <button class="action-btn btn-pastel-docker-blue" data-bs-toggle="modal" data-bs-target="#createVolumeModal">
+                      <i class="fas fa-plus"></i> Add New Volume
+                  </button>
+                  <button class="action-btn btn-pastel-red" onclick="pruneVolumes()">
+                    <i class="fas fa-trash"></i> Prune Unused Volumes
+                </button>
+              </div>
+              <table class="docker-volumes-table" id="dockerVolumesTable">
+                  <thead>
+                      <tr>
+                          <th>Name</th>
+                          <th>Driver</th>
+                          <th>Labels</th>
+                          <th>Options</th>
+                          <th class="actions">Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody id="volumesContainer">
+                      <!-- Rows will be dynamically inserted here -->
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      
+      <!-- Loading Indicator -->
+      <div id="loading" style="display: none;">Loading...</div>
+      
+      <!-- Modal for Creating a New Volume -->
+      <div class="modal fade" id="createVolumeModal" tabindex="-1" aria-labelledby="createVolumeModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="createVolumeModalLabel">Create a New Volume</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <form id="createVolumeForm">
+                          <div class="form-group">
+                              <label for="volumeName">Volume Name:</label>
+                              <input type="text" id="volumeName" class="form-control" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="volumeDriver">Driver:</label>
+                              <input type="text" id="volumeDriver" class="form-control" value="local">
+                          </div>
+                          <div class="form-group">
+                              <label for="volumeOptions">Options (JSON):</label>
+                              <textarea id="volumeOptions" class="form-control" rows="3"></textarea>
+                          </div>
+                          <div class="form-group">
+                            <label for="volumeLabels">Labels (JSON):</label>
+                            <textarea id="volumeLabels" class="form-control" rows="3" placeholder='{"key": "value"}'></textarea>
+                        </div>
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="action-btn btn-pastel-red" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" form="createVolumeForm" class="action-btn btn-blue2">Create Volume</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div id="chatbot-container">
+        <!-- Chatbot Toggle Button (Circle with Logo) -->
+        <div id="chatbot-toggle">
+            <img src="../assets/img/dockube3.png" alt="Chatbot Logo" width="50" height="50">
+        </div>
+      
+        <!-- Chatbot Interface (Hidden by Default) -->
+       
+      <div id="chatbot-interface" style="display: none;">
+        <!-- Chat Header -->
+        <div id="chat-header">
+            <strong>
+                <img src="../assets/img/dockube3.png" alt="Logo">
+                Docker & Kubernetes Assistant
+            </strong>
+            <button id="chat-close">×</button>
+        </div>
+      
+        <!-- Chat Body -->
+        <div id="chat-body">
+            <div id="chat-messages">
+                <!-- Welcome Message -->
+                <div class="welcome-message" onclick="toggleWelcomeMessage()">
+                    👋 Welcome! I'm your Docker & Kubernetes Assistant.
+                    Ask me anything about Docker, Kubernetes, and best practices.
+                    <div class="hidden-content">
+                        Hi! I'm your Docker & Kubernetes Assistant.  
+                        Ask me anything about Dockerfiles, Kubernetes configurations, and best practices.
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <!-- Chat Input -->
+        <div id="chat-input">
+            <input type="text" id="chat-message" placeholder="Type your question...">
+            <button id="chat-send">Send</button>
+        </div>
+      </div>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotInterface = document.getElementById('chatbot-interface');
+            const chatClose = document.getElementById('chat-close');
+            const chatBody = document.getElementById('chat-body');
+            const chatMessages = document.getElementById('chat-messages');
+            const chatMessageInput = document.getElementById('chat-message');
+            const chatSendButton = document.getElementById('chat-send');
+      
+            // Toggle Chat Interface
+            chatbotToggle.addEventListener('click', () => {
+                chatbotInterface.style.display = 'block';
+            });
+      
+            // Close Chat Interface
+            chatClose.addEventListener('click', () => {
+                chatbotInterface.style.display = 'none';
+            });
+      
+            // Send Message to Chatbot
+            chatSendButton.addEventListener('click', async () => {
+                const message = chatMessageInput.value.trim();
+                if (message) {
+                    // Add User Message to Chat
+                    chatMessages.innerHTML += `<div class="message"><strong>You:</strong> ${message}</div>`;
+                    chatMessageInput.value = '';
+      
+                    // Show Loading Spinner
+                    chatMessages.innerHTML += `<div id="loading-spinner">Loading...</div>`;
+      
+                    // Call Backend API
+                    try {
+                        const response = await fetch('/api/chat', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ message })
+                        });
+                        const data = await response.json();
+      
+                        // Remove Loading Spinner and Add Bot Response
+                        document.getElementById('loading-spinner').remove();
+                        chatMessages.innerHTML += `<div class="message"><strong>Assistant:</strong> ${data.response}</div>`;
+                    } catch (error) {
+                        console.error('Error:', error);
+                        chatMessages.innerHTML += `<div class="message"><strong>Error:</strong> Failed to get response.</div>`;
+                    }
+      
+                    // Scroll to Bottom of Chat
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }
+            });
+      
+            // Allow Pressing "Enter" to Send a Message
+            chatMessageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    chatSendButton.click();
+                }
+            });
+        });
+      </script>
+      
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          fetchDockerVolumes(); // Fetch volumes on page load
+      
+          async function fetchDockerVolumes() {
+              try {
+                const response = await fetch('http://localhost:5000//volumes');                  const contentType = response.headers.get('content-type');
+      
+                  if (!response.ok) {
+                      throw new Error(`Failed to fetch volumes: ${response.status} ${response.statusText}`);
+                  }
+      
+                  if (!contentType || !contentType.includes('application/json')) {
+                      throw new Error('Server did not return JSON');
+                  }
+      
+                  const volumes = await response.json();
+                  const volumesContainer = document.getElementById('volumesContainer');
+      
+                  volumesContainer.innerHTML = ''; 
+      
+                  volumes.forEach(volume => {
+                      const row = document.createElement('tr');
+                      row.innerHTML = `
+                          <td>${volume.Name}</td>
+                          <td>${volume.Driver}</td>
+                           <td>${volume.Labels}</td>
+                          <td>${volume.Options ? JSON.stringify(volume.Options) : '{}'}</td>
+                          <td class="actions">
+                             <div class="action-buttons">
+        <button class="action-btn btn-blue2" onclick="inspectVolume('${volume.Name}')" data-tooltip="Inspect volume">
+            <i class="fas fa-info-circle"></i> Inspect
+        </button>
+        <button class="action-btn btn-pastel-red" onclick="deleteVolume('${volume.Name}')" data-tooltip="Delete volume">
+            <i class="fas fa-trash"></i> Delete
+        </button>
+    </div>
+                          </td>
+                      `;
+                      volumesContainer.appendChild(row);
+                      
+                  });
+              } catch (error) {
+                
+                  console.error('Error fetching Docker volumes:', error);
+                  Swal.fire('Error!', error.message, 'error');
+              }
+          }
+
+
+
+
+        
+            document.getElementById('createVolumeForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('volumeName').value;
+    const driver = document.getElementById('volumeDriver').value;
+    const options = JSON.parse(document.getElementById('volumeOptions').value || '{}');
+    const labels = JSON.parse(document.getElementById('volumeLabels').value || '{}'); // Add labels
+
+    try {
+        const response = await fetch('http://localhost:5000/volumes', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, driver, options, labels }), 
+        });
+
+        if (response.ok) {
+            Swal.fire('Created!', 'Volume created successfully.', 'success').then(() => {
+                location.reload();
+            });
+        } else {
+            const errorData = await response.json();
+            Swal.fire('Error!', errorData.message || 'Unknown error occurred.', 'error');
+        }
+    } catch (error) {
+        console.error('Error creating volume:', error);
+        Swal.fire('Error!', 'An error occurred while creating the volume.', 'error');
+    }
+});
+        });
+        
+      
+        window.inspectVolume = async function (name) {
+    try {
+        const response = await fetch(`http://localhost:5000/volumes/${name}`);
+        if (!response.ok) {
+            throw new Error(`Failed to inspect volume: ${response.status} ${response.statusText}`);
+        }
+
+        const details = await response.json();
+        const usageStats = details.usageStats;
+
+        Swal.fire({
+            title: `Volume: ${name}`,
+            html: `
+                <pre>${JSON.stringify(details, null, 2)}</pre>
+                <h5>Usage Statistics</h5>
+                <p><strong>Size:</strong> ${usageStats.size}</p>
+                <p><strong>Reference Count:</strong> ${usageStats.refCount}</p>
+            `,
+            confirmButtonText: 'Close'
+        });
+    } catch (error) {
+        console.error('Error inspecting volume:', error);
+        Swal.fire('Error!', error.message, 'error');
+    }
+};
+        
+window.pruneVolumes = async function () {
+    try {
+        const response = await fetch('http://localhost:5000/volumes-prune', { method: 'DELETE' });
+
+        if (!response.ok) {
+            throw new Error(`Failed to prune volumes: ${response.status} ${response.statusText}`);
+        }
+
+        const result = await response.json();
+        Swal.fire('Pruned!', result.message, 'success').then(() => {
+            location.reload();
+        });
+    } catch (error) {
+        console.error('Error pruning volumes:', error);
+        Swal.fire('Error!', error.message, 'error');
+    }
+};
+        // Delete a volume
+        window.deleteVolume = async function (name) {
+    try {
+        const response = await fetch(`http://localhost:5000/volumes/${name}`, { method: 'DELETE' });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Unknown error occurred.');
+        }
+
+        Swal.fire('Deleted!', 'Volume deleted successfully.', 'success').then(() => {
+            location.reload();
+        });
+    } catch (error) {
+        console.error('Error deleting volume:', error);
+        Swal.fire('Error!', error.message, 'error');
+    }
+};
+        </script>
+        
+
+         <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css">
+         <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
+
+      <!-- End Custom template -->
+    </div>
+    <footer class="footer">
+      <div class="container-fluid d-flex justify-content-between">
+        <div class="copyright">
+          2024, made by
+          <h6>Nada Bouaziz</h6>
+        </div>
+        <div>
+          
+          <a target="_blank">Dockube Pilot</a>.
+        </div>
+      </div>
+    </footer>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <!-- Moment JS -->
+    <script src="../assets/js/plugin/moment/moment.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="../assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="../assets/js/kaiadmin.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="../assets/js/setting-demo2.js"></script>
+    <script>
+      function logout() {
+            Swal.fire({
+                title: 'Logout Confirmation',
+                text: 'Are you sure you want to log out?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#326ce5',
+                cancelButtonColor: '#ff6666',
+                confirmButtonText: 'Yes, log out'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.clear();
+                    window.location.replace("/login");
+                }
+            });
+        }
+    </script>
+    <script>
+      function recherche() {
+        var input, filter, cards, card, title, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        cards = document.getElementsByClassName("card");
+        
+        for (i = 0; i < cards.length; i++) {
+            card = cards[i];
+            title = card.getElementsByClassName("card-title")[0]; 
+            if (title) {
+                txtValue = title.textContent || title.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    card.style.display = ""; 
+                } else {
+                    card.style.display = "none";
+                }
+            }       
+        }
+    }
+    
+    </script>
+
+
+
+  </body>
+</html>

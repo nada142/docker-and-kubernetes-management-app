@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Log in</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+  <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+<!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.min.css">
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+  .swal2-show {
+    animation: swal2-show 0.3s ease-out forwards;
+  }
+  
+  .swal2-hide {
+    animation: swal2-hide 0.15s ease-out forwards;
+  }
+  
+  @keyframes swal2-show {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes swal2-hide {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.98);
+    }
+  }
+  
+  /* Success/Error icon animations */
+  .swal2-success [class^=swal2-success-line] {
+    animation: swal2-success-animate 0.75s;
+  }
+  
+  .swal2-error [class^=swal2-x-mark-line] {
+    animation: swal2-error-animate 0.5s;
+  }
+  
+  /* Backdrop styling - ensures proper removal */
+  .swal2-backdrop-show {
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: background-color 0.1s;
+  }
+  
+  .swal2-backdrop-hide {
+    background-color: transparent !important;
+  }
+  
+  /* Fix for stacking context */
+  body.swal2-shown {
+    overflow-y: auto !important;
+  }
+  </style>
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link rel="stylesheet" href="../assets/css/demo.css" />
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="index.html"><b>Welcome Back To<strong> Dockube Pilot</strong></b></a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+
+      <form onsubmit="return false">
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" placeholder="Email" id="email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Password" id="password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- /.col -->
+          <div class="col-md-3"></div>
+          <div class="col-6">
+            <button type="submit"  onclick="login()" class="btn btn-primary btn-block" class="text-center">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+      <div class="col-md-3"></div>
+      <a href="/register" class="text-center">Register</a>
+    </div>
+      <!-- /.social-auth-links -->
+
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+<script>
+function login() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', 
+        body: JSON.stringify({ email, password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            Swal.fire('Error!', data.error, 'error');
+        } else {
+            localStorage.setItem('user', JSON.stringify({
+                _id: data.user._id,
+                username: data.user.username,
+                email: data.user.email
+            }));
+            
+            Swal.fire('Logged In!', 'Welcome!', 'success').then(() => {
+                window.location.href = '/'; // Redirect to dashboard or home page
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire('Error!', 'An error occurred. Please try again.', 'error');
+    });
+}
+
+
+
+</script>
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+
+<!-- jQuery Scrollbar -->
+<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<!-- Moment JS -->
+<script src="../assets/js/plugin/moment/moment.min.js"></script>
+
+<!-- Chart JS -->
+<script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+<!-- jQuery Sparkline -->
+<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+<!-- Chart Circle -->
+<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+<!-- Datatables -->
+<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+<!-- Bootstrap Notify -->
+<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+<!-- jQuery Vector Maps -->
+<script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+<script src="../assets/js/plugin/jsvectormap/world.js"></script>
+
+<!-- Sweet Alert -->
+<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+<!-- Kaiadmin JS -->
+<script src="../assets/js/kaiadmin.min.js"></script>
+<script src="public\assets\js\script.js"></script>
+
+<!-- Kaiadmin DEMO methods, don't include it in your project! -->
+<script src="../assets/js/setting-demo2.js"></script>
+
+</body>
+</html>

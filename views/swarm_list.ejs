@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Docker Swarm</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <link rel="icon" href="../assets/img/dockube3.png" type="image/x-icon" />
+    <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.min.css">
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.all.min.js"></script>
+<link rel="stylesheet" href="../assets/css/swarm_list.css">
+
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["../assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+</head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+          <div class="sidebar-logo">
+              <!-- Logo Header -->
+              <div class="logo-header" data-background-color="dark">
+                  <a href="/" class="logo" style="display: flex; align-items: center;">
+                      <img src="assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" height="40" />
+                      <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+                  </a>
+                  <div class="nav-toggle">
+                      <button class="btn btn-toggle toggle-sidebar">
+                          <i class="gg-menu-right"></i>
+                      </button>
+                      <button class="btn btn-toggle sidenav-toggler">
+                          <i class="gg-menu-left"></i>
+                      </button>
+                  </div>
+                  <button class="topbar-toggler more">
+                      <i class="gg-more-vertical-alt"></i>
+                  </button>
+              </div>
+              <!-- End Logo Header -->
+          </div>
+          <div class="sidebar-wrapper scrollbar scrollbar-inner">
+            <div class="sidebar-content">
+              <ul class="nav nav-secondary">
+                <li class="nav-item">
+                  <a href="/" aria-expanded="false">
+                    <i class="fas fa-tachometer-alt"></i> <!-- Dashboard icon -->
+                    <p>Dashboard</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerRegistries">
+                    <i class="fas fa-warehouse"></i> <!-- Registry icon -->
+                    <p>Docker Registries</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerfile_list">
+                    <i class="fas fa-file-code"></i> <!-- Code file icon for Dockerfile -->
+                    <p>Dockerfile</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerimg">
+                    <i class="fas fa-images"></i> <!-- Images icon -->
+                    <p>Docker Images</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockercontainers">
+                    <i class="fas fa-box"></i> <!-- Box icon for containers -->
+                    <p>Docker Containers</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/volumes">
+                    <i class="fas fa-database"></i> <!-- Database icon for Volumes -->
+                    <p>Volumes</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/compose">
+                    <i class="fas fa-cubes"></i> <!-- Stacked cubes for Compose -->
+                    <p>Docker Compose</p>
+                  </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="swarm_list">
+                        <i class="fas fa-project-diagram"></i> <!-- Stacked cubes for Compose -->
+                      <p>Docker Swarm</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#kubernetesMenu" aria-expanded="false">
+                        <i class="fas fa-dharmachakra"></i>
+                        <p>Kubernetes</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="kubernetesMenu">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="/kubernetes/cluster">
+                                    <span class="sub-item">Cluster Setup</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/nodes">
+                                    <span class="sub-item">Nodes</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/deployments">
+                                    <span class="sub-item">Deployments</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/statefulsets">
+                                    <span class="sub-item">StatefulSets</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/services">
+                                    <span class="sub-item">Services</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/pods">
+                                    <span class="sub-item">Pods</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/pvcs">
+                                    <span class="sub-item">Storage</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/configs">
+                                    <span class="sub-item">ConfigMaps && Secrets</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kubernetes/namespaces">
+                                    <span class="sub-item">Namespaces</span>
+                                </a>
+                            </li>
+                             <li>
+                <a href="/kubernetes/ingresses">
+                    <span class="sub-item">Ingresses</span>
+                </a>
+            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="/cicd_integration">
+                      <i class="fas fa-sync-alt"></i>
+                      <p>CI CD</p>
+                    </a>
+                  </li>
+                <li class="nav-item">
+                  <a data-bs-toggle="collapse" href="#" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> <!-- Logout icon -->
+                    <p>Logout</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <!-- End Sidebar -->
+      <div class="main-panel">
+          <div class="main-header">
+              <div class="main-header-logo">
+                  <!-- Logo Header -->
+                  <div class="logo-header" data-background-color="dark">
+                      <a href="../index.html" class="logo">
+                          <img src="../assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" />
+                      </a>
+                      <div class="nav-toggle">
+                          <button class="btn btn-toggle toggle-sidebar">
+                              <i class="gg-menu-right"></i>
+                          </button>
+                          <button class="btn btn-toggle sidenav-toggler">
+                              <i class="gg-menu-left"></i>
+                          </button>
+                      </div>
+                      <button class="topbar-toggler more">
+                          <i class="gg-more-vertical-alt"></i>
+                      </button>
+                  </div>
+                  <!-- End Logo Header -->
+              </div>
+              <!-- Navbar Header -->
+              <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+                  <div class="container-fluid">
+                      <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+                          
+                      </nav>
+                      <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                          <li class="nav-item topbar-user dropdown hidden-caret">
+                              <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="/profile" aria-expanded="false">
+                                  <span class="profile-username">
+                                      <span class="op-7">Hi,</span>
+                                      <span class="fw-bold">Hizrian</span>
+                                  </span>
+                              </a>
+                              <ul class="dropdown-menu dropdown-user animated fadeIn">
+                                  <div class="dropdown-user-scroll scrollbar-outer">
+                                      <li>
+                                          <div class="user-box">
+                                              <div class="avatar-lg">
+                                                  <img src="assets/img/profile.jpg" alt="image profile" class="avatar-img rounded" />
+                                              </div>
+                                              <div class="u-text">
+                                                  <h4>Hizrian</h4>
+                                                  <p class="text-muted">hello@example.com</p>
+                                                  <a href="/profile" class="action-btn btn-blue1 btn-sm">Update Profile</a>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="dropdown-divider"></div>
+                                          <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                                      </li>
+                                  </div>
+                              </ul>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
+              <!-- Add Vis.js library -->
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<link href="https://unpkg.com/vis-network/styles/vis-network.min.css" rel="stylesheet" />
+              <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                      var user = JSON.parse(localStorage.getItem("user"));
+                      if (user) {
+                          document.querySelector(".profile-username .fw-bold").textContent = user.username;
+                          document.querySelector(".u-text h4").textContent = user.username;
+                          document.querySelector(".u-text .text-muted").textContent = user.email;
+                      }
+                  });
+              </script>
+              <!-- End Navbar -->
+          </div>
+          <!-- swarm.html -->
+          <div class="container">
+            <div class="page-inner">
+                <div class="page-header">
+                    <h2>Docker Swarm - Stacks and Services
+                        <span class="help-icon" data-tooltip="Cluster management for production deployments">
+                          <i class="fas fa-info-circle"></i>
+                        </span>
+                      </h2>
+                    
+                    </div>
+        
+                <!-- Swarm Overview -->
+                <div class="card p-4">
+                    <h5 class="fw-semibold">Swarm Overview
+                        <span class="help-icon" data-tooltip="Current state of your cluster">
+                          <i class="fas fa-info-circle"></i>
+                        </span>
+                      </h5>
+                      
+                      <div id="swarmOverview">
+                        <p hidden><strong>Swarm Status:</strong> <span id="swarmStatus" hidden></span></p>
+                        <p><strong>Leader Manager:</strong> <span id="leaderManager"></span></p>
+                        <p><strong>Total Nodes:</strong> <span id="totalNodes"></span></p>
+                        <p><strong>Total Services Running:</strong> <span id="totalServices"></span></p>
+                        <!-- Add this container for the visual representation -->
+                        <div id="swarmVisualization" style="height: 400px;"></div>
+                        <div class="d-flex gap-2 justify-content-center mt-3">
+                            <button id="initializeSwarm" class="action-btn btn-blue2"> <i class="fas fa-network-wired"></i> Initialize Swarm</button>
+                        </div>
+                       
+                    </div>
+                </div>
+        
+                <!-- Nodes Management -->
+                <div class="card p-4 mt-3">
+                    <h5 class="fw-semibold">Nodes Management</h5>
+                    <table class="swarm-table">
+                        <thead>
+                            <tr>
+                                <th>Hostname</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Tasks</th>
+                                <th class="actions ac1">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="nodesList"></tbody>
+                    </table>
+                    <div class="d-flex gap-2 justify-content-center mt-3">
+                        <button id="addWorkerNode" onclick="addWorker()" class="action-btn btn-pastel-docker-blue">
+                            <i class="fas fa-user-plus"></i> Add Worker Node
+                        </button>
+                        <button id="addManagerNode" onclick="addManager()" class="action-btn btn-blue2">
+                            <i class="fas fa-user-tie"></i> Add Manager Node
+                        </button>
+                    </div>
+                </div>
+        
+                <!-- Services Management -->
+                <div class="card p-4 mt-3">
+                    <h5 class="fw-semibold">Services Management</h5>
+                    <table class="swarm-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Replicas</th>
+                                <th>Nodes</th>
+                                <th class="actions ac2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="servicesList"></tbody>
+                    </table>
+                    <div class="d-flex gap-2 justify-content-center mt-3">
+                    <button id="deployService" class="action-btn btn-pastel-docker-blue" data-bs-toggle="modal" data-bs-target="#addServiceModal"> <i class="fas fa-plus"></i> Deploy New Service</button></div>
+                </div>
+        
+                <!-- Stacks Management -->
+                <div class="card p-4 mt-3">
+                    <h5 class="fw-semibold">Stacks Management</h5>
+                    <table class="swarm-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th class="actions ac3">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stacksList"></tbody>
+                    </table>
+                    <div class="d-flex gap-2 justify-content-center mt-3">
+                    <a href="/add_stack" class="action-btn btn-blue1">
+                        <i class="fas fa-plus"></i> Deploy New Stack
+                    </a>
+                    </div>
+                </div>
+        
+           
+<div class="card p-4 mt-3">
+    <h5 class="fw-semibold">Cluster Monitoring</h5>
+    <div class="row">
+        <!-- Cluster Metrics -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6>Cluster Metrics</h6>
+                    <button class="action-btn btn-blue2" onclick="fetchClusterMetrics()">
+                        <i class="fas fa-sync"></i> Refresh Metrics
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div id="metricsContainer" class="row">
+                        <!-- Metrics will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+        
+       <div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addServiceModalLabel">Deploy New Service</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addServiceForm">
+                    <div class="mb-3">
+                        <label for="serviceName" class="form-label">Service Name</label>
+                        <input type="text" class="form-control" id="serviceName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="serviceImage" class="form-label">Image</label>
+                        <select class="form-select" id="serviceImage" required>
+                            <option value="" selected disabled>Select an image...</option>
+                            <!-- Images will be populated here -->
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="serviceReplicas" class="form-label">Replicas</label>
+                        <input type="number" class="form-control" id="serviceReplicas" min="1" value="1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="servicePorts" class="form-label">Ports</label>
+                        <input type="text" class="form-control" id="servicePorts" placeholder="e.g., 8080:80">
+                    </div>
+                    <div class="mb-3">
+                        <label for="serviceEnv" class="form-label">Environment Variables</label>
+                        <textarea class="form-control" id="serviceEnv" placeholder="e.g., KEY1=value1,KEY2=value2"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="serviceConstraints" class="form-label">Placement Constraints</label>
+                        <input type="text" class="form-control" id="serviceConstraints" placeholder="e.g., node.role==worker">
+                    </div>
+                    <button type="submit" class="action-btn btn-primary">Deploy</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<!-- Terminal Modal -->
+<div class="modal fade" id="terminalModal" tabindex="-1" aria-labelledby="terminalModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="terminalModalLabel">Terminal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="terminal" style="height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="logsModal" tabindex="-1" aria-labelledby="logsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="logsModalLabel">Service Logs</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <pre id="logsContent" style="height: 400px; overflow-y: auto; background-color: #1e1e1e; color: #d4d4d4; padding: 10px; border-radius: 5px; font-family: monospace; white-space: pre-wrap; word-wrap: break-word;"></pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="action-btn btn-blue2" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <div id="loadingSpinner" style="display: none;">
+        <i class="fas fa-spinner fa-spin"></i> Loading...
+    </div>
+    <div id="chatbot-container">
+        <!-- Chatbot Toggle Button (Circle with Logo) -->
+        <div id="chatbot-toggle">
+            <img src="../assets/img/dockube3.png" alt="Chatbot Logo" width="50" height="50">
+        </div>
+      
+        <!-- Chatbot Interface (Hidden by Default) -->
+       
+      <div id="chatbot-interface" style="display: none;">
+        <!-- Chat Header -->
+        <div id="chat-header">
+            <strong>
+                <img src="../assets/img/dockube3.png" alt="Logo">
+                Docker & Kubernetes Assistant
+            </strong>
+            <button id="chat-close">×</button>
+        </div>
+      
+        <!-- Chat Body -->
+        <div id="chat-body">
+            <div id="chat-messages">
+                <!-- Welcome Message -->
+                <div class="welcome-message" onclick="toggleWelcomeMessage()">
+                    👋 Welcome! I'm your Docker & Kubernetes Assistant.
+                    Ask me anything about Docker, Kubernetes, and best practices.
+                    <div class="hidden-content">
+                        Hi! I'm your Docker & Kubernetes Assistant.  
+                        Ask me anything about services, Kubernetes configurations, and best practices.
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <!-- Chat Input -->
+        <div id="chat-input">
+            <input type="text" id="chat-message" placeholder="Type your question...">
+            <button id="chat-send">Send</button>
+        </div>
+      </div>
+      </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('addServiceModal').addEventListener('shown.bs.modal', fetchImagesForService);
+
+    async function fetchImagesForService() {
+        try {
+            const response = await fetch('/images');
+            if (!response.ok) {
+                throw new Error('Failed to fetch images');
+            }
+            const images = await response.json();
+            const imageSelect = document.getElementById('serviceImage');
+            
+            while (imageSelect.options.length > 1) {
+                imageSelect.remove(1);
+            }
+            
+            // Add new options
+            images.forEach(image => {
+                const option = document.createElement('option');
+                option.value = image.name;
+                option.textContent = image.name;
+                imageSelect.appendChild(option);
+            });
+        } catch (error) {
+            console.error('Error fetching images:', error);
+            Swal.fire('Error!', 'Failed to load images. Please try again.', 'error');
+        }
+    }
+
+    // Handle form submission
+    document.getElementById('addServiceForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const serviceName = document.getElementById('serviceName').value;
+        const imageName = document.getElementById('serviceImage').value;
+        const replicas = document.getElementById('serviceReplicas').value;
+        const ports = document.getElementById('servicePorts').value;
+        const env = document.getElementById('serviceEnv').value;
+        const constraints = document.getElementById('serviceConstraints').value;
+
+        try {
+            const response = await fetch('/api/swarm/services', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify({
+                    name: serviceName,
+                    image: imageName,
+                    replicas: replicas,
+                    ports: ports,
+                    env: env,
+                    constraints: constraints
+                }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || 'Failed to deploy service');
+            }
+
+            Swal.fire('Success!', 'Service deployed successfully.', 'success').then(() => {
+                location.reload(); 
+            });
+        } catch (error) {
+            Swal.fire('Error!', error.message, 'error');
+        }
+    });
+});
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotInterface = document.getElementById('chatbot-interface');
+            const chatClose = document.getElementById('chat-close');
+            const chatBody = document.getElementById('chat-body');
+            const chatMessages = document.getElementById('chat-messages');
+            const chatMessageInput = document.getElementById('chat-message');
+            const chatSendButton = document.getElementById('chat-send');
+      
+            // Toggle Chat Interface
+            chatbotToggle.addEventListener('click', () => {
+                chatbotInterface.style.display = 'block';
+            });
+      
+            // Close Chat Interface
+            chatClose.addEventListener('click', () => {
+                chatbotInterface.style.display = 'none';
+            });
+      
+            // Send Message to Chatbot
+            chatSendButton.addEventListener('click', async () => {
+                const message = chatMessageInput.value.trim();
+                if (message) {
+                    // Add User Message to Chat
+                    chatMessages.innerHTML += `<div class="message"><strong>You:</strong> ${message}</div>`;
+                    chatMessageInput.value = '';
+      
+                    // Show Loading Spinner
+                    chatMessages.innerHTML += `<div id="loading-spinner">Loading...</div>`;
+      
+                    // Call Backend API
+                    try {
+                        const response = await fetch('/api/chat', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ message })
+                        });
+                        const data = await response.json();
+      
+                        // Remove Loading Spinner and Add Bot Response
+                        document.getElementById('loading-spinner').remove();
+                        chatMessages.innerHTML += `<div class="message"><strong>Assistant:</strong> ${data.response}</div>`;
+                    } catch (error) {
+                        console.error('Error:', error);
+                        chatMessages.innerHTML += `<div class="message"><strong>Error:</strong> Failed to get response.</div>`;
+                    }
+      
+                    // Scroll to Bottom of Chat
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }
+            });
+      
+            // Allow Pressing "Enter" to Send a Message
+            chatMessageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    chatSendButton.click();
+                }
+            });
+        });
+      </script>
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.min.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.min.css" />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+      <script>
+
+function showLoading() {
+    document.getElementById('loadingSpinner').style.display = 'block';
+}
+
+function hideLoading() {
+    document.getElementById('loadingSpinner').style.display = 'none';
+}
+const ws = new WebSocket('ws://localhost:5000');
+ws.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    Swal.fire({
+        title: data.type === 'node_failure' ? 'Node Failure' : 'Service Down',
+        text: data.message,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });
+};
+async function addWorker() {
+    showLoading();
+    try {
+        const response = await fetch('/swarm/nodes/add-worker', { method: 'POST' });
+        const data = await response.json();
+        if (response.ok) {
+            Swal.fire({
+                title: 'Success',
+                text: `Worker node added: ${data.message}`,
+                icon: 'success',
+                confirmButtonText: 'OK',
+            });
+            fetchNodes(); // Refresh the nodes list
+        } else {
+            Swal.fire({
+                title: 'Error',
+                text: `Error: ${data.message}`,
+                icon: 'error',
+                confirmButtonText: 'OK',
+            });
+        }
+    } catch (error) {
+        console.error('Error adding worker node:', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Failed to add worker node.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        });
+    } finally {
+        hideLoading();
+    }
+}
+async function addManager() {
+    showLoading();
+    try {
+        const response = await fetch('/swarm/nodes/add-manager', { method: 'POST' });
+        const data = await response.json();
+        if (response.ok) {
+            Swal.fire({
+                title: 'Success',
+                text: `Manager node added: ${data.message}`,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+           fetchNodes(); // Refresh the nodes list
+        } else {
+            Swal.fire({
+                title: 'Error',
+                text: `Error: ${data.message}`,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+                }
+    } catch (error) {
+        console.error('Error adding manager node:', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Failed to add manager node.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });    }
+        finally {
+        hideLoading();
+    }
+}
+        async function fetchSwarmOverview() {
+            try {
+                const response = await fetch('/swarm/overview');
+                const data = await response.json();
+    
+                document.getElementById('swarmStatus').textContent = data.status;
+                document.getElementById('leaderManager').textContent = data.leaderManager;
+                document.getElementById('totalNodes').textContent = data.totalNodes;
+                document.getElementById('totalServices').textContent = data.totalServices;
+    
+                // Show/hide buttons based on Swarm status
+                const initializeSwarmButton = document.getElementById('initializeSwarm');
+                if (data.status === 'Inactive') {
+                    initializeSwarmButton.style.display = 'none';
+                
+                } else {
+                    initializeSwarmButton.style.display = 'inline-block';
+                }
+            } catch (error) {
+                console.error('Error fetching Swarm overview:', error);
+            }
+        }
+
+        async function renderSwarmVisualization() {
+    try {
+        const response = await fetch('/swarm/overview');
+        const data = await response.json();
+
+        // Create nodes for the graph
+        const nodes = data.nodes.map(node => ({
+            id: node.id,
+            label: `${node.label}\n(${node.role})`,
+            color: node.role === 'manager' ? '#1e90ff' : '#326ce5', 
+            shape: 'box',
+            font: { size: 18 }, 
+            status: node.status,
+        }));
+
+        // Create edges for services and tasks
+        const edges = [];
+        data.services.forEach(service => {
+            service.nodes.forEach(nodeLabel => {
+                const node = data.nodes.find(n => n.label === nodeLabel);
+                if (node) {
+                    edges.push({
+                        from: node.id,
+                        to: service.ID,
+                        label: service.Spec.Name,
+                        color: '#ff6666', // Red for arrows
+                        font: { size: 1 }, 
+                        arrows: 'to', 
+                    });
+                }
+            });
+        });
+
+        // Add services as nodes
+        data.services.forEach(service => {
+            nodes.push({
+                id: service.ID,
+                label: `${service.Spec.Name}\n(${service.Spec.Mode.Replicated.Replicas} replicas)`,
+                color: '#b3b3b3', 
+                shape: 'ellipse',
+                font: { size: 18 }, 
+            });
+        });
+
+        // Render the graph
+        const container = document.getElementById('swarmVisualization');
+        const graphData = {
+            nodes: new vis.DataSet(nodes),
+            edges: new vis.DataSet(edges),
+        };
+        const options = {
+            layout: {
+                hierarchical: {
+                    enabled: true,
+                    direction: 'LR', 
+                    levelSeparation: 200, 
+                    nodeSpacing: 150, 
+                },
+            },
+            edges: {
+                arrows: 'to',
+                color: '#ff6666', 
+                font: { size: 1 }, 
+            },
+            physics: {
+                enabled: false, 
+            },
+            interaction: {
+                zoomView: false, 
+                dragView: false, 
+            },
+        };
+        new vis.Network(container, graphData, options);
+    } catch (error) {
+        console.error('Error rendering swarm visualization:', error);
+    }
+}
+document.getElementById('initializeSwarm').addEventListener('click', async () => {
+    const { isConfirmed } = await Swal.fire({
+        title: 'Initialize New Swarm?',
+        text: 'This will leave any existing swarm and create a new one. Continue?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, initialize',
+        cancelButtonText: 'Cancel'
+    });
+
+    if (!isConfirmed) return;
+
+    Swal.fire({
+        title: 'Initializing Swarm',
+        html: `
+            <div class="text-start">
+                <div id="swarmInitProgress" style="height: 200px; overflow-y: auto; background: #f8f9fa; padding: 10px; border-radius: 5px;"></div>
+            </div>
+        `,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        willOpen: () => {
+            const progressElement = document.getElementById('swarmInitProgress');
+            
+            // Create EventSource connection
+            const eventSource = new EventSource('http://localhost:5000/swarm/init');
+            
+            eventSource.onmessage = function(e) {
+                const data = JSON.parse(e.data);
+                const messageElement = document.createElement('div');
+                
+                if (data.type === 'error') {
+                    messageElement.style.color = 'red';
+                } else if (data.type === 'warning') {
+                    messageElement.style.color = 'orange';
+                } else if (data.type === 'success') {
+                    messageElement.style.color = 'green';
+                }
+                
+                messageElement.textContent = data.message;
+                progressElement.appendChild(messageElement);
+                progressElement.scrollTop = progressElement.scrollHeight;
+                
+                if (data.type === 'error' || data.type === 'success') {
+                    eventSource.close();
+                    
+                    setTimeout(() => {
+                        Swal.close();
+                        fetchSwarmOverview(); 
+                    }, 1000);
+                }
+            };
+            
+            eventSource.onerror = function() {
+                progressElement.innerHTML += '<div style="color: red">Connection closed</div>';
+                eventSource.close();
+                Swal.close();
+            };
+        }
+    });
+});  
+       
+    
+        // Fetch Swarm overview on page load
+        document.addEventListener('DOMContentLoaded', () => {
+    fetchSwarmOverview();
+    renderSwarmVisualization();
+}); 
+  
+async function fetchNodes() {
+    try {
+        const response = await fetch('/swarm/nodes');
+        const nodes = await response.json();
+        const nodesList = document.getElementById('nodesList');
+        nodesList.innerHTML = nodes.map(node => `
+            <tr>
+                <td>${node.Description.Hostname}</td>
+                <td>${node.Spec.Role}</td>
+                <td>${node.Status.State}</td>
+                <td>${node.tasks || 0}</td>
+                <td class="actions ac1 d-flex gap-2">
+                    <div class="action-buttons">
+        <button class="action-btn btn-blue2" onclick="promoteNode('${node.ID}')" data-tooltip="Promote to manager">
+            <i class="fas fa-arrow-up"></i> Promote
+        </button>
+        <button class="action-btn btn-pastel-gray" onclick="demoteNode('${node.ID}')" data-tooltip="Demote to worker">
+            <i class="fas fa-arrow-down"></i> Demote
+        </button>
+        <button class="action-btn btn-blue2" onclick="drainNode('${node.ID}', true)" data-tooltip="Drain node">
+            <i class="fas fa-tint-slash"></i> Drain
+        </button>
+        <button class="action-btn btn-pastel-gray" onclick="drainNode('${node.ID}', false)" data-tooltip="Undrain node">
+            <i class="fas fa-tint"></i> Undrain
+        </button>
+        <button class="action-btn btn-pastel-red" onclick="deleteNode('${node.ID}', '${node.Spec.Role}')" data-tooltip="Delete node">
+            <i class="fas fa-trash"></i> Delete
+        </button>
+    </div>
+                </td>
+            </tr>
+        `).join('');
+    } catch (error) {
+        console.error('Error fetching nodes:', error);
+    }
+}
+    
+        async function promoteNode(nodeId) {
+            try {
+                const response = await fetch(`/swarm/nodes/${nodeId}/promote`, { method: 'POST' });
+                const data = await response.json();
+                if (response.ok) {
+                    Swal.fire({
+                title: 'Success',
+                text: 'Node promoted successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });                    fetchNodes(); // Refresh the nodes list
+                } else {
+                    Swal.fire({
+                title: 'Error',
+                text: `Error: ${data.message}`,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });                }
+            } catch (error) {
+                console.error('Error promoting node:', error);
+                Swal.fire({
+            title: 'Error',
+            text: 'Failed to promote node.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+            }
+        }
+    
+        async function demoteNode(nodeId) {
+            try {
+                const response = await fetch(`/swarm/nodes/${nodeId}/demote`, { method: 'POST' });
+                const data = await response.json();
+                if (response.ok) {
+                    Swal.fire({
+                title: 'Success',
+                text: 'Node demoted successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+                fetchNodes(); // Refresh the nodes list
+                } else {
+                    Swal.fire({
+                title: 'Error',
+                text: `Error: ${data.message}`,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+                        }
+            } catch (error) {
+                console.error('Error demoting node:', error);
+                Swal.fire({
+            title: 'Error',
+            text: 'Failed to demote node.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+                }
+        }
+    
+        async function drainNode(nodeId, drain) {
+            try {
+                const response = await fetch(`/swarm/nodes/${nodeId}/drain`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ drain }),
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    Swal.fire({
+                title: 'Success',
+                text: `Node ${drain ? 'drained' : 'undrained'} successfully!`,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+                fetchNodes(); // Refresh the nodes list
+                } else {
+                    Swal.fire({
+                title: 'Error',
+                text: `Error: ${data.message}`,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });                }
+            } catch (error) {
+                console.error('Error draining node:', error);
+                Swal.fire({
+            title: 'Error',
+            text: 'Failed to drain node.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+                }
+        }
+        async function deleteNode(nodeId, role) {
+    if (role === 'manager') {
+        Swal.fire({
+            title: 'Error',
+            text: 'You cannot delete a manager node. Demote it to a worker first.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        });
+        return;
+    }
+
+    const { isConfirmed } = await Swal.fire({
+        title: 'Are you sure?',
+        text: 'This will remove the node from the Swarm.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+    });
+
+    if (isConfirmed) {
+        try {
+            const response = await fetch(`/swarm/nodes/${nodeId}`, { method: 'DELETE' });
+            const data = await response.json();
+            if (response.ok) {
+                Swal.fire({
+                    title: 'Success',
+                    text: 'Node deleted successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                });
+                fetchNodes(); // Refresh the nodes list
+            } else {
+                Swal.fire({
+                    title: 'Error',
+                    text: `Error: ${data.message}`,
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                });
+            }
+        } catch (error) {
+            console.error('Error deleting node:', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'Failed to delete node.',
+                icon: 'error',
+                confirmButtonText: 'OK',
+            });
+        }
+    }
+}
+        // Fetch nodes on page load
+        document.addEventListener('DOMContentLoaded', fetchNodes);
+  
+        async function fetchServices() {
+    try {
+        const response = await fetch('/swarm/services');
+        const services = await response.json();
+
+        if (!Array.isArray(services)) {
+            console.error('Expected an array of services, but got:', services);
+            return;
+        }
+
+        const servicesList = document.getElementById('servicesList');
+        servicesList.innerHTML = services.map(service => {
+            const imageName = service.Spec.TaskTemplate.ContainerSpec.Image;
+            const truncatedImageName = imageName.length > 20 ? `${imageName.substring(0, 20)}...` : imageName;
+
+            return `
+                <tr>
+                    <td>${service.Spec.Name}</td>
+                    <td title="${imageName}">${truncatedImageName}</td>
+                    <td>${service.Spec.Mode.Replicated.Replicas}</td>
+                    <td>${service.nodes.join(', ') || 'N/A'}</td>
+                    <td class="actions ac2 d-flex gap-2">
+                       <div class="action-buttons">
+        <button class="action-btn btn-blue2" onclick="scaleService('${service.ID}')" data-tooltip="Scale service">
+            <i class="fas fa-expand"></i> Scale
+        </button>
+        <button class="action-btn btn-pastel-docker-blue" onclick="stopService('${service.ID}')" data-tooltip="Stop service">
+            <i class="fas fa-stop"></i> Stop
+        </button>
+        <button class="action-btn btn-blue2" onclick="restartService('${service.ID}')" data-tooltip="Restart service">
+            <i class="fas fa-sync"></i> Restart
+        </button>
+        <button class="action-btn btn-pastel-red" onclick="deleteService('${service.ID}')" data-tooltip="Delete service">
+            <i class="fas fa-trash"></i> Delete
+        </button>
+        <button class="action-btn btn-pastel-gray" onclick="fetchServiceLogs('${service.ID}')" data-tooltip="View logs">
+            <i class="fas fa-file-alt"></i> Logs
+        </button>
+    </div>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+    } catch (error) {
+        console.error('Error fetching services:', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Failed to fetch services.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        });
+    }
+}
+
+
+document.getElementById('addServiceForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const serviceName = document.getElementById('serviceName').value;
+    const serviceImage = document.getElementById('serviceImage').value;
+    const serviceReplicas = document.getElementById('serviceReplicas').value;
+    const servicePorts = document.getElementById('servicePorts').value;
+    const serviceEnv = document.getElementById('serviceEnv').value;
+    const serviceConstraints = document.getElementById('serviceConstraints').value;
+
+    try {
+        const response = await fetch('/swarm/services', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: serviceName,
+                image: serviceImage,
+                replicas: serviceReplicas,
+                ports: servicePorts,
+                env: serviceEnv,
+                constraints: serviceConstraints,
+            }),
+        });
+        const data = await response.json();
+        if (response.ok) {
+            Swal.fire({
+                title: 'Success',
+                text: 'Service deployed successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+            fetchServices(); // Refresh the services list
+            $('#addServiceModal').modal('hide'); // Close the modal
+        } else {
+            Swal.fire({
+                title: 'Error',
+                text: `Error: ${data.message}`,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    } catch (error) {
+        console.error('Error deploying service:', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Failed to deploy service.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    }
+});
+
+
+async function stopService(serviceId) {
+    try {
+        const response = await fetch(`/swarm/services/${serviceId}/stop`, { method: 'POST' });
+        const data = await response.json();
+        if (response.ok) {
+            Swal.fire({
+                title: 'Success',
+                text: 'Service stopped successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+            fetchServices(); // Refresh the services list
+        } else {
+            Swal.fire({
+                title: 'Error',
+                text: `Error: ${data.message}`,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    } catch (error) {
+        console.error('Error stopping service:', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Failed to stop service.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    }
+}
+async function scaleService(serviceId) {
+    const { value: replicas } = await Swal.fire({
+        title: 'Scale Service',
+        input: 'number',
+        inputLabel: 'Enter the number of replicas:',
+        inputPlaceholder: 'Replicas',
+        showCancelButton: true,
+        inputValidator: (value) => {
+            if (!value || isNaN(value)) {
+                return 'Please enter a valid number!';
+            }
+        }
+    });
+    if (replicas) {
+        try {
+            const response = await fetch(`/swarm/services/${serviceId}/scale`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ replicas: parseInt(replicas, 10) }), 
+            });
+            const data = await response.json();
+            if (response.ok) {
+                Swal.fire({
+                    title: 'Success',
+                    text: `Service scaled to ${replicas} replicas!`,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });    
+                  fetchServices(); 
+            } else {
+                Swal.fire({
+                    title: 'Error',
+                    text: `Error: ${data.message}`,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                        }
+        } catch (error) {
+            console.error('Error scaling service:', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'Failed to scale service.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+                }
+    }
+}
+
+async function restartService(serviceId) {
+    try {
+        const response = await fetch(`/swarm/services/${serviceId}/restart`, { method: 'POST' });
+        const data = await response.json();
+        if (response.ok) {
+            Swal.fire({
+                title: 'Success',
+                text: 'Service restarted successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+            fetchServices(); // Refresh the services list
+        } else {
+            Swal.fire({
+                title: 'Error',
+                text: `Error: ${data.message}`,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    } catch (error) {
+        console.error('Error restarting service:', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Failed to restart service.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    }
+}
+async function deleteService(serviceId) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'You are about to delete this service.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!'
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            try {
+                const response = await fetch(`/swarm/services/${serviceId}`, { method: 'DELETE' });
+                const data = await response.json();
+                if (response.ok) {
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'Service deleted successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
+                    fetchServices(); // Refresh the services list
+                } else {
+                    Swal.fire({
+                        title: 'Error',
+                        text: `Error: ${data.message}`,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            } catch (error) {
+                console.error('Error deleting service:', error);
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Failed to delete service.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        }
+    });
+}
+
+    // Fetch services on page load
+    document.addEventListener('DOMContentLoaded', fetchServices);
+
+    async function fetchServiceLogs(serviceId) {
+    try {
+        const response = await fetch(`/swarm/services/${serviceId}/logs`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        const logsContent = document.getElementById('logsContent');
+        logsContent.textContent = data.logs; // Display logs as plain text
+        $('#logsModal').modal('show'); // Open the logs modal
+    } catch (error) {
+        console.error('Error fetching service logs:', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Failed to fetch logs. Please check the service ID.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        });
+    }
+}
+
+   // Fetch and display cluster metrics
+async function fetchClusterMetrics() {
+    try {
+        const response = await fetch('/swarm/metrics');
+        const metrics = await response.json();
+        const metricsContainer = document.getElementById('metricsContainer');
+        metricsContainer.innerHTML = metrics.map(metric => `
+            <div class="col-md-4">
+                <div class="metric-card">
+                    <h6>${metric.hostname}</h6>
+                    <p><strong>Role:</strong> <span class="metric-value">${metric.role}</span></p>
+                    <p><strong>Status:</strong> <span class="metric-value">${metric.status}</span></p>
+                    <p><strong>CPU:</strong> <span class="metric-value">${metric.cpu.toFixed(2)} GHz</span></p>
+                    <p><strong>Memory:</strong> <span class="metric-value">${metric.memory.toFixed(2)} GB</span></p>
+                </div>
+            </div>
+        `).join('');
+    } catch (error) {
+        console.error('Error fetching cluster metrics:', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Failed to fetch cluster metrics.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        });
+    }
+}
+
+// Fetch metrics on page load
+document.addEventListener('DOMContentLoaded', fetchClusterMetrics);
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchClusterMetrics();
+    });
+
+    
+    async function fetchStacks() {
+    try {
+        const response = await fetch('/swarm/stacks');
+        const stacks = await response.json();
+        const stacksList = document.getElementById('stacksList');
+        stacksList.innerHTML = stacks.map(stack => `
+            <tr class="stack-row" data-stack="${stack}" onclick="viewStack('${stack}')">
+                <td>${stack}</td>
+                <td class="actions ac3 d-flex gap-2">
+        <div class="action-buttons">
+        <button class="action-btn btn-blue2" onclick="event.stopPropagation(); viewStack('${stack}')" data-tooltip="View stack">
+            <i class="fas fa-eye"></i> View
+        </button>
+        <button class="action-btn btn-pastel-red" onclick="event.stopPropagation(); deleteStack('${stack}')" data-tooltip="Delete stack">
+            <i class="fas fa-trash-alt"></i> Delete
+        </button>
+    </div>
+    </td>
+            </tr>
+        `).join('');
+    } catch (error) {
+        console.error('Error fetching stacks:', error);
+    }
+}
+
+
+async function toggleStack(stackName) {
+    const servicesDiv = document.getElementById(`${stackName}-services`);
+    if (servicesDiv.style.display === 'none') {
+        try {
+            const response = await fetch(`/swarm/stacks/${stackName}/services`);
+            const services = await response.json();
+            servicesDiv.innerHTML = services.map(service => `
+                <div class="service">
+                    <h4>${service.Spec.Name}</h4>
+                    <p>Image: ${service.Spec.TaskTemplate.ContainerSpec.Image}</p>
+                    <p>Replicas: ${service.Spec.Mode.Replicated.Replicas}</p>
+                    <input type="number" id="replicas-${service.ID}" value="${service.Spec.Mode.Replicated.Replicas}" min="1">
+                    <button class="action-btn btn-blue2" onclick="scaleService('${service.ID}')">Scale</button>
+                </div>
+            `).join('');
+            servicesDiv.style.display = 'block';
+        } catch (error) {
+            console.error('Error fetching services:', error);
+            servicesDiv.innerHTML = `<p class="text-danger">Error: ${error.message}</p>`;
+        }
+    } else {
+        servicesDiv.style.display = 'none';
+    }
+}
+async function viewStack(stackName) {
+    try {
+        const response = await fetch(`/swarm/stacks/${stackName}/services`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const services = await response.json();
+
+        const stackRow = document.querySelector(`#stacksList tr[data-stack="${stackName}"]`);
+
+        // Check if services are already displayed
+        const existingServicesRow = stackRow.nextElementSibling;
+        if (existingServicesRow && existingServicesRow.classList.contains('services-row')) {
+            existingServicesRow.remove(); 
+            return;
+        }
+
+        // Create a new row for services
+        const servicesRow = document.createElement('tr');
+        servicesRow.classList.add('services-row');
+        servicesRow.innerHTML = `
+            <td colspan="2">
+                <table class="swarm-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Replicas</th>
+                            <th>Nodes</th>
+                            <th class="actions ac2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${services.map(service => {
+                            const imageName = service.Spec.TaskTemplate.ContainerSpec.Image;
+                            const truncatedImageName = imageName.length > 20 ? `${imageName.substring(0, 20)}...` : imageName;
+
+                            return `
+                                <tr>
+                                    <td>${service.Spec.Name}</td>
+                                    <td title="${imageName}">${truncatedImageName}</td>
+                                    <td>${service.Spec.Mode.Replicated.Replicas}</td>
+                                    <td>${service.nodes?.join(', ') || 'N/A'}</td>
+                                    <td class="actions ac2 d-flex gap-2">
+                                        <button class="action-btn btn-blue2" onclick="scaleService('${service.ID}')">
+                                            <i class="fas fa-expand"></i> Scale
+                                        </button>
+                                        <button class="action-btn btn-pastel-docker-blue" onclick="stopService('${service.ID}')">
+                                            <i class="fas fa-stop"></i> Stop
+                                        </button>
+                                        <button class="action-btn btn-blue2" onclick="restartService('${service.ID}')">
+                                            <i class="fas fa-sync"></i> Restart
+                                        </button>
+                                        <button class="action-btn btn-pastel-red" onclick="deleteService('${service.ID}')">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </button>
+                                        <button class="action-btn btn-pastel-gray" onclick="fetchServiceLogs('${service.ID}')">
+                                            <i class="fas fa-file-alt"></i> View Logs
+                                        </button>
+                                    </td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            </td>
+        `;
+
+        stackRow.parentNode.insertBefore(servicesRow, stackRow.nextSibling);
+    } catch (error) {
+        console.error('Error fetching services:', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Failed to fetch services for the stack.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        });
+    }
+}
+async function deleteStack(stackName) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'You are about to delete this stack.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!'
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            try {
+                const response = await fetch(`/swarm/stacks/${stackName}`, { method: 'DELETE' });
+                const data = await response.json();
+                if (response.ok) {
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'Stack deleted successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
+                    fetchStacks(); 
+                } else {
+                    Swal.fire({
+                        title: 'Error',
+                        text: `Error: ${data.message}`,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            } catch (error) {
+                console.error('Error deleting stack:', error);
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Failed to delete stack.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        }
+    });
+}
+
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function () {
+    fetchStacks();
+});
+
+
+
+         </script>
+
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="../assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Google Maps Plugin -->
+    <script src="../assets/js/plugin/gmaps/gmaps.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="../assets/js/kaiadmin.min.js"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="../assets/js/setting-demo2.js"></script>
+	<script src="/assets/js/script.js"></script>
+  <script>
+    function logout() {
+            Swal.fire({
+                title: 'Logout Confirmation',
+                text: 'Are you sure you want to log out?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#326ce5',
+                cancelButtonColor: '#ff6666',
+                confirmButtonText: 'Yes, log out'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.clear();
+                    window.location.replace("/login");
+                }
+            });
+        }
+  </script>
+<script>
+  function recherche() {
+    var input, filter, items, item, name, i, txtValue;
+    input = document.getElementById("searchInput"); 
+    filter = input.value.toUpperCase();
+    items = document.getElementsByClassName("service-item"); // Target list items
+
+    for (i = 0; i < items.length; i++) {
+        item = items[i];
+        name = item.querySelector(".service-name"); // Target the service name
+        if (name) {
+            txtValue = name.textContent || name.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                item.style.display = "flex"; 
+            } else {
+                item.style.display = "none"; // Hide the item
+            }
+        }
+    }
+  }
+</script>
+</body>
+
+</html>

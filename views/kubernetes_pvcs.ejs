@@ -1,0 +1,2268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Kubernetes Storage</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <link rel="icon" href="../assets/img/dockube3.png" type="image/x-icon" />
+    <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.min.css">
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.all.min.js"></script>
+<link rel="stylesheet" href="../assets/css/kubernetes_pvcs.css">
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["../assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<!-- Bootstrap 4 -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+          <div class="sidebar-logo">
+              <!-- Logo Header -->
+              <div class="logo-header" data-background-color="dark">
+                  <a href="/" class="logo" style="display: flex; align-items: center;">
+                      <img src="../assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" height="40" />
+                      <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+                  </a>
+                  <div class="nav-toggle">
+                      <button class="btn btn-toggle toggle-sidebar">
+                          <i class="gg-menu-right"></i>
+                      </button>
+                      <button class="btn btn-toggle sidenav-toggler">
+                          <i class="gg-menu-left"></i>
+                      </button>
+                  </div>
+                  <button class="topbar-toggler more">
+                      <i class="gg-more-vertical-alt"></i>
+                  </button>
+              </div>
+              <!-- End Logo Header -->
+          </div>
+          <div class="sidebar-wrapper scrollbar scrollbar-inner">
+            <div class="sidebar-content">
+              <ul class="nav nav-secondary">
+                <li class="nav-item">
+                  <a href="/" aria-expanded="false">
+                    <i class="fas fa-tachometer-alt"></i> <!-- Dashboard icon -->
+                    <p>Dashboard</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerRegistries">
+                    <i class="fas fa-warehouse"></i> <!-- Registry icon -->
+                    <p>Docker Registries</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerfile_list">
+                    <i class="fas fa-file-code"></i> <!-- Code file icon for Dockerfile -->
+                    <p>Dockerfile</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockerimg">
+                    <i class="fas fa-images"></i> <!-- Images icon -->
+                    <p>Docker Images</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dockercontainers">
+                    <i class="fas fa-box"></i> <!-- Box icon for containers -->
+                    <p>Docker Containers</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/volumes">
+                    <i class="fas fa-database"></i> <!-- Database icon for Volumes -->
+                    <p>Volumes</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/compose">
+                    <i class="fas fa-cubes"></i> <!-- Stacked cubes for Compose -->
+                    <p>Docker Compose</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/swarm_list">
+                        <i class="fas fa-project-diagram"></i> <!-- Stacked cubes for Compose -->
+                      <p>Docker Swarm</p>
+                    </a>
+                  </li>
+<li class="nav-item active">
+    <a data-bs-toggle="collapse" href="#kubernetesMenu" aria-expanded="false">
+        <i class="fas fa-dharmachakra"></i>
+        <p>Kubernetes</p>
+        <span class="caret"></span>
+    </a>
+    <div class="collapse" id="kubernetesMenu">
+        <ul class="nav nav-collapse">
+            <li>
+                <a href="/kubernetes/cluster">
+                    <span class="sub-item">Cluster Setup</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/nodes">
+                    <span class="sub-item">Nodes</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/deployments">
+                    <span class="sub-item">Deployments</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/statefulsets">
+                    <span class="sub-item">StatefulSets</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/services">
+                    <span class="sub-item">Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/pods">
+                    <span class="sub-item">Pods</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/pvcs">
+                    <span class="sub-item">Storage</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/configs">
+                    <span class="sub-item">ConfigMaps && Secrets</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kubernetes/namespaces">
+                    <span class="sub-item">Namespaces</span>
+                </a>
+            </li>
+             <li>
+                <a href="/kubernetes/ingresses">
+                    <span class="sub-item">Ingresses</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<li class="nav-item">
+    <a href="/cicd_integration">
+      <i class="fas fa-sync-alt"></i>
+      <p>CI CD</p>
+    </a>
+  </li>
+                <li class="nav-item">
+                  <a data-bs-toggle="collapse" href="#" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> <!-- Logout icon -->
+                    <p>Logout</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <!-- End Sidebar -->
+      <div class="main-panel">
+          <div class="main-header">
+              <div class="main-header-logo">
+                  <!-- Logo Header -->
+                  <div class="logo-header" data-background-color="dark">
+                      <a href="../index.html" class="logo">
+                          <img src="../assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" />
+                      </a>
+                      <div class="nav-toggle">
+                          <button class="btn btn-toggle toggle-sidebar">
+                              <i class="gg-menu-right"></i>
+                          </button>
+                          <button class="btn btn-toggle sidenav-toggler">
+                              <i class="gg-menu-left"></i>
+                          </button>
+                      </div>
+                      <button class="topbar-toggler more">
+                          <i class="gg-more-vertical-alt"></i>
+                      </button>
+                  </div>
+                  <!-- End Logo Header -->
+              </div>
+              <!-- Navbar Header -->
+              <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+                  <div class="container-fluid">
+                      <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+                          
+                      </nav>
+                      <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                          <li class="nav-item topbar-user dropdown hidden-caret">
+                              <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="/profile" aria-expanded="false">
+                                  <span class="profile-username">
+                                      <span class="op-7">Hi,</span>
+                                      <span class="fw-bold">Hizrian</span>
+                                  </span>
+                              </a>
+                              <ul class="dropdown-menu dropdown-user animated fadeIn">
+                                  <div class="dropdown-user-scroll scrollbar-outer">
+                                      <li>
+                                          <div class="user-box">
+                                              <div class="avatar-lg">
+                                                  <img src="../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded" />
+                                              </div>
+                                              <div class="u-text">
+                                                  <h4>Hizrian</h4>
+                                                  <p class="text-muted">hello@example.com</p>
+                                                  <a href="/profile" class="action-btn btn-blue1 btn-sm">Update Profile</a>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="dropdown-divider"></div>
+                                          <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                                      </li>
+                                  </div>
+                              </ul>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
+              <!-- Add Vis.js library -->
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<link href="https://unpkg.com/vis-network/styles/vis-network.min.css" rel="stylesheet" />
+              <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                      var user = JSON.parse(localStorage.getItem("user"));
+                      if (user) {
+                          document.querySelector(".profile-username .fw-bold").textContent = user.username;
+                          document.querySelector(".u-text h4").textContent = user.username;
+                          document.querySelector(".u-text .text-muted").textContent = user.email;
+                      }
+                  });
+              </script>
+              <!-- End Navbar -->
+          </div>
+          <div class="container">
+            <div class="card-body">
+                <!-- Kubernetes Creation Flow Stepper -->
+                <div class="kubernetes-flow-stepper mb-4">
+                    <div class="stepper-header">
+                        <h4>Kubernetes Creation Journey</h4>
+                        <p class="text-muted">Follow this guided path to successfully deploy your application</p>
+                    </div>
+                    
+                    <div class="stepper-container">
+                        <div class="stepper-progress">
+                            <div class="stepper-progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        
+                        <div class="stepper-steps">
+                            <!-- Cluster Setup -->
+                            <div class="step" data-step="1" data-route="/kubernetes/cluster">
+                                <div class="step-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div class="step-label">Cluster</div>
+                                <div class="step-tooltip">
+                                    <strong>Cluster Setup</strong><br>
+                                    Your Kubernetes foundation - like building the airport before planes can land
+                                </div>
+                            </div>
+                            
+                            <!-- Nodes -->
+                            <div class="step" data-step="2" data-route="/kubernetes/nodes">
+                                <div class="step-icon">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <div class="step-label">Nodes</div>
+                                <div class="step-tooltip">
+                                    <strong>Nodes</strong><br>
+                                    The worker bees of your cluster - add more to handle heavier loads
+                                </div>
+                            </div>
+                            
+                            <!-- Namespaces -->
+                            <div class="step" data-step="3" data-route="/kubernetes/namespaces">
+                                <div class="step-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="step-label">Namespaces</div>
+                                <div class="step-tooltip">
+                                    <strong>Namespaces</strong><br>
+                                    Create departments in your cluster - keeps things organized like office floors
+                                </div>
+                            </div>
+                            
+                            <!-- ConfigMaps & Secrets -->
+                            <div class="step" data-step="4" data-route="/kubernetes/configs">
+                                <div class="step-icon">
+                                    <i class="fas fa-key"></i>
+                                </div>
+                                <div class="step-label">Configs</div>
+                                <div class="step-tooltip">
+                                    <strong>ConfigMaps & Secrets</strong><br>
+                                    The configuration vault - where you store settings and sensitive data
+                                </div>
+                            </div>
+                            
+                            <!-- Storage -->
+                            <div class="step" data-step="5" data-route="/kubernetes/pvcs">
+                                <div class="step-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="step-label">Storage</div>
+                                <div class="step-tooltip">
+                                    <strong>Persistent Storage</strong><br>
+                                    Your cluster's hard drive - ensures data survives pod restarts
+                                </div>
+                            </div>
+                            
+                            <!-- Deployments/StatefulSets -->
+                            <div class="step" data-step="6" data-route="/kubernetes/deployments">
+                                <div class="step-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <div class="step-label">Workloads</div>
+                                <div class="step-tooltip">
+                                    <strong>Deployments/StatefulSets</strong><br>
+                                    Blueprint for your application - defines how many copies to run
+                                </div>
+                            </div>
+                            
+                            <!-- Pods -->
+                            <div class="step" data-step="7" data-route="/kubernetes/pods">
+                                <div class="step-icon">
+                                    <i class="fas fa-cube"></i>
+                                </div>
+                                <div class="step-label">Pods</div>
+                                <div class="step-tooltip">
+                                    <strong>Pods</strong><br>
+                                    Your running application containers - like individual hotel rooms
+                                </div>
+                            </div>
+                            
+                            <!-- Services -->
+                            <div class="step" data-step="8" data-route="/kubernetes/services">
+                                <div class="step-icon">
+                                    <i class="fas fa-plug"></i>
+                                </div>
+                                <div class="step-label">Services</div>
+                                <div class="step-tooltip">
+                                    <strong>Services</strong><br>
+                                    The front desk - provides stable access to your pods
+                                </div>
+                            </div>
+                            <!-- Ingress -->
+            <div class="step" data-step="9" data-route="/kubernetes/ingresses">
+                <div class="step-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="step-label">Ingress</div>
+                <div class="step-tooltip">
+                    <strong>Ingress</strong><br>
+                    The gateway to your services - manages external access with routing rules
+                </div>
+            </div>
+
+                        </div>
+                    </div>
+                    
+                    <!-- Current Step Explanation Panel -->
+                    <div class="step-explanation-panel">
+                        <div class="explanation-header">
+                            <h5><i class="fas fa-lightbulb"></i> Understanding This Step</h5>
+                            <div class="step-metaphor">
+                                <i class="fas fa-comment-dots"></i>
+                                <span id="currentStepMetaphor">Select a step to see its real-world analogy</span>
+                            </div>
+                        </div>
+                        
+                        <div class="explanation-content">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="explanation-card">
+                                        <div class="explanation-icon">
+                                            <i class="fas fa-question-circle"></i>
+                                        </div>
+                                        <h6>What is this?</h6>
+                                        <p id="whatIsThis">Select a step to learn about this Kubernetes component</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="explanation-card">
+                                        <div class="explanation-icon">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <h6>Why is it important?</h6>
+                                        <p id="whyImportant">Select a step to understand its role in your cluster</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-visual mt-3">
+                                <div class="visual-placeholder">
+                                    <i class="fas fa-image"></i>
+                                    <p>Visual representation will appear here when a step is selected</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Next Button Container -->
+                    <div class="stepper-navigation mt-3">
+                        <button id="prevStepBtn" class="btn btn-secondary" disabled>
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button id="nextStepBtn" class="btn btn-primary">
+                            Next Step <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <div class="step-counter">
+                            Step <span id="currentStepNumber">0</span> of <span id="totalSteps">9</span>
+                        </div>
+                    </div>
+                </div>
+            <div class="page-inner">
+                <div class="page-header">
+                    <h2>Kubernetes Storage</h2>
+                </div>
+    
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header gradient-card-header">
+                                <ul class="nav nav-tabs" id="storageTabs" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pv-tab" data-toggle="tab" href="#pv" role="tab" aria-controls="pv" aria-selected="true">
+                                            PersistentVolumes
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pvc-tab" data-toggle="tab" href="#pvc" role="tab" aria-controls="pvc" aria-selected="false">
+                                            PersistentVolumeClaims
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="storage-class-tab" data-toggle="tab" href="#storage-class" role="tab">
+                                            StorageClasses
+                                        </a>
+                                        </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="create-tab" data-toggle="tab" href="#create" role="tab" aria-controls="create" aria-selected="false">
+                                            Create Storage
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content" id="storageTabsContent">
+                                    <!-- PV List Tab -->
+                                    <div class="tab-pane fade show active" id="pv" role="tabpanel" aria-labelledby="pv-tab">
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <div class="form-group mb-0">
+                                                <select class="form-control" id="pvStatusFilter" style="width: 200px;">
+                                                    <option value="">All Statuses</option>
+                                                    <option value="Available">Available</option>
+                                                    <option value="Bound">Bound</option>
+                                                    <option value="Released">Released</option>
+                                                    <option value="Failed">Failed</option>
+                                                </select>
+                                            </div>
+                                            <button id="refreshPVs" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-sync-alt"></i> Refresh
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Status</th>
+                                                        <th>Capacity</th>
+                                                        <th>Access Modes</th>
+                                                        <th>Storage Class</th>
+                                                        <th>Reclaim Policy</th>
+                                                        <th>Claim</th>
+                                                        <th>Age</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="pvTableBody">
+                                                    <tr>
+                                                        <td colspan="9" class="text-center">
+                                                            <div class="spinner-border text-primary" role="status">
+                                                                <span class="sr-only">Loading...</span>
+                                                            </div>
+                                                            <p>Loading PVs...</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- PVC List Tab -->
+                                    <div class="tab-pane fade" id="pvc" role="tabpanel" aria-labelledby="pvc-tab">
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <div class="form-group mb-0">
+                                                <select class="form-control" id="namespaceFilter" style="width: 200px;">
+                                                    <option value="">All Namespaces</option>
+                                                    <option value="default">default</option>
+                                                    <!-- Other namespaces will be loaded dynamically -->
+                                                </select>
+                                            </div>
+                                            <button id="refreshPVCs" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-sync-alt"></i> Refresh
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Namespace</th>
+                                                        <th>Status</th>
+                                                        <th>Storage Class</th>
+                                                        <th>Capacity</th>
+                                                        <th>Access Modes</th>
+                                                        <th>Volume</th>
+                                                        <th>Age</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="pvcTableBody">
+                                                    <tr>
+                                                        <td colspan="9" class="text-center">
+                                                            <div class="spinner-border text-primary" role="status">
+                                                                <span class="sr-only">Loading...</span>
+                                                            </div>
+                                                            <p>Loading PVCs...</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="storage-class" role="tabpanel">
+  <div class="d-flex justify-content-between mb-3">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#createStorageClassModal">
+      <i class="fas fa-plus"></i> Create StorageClass
+    </button>
+    <button id="refreshStorageClasses" class="btn btn-sm btn-primary">
+      <i class="fas fa-sync-alt"></i> Refresh
+    </button>
+  </div>
+  
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Provisioner</th>
+          <th>Status</th>
+          <th>Parameters</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="storageClassTableBody">
+      </tbody>
+    </table>
+  </div>
+</div>
+                                   <!-- Create Storage Tab -->
+                                        <div class="tab-pane fade" id="create" role="tabpanel" aria-labelledby="create-tab">
+                                            <ul class="nav nav-tabs" id="createStorageTabs" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="create-pvc-tab" data-toggle="tab" href="#create-pvc" role="tab" aria-controls="create-pvc" aria-selected="true">
+                                                        Create PVC
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="create-pv-tab" data-toggle="tab" href="#create-pv" role="tab" aria-controls="create-pv" aria-selected="false">
+                                                        Create PV
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            
+                                            <div class="tab-content mt-3" id="createStorageTabsContent">
+                                                <!-- PVC Creation Form -->
+                                                <div class="tab-pane fade show active" id="create-pvc" role="tabpanel" aria-labelledby="create-pvc-tab">
+                                                    <form id="createPVCForm">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="pvcName">PVC Name</label>
+                                                                    <input type="text" class="form-control" id="pvcName" required>
+                                                                    <small class="form-text text-muted">Must be lowercase alphanumeric with dashes</small>
+                                                                </div>
+                                                                
+                                                                <div class="form-group">
+                                                                    <label for="namespace">Namespace</label>
+                                                                    <select class="form-control" id="namespace" required>
+                                                                        <option value="default">default</option>
+                                                                    </select>
+                                                                </div>
+                                                                
+                                                                <div class="form-group">
+                                                                    <label for="accessMode">Access Mode</label>
+                                                                    <select class="form-control" id="accessMode" required>
+                                                                        <option value="ReadWriteOnce">ReadWriteOnce (RWO)</option>
+                                                                        <option value="ReadOnlyMany">ReadOnlyMany (ROX)</option>
+                                                                        <option value="ReadWriteMany">ReadWriteMany (RWX)</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="storageClass">Storage Class</label>
+                                                                    <select class="form-control" id="storageClass" required>
+                                                                        <option value="">Default</option>
+                                                                    </select>
+                                                                </div>
+                                                                
+                                                                <div class="form-group">
+                                                                    <label for="storageSize">Storage Size (GB)</label>
+                                                                    <input type="number" class="form-control" id="storageSize" min="1" value="1" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-check mb-3">
+                                                            <input type="checkbox" class="form-check-input" id="mountToDeployment">
+                                                            <label class="form-check-label" style="margin-left: 20px;" for="mountToDeployment">Mount to existing deployment</label>
+                                                        </div>
+                                                        
+                                                        <div id="mountOptions" style="display: none;">
+                                                            <div class="mount-options">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="deploymentName">Deployment</label>
+                                                                            <select class="form-control" id="deploymentName">
+                                                                                <option value="">Select deployment</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="mountPath">Mount Path</label>
+                                                                            <input type="text" class="form-control" id="mountPath" placeholder="/data">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-check mb-3">
+                                                            <input type="checkbox" class="form-check-input" id="showYamlPreview">
+                                                            <label class="form-check-label" style="margin-left: 20px;" for="showYamlPreview">Show YAML Preview</label>
+                                                        </div>
+                                                        
+                                                        <div id="yamlPreviewContainer" style="display: none;">
+                                                            <h5>YAML Preview</h5>
+                                                            <div class="yaml-container">
+                                                                <pre id="yamlPreview"></pre>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <button type="submit" class="btn btn-primary mt-3">
+                                                            <i class="fas fa-save"></i> Create PVC
+                                                        </button>
+                                                    </form>
+                                                    </div>
+                                                
+                                                <!-- PV Creation Form -->
+                                                <div class="tab-pane fade" id="create-pv" role="tabpanel" aria-labelledby="create-pv-tab">
+                                                    <form id="createPVForm">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="pvName">PV Name</label>
+                                                                    <input type="text" class="form-control" id="pvName" required>
+                                                                    <small class="form-text text-muted">Must be lowercase alphanumeric with dashes</small>
+                                                                </div>
+                                                                
+                                                                <div class="form-group">
+                                                                    <label for="pvCapacity">Capacity (GB)</label>
+                                                                    <input type="number" class="form-control" id="pvCapacity" min="1" value="1" required>
+                                                                </div>
+                                                                
+                                                                <div class="form-group">
+                                                                    <label for="pvAccessMode">Access Mode</label>
+                                                                    <select class="form-control" id="pvAccessMode" required>
+                                                                        <option value="ReadWriteOnce">ReadWriteOnce (RWO)</option>
+                                                                        <option value="ReadOnlyMany">ReadOnlyMany (ROX)</option>
+                                                                        <option value="ReadWriteMany">ReadWriteMany (RWX)</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="pvStorageClass">Storage Class</label>
+                                                                    <select class="form-control" id="pvStorageClass">
+                                                                        <option value="">None (default)</option>
+                                                                        <!-- Storage classes will be loaded dynamically -->
+                                                                    </select>
+                                                                </div>
+                                                                
+                                                                <div class="form-group">
+                                                                    <label for="pvReclaimPolicy">Reclaim Policy</label>
+                                                                    <select class="form-control" id="pvReclaimPolicy" required>
+                                                                        <option value="Retain">Retain</option>
+                                                                        <option value="Recycle">Recycle</option>
+                                                                        <option value="Delete">Delete</option>
+                                                                    </select>
+                                                                </div>
+                                                                
+                                                                <div class="form-group">
+                                                                    <label for="pvPath">Local Path (for hostPath)</label>
+                                                                    <input type="text" class="form-control" id="pvPath" placeholder="/mnt/data">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-check mb-3">
+                                                            <input type="checkbox" class="form-check-input" id="showPVYamlPreview">
+                                                            <label class="form-check-label" style="margin-left: 20px;" for="showPVYamlPreview">Show YAML Preview</label>
+                                                        </div>
+                                                        
+                                                        <div id="pvYamlPreviewContainer" style="display: none;">
+                                                            <h5>YAML Preview</h5>
+                                                            <div class="yaml-container">
+                                                                <pre id="pvYamlPreview"></pre>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <button type="submit" class="btn btn-primary mt-3">
+                                                            <i class="fas fa-save"></i> Create PV
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- PVC Actions Modals -->
+        <div class="modal fade" id="deletePVCModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete PVC</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete PVC <strong id="deletePVCName"></strong> in namespace <strong id="deletePVCNamespace"></strong>?</p>
+                        <div class="alert alert-warning">
+                            <strong>Warning:</strong> This will permanently delete the persistent volume claim and its data.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- PV Actions Modals -->
+<div class="modal fade" id="deletePVModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete PV</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete PV <strong id="deletePVName"></strong>?</p>
+                <div class="alert alert-warning">
+                    <strong>Warning:</strong> This will permanently delete the persistent volume.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeletePV">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="viewPVYamlModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">PV YAML</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="yaml-container">
+                    <pre id="pvYaml"></pre>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="copyPVYaml">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="modal fade" id="viewYamlModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">PVC YAML</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="yaml-container">
+                            <pre id="pvcYaml"></pre>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="copyYaml">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="createStorageClassModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create StorageClass</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="createStorageClassForm">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" id="scName" required>
+          </div>
+          <div class="form-group">
+            <label>Provisioner</label>
+            <select class="form-control" id="scProvisioner">
+              <option value="kubernetes.io/no-provisioner">Local (no-provisioner)</option>
+              <option value="kubernetes.io/host-path">HostPath (development only)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Parameters (JSON)</label>
+            <textarea class="form-control" id="scParameters" rows="3" placeholder='{"type": "ext4"}'></textarea>
+          </div>
+          <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="scIsDefault">
+            <label class="form-check-label" style="margin-left: 20px;">Set as default StorageClass</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <div id="chatbot-container">
+        <!-- Chatbot Toggle Button (Circle with Logo) -->
+        <div id="chatbot-toggle">
+            <img src="../assets/img/dockube3.png" alt="Chatbot Logo" width="50" height="50">
+        </div>
+      
+        <!-- Chatbot Interface (Hidden by Default) -->
+       
+      <div id="chatbot-interface" style="display: none;">
+        <!-- Chat Header -->
+        <div id="chat-header">
+            <strong>
+                <img src="../assets/img/dockube3.png" alt="Logo">
+                Docker & Kubernetes Assistant
+            </strong>
+            <button id="chat-close">×</button>
+        </div>
+      
+        <!-- Chat Body -->
+        <div id="chat-body">
+            <div id="chat-messages">
+                <!-- Welcome Message -->
+                <div class="welcome-message" onclick="toggleWelcomeMessage()">
+                    👋 Welcome! I'm your Docker & Kubernetes Assistant.
+                    Ask me anything about Docker, Kubernetes, and best practices.
+                    <div class="hidden-content">
+                        Hi! I'm your Docker & Kubernetes Assistant.  
+                        Ask me anything about services, Kubernetes configurations, and best practices.
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <!-- Chat Input -->
+        <div id="chat-input">
+            <input type="text" id="chat-message" placeholder="Type your question...">
+            <button id="chat-send">Send</button>
+        </div>
+      </div>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotInterface = document.getElementById('chatbot-interface');
+            const chatClose = document.getElementById('chat-close');
+            const chatBody = document.getElementById('chat-body');
+            const chatMessages = document.getElementById('chat-messages');
+            const chatMessageInput = document.getElementById('chat-message');
+            const chatSendButton = document.getElementById('chat-send');
+      
+            // Toggle Chat Interface
+            chatbotToggle.addEventListener('click', () => {
+                chatbotInterface.style.display = 'block';
+            });
+      
+            // Close Chat Interface
+            chatClose.addEventListener('click', () => {
+                chatbotInterface.style.display = 'none';
+            });
+      
+            // Send Message to Chatbot
+            chatSendButton.addEventListener('click', async () => {
+                const message = chatMessageInput.value.trim();
+                if (message) {
+                    // Add User Message to Chat
+                    chatMessages.innerHTML += `<div class="message"><strong>You:</strong> ${message}</div>`;
+                    chatMessageInput.value = '';
+      
+                    // Show Loading Spinner
+                    chatMessages.innerHTML += `<div id="loading-spinner">Loading...</div>`;
+      
+                    // Call Backend API
+                    try {
+                        const response = await fetch('/api/chat', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ message })
+                        });
+                        const data = await response.json();
+      
+                        // Remove Loading Spinner and Add Bot Response
+                        document.getElementById('loading-spinner').remove();
+                        chatMessages.innerHTML += `<div class="message"><strong>Assistant:</strong> ${data.response}</div>`;
+                    } catch (error) {
+                        console.error('Error:', error);
+                        chatMessages.innerHTML += `<div class="message"><strong>Error:</strong> Failed to get response.</div>`;
+                    }
+      
+                    // Scroll to Bottom of Chat
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }
+            });
+      
+            // Allow Pressing "Enter" to Send a Message
+            chatMessageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    chatSendButton.click();
+                }
+            });
+        });
+      </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Complete step information database
+      const stepInfo = {
+          1: {
+              metaphor: "Like building the airport before planes can land",
+              whatIs: "The Kubernetes cluster is the foundation that runs your applications. It's the combination of control plane (management) and worker nodes (where workloads run).",
+              whyImportant: "Without a cluster, you have nowhere to deploy your applications. This is like having apps but no phone to run them on.",
+              visual: '<div class="cluster-visual"><div class="control-plane"><i class="fas fa-cog"></i> Control Plane</div><div class="worker-nodes"><div class="node"><i class="fas fa-server"></i> Node</div><div class="node"><i class="fas fa-server"></i> Node</div></div></div>'
+          },
+          2: {
+              metaphor: "The worker bees in your cluster hive",
+              whatIs: "Nodes are the worker machines (VMs or physical servers) that run your applications. They're managed by the control plane and can be added or removed as needed.",
+              whyImportant: "More nodes mean more capacity to run applications. Like adding more chefs to a kitchen to handle more orders. Healthy nodes ensure your applications run smoothly.",
+              visual: '<div class="nodes-visual"><div class="node healthy"><i class="fas fa-server"></i> Worker 1</div><div class="node healthy"><i class="fas fa-server"></i> Worker 2</div><div class="node warning"><i class="fas fa-server"></i> Worker 3</div></div>'
+          },
+          3: {
+              metaphor: "Like different floors in an office building",
+              whatIs: "Namespaces provide virtual clusters within your physical cluster, isolating resources between teams, projects, or environments (dev/test/prod).",
+              whyImportant: "Prevents naming collisions and provides logical separation, like having separate departments in a company. Essential for multi-team environments and resource quotas.",
+              visual: '<div class="namespaces-visual"><div class="namespace prod"><i class="fas fa-building"></i> Production</div><div class="namespace dev"><i class="fas fa-code"></i> Development</div><div class="namespace test"><i class="fas fa-flask"></i> Testing</div></div>'
+          },
+          4: {
+              metaphor: "The configuration vault of your applications",
+              whatIs: "ConfigMaps store configuration data as key-value pairs, while Secrets store sensitive information like passwords and API keys in encrypted form.",
+              whyImportant: "Separates configuration from application code, making your applications more portable and secure. Like having a secure filing cabinet separate from your work desk.",
+              visual: '<div class="configs-visual"><div class="config"><i class="fas fa-file-alt"></i> ConfigMap<br><small>database.url</small></div><div class="secret"><i class="fas fa-lock"></i> Secret<br><small>db-password</small></div></div>'
+          },
+          5: {
+              metaphor: "Your cluster's permanent storage locker",
+              whatIs: "Persistent Volumes (PVs) and Persistent Volume Claims (PVCs) provide durable storage that survives pod restarts, unlike ephemeral container storage.",
+              whyImportant: "Essential for stateful applications like databases. Like having a permanent locker in school versus temporary desk space that gets cleared daily.",
+              visual: '<div class="storage-visual"><div class="pvc"><i class="fas fa-hdd"></i> PVC Request</div><div class="arrow">→</div><div class="pv"><i class="fas fa-database"></i> PV Storage</div></div>'
+          },
+          6: {
+    metaphor: "The blueprint and foreman for your applications",
+    whatIs: "Deployments manage stateless applications with rolling updates, while StatefulSets manage stateful applications with stable identities and ordered operations.",
+    whyImportant: "Ensures your applications run with the desired replicas and update strategy. Deployments for stateless apps, StatefulSets for databases and ordered workloads.",
+    visual: '<div class="workload-visual">' +
+            '<div class="workload-option" data-target="/kubernetes/deployments">' +
+            '<i class="fas fa-copy"></i> Deployments' +
+            '</div>' +
+            '<div class="workload-option" data-target="/kubernetes/statefulsets">' +
+            '<i class="fas fa-list-ol"></i> StatefulSets' +
+            '</div></div>'
+  },
+          7: {
+              metaphor: "The individual hotel rooms for your containers",
+              whatIs: "Pods are the smallest deployable units in Kubernetes, containing one or more containers that share storage and network resources.",
+              whyImportant: "Your actual running application instances. Like individual hotel rooms that contain all the amenities (containers) needed for a guest (application) to function.",
+              visual: '<div class="pods-visual"><div class="pod"><div class="container"><i class="fas fa-box"></i> app</div><div class="container"><i class="fas fa-shield-alt"></i> sidecar</div></div><div class="pod single"><div class="container"><i class="fas fa-box"></i> app</div></div></div>'
+          },
+          8: {
+              metaphor: "The front desk and concierge service",
+              whatIs: "Services provide stable IP addresses and DNS names to access groups of pods, and can expose applications internally or to the outside world.",
+              whyImportant: "Provides reliable access to your applications even as individual pods come and go. Like having a hotel front desk that always knows which rooms are occupied.",
+              visual: '<div class="services-visual"><div class="service"><i class="fas fa-exchange-alt"></i> ClusterIP</div><div class="service"><i class="fas fa-sign-out-alt"></i> NodePort</div><div class="service"><i class="fas fa-globe"></i> LoadBalancer</div></div>'
+          },
+           9: {
+        metaphor: "The gateway and traffic controller",
+        whatIs: "Ingress manages external access to your services, typically HTTP/HTTPS, with host and path-based routing rules. It acts as a smart router for your cluster.",
+        whyImportant: "Provides a single entry point for multiple services, enables name-based virtual hosting, and can handle SSL termination. Like having a receptionist who directs visitors to the right department.",
+        visual: '<div class="ingress-visual"><div class="ingress"><i class="fas fa-globe"></i> Ingress</div><div class="arrows">⇩ ⇩ ⇩</div><div class="services-visual"><div class="service"><i class="fas fa-exchange-alt"></i> Service A</div><div class="service"><i class="fas fa-exchange-alt"></i> Service B</div><div class="service"><i class="fas fa-exchange-alt"></i> Service C</div></div></div>'
+    }
+      };
+  
+      // Initialize the stepper
+      const steps = document.querySelectorAll('.stepper-steps .step');
+      const progressBar = document.querySelector('.stepper-progress-bar');
+      const currentPath = window.location.pathname;
+      let currentStepIndex = 0;
+      
+      // Set total steps counter
+      document.getElementById('totalSteps').textContent = steps.length;
+      
+     // Find current step based on URL
+  steps.forEach((step, index) => {
+      const stepRoute = step.getAttribute('data-route');
+      // Check for both deployments and statefulsets under step 6
+      if (currentPath.includes(stepRoute) || 
+          (index === 5 && (currentPath.includes('/kubernetes/deployments') || 
+                          currentPath.includes('/kubernetes/statefulsets')))) {
+          currentStepIndex = index;
+          activateStep(step, index + 1);
+      }
+      
+      // Add click handler
+      step.addEventListener('click', function() {
+          navigateToStep(index);
+      });
+  });
+      
+      // Next/Previous button handlers
+      document.getElementById('nextStepBtn').addEventListener('click', function() {
+          if (currentStepIndex < steps.length - 1) {
+              navigateToStep(currentStepIndex + 1);
+          }
+      });
+      
+      document.getElementById('prevStepBtn').addEventListener('click', function() {
+          if (currentStepIndex > 0) {
+              navigateToStep(currentStepIndex - 1);
+          }
+      });
+      
+      // Update the navigateToStep function
+  function navigateToStep(index) {
+    const step = steps[index];
+    let route = step.getAttribute('data-route');
+    
+    // Special handling for Workloads step
+    if (index === 5) { // Step 6 is index 5 (0-based)
+        // Default to Deployments if coming from previous step
+        if (currentStepIndex < index) {
+            route = "/kubernetes/deployments";
+        } 
+        // If coming from next step, go to StatefulSets
+        else if (currentStepIndex > index) {
+            route = "/kubernetes/statefulsets";
+        }
+    }
+    
+    window.location.href = route;
+  }
+      
+  function activateStep(step, stepNumber) {
+      // Update UI
+      steps.forEach(s => {
+          s.classList.remove('active', 'completed');
+          const sNumber = parseInt(s.getAttribute('data-step'));
+          if (sNumber < stepNumber) {
+              s.classList.add('completed');
+          }
+      });
+      
+      step.classList.add('active');
+      
+      // Update progress bar
+      const progressPercentage = ((stepNumber - 1) / (steps.length - 1)) * 100;
+      progressBar.style.width = `${progressPercentage}%`;
+      
+      // Update step counter
+      document.getElementById('currentStepNumber').textContent = stepNumber;
+      
+      // Update explanation panel
+      if (stepInfo[stepNumber]) {
+          // Special handling for Workloads step
+          if (stepNumber === 6) {
+              if (window.location.pathname.includes('/kubernetes/statefulsets')) {
+                  document.getElementById('currentStepMetaphor').textContent = "The specialized blueprint for stateful applications";
+                  document.getElementById('whatIsThis').textContent = "StatefulSets manage stateful applications that need stable network identities, persistent storage, and ordered deployment/scaling.";
+                  document.getElementById('whyImportant').textContent = "Essential for databases and other stateful applications where pod order and persistence matter. Like having numbered parking spots where each car always gets the same spot.";
+                  document.querySelector('.visual-placeholder').innerHTML = '<div class="statefulset-visual"><div class="pod"><i class="fas fa-database"></i> db-0</div><div class="pod"><i class="fas fa-database"></i> db-1</div><div class="pod"><i class="fas fa-database"></i> db-2</div></div>';
+              } else {
+                  // Default to Deployments view
+                  document.getElementById('currentStepMetaphor').textContent = stepInfo[stepNumber].metaphor;
+                  document.getElementById('whatIsThis').textContent = stepInfo[stepNumber].whatIs;
+                  document.getElementById('whyImportant').textContent = stepInfo[stepNumber].whyImportant;
+                  document.querySelector('.visual-placeholder').innerHTML = stepInfo[stepNumber].visual;
+              }
+          } else {
+              // Normal step handling
+              document.getElementById('currentStepMetaphor').textContent = stepInfo[stepNumber].metaphor;
+              document.getElementById('whatIsThis').textContent = stepInfo[stepNumber].whatIs;
+              document.getElementById('whyImportant').textContent = stepInfo[stepNumber].whyImportant;
+              document.querySelector('.visual-placeholder').innerHTML = stepInfo[stepNumber].visual;
+          }
+      }
+      
+      // Add click handlers for workload options
+      if (stepNumber === 6) {
+          document.querySelectorAll('.workload-option').forEach(option => {
+              option.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  window.location.href = this.getAttribute('data-target');
+              });
+          });
+      }
+      
+      // Update navigation buttons
+      document.getElementById('prevStepBtn').disabled = stepNumber === 1;
+      document.getElementById('nextStepBtn').disabled = stepNumber === steps.length;
+  }
+  });
+  </script>
+
+      <script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.min.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.min.css" />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mount to deployment toggle
+            document.getElementById('mountToDeployment').addEventListener('change', function() {
+                const mountOptions = document.getElementById('mountOptions');
+                mountOptions.style.display = this.checked ? 'block' : 'none';
+                updateYamlPreview();
+            });
+            
+            // YAML preview toggle
+            document.getElementById('showYamlPreview').addEventListener('change', function() {
+                const yamlContainer = document.getElementById('yamlPreviewContainer');
+                yamlContainer.style.display = this.checked ? 'block' : 'none';
+                if (this.checked) {
+                    updateYamlPreview();
+                }
+            });
+            
+            // Form submission
+            document.getElementById('createPVCForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                createPVC();
+            });
+            
+            // Refresh PVCs
+            document.getElementById('refreshPVCs').addEventListener('click', function() {
+                loadPVCs();
+            });
+            
+            // Namespace filter
+            document.getElementById('namespaceFilter').addEventListener('change', function() {
+                loadPVCs();
+            });
+            
+            // Delete PVC modal
+            document.getElementById('confirmDelete').addEventListener('click', function() {
+                deletePVC(currentPVCName, currentPVCNamespace);
+                $('#deletePVCModal').modal('hide');
+            });
+            
+            // Copy YAML button
+            document.getElementById('copyYaml').addEventListener('click', function() {
+                const yamlText = document.getElementById('pvcYaml').textContent;
+                navigator.clipboard.writeText(yamlText).then(() => {
+                    Swal.fire({
+        title: 'Success',
+        text: 'YAML copied to clipboard!',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        timer: 1500
+    });                });
+            });
+            
+            // Input change listeners for YAML preview
+            document.querySelectorAll('#createPVCForm input, #createPVCForm select').forEach(element => {
+                element.addEventListener('input', updateYamlPreview);
+                element.addEventListener('change', updateYamlPreview);
+            });
+            
+            // Load initial data
+            loadNamespaces();
+            loadStorageClasses();
+            loadDeploymentsForMount();
+            loadPVCs();
+            document.getElementById('refreshPVs').addEventListener('click', function() {
+        loadPVs();
+    });
+    
+    document.getElementById('pvStatusFilter').addEventListener('change', function() {
+        loadPVs();
+    });
+    
+    document.getElementById('confirmDeletePV').addEventListener('click', function() {
+        deletePV(currentPVName);
+        $('#deletePVModal').modal('hide');
+    });
+    
+    document.getElementById('copyPVYaml').addEventListener('click', function() {
+        const yamlText = document.getElementById('pvYaml').textContent;
+        navigator.clipboard.writeText(yamlText).then(() => {
+            Swal.fire({
+        title: 'Success',
+        text: 'YAML copied to clipboard!',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        timer: 1500
+    });        });
+    });
+    
+    document.getElementById('createPVForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        createPV();
+    });
+    
+    document.querySelectorAll('#createPVForm input, #createPVForm select').forEach(element => {
+        element.addEventListener('input', updatePVYamlPreview);
+        element.addEventListener('change', updatePVYamlPreview);
+    });
+    
+    document.getElementById('showPVYamlPreview').addEventListener('change', function() {
+        const yamlContainer = document.getElementById('pvYamlPreviewContainer');
+        yamlContainer.style.display = this.checked ? 'block' : 'none';
+        if (this.checked) {
+            updatePVYamlPreview();
+        }
+    });
+    
+    // Load PVs on page load
+    loadPVs();
+});
+        
+        // Global variables for current PVC context
+        let currentPVCName = '';
+        let currentPVCNamespace = '';
+        
+        function updateYamlPreview() {
+            const pvcName = document.getElementById('pvcName').value || 'example-pvc';
+            const namespace = document.getElementById('namespace').value || 'default';
+            const accessMode = document.getElementById('accessMode').value || 'ReadWriteOnce';
+            const storageClass = document.getElementById('storageClass').value;
+            const storageSize = document.getElementById('storageSize').value || '1';
+            
+            const mountToDeployment = document.getElementById('mountToDeployment').checked;
+            const deploymentName = document.getElementById('deploymentName').value;
+            const mountPath = document.getElementById('mountPath').value || '/data';
+            
+            // Generate PVC YAML
+            let yaml = `apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ${pvcName}
+  namespace: ${namespace}
+spec:
+  accessModes:
+    - ${accessMode}
+  resources:
+    requests:
+      storage: ${storageSize}Gi
+`;
+            
+            if (storageClass) {
+                yaml += `  storageClassName: ${storageClass}\n`;
+            }
+            
+            document.getElementById('yamlPreview').textContent = yaml;
+        }
+        
+        function loadNamespaces() {
+            fetch('http://localhost:5000//kubernetes/namespaces')
+            .then(response => response.json())
+            .then(data => {
+                if (data.items && data.items.length > 0) {
+                    const namespaceSelect = document.getElementById('namespace');
+                    const namespaceFilter = document.getElementById('namespaceFilter');
+                    
+                    // Clear existing options except the first one
+                    while (namespaceSelect.options.length > 1) {
+                        namespaceSelect.remove(1);
+                    }
+                    while (namespaceFilter.options.length > 1) {
+                        namespaceFilter.remove(1);
+                    }
+                    
+                    // Add new options
+                    data.items.forEach(ns => {
+                        if (ns.metadata.name !== 'default') {
+                            const option = document.createElement('option');
+                            option.value = ns.metadata.name;
+                            option.textContent = ns.metadata.name;
+                            namespaceSelect.appendChild(option.cloneNode(true));
+                            namespaceFilter.appendChild(option);
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error loading namespaces:', error);
+            });
+        }
+        
+       
+        function loadDeploymentsForMount() {
+            fetch('http://localhost:5000//kubernetes/deployments')
+            .then(response => response.json())
+            .then(data => {
+                if (data.items && data.items.length > 0) {
+                    const deploymentSelect = document.getElementById('deploymentName');
+                    
+                    // Clear existing options except the first one
+                    while (deploymentSelect.options.length > 1) {
+                        deploymentSelect.remove(1);
+                    }
+                    
+                    // Add new options
+                    data.items.forEach(deployment => {
+                        const option = document.createElement('option');
+                        option.value = JSON.stringify(deployment);
+                        option.textContent = `${deployment.metadata.name} (${deployment.metadata.namespace})`;
+                        deploymentSelect.appendChild(option);
+                    });
+                }
+            })
+            .catch(error => {
+                Swal.fire({
+        title: 'Error',
+        text: `Failed to load deployments: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });            });
+        }
+        
+        function loadPVCs() {
+            const namespaceFilter = document.getElementById('namespaceFilter').value;
+            const pvcTableBody = document.getElementById('pvcTableBody');
+            
+            pvcTableBody.innerHTML = `
+                <tr>
+                    <td colspan="9" class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <p>Loading PVCs...</p>
+                    </td>
+                </tr>
+            `;
+            
+            let apiUrl = 'http://localhost:5000//kubernetes/pvcs';
+            if (namespaceFilter) {
+                apiUrl += `?namespace=${namespaceFilter}`;
+            }
+            
+            fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.items && data.items.length > 0) {
+                    pvcTableBody.innerHTML = data.items.map(pvc => {
+                        const status = pvc.status.phase;
+                        const statusClass = status === 'Bound' ? 'status-bound' : 
+                                          status === 'Pending' ? 'status-pending' : 'status-failed';
+                        
+                        const storageClass = pvc.spec.storageClassName || '(default)';
+                        const capacity = pvc.status.capacity ? pvc.status.capacity.storage : 'Pending';
+                        const volume = pvc.spec.volumeName || '-';
+                        const age = timeSince(new Date(pvc.metadata.creationTimestamp));
+                        
+                        // Format access modes
+                        let accessModes = '';
+                        if (pvc.spec.accessModes) {
+                            pvc.spec.accessModes.forEach(mode => {
+                                let badgeClass = 'bg-secondary';
+                                if (mode.includes('ReadWriteOnce')) badgeClass = 'bg-primary';
+                                if (mode.includes('ReadOnlyMany')) badgeClass = 'bg-info';
+                                if (mode.includes('ReadWriteMany')) badgeClass = 'bg-success';
+                                accessModes += `<span class="badge access-mode-badge ${badgeClass}">${mode}</span>`;
+                            });
+                        }
+                        
+                        return `
+                            <tr>
+                                <td>${pvc.metadata.name}</td>
+                                <td>${pvc.metadata.namespace}</td>
+                                <td>
+                                    <div class="pvc-status">
+                                        <div class="status-indicator ${statusClass}"></div>
+                                        ${status}
+                                    </div>
+                                </td>
+                                <td>${storageClass}</td>
+                                <td>${capacity}</td>
+                                <td>${accessModes}</td>
+                                <td>${volume}</td>
+                                <td>${age}</td>
+                                <td>
+  <div class="action-buttons">
+    <button class="action-btn btn-yaml" onclick="showPVCYaml('${pvc.metadata.name}', '${pvc.metadata.namespace}')"
+            data-tooltip="View YAML">
+      <i class="fas fa-code"></i> YAML
+    </button>
+    <button class="action-btn btn-delete" onclick="showDeleteModal('${pvc.metadata.name}', '${pvc.metadata.namespace}')"
+            data-tooltip="Delete PVC">
+      <i class="fas fa-trash-alt"></i> Delete
+    </button>
+  </div>
+</td>
+                            </tr>
+                        `;
+                    }).join('');
+                } else {
+                    pvcTableBody.innerHTML = `
+                        <tr>
+                            <td colspan="9" class="text-center">No PVCs found</td>
+                        </tr>
+                    `;
+                }
+            })
+            .catch(error => {
+                pvcTableBody.innerHTML = `
+                    <tr>
+                        <td colspan="9" class="text-center text-danger">Error loading PVCs: ${error.message}</td>
+                    </tr>
+                `;
+            });
+        }
+        
+        function createPVC() {
+            const pvcName = document.getElementById('pvcName').value;
+            const namespace = document.getElementById('namespace').value;
+            const accessMode = document.getElementById('accessMode').value;
+            const storageClass = document.getElementById('storageClass').value;
+            const storageSize = document.getElementById('storageSize').value;
+            
+            const mountToDeployment = document.getElementById('mountToDeployment').checked;
+            let deploymentData = null;
+            let mountPath = null;
+            
+            if (mountToDeployment) {
+                const deploymentSelect = document.getElementById('deploymentName');
+                if (!deploymentSelect.value) {
+                    Swal.fire({
+        title: 'Error',
+        text: 'Please select a deployment to mount to!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });
+                        return;
+                }
+                
+                deploymentData = JSON.parse(deploymentSelect.value);
+                mountPath = document.getElementById('mountPath').value || '/data';
+            }
+            
+            // Prepare PVC data
+            const pvcData = {
+                pvcName,
+                namespace,
+                accessMode,
+                storageClass,
+                storageSize,
+                deploymentData,
+                mountPath
+            };
+            
+            // Show loading state
+            Swal.fire({
+    title: 'Creating PVC',
+    text: `Creating PVC ${pvcName} in namespace ${namespace}...`,
+    icon: 'info',
+    showConfirmButton: false,
+    timer: 2000
+});            
+            // Send to API
+            fetch('/kubernetes/pvcs/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(pvcData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+    title: 'Success',
+    text: `PVC ${pvcName} created successfully`,
+    icon: 'success',
+    confirmButtonText: 'OK',
+    timer: 1500
+});                    // Switch to PVCs tab and refresh
+                    document.getElementById('pvc-tab').click();
+                    loadPVCs();
+                } else {
+                    Swal.fire({
+    title: 'Error',
+    text: `Failed to create PVC: ${data.error}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});                }
+            })
+            .catch(error => {
+                Swal.fire({
+        title: 'Error',
+        text: `Failed to create PVC: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });
+            });
+        }
+        
+        function showDeleteModal(pvcName, namespace) {
+            currentPVCName = pvcName;
+            currentPVCNamespace = namespace;
+            
+            document.getElementById('deletePVCName').textContent = pvcName;
+            document.getElementById('deletePVCNamespace').textContent = namespace;
+            
+            $('#deletePVCModal').modal('show');
+        }
+        
+        function showPVCYaml(pvcName, namespace) {
+            fetch(`/kubernetes/pvcs/yaml?name=${pvcName}&namespace=${namespace}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.yaml) {
+                    document.getElementById('pvcYaml').textContent = data.yaml;
+                    $('#viewYamlModal').modal('show');
+                } else {
+                    Swal.fire({
+    title: 'Error',
+    text: `Failed to load YAML: ${data.error}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});                }
+            })
+            .catch(error => {
+                Swal.fire({
+        title: 'Error',
+        text: `Failed to load YAML: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });            });
+        }
+        
+        function deletePVC(pvcName, namespace) {
+            Swal.fire({
+    title: 'Deleting PVC',
+    text: `Deleting PVC ${pvcName} in namespace ${namespace}...`,
+    icon: 'info',
+    showConfirmButton: false,
+    timer: 2000
+});            
+            fetch('/kubernetes/pvcs/delete', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    pvcName,
+                    namespace
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+    title: 'Success',
+    text: `PVC ${pvcName} deleted successfully`,
+    icon: 'success',
+    confirmButtonText: 'OK',
+    timer: 1500
+});                    loadPVCs();
+                } else {
+                    Swal.fire({
+    title: 'Error',
+    text: `Failed to delete PVC: ${data.error}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});                }
+            })
+            .catch(error => {
+                Swal.fire({
+        title: 'Error',
+        text: `Failed to delete PVC: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });            });
+        }
+        
+        // Utility functions
+        function timeSince(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            
+            let interval = Math.floor(seconds / 31536000);
+            if (interval >= 1) return `${interval}y`;
+            
+            interval = Math.floor(seconds / 2592000);
+            if (interval >= 1) return `${interval}mo`;
+            
+            interval = Math.floor(seconds / 86400);
+            if (interval >= 1) return `${interval}d`;
+            
+            interval = Math.floor(seconds / 3600);
+            if (interval >= 1) return `${interval}h`;
+            
+            interval = Math.floor(seconds / 60);
+            if (interval >= 1) return `${interval}m`;
+            
+            return `${Math.floor(seconds)}s`;
+        }
+      
+    // Global variables for current PV context
+let currentPVName = '';
+
+// Load PVs
+function loadPVs() {
+    const statusFilter = document.getElementById('pvStatusFilter').value;
+    const pvTableBody = document.getElementById('pvTableBody');
+    
+    pvTableBody.innerHTML = `
+        <tr>
+            <td colspan="9" class="text-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <p>Loading PVs...</p>
+            </td>
+        </tr>
+    `;
+    
+    let apiUrl = '/kubernetes/pvs';
+    if (statusFilter) {
+        apiUrl += `?status=${statusFilter}`;
+    }
+    
+    fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+        if (data.items && data.items.length > 0) {
+            pvTableBody.innerHTML = data.items.map(pv => {
+                const status = pv.status.phase;
+                const statusClass = status === 'Bound' ? 'status-bound' : 
+                                  status === 'Available' ? 'status-available' : 
+                                  status === 'Released' ? 'status-released' : 'status-failed';
+                
+                const storageClass = pv.spec.storageClassName || '(default)';
+                const capacity = pv.spec.capacity ? pv.spec.capacity.storage : '-';
+                const claim = pv.spec.claimRef ? `${pv.spec.claimRef.name} (${pv.spec.claimRef.namespace})` : '-';
+                const age = timeSince(new Date(pv.metadata.creationTimestamp));
+                const reclaimPolicy = pv.spec.persistentVolumeReclaimPolicy || 'Retain';
+                
+                // Format access modes
+                let accessModes = '';
+                if (pv.spec.accessModes) {
+                    pv.spec.accessModes.forEach(mode => {
+                        let badgeClass = 'bg-secondary';
+                        if (mode.includes('ReadWriteOnce')) badgeClass = 'bg-primary';
+                        if (mode.includes('ReadOnlyMany')) badgeClass = 'bg-info';
+                        if (mode.includes('ReadWriteMany')) badgeClass = 'bg-success';
+                        accessModes += `<span class="badge access-mode-badge ${badgeClass}">${mode}</span>`;
+                    });
+                }
+                
+                return `
+                    <tr>
+                        <td>${pv.metadata.name}</td>
+                        <td>
+                            <div class="pvc-status">
+                                <div class="status-indicator ${statusClass}"></div>
+                                ${status}
+                            </div>
+                        </td>
+                        <td>${capacity}</td>
+                        <td>${accessModes}</td>
+                        <td>${storageClass}</td>
+                        <td>${reclaimPolicy}</td>
+                        <td>${claim}</td>
+                        <td>${age}</td>
+                        <td>
+  <div class="action-buttons">
+    <button class="action-btn btn-yaml" onclick="showPVYaml('${pv.metadata.name}')"
+            data-tooltip="View YAML">
+      <i class="fas fa-code"></i> YAML
+    </button>
+    <button class="action-btn btn-delete" onclick="showDeletePVModal('${pv.metadata.name}')"
+            data-tooltip="Delete PV">
+      <i class="fas fa-trash-alt"></i> Delete
+    </button>
+  </div>
+</td>
+                    </tr>
+                `;
+            }).join('');
+        } else {
+            pvTableBody.innerHTML = `
+                <tr>
+                    <td colspan="9" class="text-center">No PVs found</td>
+                </tr>
+            `;
+        }
+    })
+    .catch(error => {
+        pvTableBody.innerHTML = `
+            <tr>
+                <td colspan="9" class="text-center text-danger">Error loading PVs: ${error.message}</td>
+            </tr>
+        `;
+    });
+}
+
+// Create PV
+function createPV() {
+    const pvName = document.getElementById('pvName').value;
+    const capacity = document.getElementById('pvCapacity').value;
+    const accessMode = document.getElementById('pvAccessMode').value;
+    const storageClass = document.getElementById('pvStorageClass').value;
+    const reclaimPolicy = document.getElementById('pvReclaimPolicy').value;
+    const path = document.getElementById('pvPath').value || '/mnt/data';
+    
+    // Prepare PV data
+    const pvData = {
+        pvName,
+        capacity,
+        accessMode,
+        storageClass,
+        reclaimPolicy,
+        path
+    };
+    
+    // Show loading state
+    Swal.fire({
+    title: 'Creating PV',
+    text: `Creating PV ${pvName}...`,
+    icon: 'info',
+    showConfirmButton: false,
+    timer: 2000
+});    
+    // Send to API
+    fetch('/kubernetes/pvs/create', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(pvData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            Swal.fire({
+    title: 'Success',
+    text: `PV ${pvName} created successfully`,
+    icon: 'success',
+    confirmButtonText: 'OK',
+    timer: 1500
+});            // Switch to PVs tab and refresh
+            document.getElementById('pv-tab').click();
+            loadPVs();
+        } else {
+            Swal.fire({
+    title: 'Error',
+    text: `Failed to create PV: ${data.error}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});        }
+    })
+    .catch(error => {
+        Swal.fire({
+        title: 'Error',
+        text: `Failed to create PV: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });    });
+}
+
+// Show delete PV modal
+function showDeletePVModal(pvName) {
+    currentPVName = pvName;
+    document.getElementById('deletePVName').textContent = pvName;
+    $('#deletePVModal').modal('show');
+}
+
+// Show PV YAML
+function showPVYaml(pvName) {
+    fetch(`/kubernetes/pvs/yaml?name=${pvName}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.yaml) {
+            document.getElementById('pvYaml').textContent = data.yaml;
+            $('#viewPVYamlModal').modal('show');
+        } else {
+            Swal.fire({
+    title: 'Error',
+    text: `Failed to load YAML: ${data.error}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});        }
+    })
+    .catch(error => {
+        Swal.fire({
+        title: 'Error',
+        text: `Failed to load YAML: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });    });
+}
+
+// Delete PV
+function deletePV(pvName) {
+    Swal.fire({
+    title: 'Deleting PV',
+    text: `Deleting PV ${pvName}...`,
+    icon: 'info',
+    showConfirmButton: false,
+    timer: 2000
+});    
+    fetch('/kubernetes/pvs/delete', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            pvName
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            Swal.fire({
+    title: 'Success',
+    text: `PV ${pvName} deleted successfully`,
+    icon: 'success',
+    confirmButtonText: 'OK',
+    timer: 1500
+});            loadPVs();
+        } else {
+            Swal.fire({
+    title: 'Error',
+    text: `Failed to delete PV: ${data.error}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});        }
+    })
+    .catch(error => {
+        Swal.fire({
+        title: 'Error',
+        text: `Failed to delete PV: ${error.message}`,
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });    });
+}
+
+// Update PV YAML preview
+function updatePVYamlPreview() {
+    const pvName = document.getElementById('pvName').value || 'example-pv';
+    const capacity = document.getElementById('pvCapacity').value || '1';
+    const accessMode = document.getElementById('pvAccessMode').value || 'ReadWriteOnce';
+    const storageClass = document.getElementById('pvStorageClass').value;
+    const reclaimPolicy = document.getElementById('pvReclaimPolicy').value || 'Retain';
+    const path = document.getElementById('pvPath').value || '/mnt/data';
+    
+    // Generate PV YAML
+    let yaml = `apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ${pvName}
+spec:
+  capacity:
+    storage: ${capacity}Gi
+  accessModes:
+    - ${accessMode}
+  persistentVolumeReclaimPolicy: ${reclaimPolicy}
+  hostPath:
+    path: ${path}
+`;
+    
+    if (storageClass) {
+        yaml += `  storageClassName: ${storageClass}\n`;
+    }
+    
+    document.getElementById('pvYamlPreview').textContent = yaml;
+}
+    
+    // Load StorageClasses
+function loadStorageClasses() {
+  fetch('http://localhost:5000//kubernetes/storage-classes')
+    .then(response => response.json())
+    .then(data => {
+      // 1. Update the StorageClasses table (management page)
+      const tableBody = document.getElementById('storageClassTableBody');
+      tableBody.innerHTML = '';
+      
+      if (data.items && data.items.length > 0) {
+        data.items.forEach(sc => {
+          const row = document.createElement('tr');
+          
+          row.innerHTML = `
+            <td>${sc.metadata.name}</td>
+            <td>${sc.provisioner}</td>
+            <td>
+              <span class="badge ${sc.status === 'Default' ? 'bg-success' : 'bg-secondary'}">
+                ${sc.status}
+              </span>
+            </td>
+            <td>${sc.parameters ? JSON.stringify(sc.parameters) : '-'}</td>
+            <td>
+              <div class="btn-group">
+                ${sc.status !== 'Default' ? 
+                  `<button class="btn btn-sm btn-outline-primary set-default-btn" data-name="${sc.metadata.name}">
+                    Set Default
+                  </button>` : ''}
+                <button class="btn btn-sm btn-outline-danger delete-btn" data-name="${sc.metadata.name}">
+                  Delete
+                </button>
+              </div>
+            </td>
+          `;
+          
+          tableBody.appendChild(row);
+        });
+        
+        // Add event listeners
+        document.querySelectorAll('.set-default-btn').forEach(btn => {
+          btn.addEventListener('click', setDefaultStorageClass);
+        });
+        
+        document.querySelectorAll('.delete-btn').forEach(btn => {
+          btn.addEventListener('click', deleteStorageClass);
+        });
+      } else {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="5" class="text-center">No StorageClasses found</td>
+          </tr>
+        `;
+      }
+
+      // 2. Update the dropdowns in PV/PVC creation forms
+      updateStorageClassDropdowns(data.items || []);
+    })
+    .catch(error => {
+      console.error('Error loading StorageClasses:', error);
+      Swal.fire({
+        title: 'Error',
+        text: 'Failed to load StorageClasses',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    });
+}
+
+// New function to update dropdowns
+function updateStorageClassDropdowns(storageClasses) {
+  // Get all storage class dropdowns
+  const pvcDropdown = document.getElementById('storageClass');
+  const pvDropdown = document.getElementById('pvStorageClass');
+  
+  while (pvcDropdown.options.length > 1) pvcDropdown.remove(1);
+  while (pvDropdown.options.length > 1) pvDropdown.remove(1);
+  
+  // Add new options
+  storageClasses.forEach(sc => {
+    const option = document.createElement('option');
+    option.value = sc.metadata.name;
+    option.textContent = sc.metadata.name;
+    
+    // Mark default storage class
+    if (sc.status === 'Default') {
+      option.textContent += ' (default)';
+    }
+    
+    // Clone the option for both dropdowns
+    pvcDropdown.appendChild(option.cloneNode(true));
+    pvDropdown.appendChild(option.cloneNode(true));
+  });
+}
+// Create StorageClass
+document.getElementById('createStorageClassForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const name = document.getElementById('scName').value;
+  const provisioner = document.getElementById('scProvisioner').value;
+  const isDefault = document.getElementById('scIsDefault').checked;
+  let parameters = {};
+  
+  try {
+    const paramsText = document.getElementById('scParameters').value;
+    if (paramsText) parameters = JSON.parse(paramsText);
+  } catch (error) {
+    Swal.fire({
+      title: 'Error',
+      text: 'Invalid parameters JSON',
+      icon: 'error',
+      confirmButtonText: 'OK'
+    });
+    return;
+  }
+  
+  fetch('/kubernetes/storage-classes/create', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, provisioner, parameters, isDefault })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      $('#createStorageClassModal').modal('hide');
+      Swal.fire({
+        title: 'Success',
+        text: 'StorageClass created successfully',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+      loadStorageClasses();
+    } else {
+      throw new Error(data.error || 'Failed to create StorageClass');
+    }
+  })
+  .catch(error => {
+    Swal.fire({
+      title: 'Error',
+      text: error.message,
+      icon: 'error',
+      confirmButtonText: 'OK'
+    });
+  });
+});
+
+// Set Default StorageClass
+function setDefaultStorageClass(e) {
+  const name = e.target.dataset.name;
+  
+  fetch('/kubernetes/storage-classes/set-default', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      Swal.fire({
+        title: 'Success',
+        text: 'Default StorageClass updated',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+      loadStorageClasses();
+    } else {
+      throw new Error(data.error || 'Failed to set default StorageClass');
+    }
+  })
+  .catch(error => {
+    Swal.fire({
+      title: 'Error',
+      text: error.message,
+      icon: 'error',
+      confirmButtonText: 'OK'
+    });
+  });
+}
+
+// Delete StorageClass
+function deleteStorageClass(e) {
+  const name = e.target.dataset.name;
+  
+  if (!confirm(`Are you sure you want to delete StorageClass ${name}?`)) return;
+  
+  fetch(`/kubernetes/storage-classes/${name}`, {
+    method: 'DELETE'
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      Swal.fire({
+        title: 'Success',
+        text: 'StorageClass deleted successfully',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+      loadStorageClasses();
+    } else {
+      throw new Error(data.error || 'Failed to delete StorageClass');
+    }
+  })
+  .catch(error => {
+    Swal.fire({
+      title: 'Error',
+      text: error.message,
+      icon: 'error',
+      confirmButtonText: 'OK'
+    });
+  });
+}
+
+// Refresh button
+document.getElementById('refreshStorageClasses').addEventListener('click', loadStorageClasses);
+
+// Initial load
+loadStorageClasses();
+    
+    </script>
+
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="../assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Google Maps Plugin -->
+    <script src="../assets/js/plugin/gmaps/gmaps.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="../assets/js/kaiadmin.min.js"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="../assets/js/setting-demo2.js"></script>
+	<script src="/assets/js/script.js"></script>
+  <script>
+    function logout() {
+            Swal.fire({
+                title: 'Logout Confirmation',
+                text: 'Are you sure you want to log out?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#326ce5',
+                cancelButtonColor: '#ff6666',
+                confirmButtonText: 'Yes, log out'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.clear();
+                    window.location.replace("/login");
+                }
+            });
+        }
+  </script>
+<script>
+  function recherche() {
+    var input, filter, items, item, name, i, txtValue;
+    input = document.getElementById("searchInput"); 
+    filter = input.value.toUpperCase();
+    items = document.getElementsByClassName("service-item"); // Target list items
+
+    for (i = 0; i < items.length; i++) {
+        item = items[i];
+        name = item.querySelector(".service-name"); // Target the service name
+        if (name) {
+            txtValue = name.textContent || name.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                item.style.display = "flex"; // Show the item (flex for the list layout)
+            } else {
+                item.style.display = "none"; // Hide the item
+            }
+        }
+    }
+  }
+</script>
+</body>
+
+</html>
+
+
+
+

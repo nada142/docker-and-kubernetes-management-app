@@ -1,0 +1,21 @@
+{
+  "prometheus": {
+    "url": "http://prometheus.monitoring.svc.cluster.local:9090",
+    "scrape_interval": "15s",
+    "sequence_length": 15,
+    "queries": {
+      "cpu": "sum(rate(container_cpu_usage_seconds_total{container!=\"\",container!=\"POD\"}[1m]) by (pod, namespace, node)",
+      "memory": "container_memory_working_set_bytes{container!=\"\",container!=\"POD\"}",
+      "disk": "container_fs_usage_bytes{container!=\"\",container!=\"POD\"}",
+      "network": "rate(container_network_receive_bytes_total[1m])",
+      "restarts": "kube_pod_container_status_restarts_total",
+      "response_time": "histogram_quantile(0.95, sum(rate(http_response_time_seconds_bucket[1m])) by (le, pod, namespace, node)"
+    },
+    "debug": true
+  },
+  "predictor": {
+    "url": "http://predictor.monitoring.svc.cluster.local:8000",
+    "endpoint": "/predict",
+    "timeout": 10000
+  }
+}

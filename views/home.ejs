@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dockube Pilot - Dashboard</title>
+    <meta name="description" content="Docker and Kubernetes management dashboard">
+    <link rel="icon" href="/assets/img/dockube3.png" type="image/x-icon">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/assets/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="/assets/js/core/jquery-3.7.1.min.js" as="script">
+    <link rel="stylesheet" href="../assets/css/home.css">
+
+
+    <!-- Fonts and icons -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="/assets/js/plugin/jsvectormap/world.js"></script>
+    
+    <script src="/assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+        WebFont.load({
+            google: { families: ["Public Sans:300,400,500,600,700"] },
+            custom: {
+                families: [
+                    "Font Awesome 5 Solid",
+                    "Font Awesome 5 Regular",
+                    "Font Awesome 5 Brands",
+                    "simple-line-icons",
+                ],
+                urls: ["assets/css/fonts.min.css"],
+            },
+            active: function() {
+                sessionStorage.fonts = true;
+            },
+        });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="/assets/css/kaiadmin.min.css" />
+    <link rel="stylesheet" href="/assets/css/demo.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar" data-background-color="dark">
+            <div class="sidebar-logo">
+                <div class="logo-header" data-background-color="dark">
+                    <a href="/" class="logo" style="display: flex; align-items: center;">
+                        <img src="assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" height="40" loading="lazy">
+                        <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+                    </a>
+                    <div class="nav-toggle">
+                        <button class="btn btn-toggle toggle-sidebar">
+                            <i class="gg-menu-right"></i>
+                        </button>
+                        <button class="btn btn-toggle sidenav-toggler">
+                            <i class="gg-menu-left"></i>
+                        </button>
+                    </div>
+                    <button class="topbar-toggler more">
+                        <i class="gg-more-vertical-alt"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                <div class="sidebar-content">
+                    <ul class="nav nav-secondary">
+                        <li class="nav-item active">
+                            <a href="/" aria-expanded="false">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/dockerRegistries">
+                                <i class="fas fa-warehouse"></i>
+                                <p>Docker Registries</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/dockerfile_list">
+                                <i class="fas fa-file-code"></i>
+                                <p>Dockerfile</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/dockerimg">
+                                <i class="fas fa-images"></i>
+                                <p>Docker Images</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/dockercontainers">
+                                <i class="fas fa-box"></i>
+                                <p>Docker Containers</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/volumes">
+                                <i class="fas fa-database"></i>
+                                <p>Volumes</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/compose">
+                                <i class="fas fa-cubes"></i>
+                                <p>Docker Compose</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="swarm_list">
+                                <i class="fas fa-project-diagram"></i>
+                                <p>Docker Swarm</p>
+                            </a>
+                        </li>
+                        <!-- In your sidebar HTML -->
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#kubernetesMenu" aria-expanded="false">
+                                <i class="fas fa-dharmachakra"></i>
+                                <p>Kubernetes</p>
+                                <span class="caret"></span>
+                            </a>
+                            <div class="collapse" id="kubernetesMenu">
+                                <ul class="nav nav-collapse">
+                                    <li>
+                                        <a href="/kubernetes/cluster">
+                                            <span class="sub-item">Cluster Setup</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/kubernetes/nodes">
+                                            <span class="sub-item">Nodes</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/kubernetes/deployments">
+                                            <span class="sub-item">Deployments</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/kubernetes/statefulsets">
+                                            <span class="sub-item">StatefulSets</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/kubernetes/services">
+                                            <span class="sub-item">Services</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/kubernetes/pods">
+                                            <span class="sub-item">Pods</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/kubernetes/pvcs">
+                                            <span class="sub-item">Storage</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/kubernetes/configs">
+                                            <span class="sub-item">ConfigMaps && Secrets</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/kubernetes/namespaces">
+                                            <span class="sub-item">Namespaces</span>
+                                        </a>
+                                    </li>
+                                     <li>
+                <a href="/kubernetes/ingresses">
+                    <span class="sub-item">Ingresses</span>
+                </a>
+            </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/cicd_integration">
+                              <i class="fas fa-sync-alt"></i>
+                              <p>CI CD</p>
+                            </a>
+                          </li>
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <p>Logout</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <div class="main-header">
+                <div class="main-header-logo">
+                    <div class="logo-header" data-background-color="dark">
+                        <a href="index.html" class="logo">
+                            <img src="assets/img/dockube3.png" alt="navbar brand" class="navbar-brand" height="40" loading="lazy">
+                        </a>
+                        <div class="nav-toggle">
+                            <button class="btn btn-toggle toggle-sidebar">
+                                <i class="gg-menu-right"></i>
+                            </button>
+                            <button class="btn btn-toggle sidenav-toggler">
+                                <i class="gg-menu-left"></i>
+                            </button>
+                        </div>
+                        <button class="topbar-toggler more">
+                            <i class="gg-more-vertical-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+                    <div class="container-fluid">
+                        <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="submit" class="btn btn-search pe-1">
+                                        <i class="fa fa-search search-icon"></i>
+                                    </button>
+                                </div>
+                                <input type="text" placeholder="Search ..." class="form-control">
+                            </div>
+                        </nav>
+
+                        <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                            <li class="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" aria-haspopup="true">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-search animated fadeIn">
+                                    <form class="navbar-left navbar-form nav-search" action="/search" method="POST">
+                                        <div class="input-group">
+                                            <input type="search" placeholder="Search ..." class="form-control" name="searchTerm">
+                                        </div>
+                                    </form>
+                                </ul>
+                            </li>
+                            <li class="nav-item topbar-user dropdown hidden-caret">
+                                <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="/profile" aria-expanded="false">
+                                    <span class="profile-username">
+                                        <span class="op-7">Hi,</span>
+                                        <span class="fw-bold username-display">Loading...</span>
+                                        <i class="fas fa-ellipsis-h ms-2"></i>
+                                    </span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user animated fadeIn">
+                                    <div class="dropdown-user-scroll scrollbar-outer">
+                                        <li>
+                                            <div class="user-box">
+                                                <div class="avatar-lg">
+                                                    <img src="assets/img/user3.jfif" alt="image profile" class="avatar-img rounded" loading="lazy">
+                                                </div>
+                                                <div class="u-text">
+                                                    <h4>Hizrian</h4>
+                                                    <p class="text-muted">hello@example.com</p>
+                                                    <a href="/profile" class="action-btn btn-blue1 btn-sm">Update Profile</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="container">
+                <div class="page-inner">
+                    <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+                        <div>
+                            <h2 class="fw-bold mb-3">Dashboard</h2>
+                            <h3 class="op-7 mb-2">Welcome Back</h3>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Metrics -->
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="card dashboard-card">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="card-icon images">
+                                                <i class="fas fa-images"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="numbers">
+                                                <p class="card-category">Images    </p>
+                                                <h4 class="card-title images-count loading">&nbsp;</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="/dockerimg" class="text-primary text-decoration-none">
+                                        View all <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                    <i class="fas fa-plus add-icon" onclick="window.location.href='/dockerimg?create=true'"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3">
+                            <div class="card dashboard-card">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="card-icon containers">
+                                                <i class="fas fa-box"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="numbers">
+                                                <p class="card-category">Containers</p>
+                                                <h4 class="card-title containers-count loading">&nbsp;</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="/dockercontainers" class="text-primary text-decoration-none">
+                                        View all <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                    <i class="fas fa-plus add-icon" data-bs-toggle="modal" data-bs-target="#createContainerModal"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3">
+                            <div class="card dashboard-card">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="card-icon volumes">
+                                                <i class="fas fa-database"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="numbers">
+                                                <p class="card-category">Volumes     </p>
+                                                <h4 class="card-title volumes-count loading">&nbsp;</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="/volumes" class="text-primary text-decoration-none">
+                                        View all <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                    <i class="fas fa-plus add-icon" onclick="window.location.href='/volumes?create=true'"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3">
+                            <div class="card dashboard-card">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="card-icon dockerfiles">
+                                                <i class="fas fa-file-code"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="numbers">
+                                                <p class="card-category">Dockerfiles</p>
+                                                <h4 class="card-title dockerfiles-count loading">&nbsp;</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="/dockerfile_list" class="text-primary text-decoration-none">
+                                        View all <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                    <i class="fas fa-plus add-icon" onclick="window.location.href='/dockerfile_list?create=true'"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add this card to your Dashboard Metrics row -->
+                  <div class="row card-container justify-content-center">
+    <div class="col-md-4 col-sm-6">
+        <div class="card dashboard-card alert-card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <div class="card-icon alertmanager">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="numbers">
+                            <p class="card-category">Alerts</p>
+                            <h4 class="card-title alerts-count loading"> </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <div class="card-footer">
+    <div class="d-flex justify-content-between align-items-center">
+        <a href="#" class="text-primary text-decoration-none" id="toggleAlerts">
+            <span id="alertsToggleText">Show Alerts</span>
+            <i class="fas fa-arrow-right ms-1"></i>
+        </a>
+        <span class="badge alert-badge bg-secondary">0 active</span>
+    </div>
+</div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+        <div class="card dashboard-card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <div class="card-icon monitoring">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="numbers">
+                            <p class="card-category">Monitoring</p>
+                            <h4 class="card-title monitoring-status loading"> </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="text-primary text-decoration-none" id="toggleMetrics">
+                    <span id="metricsToggleText">Show Metrics</span>
+                    <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+                    </div>
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card dashboard-card">
+            <div class="card-header gradient-bg">
+                <div class="card-title d-flex justify-content-between align-items-center">
+                    <span><i class="fas fa-robot me-2"></i>Anomaly Predictions</span>
+                    <div>
+                        <button class="btn btn-sm btn-light" id="refreshPredictions">
+                            <i class="fas fa-sync-alt me-1"></i> Refresh
+                        </button>
+                        <button class="btn btn-sm btn-success ms-2" id="startMonitoring">
+                            <i class="fas fa-play me-1"></i> Start Monitoring
+                        </button>
+                        <button class="btn btn-sm btn-danger ms-2" id="stopMonitoring">
+                            <i class="fas fa-stop me-1"></i> Stop
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="anomalyChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="alert alert-info">
+                            <h5><i class="fas fa-info-circle me-2"></i>Current Status</h5>
+                            <div id="currentPrediction">
+                                <p class="text-center py-4">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-2 mb-0">Loading prediction...</p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive mt-3" style="max-height: 200px; overflow-y: auto;">
+                    <table class="table table-hover" id="predictionsTable">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th>Confidence</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="4" class="text-center py-4">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-2 mb-0">Loading predictions...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer bg-light">
+                <small class="text-muted">Last updated: <span id="predictionsLastUpdated">Never</span></small>
+            </div>
+        </div>
+    </div>
+</div>
+                    <!-- Container Stats Chart -->
+                    <div class="row mt-4">
+                        <div class="col-md-8">
+                            <div class="card dashboard-card">
+                                <div class="card-header gradient-bg">
+                                    <div class="card-title d-flex justify-content-between align-items-center text-white">
+                                        <span style=" background-color: #f8f9fa75; /* Light gray background */
+                                        color: #333; /* Dark text for contrast */
+                                        font-weight: 600;">My Container Statistics</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="userContainerStatsChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card dashboard-card">
+                                <div class="card-header gradient-bg">
+                                    <div class="card-title">Docker Compose Status</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="pie-chart-container">
+                                        <canvas id="composePieChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!-- Monitoring Section -->
+<div class="row mt-4" id="metricsSection">
+    <div class="col-md-12">
+        <div class="card dashboard-card">
+            <div class="card-header gradient-bg">
+                <div class="card-title">Cluster Monitoring</div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="monitoring-card">
+                            <h4><i class="fas fa-chart-line"></i> Grafana</h4>
+                            <p>Access cluster metrics and dashboards</p>
+                            <a href="/kubernetes/monitoring/grafana" 
+                               target="_blank" 
+                               class="btn btn-primary"
+                               onclick="startGrafanaPortForward()">
+                                Open Grafana
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="monitoring-card">
+                            <h4><i class="fas fa-chart-bar"></i> Prometheus</h4>
+                            <p>Access raw metrics and alerts</p>
+                            <a href="/kubernetes/monitoring/prometheus" 
+                               target="_blank" 
+                               class="btn btn-primary"
+                               onclick="startPrometheusPortForward()">
+                                Open Prometheus
+                            </a>
+                        </div>
+                    </div>
+      
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Alerts Section -->
+<div class="row mt-4" id="alertsSection">
+    <div class="col-md-12">
+        <div class="card dashboard-card">
+            <div class="card-header gradient-bg">
+                <div class="card-title d-flex justify-content-between align-items-center">
+                    <span><i class="fas fa-bell me-2"></i>Active Alerts (from Prometheus)</span>
+                    <div>
+                        <button class="btn btn-sm btn-light" id="refreshAlerts">
+                            <i class="fas fa-sync-alt me-1"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" id="alertsTable">
+                        <thead class="table-light">
+                            <tr>
+                                <th width="100px">Status</th>
+                                <th width="120px">Severity</th>
+                                <th>Alert Name</th>
+                                <th>Description</th>
+                                <th width="150px">Since</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6" class="text-center py-4">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-2 mb-0">Loading alerts...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer bg-light">
+                <small class="text-muted">Last updated: <span id="alertsLastUpdated">Just now</span></small>
+            </div>
+        </div>
+    </div>
+</div>
+                  
+                </div>
+            </div>
+
+            <div class="modal fade" id="createContainerModal" tabindex="-1" aria-labelledby="createContainerModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="createContainerModalLabel">Create a New Container</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="createContainerForm">
+                        <div class="form-group">
+                          <label for="imageName">Select Image:</label>
+                          <select id="imageName" class="form-control" required></select>
+                        </div>
+                        <div class="form-group">
+                          <label for="containerName">Container Name:</label>
+                          <input type="text" id="containerName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Mount Volumes:</label>
+                          <div id="volumeContainer" class="scrollable-checkbox-list">
+                            <!-- Checkboxes will be dynamically added here -->
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="port">Port (optional):</label>
+                          <input type="number" id="port" class="form-control">
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-pastel-red" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" form="createContainerForm" class="btn btn-blue2">Run Container</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            <!-- Chatbot -->
+            <div id="chatbot-container">
+                <div id="chatbot-toggle">
+                    <img src="../assets/img/dockube3.png" alt="Chatbot Logo" width="50" height="50" loading="lazy">
+                </div>
+            
+                <div id="chatbot-interface">
+                    <div id="chat-header">
+                        <strong>
+                            Docker & Kubernetes Assistant
+                        </strong>
+                        <button id="chat-close">×</button>
+                    </div>
+                
+                    <div id="chat-body">
+                        <div id="chat-messages">
+                            <div class="welcome-message" onclick="toggleWelcomeMessage()">
+                                👋 Welcome! I'm your Docker & Kubernetes Assistant.
+                                Ask me anything about Docker, Kubernetes, and best practices.
+                                <div class="hidden-content">
+                                    Hi! I'm your Docker & Kubernetes Assistant.  
+                                    Ask me anything about Dockerfiles, Kubernetes configurations, and best practices.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div id="chat-input">
+                        <input type="text" id="chat-message" placeholder="Type your question...">
+                        <button id="chat-send">Send</button>
+                    </div>
+                </div>
+            </div>
+
+    
+        </div>
+    </div>
+
+    <!-- Core JS -->
+    <script src="/assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="/assets/js/core/popper.min.js"></script>
+    <script src="/assets/js/core/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="/assets/js/plugin/chart.js/chart.min.js"></script>
+    <script src="/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+    <script src="/assets/js/plugin/chart-circle/circles.min.js"></script>
+    <script src="/assets/js/plugin/datatables/datatables.min.js"></script>
+    <script src="/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+    <script src="/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+    <script src="/assets/js/kaiadmin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     
+    <script>
+        // Initialize tooltips
+        $(function () {
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        });
+    
+        // Authentication check
+        document.addEventListener("DOMContentLoaded", function() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user || !user._id) {
+        window.location.replace("/login");
+        return;
+    }
+
+    // Update UI with user data
+    updateUserUI(user);
+    
+    // Load dashboard data
+    loadDashboardData(user._id);
+    
+   
+    // Initialize real-time updates
+    initRealTimeUpdates(user._id);
+    
+    setTimeout(() => {
+        createUserContainerChart(user._id);
+        createComposePieChart();
+    }, 500);
+});
+        function updateUserUI(user) {
+            // Update navbar username
+            document.querySelectorAll('.username-display, .u-text h4').forEach(el => {
+                el.textContent = user.username;
+            });
+            
+            // Update email
+            const emailDisplay = document.querySelector('.u-text .text-muted');
+            if (emailDisplay) emailDisplay.textContent = user.email;
+            
+            // Update profile image if available
+            const profileImage = document.querySelector('.avatar-img');
+            if (profileImage && user.profileImage) {
+                profileImage.src = user.profileImage;
+                profileImage.alt = `${user.username}'s profile picture`;
+            }
+        }
+    
+        async function loadDashboardData(userId) {
+    try {
+        // Load counts
+        const [imagesRes, containersRes, volumesRes, dockerfilesRes, composeRes] = await Promise.all([
+            fetch(`/count/images?userId=${userId}`),
+            fetch(`/count/containers?userId=${userId}`),
+            fetch(`/count/volumes?userId=${userId}`),
+            fetch(`/count/dockerfiles?userId=${userId}`),
+            fetch('/compose/stats')
+        ]);
+
+        const imagesCount = await imagesRes.json();
+        const containersCount = await containersRes.json();
+        const volumesCount = await volumesRes.json();
+        const dockerfilesCount = await dockerfilesRes.json();
+        const composeStats = await composeRes.json();
+        
+        // Update counts
+        updateCounter('.images-count', imagesCount.count);
+        updateCounter('.containers-count', containersCount.count);
+        updateCounter('.volumes-count', volumesCount.count);
+        updateCounter('.dockerfiles-count', dockerfilesCount.count);
+
+
+    } catch (error) {
+        console.error('Error loading dashboard data:', error);
+        showErrorToast('Failed to load dashboard data');
+    }
+}
+
+
+
+
+
+async function createUserContainerChart(userId) {
+    try {
+        const canvas = document.getElementById('userContainerStatsChart');
+        if (!canvas) {
+            console.error('Chart canvas element not found');
+            return;
+        }
+
+        // Show loading state
+        canvas.innerHTML = '<div class="text-center py-5">Loading chart data...</div>';
+
+        const response = await fetch(`/api/stats?userId=${userId}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const stats = await response.json();
+        console.log('Received stats:', stats); // Debug log
+        
+        if (!stats || typeof stats.running === 'undefined') {
+            throw new Error('Invalid stats data received');
+        }
+
+        // Clear loading state
+        canvas.innerHTML = '';
+
+        const ctx = canvas.getContext('2d');
+
+        // Define colors
+        const colors = {
+            running: '#A2D2FF',
+            exited: '#CABDFF',
+            created: '#B5EAD7',
+            paused: '#FFDAC1',
+            restarting: '#E2F0CB'
+        };
+
+        // Prepare data for chart
+        const chartData = {
+            labels: ['Running', 'Exited', 'Created', 'Paused', 'Restarting'],
+            datasets: [{
+                label: 'Container Status',
+                data: [
+                    stats.running || 0,
+                    stats.exited || 0,
+                    stats.created || 0,
+                    stats.paused || 0,
+                    stats.restarting || 0
+                ],
+                backgroundColor: [
+                    colors.running,
+                    colors.exited,
+                    colors.created,
+                    colors.paused,
+                    colors.restarting
+                ],
+                borderColor: [
+                    '#8fb3f0',
+                    '#CABDFF',
+                    '#C7CEEA',
+                    '#FFB7B2',
+                    '#D0E6A5'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return `${context.dataset.label}: ${context.raw}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0,
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+
+    } catch (error) {
+        console.error('Error creating user container chart:', error);
+        const canvas = document.getElementById('userContainerStatsChart');
+        if (canvas) {
+            canvas.innerHTML = `<div class="text-center py-5 text-danger">
+                Failed to load chart data: ${error.message}
+            </div>`;
+        }
+        showErrorToast('Failed to load container statistics');
+    }
+}
+
+
+  
+async function createComposePieChart() {
+            try {
+                const response = await fetch('/compose/stats');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch compose stats');
+                }
+                
+                const stats = await response.json();
+                const ctx = document.getElementById('composePieChart').getContext('2d');
+                
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Running', 'Stopped', 'Created', 'Error'],
+                        datasets: [{
+                            data: [
+                                stats.running || 0,
+                                stats.stopped || 0,
+                                stats.created || 0,
+                                stats.error || 0
+                            ],
+                            backgroundColor: [
+                                '#A2D2FF',  // Running - blue
+                                '#CABDFF',  // Stopped - pink
+                                '#B5EAD7',  // Paused - mint
+                                '#FF9AA2'   // Error - coral
+                            ],
+                            borderColor: [
+                                '#8FB3F0',
+                                '#FFAFCC',
+                                '#A8D8B9',
+                                '#FF8A98'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.raw || 0;
+                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                        const percentage = Math.round((value / total) * 100);
+                                        return `${label}: ${value} (${percentage}%)`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Error creating compose pie chart:', error);
+                const container = document.getElementById('composePieChart');
+                if (container) {
+                    container.innerHTML = '<div class="text-center py-5">Failed to load compose statistics</div>';
+                }
+            }
+        }
+
+
+
+function getStatusColor(status) {
+            switch(status.toLowerCase()) {
+                case 'success': return 'success';
+                case 'failed': return 'danger';
+                case 'running': return 'primary';
+                case 'pending': return 'warning';
+                default: return 'secondary';
+            }
+        }
+    
+        function initRealTimeUpdates(userId) {
+    try {
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        const socket = new WebSocket(`${protocol}//${window.location.hostname}:5000/realtime`);
+        
+        socket.onopen = () => {
+            socket.send(JSON.stringify({ 
+                type: 'subscribe', 
+                userId: userId ,
+                channels: ['monitoring']
+            }));
+        };
+        
+        socket.onmessage = (event) => {
+            try {
+                const data = JSON.parse(event.data);
+                
+                switch(data.type) {
+                    case 'imageCount':
+                        updateCounter('.images-count', data.count);
+                        break;
+                    case 'containerCount':
+                        updateCounter('.containers-count', data.count);
+                        break;
+                    case 'volumeCount':
+                        updateCounter('.volumes-count', data.count);
+                        break;
+                    case 'dockerfileCount':
+                        updateCounter('.dockerfiles-count', data.count);
+                        break;
+                    case 'activity':
+                        addActivityToTable(data.activity);
+                        break;
+                    case 'containerStats':
+                        updateContainerChart(data.stats);
+                        break;
+                    case 'monitoringStatus':
+                        updateCounter('.monitoring-status', data.status);
+                        break;
+                }
+            } catch (error) {
+                console.error('Error processing WebSocket message:', error);
+            }
+        };
+        
+        socket.onerror = (error) => {
+            console.error('WebSocket error:', error);
+        };
+    } catch (error) {
+        console.error('Error initializing WebSocket:', error);
+    }
+}
+        function updateCounter(selector, value) {
+            const element = document.querySelector(selector);
+            if (element) {
+                element.classList.remove('loading');
+                element.textContent = value;
+                
+                // Add animation class
+                element.classList.add('counter-update');
+                setTimeout(() => {
+                    element.classList.remove('counter-update');
+                }, 500);
+            }
+        }
+    
+        function updateContainerChart(stats) {
+            const chart = Chart.getChart('userContainerStatsChart');
+            if (chart) {
+                chart.data.datasets[0].data = [stats.running, stats.exited, stats.created];
+                chart.update();
+            }
+        }
+    
+        
+        function showErrorToast(message) {
+            $.notify({
+                icon: 'fas fa-exclamation-circle',
+                title: 'Error: ',
+                message: message
+            }, {
+                type: 'danger',
+                placement: {
+                    from: 'top',
+                    align: 'right'
+                },
+                time: 5000
+            });
+        }
+    
+        function logout() {
+            Swal.fire({
+                title: 'Logout Confirmation',
+                text: 'Are you sure you want to log out?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#326ce5',
+                cancelButtonColor: '#ff6666',
+                confirmButtonText: 'Yes, log out'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.clear();
+                    window.location.replace("/login");
+                }
+            });
+        }
+    
+
+ 
+      
+      </script>
+ <script>
+$(document).ready(function() {
+    let currentPortForward = null;
+    
+    initPrometheusAlerts();
+
+function initPrometheusAlerts() {
+    // Add error boundary
+    try {
+        checkPrometheusStatus();
+        setInterval(checkPrometheusStatus, 30000);
+        
+        $('#toggleAlerts').click(function(e) {
+            e.preventDefault();
+            try {
+                toggleAlertsSection();
+            } catch (error) {
+                console.error('Toggle error:', error);
+                showAlert('Failed to toggle alerts view', 'danger');
+            }
+        });
+        
+        $('#refreshAlerts').click(function() {
+            $(this).prop('disabled', true).html('<i class="fas fa-sync-alt fa-spin"></i> Refreshing');
+            try {
+                loadActiveAlerts();
+            } catch (error) {
+                console.error('Refresh error:', error);
+                showAlert('Failed to refresh alerts', 'danger');
+            } finally {
+                setTimeout(() => {
+                    $(this).prop('disabled', false).html('<i class="fas fa-sync-alt"></i> Refresh');
+                }, 1000);
+            }
+        });
+    } catch (error) {
+        console.error('Prometheus alerts init failed:', error);
+        $('.alertmanager').addClass('bg-danger');
+        $('.alerts-count').text('Error').removeClass('loading');
+    }
+}
+
+function checkPrometheusStatus() {
+    $.get('/kubernetes/monitoring/status')
+        .done(function(data) {
+            updatePrometheusStatusUI(data);
+            if (data.prometheus) {
+                updateAlertBadge();
+            }
+        })
+        .fail(function() {
+            $('.alertmanager').removeClass('bg-success bg-danger').addClass('bg-warning');
+            $('.alerts-count').text('Error').removeClass('loading');
+        });
+}
+
+function updatePrometheusStatusUI(data) {
+    const statusClass = data.prometheus ? 'bg-success' : 'bg-danger';
+    const statusText = data.prometheus ? 'Active' : 'Inactive';
+    
+    $('.alertmanager')
+        .removeClass('bg-success bg-danger bg-warning')
+        .addClass(statusClass);
+    $('.alerts-count')
+        .text(statusText)
+        .removeClass('loading');
+}
+
+function loadActiveAlerts() {
+    const alertsTable = $('#alertsTable tbody');
+    alertsTable.html(`
+        <tr>
+            <td colspan="6" class="text-center py-4">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-2 mb-0">Loading alerts...</p>
+            </td>
+        </tr>
+    `);
+    
+    $.get('/kubernetes/monitoring/prometheus/alerts')
+        .done(function(data) {
+            renderAlerts(data);
+            updateLastUpdated();
+        })
+        .fail(function() {
+            alertsTable.html(`
+                <tr>
+                    <td colspan="6" class="text-center py-4 text-danger">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        Failed to load alerts
+                    </td>
+                </tr>
+            `);
+        });
+}
+
+function updateAlertBadge() {
+    $.get('/kubernetes/monitoring/prometheus/alerts')
+        .done(function(data) {
+            const activeAlerts = data.filter(alert => alert.status.state === 'active').length;
+            $('.alert-badge')
+                .text(activeAlerts + ' active')
+                .toggleClass('bg-danger', activeAlerts > 0)
+                .toggleClass('bg-secondary', activeAlerts === 0);
+            
+            $('.alerts-count')
+                .text(activeAlerts)
+                .removeClass('loading')
+                .toggleClass('text-danger', activeAlerts > 0);
+        })
+        .fail(function() {
+            console.error('Failed to load alerts from Prometheus');
+        });
+}
+
+  
+    function renderAlerts(alerts) {
+        const container = $('#alertsContainer');
+        
+        if (alerts.length === 0) {
+            container.html(`
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle me-2"></i>
+                    No active alerts
+                </div>
+            `);
+            updateAlertBadge(0);
+            return;
+        }
+        
+        let html = '';
+        alerts.forEach(alert => {
+            const severity = alert.labels.severity || 'warning';
+            const startTime = new Date(alert.startsAt);
+            const timeAgo = timeSince(startTime);
+            const state = alert.status.state === 'firing' ? 'Firing' : 'Pending';
+            
+            html += `
+                <div class="alert alert-${severity === 'critical' ? 'danger' : 'warning'} mb-2">
+                    <div class="d-flex justify-content-between">
+                        <strong>${alert.labels.alertname || 'Unknown Alert'}</strong>
+                        <span class="badge bg-${state === 'Firing' ? 'danger' : 'warning'}">
+                            ${state}
+                        </span>
+                    </div>
+                    <p class="mb-1">${alert.annotations?.description || alert.annotations?.summary || 'No description available'}</p>
+                    <div class="d-flex justify-content-between small">
+                        <span>${alert.labels.instance || ''}</span>
+                        <span title="${startTime.toLocaleString()}">${timeAgo} ago</span>
+                    </div>
+                </div>
+            `;
+        });
+        
+        container.html(html);
+        updateAlertBadge(alerts.length);
+    }
+
+   
+    function toggleAlertsSection() {
+        $('#alertsSection').slideToggle(200, function() {
+            $('#alertsToggleText').text($(this).is(':visible') ? 'Hide Alerts' : 'Show Alerts');
+        });
+    }
+
+    function timeSince(date) {
+        const seconds = Math.floor((new Date() - date) / 1000);
+        let interval = Math.floor(seconds / 31536000);
+        if (interval >= 1) return interval + "y";
+        interval = Math.floor(seconds / 2592000);
+        if (interval >= 1) return interval + "mo";
+        interval = Math.floor(seconds / 86400);
+        if (interval >= 1) return interval + "d";
+        interval = Math.floor(seconds / 3600);
+        if (interval >= 1) return interval + "h";
+        interval = Math.floor(seconds / 60);
+        if (interval >= 1) return interval + "m";
+        return Math.floor(seconds) + "s";
+    }
+
+    function updateLastUpdated() {
+        $('#alertsLastUpdated').text(new Date().toLocaleTimeString());
+    }
+
+    function showAlert(message, type) {
+        const alert = $(`
+            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        `);
+        $('#alertsContainer').prepend(alert);
+        setTimeout(() => alert.alert('close'), 5000);
+    }
+
+
+
+
+    function showAlertToast(message, type) {
+        const toast = $(`
+            <div class="toast align-items-center text-white bg-${type} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        `);
+        
+        $('#toastContainer').append(toast);
+        new bootstrap.Toast(toast[0]).show();
+        
+        setTimeout(() => {
+            toast.remove();
+        }, 5000);
+    }
+
+    // Monitoring functionality
+    function checkMonitoringStatus() {
+        $.get('/kubernetes/monitoring/status', function(data) {
+            if (data.grafana && data.prometheus) {
+                updateMonitoringStatus('Active', 'success');
+            } else {
+                updateMonitoringStatus('Inactive', 'danger');
+            }
+        }).fail(function() {
+            updateMonitoringStatus('Error', 'warning');
+        });
+    }
+
+    function updateMonitoringStatus(text, type) {
+        $('.monitoring-status').text(text);
+        $('.monitoring')
+            .removeClass('bg-success bg-danger bg-warning')
+            .addClass(`bg-${type}`);
+    }
+
+    // Toggle metrics section visibility
+    $('#toggleMetrics').click(function(e) {
+        e.preventDefault();
+        $('#metricsSection').toggle();
+        $('#metricsToggleText').text(function(i, text) {
+            return text === "Show Metrics" ? "Hide Metrics" : "Show Metrics";
+        });
+    });
+
+    function cleanupPortForward() {
+        if (currentPortForward) {
+            currentPortForward.kill();
+            currentPortForward = null;
+        }
+    }
+
+ 
+// Global variable to track active port-forwards
+const activePortForwards = {};
+async function verifyServiceAccess(endpoint, port) {
+    try {
+        const response = await fetch(`/kubernetes/monitoring/verify?port=${port}&endpoint=${endpoint}`);
+        const data = await response.json();
+        if (!data.available) {
+            throw new Error(`Service ${endpoint} not available`);
+        }
+        return true;
+    } catch (error) {
+        console.error('Verification failed:', error);
+        showAlert(`Cannot connect to ${endpoint}: ${error.message}`, 'danger');
+        return false;
+    }
+}
+window.startGrafanaPortForward = async function(event) {
+  event.preventDefault();
+  
+  try {
+    // Show loading state
+    const btn = $(event.target).hasClass('btn') ? $(event.target) : $(event.target).closest('.btn');
+    btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Connecting...');
+    
+    // Start port-forward
+    const response = await fetch('/kubernetes/monitoring/grafana');
+    
+    if (response.redirected) {
+      window.open(response.url, '_blank');
+    } else {
+      throw new Error('Failed to establish connection');
+    }
+  } catch (error) {
+    alert(`Error: ${error.message}`);
+  } finally {
+    btn.prop('disabled', false).html('Open Grafana');
+  }
+};
+window.startPrometheusPortForward = async function(event) {
+    event.preventDefault();
+    try {
+        if (!await verifyServiceAccess('prometheus', 9090)) return;
+        
+        const response = await fetch('/kubernetes/monitoring/prometheus');
+        if (!response.ok) throw new Error('Failed to start port-forward');
+        
+        setTimeout(() => {
+            window.open(response.url, '_blank');
+        }, 1000);
+    } catch (error) {
+        showAlert(`Prometheus error: ${error.message}`, 'danger');
+    }
+};
+
+    window.viewAlertDetails = function(alertName) {
+        alert(`Details for alert: ${alertName}`);
+    };
+
+    // Initial setup
+    checkMonitoringStatus();
+    setInterval(checkMonitoringStatus, 30000);
+});
+
+
+
+</script>
+
+<script>
+// Anomaly Prediction UI
+let anomalyChart = null;
+
+async function loadPredictions() {
+    try {
+        const response = await fetch('/kubernetes/anomaly/predictions');
+        const data = await response.json();
+        
+        updatePredictionsTable(data.predictions);
+        updateAnomalyChart(data.predictions);
+        
+        if (data.predictions.length > 0) {
+            updateCurrentPrediction(data.predictions[0]);
+            document.getElementById('predictionsLastUpdated').textContent = 
+                new Date(data.lastUpdated).toLocaleString();
+        }
+    } catch (error) {
+        console.error('Failed to load predictions:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Failed to load predictions',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    }
+}
+
+function updateCurrentPrediction(prediction) {
+    const container = document.getElementById('currentPrediction');
+    
+    const alertClass = prediction.anomaly ? 'danger' : 'success';
+    const icon = prediction.anomaly ? 'exclamation-triangle' : 'check-circle';
+    
+    container.innerHTML = `
+        <div class="alert alert-${alertClass}">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="fas fa-${icon} me-2"></i>
+                    ${prediction.anomaly ? 'Anomaly Detected' : 'Normal Operation'}
+                </h5>
+                <span class="badge bg-${alertClass}">
+                    ${(prediction.confidence * 100).toFixed(1)}%
+                </span>
+            </div>
+            <div class="mt-2">
+                <small>Timestamp: ${new Date(prediction.timestamp).toLocaleString()}</small>
+            </div>
+        </div>
+    `;
+}
+
+function updatePredictionsTable(predictions) {
+    const tbody = document.querySelector('#predictionsTable tbody');
+    tbody.innerHTML = '';
+    
+    if (predictions.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="4" class="text-center py-4">
+                    No predictions available
+                </td>
+            </tr>
+        `;
+        return;
+    }
+    
+    // Only show first 3 rows initially (scroll will show more)
+    predictions.slice(0, 10).forEach((pred, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${new Date(pred.timestamp).toLocaleTimeString()}</td>
+            <td>
+                <span class="badge bg-${pred.anomaly ? 'danger' : 'success'}">
+                    ${pred.anomaly ? 'Anomaly' : 'Normal'}
+                </span>
+            </td>
+            <td>
+                <div class="progress" style="height: 20px;">
+                    <div class="progress-bar bg-${pred.anomaly ? 'danger' : 'success'}" 
+                         role="progressbar" 
+                         style="width: ${pred.confidence * 100}%">
+                        ${(pred.confidence * 100).toFixed(1)}%
+                    </div>
+                </div>
+            </td>
+            <td>
+                <button class="btn btn-sm btn-outline-primary" onclick="showPredictionDetails(${JSON.stringify(pred).replace(/"/g, '&quot;')})">
+                    <i class="fas fa-info-circle"></i> Details
+                </button>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+function updateAnomalyChart(predictions) {
+    const ctx = document.getElementById('anomalyChart').getContext('2d');
+    
+    // Prepare data - we'll use binary anomaly detection (0 or 1)
+    const labels = predictions.map(p => new Date(p.timestamp).toLocaleTimeString()).reverse();
+    const anomalyPoints = predictions.map(p => p.anomaly ? 1 : 0).reverse();
+    
+    // Create point styles array (red for anomalies, blue for normal)
+    const pointBackgroundColors = predictions.map(p => 
+        p.anomaly ? 'rgba(255, 99, 132, 1)' : 'rgba(54, 162, 235, 1)'
+    ).reverse();
+    
+    if (anomalyChart) {
+        anomalyChart.destroy();
+    }
+    
+    anomalyChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Anomaly Status',
+                data: anomalyPoints,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                borderWidth: 1,
+                pointRadius: 5,
+                pointHoverRadius: 7,
+                pointBackgroundColor: pointBackgroundColors,
+                pointBorderColor: pointBackgroundColors,
+                fill: true,
+                stepped: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 1,
+                    ticks: {
+                        callback: function(value) {
+                            return value === 1 ? 'Anomaly' : 'Normal';
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Status'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Time'
+                    }
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const pred = predictions[predictions.length - 1 - context.dataIndex];
+                            return [
+                                `Status: ${pred.anomaly ? 'Anomaly' : 'Normal'}`,
+                                `Confidence: ${(pred.confidence * 100).toFixed(1)}%`,
+                                `Time: ${new Date(pred.timestamp).toLocaleTimeString()}`
+                            ];
+                        }
+                    }
+                },
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+}
+
+function showPredictionDetails(prediction) {
+    Swal.fire({
+        title: `Prediction Details (${new Date(prediction.timestamp).toLocaleString()})`,
+        html: `
+            <div class="text-start">
+                <p><strong>Status:</strong> <span class="badge bg-${prediction.anomaly ? 'danger' : 'success'}">${
+                    prediction.anomaly ? 'Anomaly' : 'Normal'
+                }</span></p>
+                <p><strong>Confidence:</strong> ${(prediction.confidence * 100).toFixed(1)}%</p>
+                <p><strong>Model:</strong> ${prediction.model || 'LSTM'}</p>
+            </div>
+        `,
+        icon: prediction.anomaly ? 'warning' : 'success',
+        confirmButtonText: 'Close'
+    });
+}
+
+// Event listeners
+document.getElementById('refreshPredictions').addEventListener('click', loadPredictions);
+document.getElementById('startMonitoring').addEventListener('click', async () => {
+    try {
+        const response = await fetch('/kubernetes/anomaly/monitoring/start', {
+            method: 'POST'
+        });
+        const result = await response.json();
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Monitoring started',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        loadPredictions();
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Failed to start monitoring',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    }
+});
+
+document.getElementById('stopMonitoring').addEventListener('click', async () => {
+    try {
+        const response = await fetch('/kubernetes/anomaly/monitoring/stop', {
+            method: 'POST'
+        });
+        const result = await response.json();
+        Swal.fire({
+            icon: 'info',
+            title: 'Info',
+            text: 'Monitoring stopped',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Failed to stop monitoring',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    }
+});
+
+// Initial load
+loadPredictions();
+</script> 
+            <script>
+              document.addEventListener('DOMContentLoaded', function () {
+                  const chatbotToggle = document.getElementById('chatbot-toggle');
+                  const chatbotInterface = document.getElementById('chatbot-interface');
+                  const chatClose = document.getElementById('chat-close');
+                  const chatBody = document.getElementById('chat-body');
+                  const chatMessages = document.getElementById('chat-messages');
+                  const chatMessageInput = document.getElementById('chat-message');
+                  const chatSendButton = document.getElementById('chat-send');
+            
+                  // Toggle Chat Interface
+                  chatbotToggle.addEventListener('click', () => {
+                      chatbotInterface.style.display = 'block';
+                  });
+            
+                  // Close Chat Interface
+                  chatClose.addEventListener('click', () => {
+                      chatbotInterface.style.display = 'none';
+                  });
+            
+                  // Send Message to Chatbot
+                  chatSendButton.addEventListener('click', async () => {
+                      const message = chatMessageInput.value.trim();
+                      if (message) {
+                          // Add User Message to Chat
+                          chatMessages.innerHTML += `<div class="message"><strong>You:</strong> ${message}</div>`;
+                          chatMessageInput.value = '';
+            
+                          // Show Loading Spinner
+                          chatMessages.innerHTML += `<div id="loading-spinner">Loading...</div>`;
+            
+                          // Call Backend API
+                          try {
+                              const response = await fetch('/api/chat', {
+                                  method: 'POST',
+                                  headers: { 'Content-Type': 'application/json' },
+                                  body: JSON.stringify({ message })
+                              });
+                              const data = await response.json();
+            
+                              // Remove Loading Spinner and Add Bot Response
+                              document.getElementById('loading-spinner').remove();
+                              chatMessages.innerHTML += `<div class="message"><strong>Assistant:</strong> ${data.response}</div>`;
+                          } catch (error) {
+                              console.error('Error:', error);
+                              chatMessages.innerHTML += `<div class="message"><strong>Error:</strong> Failed to get response.</div>`;
+                          }
+            
+                          // Scroll to Bottom of Chat
+                          chatBody.scrollTop = chatBody.scrollHeight;
+                      }
+                  });
+            
+                  // Allow Pressing "Enter" to Send a Message
+                  chatMessageInput.addEventListener('keypress', (e) => {
+                      if (e.key === 'Enter') {
+                          chatSendButton.click();
+                      }
+                  });
+              });
+            </script>
+        
+
+            </div>
+          </div>
+  
+        </div>
+  
+      
+        <!-- End Custom template -->
+      </div>
+
+
+</body>
+<script src="/assets/js/core/jquery-3.7.1.min.js"></script>
+<script src="/assets/js/core/popper.min.js"></script>
+<script src="/assets/js/core/bootstrap.min.js"></script>
+
+<!-- jQuery Scrollbar -->
+<script src="/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+<!-- Chart JS -->
+<script src="/assets/js/plugin/chart.js/chart.min.js"></script>
+
+<!-- jQuery Sparkline -->
+<script src="/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+<!-- Chart Circle -->
+<script src="/assets/js/plugin/chart-circle/circles.min.js"></script>
+
+<!-- Datatables -->
+<script src="/assets/js/plugin/datatables/datatables.min.js"></script>
+
+<!-- Bootstrap Notify -->
+<script src="/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+
+<!-- Sweet Alert -->
+<script src="/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+<!-- Kaiadmin JS -->
+<script src="/assets/js/kaiadmin.min.js"></script>
+
+<!-- Kaiadmin DEMO methods, don't include it in your project! -->
+
+
+
+</html>

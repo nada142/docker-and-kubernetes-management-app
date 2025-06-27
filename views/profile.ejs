@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Profile</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <link
+      rel="icon"
+      href="../assets/img/dockube3.png"
+      type="image/x-icon"
+    />
+<!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.min.css">
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["../assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+<style>
+  /* Chatbot Container */
+  #chatbot-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+  }
+
+  /* Chatbot Toggle Button (Circle with Logo) */
+  #chatbot-toggle {
+      width: 70px;
+      height: 70px;
+      background: #1e90ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  #chatbot-toggle img {
+      width: 50px;
+      height: 50px;
+  }
+
+
+/* Chatbot Styling */
+#chatbot-interface {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 450px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* Chat Header */
+#chat-header {
+  background: #1e90ff;
+  color: white;
+  padding: 15px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+#chat-header img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+#chat-header strong {
+  display: flex;
+  align-items: center;
+}
+
+#chat-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Chat Body */
+#chat-body {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  background: white;
+}
+
+/* Chat Messages */
+.chat-message {
+  background: #e9ecef;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  width: fit-content;
+  max-width: 80%;
+  font-size: 14px;
+}
+
+.bot-message {
+  background: #d1ecf1;
+  color: #0c5460;
+  align-self: flex-start;
+}
+
+/* Welcome Message Styling */
+.welcome-message {
+  background: #1e90ff;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.welcome-message:hover {
+  background: #0056b3;
+}
+
+.hidden-content {
+  display: none; 
+  margin-top: 5px;
+  background: white;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 14px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat Input */
+#chat-input {
+  display: flex;
+  padding: 10px;
+  background: #f8f9fa;
+  border-top: 1px solid #ddd;
+}
+
+#chat-message {
+  flex-grow: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+#chat-send {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin-left: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#chat-send:hover {
+  background: #0056b3;
+}
+.nav-item i {
+    color: rgba(255, 255, 255, 0.937) !important; 
+    font-size: 18px;
+}
+
+
+/* Help icon base style */
+.help-icon {
+  cursor: help;
+  display: inline-block;
+  margin-left: 4px;
+  position: relative;
+}
+
+.help-icon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 100%;        
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 400px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  z-index: 100;   
+ 
+}
+
+
+
+.help-icon:hover::after {
+  opacity: 1;
+  visibility: visible;
+  top: calc(100% + 5px);  
+}
+
+.input-group .help-icon {
+  background: #f8f9fa;
+  border-left: 1px solid #ced4da;
+  padding: 0 10px;
+}
+</style>
+
+<style>
+  .swal2-show {
+    animation: swal2-show 0.3s ease-out forwards;
+  }
+  
+  .swal2-hide {
+    animation: swal2-hide 0.15s ease-out forwards;
+  }
+  
+  @keyframes swal2-show {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes swal2-hide {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.98);
+    }
+  }
+  
+  /* Success/Error icon animations */
+  .swal2-success [class^=swal2-success-line] {
+    animation: swal2-success-animate 0.75s;
+  }
+  
+  .swal2-error [class^=swal2-x-mark-line] {
+    animation: swal2-error-animate 0.5s;
+  }
+  
+  /* Backdrop styling - ensures proper removal */
+  .swal2-backdrop-show {
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: background-color 0.1s;
+  }
+  
+  .swal2-backdrop-hide {
+    background-color: transparent !important;
+  }
+  
+  body.swal2-shown {
+    overflow-y: auto !important;
+  }
+  </style>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+   
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+	  <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+			<a href="/" class="logo" style="display: flex; align-items: center;">
+                <img
+                  src="assets/img/dockube3.png"
+                  alt="navbar brand"
+                  class="navbar-brand"
+                  height="40"
+                />
+                <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+              </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <li class="nav-item">
+                <a href="/" aria-expanded="false">
+                  <i class="fas fa-tachometer-alt"></i> <!-- Dashboard icon -->
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockerRegistries">
+                  <i class="fas fa-warehouse"></i> <!-- Registry icon -->
+                  <p>Docker Registries</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockerfile_list">
+                  <i class="fas fa-file-code"></i> <!-- Code file icon for Dockerfile -->
+                  <p>Dockerfile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockerimg">
+                  <i class="fas fa-images"></i> <!-- Images icon -->
+                  <p>Docker Images</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockercontainers">
+                  <i class="fas fa-box"></i> <!-- Box icon for containers -->
+                  <p>Docker Containers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/volumes">
+                  <i class="fas fa-database"></i> <!-- Database icon for Volumes -->
+                  <p>Volumes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/compose">
+                  <i class="fas fa-cubes"></i> <!-- Stacked cubes for Compose -->
+                  <p>Docker Compose</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="swarm_list">
+                    <i class="fas fa-project-diagram"></i> <!-- Stacked cubes for Compose -->
+                  <p>Docker Swarm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#kubernetesMenu" aria-expanded="false">
+                    <i class="fas fa-dharmachakra"></i>
+                    <p>Kubernetes</p>
+                    <span class="caret"></span>
+                </a>
+                <div class="collapse" id="kubernetesMenu">
+                    <ul class="nav nav-collapse">
+                        <li>
+                            <a href="/kubernetes/cluster">
+                                <span class="sub-item">Cluster Setup</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/nodes">
+                                <span class="sub-item">Nodes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/deployments">
+                                <span class="sub-item">Deployments</span>
+                            </a>
+                        </li>
+                        <li>
+                          <a href="/kubernetes/statefulsets">
+                              <span class="sub-item">StatefulSets</span>
+                          </a>
+                      </li>
+                        <li>
+                            <a href="/kubernetes/services">
+                                <span class="sub-item">Services</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/pods">
+                                <span class="sub-item">Pods</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/pvcs">
+                                <span class="sub-item">Storage</span>
+                            </a>
+                        </li>
+                        <li>
+                          <a href="/kubernetes/configs">
+                              <span class="sub-item">ConfigMaps && Secrets</span>
+                          </a>
+                      </li>
+                        <li>
+                            <a href="/kubernetes/namespaces">
+                                <span class="sub-item">Namespaces</span>
+                            </a>
+                        </li>
+                         <li>
+                <a href="/kubernetes/ingresses">
+                    <span class="sub-item">Ingresses</span>
+                </a>
+            </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+              <a href="/cicd_integration">
+                <i class="fas fa-sync-alt"></i>
+                <p>CI CD</p>
+              </a>
+            </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#" onclick="logout()">
+                  <i class="fas fa-sign-out-alt"></i> <!-- Logout icon -->
+                  <p>Logout</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+
+      <div class="main-panel">
+        <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+              <a href="../index.html" class="logo">
+                <img
+                  src="../assets/img/dockube3.png"
+                  alt="navbar brand"
+                  class="navbar-brand"
+                />
+              </a>
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav
+            class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+          >
+            <div class="container-fluid">
+              <nav
+                class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
+              >
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button type="submit" class="btn btn-search pe-1">
+                      <i class="fa fa-search search-icon"></i>
+                    </button>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Search ..."
+                    class="form-control"
+                  />
+                </div>
+              </nav>
+
+              <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                <li
+                  class="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none"
+                >
+                  <a
+                    class="nav-link dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    href="#"
+                    role="button"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    <i class="fa fa-search"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-search animated fadeIn">
+                    <form class="navbar-left navbar-form nav-search">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          placeholder="Search ..."
+                          class="form-control"
+                        />
+                      </div>
+                    </form>
+                  </ul>
+                </li>
+                
+
+                <li class="nav-item topbar-user dropdown hidden-caret">
+                    <a
+                      class="dropdown-toggle profile-pic"
+                      data-bs-toggle="dropdown"
+                      href="/profile"
+                      aria-expanded="false"
+                    >
+                      
+                      <span class="profile-username">
+                        <span class="op-7">Hi,  </span>
+                        <span class="fw-bold">Hizrian</span>
+                      </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user animated fadeIn">
+                      <div class="dropdown-user-scroll scrollbar-outer">
+                        <li>
+                          <div class="user-box">
+                            <div class="avatar-lg">
+                              <img
+                                src="assets/img/profile.jpg"
+                                alt="image profile"
+                                class="avatar-img rounded"
+                              />
+                            </div>
+                            <div class="u-text">
+                              <h4>Hizrian</h4>
+                              <p class="text-muted">hello@example.com</p>
+                              <a
+                                href="/profile"
+                                class="btn btn-xs btn-secondary btn-sm"
+                                >Update Profile</a
+                              >
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="dropdown-divider"></div>
+                         
+                          <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                        </li>
+                      </div>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+    var user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+        document.querySelector(".profile-username .fw-bold").textContent = user.username;
+        document.querySelector(".u-text h4").textContent = user.username;
+        document.querySelector(".u-text .text-muted").textContent = user.email;
+    }
+});
+            </script>
+          <!-- End Navbar -->
+        </div>
+
+        <div class="container">
+          <div class="page-inner">
+            <div class="page-header">
+              <h3 class="fw-bold mb-3">Update Profile</h3>
+              <ul class="breadcrumbs mb-3">
+                <li class="nav-home">
+                  <a href="/">
+                    <i class="icon-home"></i>
+                  </a>
+                </li>
+                <li class="separator">
+                  <i class="icon-arrow-right"></i>
+                </li>
+                <li class="nav-item">
+                  <a href="/profile">profile</a>
+                </li>
+                <li class="separator">
+                  <i class="icon-arrow-right"></i>
+                </li>
+
+              </ul>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">
+				    <form id="profileForm">
+
+                    <div class="card-title" >Update Profile</div>
+                  </div>
+                  <input type="text" id="username" class="form-control" name="username"/>
+                  <input type="email" id="email" class="form-control" name="email"/>
+                  <input type="password" id="password" class="form-control" name="password"/>
+
+   
+                  <div class="card-action">
+                    <button class="btn btn-primary" type="submit">Update Profile</button>
+				</form>
+        <div id="chatbot-container">
+          <!-- Chatbot Toggle Button (Circle with Logo) -->
+          <div id="chatbot-toggle">
+              <img src="../assets/img/dockube3.png" alt="Chatbot Logo" width="50" height="50">
+          </div>
+        
+          <!-- Chatbot Interface (Hidden by Default) -->
+         
+        <div id="chatbot-interface" style="display: none;">
+          <!-- Chat Header -->
+          <div id="chat-header">
+              <strong>
+                  <img src="../assets/img/dockube3.png" alt="Logo">
+                  Docker & Kubernetes Assistant
+              </strong>
+              <button id="chat-close">×</button>
+          </div>
+        
+          <!-- Chat Body -->
+          <div id="chat-body">
+              <div id="chat-messages">
+                  <!-- Welcome Message -->
+                  <div class="welcome-message" onclick="toggleWelcomeMessage()">
+                      👋 Welcome! I'm your Docker & Kubernetes Assistant.
+                      Ask me anything about Docker, Kubernetes, and best practices.
+                      <div class="hidden-content">
+                          Hi! I'm your Docker & Kubernetes Assistant.  
+                          Ask me anything about Dockerfiles, Kubernetes configurations, and best practices.
+                      </div>
+                  </div>
+              </div>
+          </div>
+        
+          <!-- Chat Input -->
+          <div id="chat-input">
+              <input type="text" id="chat-message" placeholder="Type your question...">
+              <button id="chat-send">Send</button>
+          </div>
+        </div>
+        </div>
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+              const chatbotToggle = document.getElementById('chatbot-toggle');
+              const chatbotInterface = document.getElementById('chatbot-interface');
+              const chatClose = document.getElementById('chat-close');
+              const chatBody = document.getElementById('chat-body');
+              const chatMessages = document.getElementById('chat-messages');
+              const chatMessageInput = document.getElementById('chat-message');
+              const chatSendButton = document.getElementById('chat-send');
+        
+              // Toggle Chat Interface
+              chatbotToggle.addEventListener('click', () => {
+                  chatbotInterface.style.display = 'block';
+              });
+        
+              // Close Chat Interface
+              chatClose.addEventListener('click', () => {
+                  chatbotInterface.style.display = 'none';
+              });
+        
+              // Send Message to Chatbot
+              chatSendButton.addEventListener('click', async () => {
+                  const message = chatMessageInput.value.trim();
+                  if (message) {
+                      // Add User Message to Chat
+                      chatMessages.innerHTML += `<div class="message"><strong>You:</strong> ${message}</div>`;
+                      chatMessageInput.value = '';
+        
+                      // Show Loading Spinner
+                      chatMessages.innerHTML += `<div id="loading-spinner">Loading...</div>`;
+        
+                      // Call Backend API
+                      try {
+                          const response = await fetch('/api/chat', {
+                              method: 'POST',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({ message })
+                          });
+                          const data = await response.json();
+        
+                          // Remove Loading Spinner and Add Bot Response
+                          document.getElementById('loading-spinner').remove();
+                          chatMessages.innerHTML += `<div class="message"><strong>Assistant:</strong> ${data.response}</div>`;
+                      } catch (error) {
+                          console.error('Error:', error);
+                          chatMessages.innerHTML += `<div class="message"><strong>Error:</strong> Failed to get response.</div>`;
+                      }
+        
+                      // Scroll to Bottom of Chat
+                      chatBody.scrollTop = chatBody.scrollHeight;
+                  }
+              });
+        
+              chatMessageInput.addEventListener('keypress', (e) => {
+                  if (e.key === 'Enter') {
+                      chatSendButton.click();
+                  }
+              });
+          });
+        </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Check if user is logged in
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user || !user._id) {
+        Swal.fire('Session Expired', 'Please login again', 'error').then(() => {
+            window.location.href = '/login';
+        });
+        return;
+    }
+
+    // Populate form fields
+    document.getElementById("username").value = user.username || '';
+    document.getElementById("email").value = user.email || '';
+
+    updateNavbarUserInfo(user);
+
+    // Handle form submission
+    document.getElementById("profileForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        updateProfile(user._id);
+    });
+});
+
+function updateNavbarUserInfo(user) {
+    const usernameElements = document.querySelectorAll('.username-display, .fw-bold, .u-text h4');
+    usernameElements.forEach(el => {
+        if (el.textContent !== 'Hi,') { 
+            el.textContent = user.username;
+        }
+    });
+    
+    const emailElements = document.querySelectorAll('.u-text .text-muted');
+    emailElements.forEach(el => {
+        el.textContent = user.email;
+    });
+}
+
+function updateProfile(userId) {
+    const updatedData = {
+        username: document.getElementById("username").value,
+        email: document.getElementById("email").value
+    };
+
+    const newPassword = document.getElementById("password").value;
+    if (newPassword) {
+        updatedData.password = newPassword;
+    }
+
+    fetch(`/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include', 
+        body: JSON.stringify(updatedData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.error) {
+            throw new Error(data.error);
+        }
+        
+        const currentUser = JSON.parse(localStorage.getItem("user"));
+        const mergedUser = {...currentUser, ...updatedData};
+        localStorage.setItem("user", JSON.stringify(mergedUser));
+        
+        // Update UI
+        updateNavbarUserInfo(mergedUser);
+        
+        Swal.fire('Success!', 'Profile updated successfully', 'success');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire('Error!', error.message || 'Failed to update profile', 'error');
+    });
+}
+
+</script>
+<script>
+  function logout() {
+            Swal.fire({
+                title: 'Logout Confirmation',
+                text: 'Are you sure you want to log out?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#326ce5',
+                cancelButtonColor: '#ff6666',
+                confirmButtonText: 'Yes, log out'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.clear();
+                    window.location.replace("/login");
+                }
+            });
+        }
+</script>
+				</div>
+        <div id="output"></div>
+
+    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+		<footer class="footer">
+            <div class="container-fluid d-flex justify-content-between">
+              <div class="copyright">
+                2024, made by
+                <h6>Nada Bouaziz</h6>
+              </div>
+              <div>
+                
+                <a target="_blank">Dockube Pilot</a>.
+              </div>
+            </div>
+          </footer>
+      </div>
+
+    
+      <!-- End Custom template -->
+    </div>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="../assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Google Maps Plugin -->
+    <script src="../assets/js/plugin/gmaps/gmaps.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="../assets/js/kaiadmin.min.js"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="../assets/js/setting-demo2.js"></script>
+	<script src="/assets/js/script.js"></script>
+
+</body>
+
+</html>

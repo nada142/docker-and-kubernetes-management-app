@@ -1,0 +1,1009 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Docker Images List</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.min.css">
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="../assets/css/dockerimg.css">
+
+    <link
+      rel="icon"
+      href="../assets/img/dockube3.png"
+      type="image/x-icon"
+    />
+ 
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["../assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <a href="/" class="logo" style="display: flex; align-items: center;">
+              <img
+                src="assets/img/dockube3.png"
+                alt="navbar brand"
+                class="navbar-brand"
+                height="40"
+              />
+              <span style="margin-left: 8px; font-size: 1.2em; font-weight: bold; color: aliceblue;">Dockube Pilot</span>
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <li class="nav-item">
+                <a href="/" aria-expanded="false">
+                  <i class="fas fa-tachometer-alt"></i> <!-- Dashboard icon -->
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockerRegistries">
+                  <i class="fas fa-warehouse"></i> <!-- Registry icon -->
+                  <p>Docker Registries</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockerfile_list">
+                  <i class="fas fa-file-code"></i> <!-- Code file icon for Dockerfile -->
+                  <p>Dockerfile</p>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a href="/dockerimg">
+                  <i class="fas fa-images"></i> <!-- Images icon -->
+                  <p>Docker Images</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dockercontainers">
+                  <i class="fas fa-box"></i> <!-- Box icon for containers -->
+                  <p>Docker Containers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/volumes">
+                  <i class="fas fa-database"></i> <!-- Database icon for Volumes -->
+                  <p>Volumes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/compose">
+                  <i class="fas fa-cubes"></i> <!-- Stacked cubes for Compose -->
+                  <p>Docker Compose</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="swarm_list">
+                    <i class="fas fa-project-diagram"></i> <!-- Stacked cubes for Compose -->
+                  <p>Docker Swarm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#kubernetesMenu" aria-expanded="false">
+                    <i class="fas fa-dharmachakra"></i>
+                    <p>Kubernetes</p>
+                    <span class="caret"></span>
+                </a>
+                <div class="collapse" id="kubernetesMenu">
+                    <ul class="nav nav-collapse">
+                        <li>
+                            <a href="/kubernetes/cluster">
+                                <span class="sub-item">Cluster Setup</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/nodes">
+                                <span class="sub-item">Nodes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/deployments">
+                                <span class="sub-item">Deployments</span>
+                            </a>
+                        </li>
+                        <li>
+                          <a href="/kubernetes/statefulsets">
+                              <span class="sub-item">StatefulSets</span>
+                          </a>
+                      </li>
+                        <li>
+                            <a href="/kubernetes/services">
+                                <span class="sub-item">Services</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/pods">
+                                <span class="sub-item">Pods</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kubernetes/pvcs">
+                                <span class="sub-item">Storage</span>
+                            </a>
+                        </li>
+                        <li>
+                          <a href="/kubernetes/configs">
+                              <span class="sub-item">ConfigMaps && Secrets</span>
+                          </a>
+                      </li>
+                        <li>
+                            <a href="/kubernetes/namespaces">
+                                <span class="sub-item">Namespaces</span>
+                            </a>
+                        </li>
+                         <li>
+                <a href="/kubernetes/ingresses">
+                    <span class="sub-item">Ingresses</span>
+                </a>
+            </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+              <a href="/cicd_integration">
+                <i class="fas fa-sync-alt"></i>
+                <p>CI CD</p>
+              </a>
+            </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#" onclick="logout()">
+                  <i class="fas fa-sign-out-alt"></i> <!-- Logout icon -->
+                  <p>Logout</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+
+      <div class="main-panel">
+        <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+              <a href="../index.html" class="logo">
+                <img
+                  src="../assets/img/dockube3.png"
+                  alt="navbar brand"
+                  class="navbar-brand"
+                  height="40"
+                />
+              </a>
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav
+            class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+          >
+            <div class="container-fluid">
+              <nav
+                class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
+              >
+               
+              </nav>
+
+              <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                <li class="nav-item topbar-user dropdown hidden-caret">
+                  <a
+                    class="dropdown-toggle profile-pic"
+                    data-bs-toggle="dropdown"
+                    href="/profile"
+                    aria-expanded="false"
+                  >
+                  
+                    
+                    <span class="profile-username">
+                      <span class="op-7">Hi,</span>
+                      <span class="fw-bold">Hizrian</span>
+                    </span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-user animated fadeIn">
+                    <div class="dropdown-user-scroll scrollbar-outer">
+                      <li>
+                        <div class="user-box">
+                          <div class="avatar-lg">
+                            <img
+                              src="assets/img/profile.jpg"
+                              alt="image profile"
+                              class="avatar-img rounded"
+                            />
+                          </div>
+                          <div class="u-text">
+                            <h4>Hizrian</h4>
+                            <p class="text-muted">hello@example.com</p>
+                            <a
+                              href="/profile"
+                              class="action-btn btn-blue1 btn-sm"
+                              >Update Profile</a
+                            >
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="dropdown-divider"></div>
+                       
+                        <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                      </li>
+                    </div>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <script>
+            document.addEventListener("DOMContentLoaded", function() {
+  var user = JSON.parse(localStorage.getItem("user"));
+  if (user) {
+      document.querySelector(".profile-username .fw-bold").textContent = user.username;
+      document.querySelector(".u-text h4").textContent = user.username;
+      document.querySelector(".u-text .text-muted").textContent = user.email;
+  }
+});
+          </script>
+          <!-- End Navbar -->
+        </div>
+        
+
+        <div class="container">
+          <div class="page-inner">
+            <div class="page-header">
+              <h2 class="text-center" style="position: relative;">
+                Docker Images 
+                <span class="help-icon" data-tooltip="Manage built application packages. Images are templates for creating containers">
+                  <i class="fas fa-info-circle text-muted"></i> <!-- Using Font Awesome -->
+                </span>
+              </h2>
+            </div>
+              <div>
+                <button class="action-btn btn-pastel-red" onclick="pruneImages()">
+                  <i class="fas fa-trash"></i> Prune Unused Images
+                  <span class="help-icon" data-tooltip="Removes dangling images and frees disk space. Warning: Cannot be undone">
+                       <i class="fas fa-info-circle ml-1"></i>
+                  </span>
+                </button>
+              </div><br>
+              <div>
+              <select id="registrySelect" class="form-control">
+                <option value="">Select Registry</option>
+              </select>
+              </div>
+              <div class="input-group mb-3" style="position: relative;">
+                <input type="text" id="imageName" class="form-control" placeholder="Image Name" autocomplete="off">
+                <span class="help-icon input-group-text" data-tooltip="Format: [registry/]repository[:tag] (e.g. nginx:alpine)">
+                  <i class="fas fa-info-circle"></i>
+                </span>
+                  <div id="suggestions-dropdown" class="suggestions-dropdown"></div>
+                <input type="text" id="imageTag" class="form-control" placeholder="Tag">
+                <button class="action-btn btn-blue2" onclick="pullImageFromRegistry()">
+                    <i class="fas fa-cloud-download-alt"></i> Pull Image From Registry
+                </button>
+            </div>
+              <input type="text" name="table_search" id="searchInput" onkeyup="recherche()" class="form-control" placeholder="Search Images...">
+              <table class="docker-images-table" id="dockerImagesTable">
+                  <thead>
+                      <tr>
+                          <th>Name</th>
+                          <th>Tag</th>
+                          <th>Date of Creation</th>
+                          <th class="actions">Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody id="imagesContainer">
+                      <!-- Rows will be dynamically inserted here -->
+                  </tbody>
+              </table>
+          </div>
+      </div>
+
+
+
+
+              <!-- Docker Hub Login Modal -->
+<div class="modal fade" id="dockerHubLoginModal" tabindex="-1" aria-labelledby="dockerHubLoginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+      </div>
+          <div class="modal-header">
+              <h5 class="modal-title" id="dockerHubLoginModalLabel">Docker Hub Login</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-header">
+            <h6 class="modal-title" style="color: crimson;">Create A Repository In DockerHub With the Same Name As Your Image Before !! </h6>
+        </div>
+          <div class="modal-body">
+              <form id="dockerHubLoginForm">
+                  <div class="mb-3">
+                      <label for="dockerHubUsername" class="form-label">Username</label>
+                      <input type="text" class="form-control" id="dockerHubUsername" required>
+                  </div>
+                  <div class="mb-3">
+                      <label for="dockerHubPassword" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="dockerHubPassword" required>
+                  </div>
+                  <!-- <div class="mb-3">
+                      <label for="dockerHubRepository" class="form-label">Repository</label>
+                      <input type="text" class="form-control" id="dockerHubRepository" placeholder="Enter repository name if needed">
+                  </div> -->
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="action-btn btn-pastel-red" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="action-btn btn-blue2" id="dockerHubLoginSubmit">Submit</button>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Loading Modal -->
+<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h5 class="modal-title" id="loadingModalLabel">Processing... Please Wait</h5>
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="chatbot-container">
+  <!-- Chatbot Toggle Button (Circle with Logo) -->
+  <div id="chatbot-toggle">
+      <img src="../assets/img/dockube3.png" alt="Chatbot Logo" width="50" height="50">
+  </div>
+
+  <!-- Chatbot Interface (Hidden by Default) -->
+ 
+<div id="chatbot-interface" style="display: none;">
+  <!-- Chat Header -->
+  <div id="chat-header">
+      <strong>
+          <img src="../assets/img/dockube3.png" alt="Logo">
+          Docker & Kubernetes Assistant
+      </strong>
+      <button id="chat-close">×</button>
+  </div>
+
+  <!-- Chat Body -->
+  <div id="chat-body">
+      <div id="chat-messages">
+          <!-- Welcome Message -->
+          <div class="welcome-message" onclick="toggleWelcomeMessage()">
+              👋 Welcome! I'm your Docker & Kubernetes Assistant.
+              Ask me anything about Docker, Kubernetes, and best practices.
+              <div class="hidden-content">
+                  Hi! I'm your Docker & Kubernetes Assistant.  
+                  Ask me anything about Dockerfiles, Kubernetes configurations, and best practices.
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Chat Input -->
+  <div id="chat-input">
+      <input type="text" id="chat-message" placeholder="Type your question...">
+      <button id="chat-send">Send</button>
+  </div>
+</div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const chatbotToggle = document.getElementById('chatbot-toggle');
+      const chatbotInterface = document.getElementById('chatbot-interface');
+      const chatClose = document.getElementById('chat-close');
+      const chatBody = document.getElementById('chat-body');
+      const chatMessages = document.getElementById('chat-messages');
+      const chatMessageInput = document.getElementById('chat-message');
+      const chatSendButton = document.getElementById('chat-send');
+
+      // Toggle Chat Interface
+      chatbotToggle.addEventListener('click', () => {
+          chatbotInterface.style.display = 'block';
+      });
+
+      // Close Chat Interface
+      chatClose.addEventListener('click', () => {
+          chatbotInterface.style.display = 'none';
+      });
+
+      // Send Message to Chatbot
+      chatSendButton.addEventListener('click', async () => {
+          const message = chatMessageInput.value.trim();
+          if (message) {
+              // Add User Message to Chat
+              chatMessages.innerHTML += `<div class="message"><strong>You:</strong> ${message}</div>`;
+              chatMessageInput.value = '';
+
+              // Show Loading Spinner
+              chatMessages.innerHTML += `<div id="loading-spinner">Loading...</div>`;
+
+              // Call Backend API
+              try {
+                  const response = await fetch('/api/chat', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ message })
+                  });
+                  const data = await response.json();
+
+                  // Remove Loading Spinner and Add Bot Response
+                  document.getElementById('loading-spinner').remove();
+                  chatMessages.innerHTML += `<div class="message"><strong>Assistant:</strong> ${data.response}</div>`;
+              } catch (error) {
+                  console.error('Error:', error);
+                  chatMessages.innerHTML += `<div class="message"><strong>Error:</strong> Failed to get response.</div>`;
+              }
+
+              // Scroll to Bottom of Chat
+              chatBody.scrollTop = chatBody.scrollHeight;
+          }
+      });
+
+      // Allow Pressing "Enter" to Send a Message
+      chatMessageInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+              chatSendButton.click();
+          }
+      });
+  });
+</script>
+             <script>
+         
+async function fetchDockerImages() {
+        try {
+            const response = await fetch('/images');
+            const images = await response.json();
+            const imagesContainer = document.getElementById('imagesContainer');
+            
+            imagesContainer.innerHTML = ''; // Clear existing content
+
+images.forEach((image) => {
+   const [name, tag] = image.name.includes(':') ? 
+        image.name.split(':') : 
+        [image.name, 'latest'];
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>${image.name}</td>
+        <td>${tag}</td>
+                <td>${new Date(image.dateOfCreation).toLocaleDateString()}</td>
+        <td class="actions">
+  <div class="action-buttons dockerfile-actions">
+        <button class="action-btn btn-pastel-gray ${!image.dockerfileId ? 'disabled' : ''}" 
+                onclick="${image.dockerfileId ? `viewDockerfile('${image._id}', '${image.dockerfileId}')` : 'void(0)'}" 
+                data-tooltip="View Dockerfile">
+            <i class="fas fa-eye"></i> Dockerfile
+        </button>
+<button class="action-btn btn-pastel-red" onclick="deleteImage('${image._id}', '${image.name}')" data-tooltip="Delete image">              <i class="fas fa-trash"></i> Delete
+        </button>
+        <button class="action-btn btn-pastel-docker-blue" onclick="pushImage('${image.name}')" data-tooltip="Push to registry">
+            <i class="fas fa-upload"></i> Push
+        </button>
+    </div>
+        </td>
+    `;
+    imagesContainer.appendChild(row);
+});
+} catch (error) {
+console.error('Error fetching Docker images:', error);
+}
+}
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetchDockerImages(); 
+fetchRegistries();
+   
+    window.viewDockerfile = function(imageId, dockerfileId) {
+        if (!dockerfileId) {
+            Swal.fire({
+                title: 'Error',
+                text: 'This image does not have an associated Dockerfile.',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            });
+            return;
+        }
+
+        fetch(`/images/${imageId}/dockerfilees/${dockerfileId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(dockerfile => {
+                Swal.fire({
+                    title: dockerfile.name || 'Dockerfile Content',
+                    html: `<pre style="text-align: left;">${dockerfile.content}</pre>`,
+                    customClass: {
+                        popup: 'swal-wide'
+                    },
+                    width: '600px',
+                    showCloseButton: true,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    confirmButtonText: 'Close'
+                });
+            })
+            .catch(error => console.error('Error fetching Dockerfile content:', error));
+    };
+
+
+
+
+
+    
+// Function to delete a Docker image
+window.deleteImage = async function(imageId, imageName) {
+    try {
+        // Show confirmation dialog
+        const result = await Swal.fire({
+            title: 'Are you sure?',
+            html: `You're about to delete the image <strong>${imageName}</strong>. This action cannot be undone.`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel',
+            showLoaderOnConfirm: true,
+            preConfirm: async () => {
+                try {
+                    const response = await fetch(`/images/${imageId}`, { 
+                        method: 'DELETE' 
+                    });
+                    
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'Failed to delete image');
+                    }
+                    return response.json();
+                } catch (error) {
+                    Swal.showValidationMessage(
+                        `Error: ${error.message}`
+                    );
+                }
+            }
+        });
+
+        if (result.isConfirmed) {
+            // Success case
+            Swal.fire({
+                title: 'Deleted!',
+                html: `Image <strong>${result.value.deletedImage || imageName}</strong> has been deleted.`,
+                icon: 'success'
+            }).then(() => {
+                fetchDockerImages(); // Refresh the list
+            });
+        }
+    } catch (error) {
+        console.error('Error deleting Docker image:', error);
+        Swal.fire({
+            title: 'Error!',
+            text: error.message || 'An error occurred while deleting the image.',
+            icon: 'error'
+        });
+    }
+};
+
+    // Function to run a Docker image
+    window.runImage = async function(imageId) {
+    try {
+        const response = await fetch(`/images/${imageId}/run`, { method: 'POST' });
+
+        if (response.ok) {
+            alert('Image is running and container is saved to the database');
+        } else {
+            const errorData = await response.json();
+            alert('Error: ' + errorData.error);
+        }
+    } catch (error) {
+        console.error('Error running Docker image:', error);
+    }
+
+};
+
+
+
+
+
+
+});
+
+async function pruneImages() {
+    try {
+        const response = await fetch('/images/prune', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            Swal.fire('Success!', result.message, 'success').then(() => {
+                fetchDockerImages(); // Refresh the images list
+            });
+        } else {
+            const errorData = await response.json();
+            Swal.fire('Error!', errorData.error || 'Failed to prune images.', 'error');
+        }
+    } catch (error) {
+        console.error('Error pruning Docker images:', error);
+        Swal.fire('Error!', 'An unexpected error occurred while pruning images.', 'error');
+    }
+}
+
+async function fetchRegistries() {
+        try {
+            const response = await fetch('/docker-registries');
+            const data = await response.json();
+            const registries = data.registries;
+            const registrySelect = document.getElementById('registrySelect');
+            registrySelect.innerHTML = '<option value="">Select Registry</option>';
+            registries.forEach(registry => {
+                const option = document.createElement('option');
+                option.value = registry._id;
+                option.textContent = registry.name;
+                registrySelect.appendChild(option);
+            });
+        } catch (error) {
+            console.error('Error fetching registries:', error);
+        }
+    }
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const imageNameInput = document.getElementById('imageName');
+    const suggestionsDropdown = document.getElementById('suggestions-dropdown');
+
+    // Event listener for input changes
+    imageNameInput.addEventListener('input', function () {
+        const query = imageNameInput.value.trim();
+        const registryId = document.getElementById('registrySelect').value;
+
+        console.log('Input query:', query); 
+        console.log('Selected registry ID:', registryId); 
+
+        if (query && registryId) {
+            const requestUrl = `/docker-registries/${registryId}/search/${query}`;
+            console.log('Fetching from:', requestUrl); 
+
+            fetch(requestUrl)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Search results:', data); 
+
+                    if (data.success && data.images.length > 0) {
+                        // Clear previous suggestions
+                        suggestionsDropdown.innerHTML = '';
+
+                        // Add new suggestions to the dropdown
+                        data.images.forEach(image => {
+                            const suggestionItem = document.createElement('div');
+                            suggestionItem.textContent = image;
+                            suggestionItem.addEventListener('click', () => {
+                                imageNameInput.value = image; // Autocomplete the input
+                                suggestionsDropdown.style.display = 'none'; // Hide the dropdown
+                            });
+                            suggestionsDropdown.appendChild(suggestionItem);
+                        });
+
+                        // Show the dropdown
+                        suggestionsDropdown.style.display = 'block';
+                    } else {
+                        // Hide the dropdown if no results are found
+                        suggestionsDropdown.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching image suggestions:', error);
+                    suggestionsDropdown.style.display = 'none';
+                });
+        } else {
+            // Hide the dropdown if no query or registry is selected
+            suggestionsDropdown.style.display = 'none';
+        }
+    });
+
+    // Hide the dropdown when clicking outside
+    document.addEventListener('click', function (event) {
+        if (!imageNameInput.contains(event.target) && !suggestionsDropdown.contains(event.target)) {
+            suggestionsDropdown.style.display = 'none';
+        }
+    });
+});
+
+async function pullImageFromRegistry() {
+    const imageName = document.getElementById('imageName').value;
+    const tag = document.getElementById('imageTag').value;
+    const registryId = document.getElementById('registrySelect').value;
+
+    if (!imageName || !tag || !registryId) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Missing Information',
+            text: 'Please enter image name, tag, and select a registry.',
+        });
+        return;
+    }
+
+    // Show loading modal
+    showLoadingModal();
+
+    try {
+        const response = await fetch('/images/pull', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ imageName, tag, registryId })
+        });
+
+        if (response.ok) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Image pulled successfully.',
+            }).then(() => {
+                fetchDockerImages(); // Refresh the images list
+            });
+        } else {
+            const errorData = await response.json();
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: errorData.message || 'Failed to pull image.',
+            });
+        }
+    } catch (error) {
+        console.error('Error pulling Docker image:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'An unexpected error occurred while pulling the image.',
+        });
+    } finally {
+        // Hide loading modal
+        $('#loadingModal').modal('hide');
+    }
+}
+async function pushImage(name) {
+    const registryId = document.getElementById('registrySelect').value;
+
+    if (!registryId) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Missing Information',
+            text: 'Please select a registry.',
+        });
+        return;
+    }
+
+    // Show loading modal
+    showLoadingModal();
+
+    try {
+        const encodedName = encodeURIComponent(name);
+        const response = await fetch(`/images/${encodedName}/push`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ registryId })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Failed to push image.');
+        }
+
+        const responseData = await response.json();
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: responseData.message || 'Image pushed successfully.',
+        });
+    } catch (error) {
+        console.error('Error pushing Docker image:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: error.message || 'An unexpected error occurred while pushing the image.',
+        });
+    } finally {
+        // Hide loading modal
+        $('#loadingModal').modal('hide');
+    }
+}
+function showLoadingModal() {
+    $('#loadingModal').modal('show');
+}
+
+
+             </script>
+          
+            </div>
+          </div>
+        </div>
+
+        <!-- <footer class="footer">
+          <div class="container-fluid d-flex justify-content-between">
+            <div class="copyright">
+              2024, made by
+              <h6>Nada Bouaziz</h6>
+            </div>
+            <div>
+              
+              <a target="_blank">Dockube Pilot</a>.
+            </div>
+          </div>
+        </footer> -->
+      </div>
+    
+      <!-- End Custom template -->
+    </div>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <!-- Moment JS -->
+    <script src="../assets/js/plugin/moment/moment.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="../assets/js/plugin/jsvectormap/world.js"></script>
+
+
+    <!-- Kaiadmin JS -->
+    <script src="../assets/js/kaiadmin.min.js"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="../assets/js/setting-demo2.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script>
+      function logout() {
+            Swal.fire({
+                title: 'Logout Confirmation',
+                text: 'Are you sure you want to log out?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#326ce5',
+                cancelButtonColor: '#ff6666',
+                confirmButtonText: 'Yes, log out'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.clear();
+                    window.location.replace("/login");
+                }
+            });
+        }
+    </script>
+<script>
+ function recherche() {
+    var input, filter, table, rows, cell, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("dockerImagesTable");
+    rows = table.getElementsByTagName("tr"); // Get all table rows
+
+    for (i = 1; i < rows.length; i++) { 
+        cell = rows[i].getElementsByTagName("td")[0]; // Select the first column (Name)
+        if (cell) {
+            txtValue = cell.textContent || cell.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                rows[i].style.display = ""; // Show row
+            } else {
+                rows[i].style.display = "none"; // Hide row
+            }
+        }
+    }
+}
+
+  
+  function filterDockerfiles() {
+            const input = document.getElementById('searchInput').value.toUpperCase();
+            const items = document.querySelectorAll('.dockerfile-item');
+
+            items.forEach(item => {
+                const name = item.querySelector('.dockerfile-name').textContent.toUpperCase();
+                if (name.includes(input)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+</script>
+  </body>
+</html>
