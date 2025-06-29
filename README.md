@@ -36,7 +36,7 @@ Make sure the following software is installed on your system:
 | **npm**      | 10.8.2              |
 | **Docker**   | 28.1.1              |
 | **MongoDB**  | 6.0.22              |
-| **Git**      | latest              |
+
 
 
 ---
@@ -48,13 +48,15 @@ Make sure the following software is installed on your system:
 ```bash
 git clone https://github.com/nada142/docker-and-kubernetes-management-app.git
 cd docker-and-kubernetes-management-app
-
+```
 2. **Install Node.js dependencies (package.json):**
+```bash
 npm install
-
+```
 3. **Running the application:**
+```bash
 npm run dev 
-
+```
 
  ☸️ Kubernetes Cluster Setup
 
@@ -73,12 +75,12 @@ When you click **"Initialize Cluster"**, the application automatically:
 | **containerd**  | v1.6              | Configured automatically       |
 
 CI/CD Configuration
-GitLab Integration
+### GitLab Integration
 Go to CI/CD page
 
 Click "Connect Account"
 
-Pfill the form
+fill the form
 
 Manage pipelines directly in the UI
 
@@ -96,8 +98,9 @@ To enable this feature:
 Install Ollama on your local machine.
 
 Pull the model:
+```bash
 ollama pull mistral:7b-instruct-q2_K
-
+```
 ### Usage
 Web Interface
  - Open a browser and navigate to http://localhost:5000. You can perform the following actions:
@@ -117,7 +120,7 @@ Docker Swarm: initialize and Manage via the "docker swarm" page.
 Kubernetes Management
 Deploy workloads via forms or YAML upload.
 
-View real-time metrics in Grafana (if monitoring enabled).
+View real-time metrics (if monitoring enabled).
 
-"# docker_node" 
+
 
